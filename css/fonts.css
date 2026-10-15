@@ -1,0 +1,6 @@
+/* Self-hosted (SIL OFL 1.1): Oswald, Source Serif 4 — latin subset. font-display:optional = no late swap/CLS */
+@font-face{font-family:"Oswald";font-style:normal;font-weight:200 700;font-display:optional;src:url(../fonts/oswald-latin.woff2) format("woff2")}
+@font-face{font-family:"Source Serif 4";font-style:normal;font-weight:200 900;font-display:optional;src:url(../fonts/sourceserif4-latin.woff2) format("woff2")}
+@font-face{font-family:"Source Serif 4";font-style:italic;font-weight:400;font-display:optional;src:url(../fonts/sourceserif4-latin-italic.woff2) format("woff2")}
+@font-face{font-family:"Oswald Fallback";src:local("Arial"),local("Arimo"),local("Liberation Sans"),local("Helvetica");size-adjust:78.62%;ascent-override:151.74%;descent-override:36.76%;line-gap-override:0%}
+@font-face{font-family:"Source Serif Fallback";src:local("Times New Roman"),local("Tinos"),local("Liberation Serif"),local("Times");size-adjust:104.22%;ascent-override:99.4%;descent-override:32.14%;line-gap-override:0%}
