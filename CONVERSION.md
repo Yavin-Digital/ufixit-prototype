@@ -37,7 +37,10 @@ Filters/search fixed, checkout validation, 20px body / 14px label floors, 48px t
 |---|---|---|
 | Step 1 "Pick your store" in the home hero (4 real stores), "Use my location" (nearest by browser geolocation, manual pick fallback), secondary CTA "Shop all parts, shipped to you" | `index.html` hero `.picker` | Real addresses/phones. Store coordinates are approximate, geocoded from the street addresses |
 | Remembered store (`localStorage ufx_store`), header "My store: X (change)" opens a store dialog incl. "Ship to me" | every page `.mystore`, `js/store.js` | — |
-| Location filter first on shop/category pages + "In stock at my store" toggle | `.filters [data-loc-filter]` | **Placeholder**: the live WooCommerce feed and product pages have no per-store stock, so the toggle does not filter yet (labeled on page) |
-| Per-store availability + pickup list above Add to Cart, my store highlighted | PDP `.avail` | Online stock is real; per-store rows are a labeled **placeholder** with each store's real phone |
+| Location filter first on shop/category pages + "In stock at my store" toggle | `.filters [data-loc-filter]` | **Placeholder per-store stock** (deterministic stand-in, ~70% of in-stock parts per store) so the location filter and "In stock at my store" toggle really filter; labeled "Store stock is placeholder data" on page. Real data needed from U-FIX-IT |
+| Per-store availability + pickup list above Add to Cart, my store highlighted | PDP `.avail` | Online stock is real; per-store "Available / Order for pickup" rows use the same labeled **placeholder** stock. Rows are tappable to set the store |
 
 Flag for Mike: per-store inventory source needed (POS/inventory export or WooCommerce multi-location plugin) to make the store filter and pickup availability real.
+
+## Mobile QA r1 + Marco R2 (Oct 15, 2026)
+Zero horizontal overflow 320–844 (Chromium + WebKit), compact landscape header, store dialog fits with close button, mobile hero keeps value line, store chips, "Shop all parts, shipped to you" and trust row above the fold at 390, filters Clear all + aria-expanded, gallery swipe, checkout error summary (role=alert) + per-field aria-live, 15/16-digit cards, safe-area sticky ATC, 14px label floor, 48px targets.
