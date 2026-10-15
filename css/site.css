@@ -12,8 +12,8 @@
   --paper: #ffffff;
   --muted: #5e5e5e;
   --line: #e6e6e6;
-  --display: "Oswald", system-ui, sans-serif;
-  --serif: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --display: "Oswald", "Oswald Fallback", system-ui, sans-serif;
+  --serif: "Source Serif 4", "Source Serif Fallback", Georgia, "Times New Roman", serif;
   --text: 1.25rem; /* 20px body — Yavin proto standard */
   --text-lh: 1.6;
   --wrap: 82%;
