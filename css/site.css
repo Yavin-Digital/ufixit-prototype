@@ -235,7 +235,7 @@ h3 { font-size: 1.25rem; }
   display: flex; align-items: center; justify-content: center;
   min-height: 96px; padding: 1rem;
   background: #f2f2f2; border: 1px solid var(--line);
-  font-family: var(--display); font-size: 0.85rem; letter-spacing: 0.08em;
+  font-family: var(--display); font-size: 1rem; letter-spacing: 0.08em;
   text-transform: uppercase; text-align: center; color: var(--navy);
 }
 .tile:hover { border-color: var(--red); color: var(--red); }

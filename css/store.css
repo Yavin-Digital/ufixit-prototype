@@ -329,3 +329,6 @@ main p a:not(.btn-buy):not(.btn-ghost),main li a,.helpbox a,.desc a{text-decorat
 .pick-row>*{font-size:1rem!important;min-height:48px}
 @media(max-width:820px){.pick-grid{flex-wrap:wrap;overflow:visible}.mystore{font-size:1rem!important}}
 @media(max-width:380px){.mystore.set u{display:none}.mystore{padding-right:8px;margin-right:2px}.sh__nav a{padding:0 8px}}
+/* R3: desktop fold */
+@media(min-width:821px){.hero .w{padding:36px 0}.hero h1{margin-bottom:8px}.picker{margin:16px 0;padding:18px 22px}.pick{min-height:56px;padding:8px 14px}.pick-row{margin-top:10px}}
+@media(min-width:1000px){.picker{max-width:920px}.pick-grid{grid-template-columns:repeat(4,1fr)}.hero h1{font-size:2.8rem}}

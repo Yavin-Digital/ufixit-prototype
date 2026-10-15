@@ -185,7 +185,7 @@ for p in P:
     page(p['url'],f"{p['n']} — U-FIX-IT Appliance Parts",re.sub("<[^>]+>","",html.unescape(lead))[:155],body,f'<script type="application/ld+json">{json.dumps(ld)}</script>','has-sticky')
 # ---------- home
 def sect(id_):
-    m=re.search(r'<section class="band[^"]*" id="'+id_+r'">.*?</section>',idx,re.S); return m.group(0) if m else ''
+    m=re.search(r'<section class="band[^"]*" id="'+id_+r'">.*?</section>',idx,re.S); return m.group(0).replace('<small style="display:block;margin-top:0.5rem;','<small style="display:block;font-size:.875rem;margin-top:0.5rem;') if m else ''
 best=[BYID[i] for i in pop if i in BYID]
 cc=Counter(p['top'] for p in P)
 tiles=''.join(f'<a class="cat" href="product-category-{k}.html"><img src="img/photo/{TOP[k][1]}.webp" alt="" width="450" height="300" loading="lazy" /><span>{E(TOP[k][0])}<small>{cc[k]} parts</small></span></a>' for k in NAVTOPS+['accessories'] if cc[k])
