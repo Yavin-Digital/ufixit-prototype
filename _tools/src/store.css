@@ -360,3 +360,6 @@ main p>a:not(.btn-buy):not(.btn-ghost){min-height:48px;min-width:48px;padding-bl
 .lookup-note,.order-note{font-size:1rem!important}
 /* L4: keep CTAs above the fold on 768/800-tall desktops */
 @media(min-width:821px) and (max-height:820px){.hero .w{padding:20px 0}.hero h1{font-size:2.3rem;margin-bottom:4px}.hero .eyebrow{margin-bottom:4px}.hero p.lead{font-size:1.05rem;margin:0 0 4px}.picker{margin:10px 0}.pick{min-height:52px}}
+/* ---- Mobile QA r4 ---- */
+@media(max-width:820px),(max-height:500px){.hero .w{width:92%;max-width:1320px;margin-inline:auto}.hero-band{max-width:366px}}
+@media(max-width:820px){.hero{padding-top:0}}
