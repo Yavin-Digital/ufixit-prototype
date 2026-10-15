@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Whirlpool Dryer Not Heating: Causes and Troubleshooting Tips — U-FIX-IT Appliance Parts</title>
+  <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />
+</head>
+<body class="page-blog">
+  <a class="skip" href="#main">Skip to content</a>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PROTOTYPE BANNER — paste into every prototype HTML page     ║
+  ║  Place immediately after <body> tag, before all other HTML   ║
+  ║  Developer note: REMOVE or IGNORE this entire block in the   ║
+  ║  React production build. It is prototype-only.               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<!-- PROTOTYPE BANNER -->
+<div id="proto-banner" class="proto-banner" style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #1e293b; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 8px; padding: 8px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  border-bottom: 2px solid #f59e0b;
+">
+  <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+      Prototype Only
+    </span>
+    <span style="opacity:.8;">
+      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+    </span>
+  </div>
+  <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex-shrink:0;">
+    <a
+      href="UFixIt-SEO-AEO-Compare.html"
+      id="proto-seo-aeo-link"
+      style="
+        background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
+        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; text-decoration: none; line-height: 1.2;
+        transition: background .15s ease, border-color .15s ease;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.borderColor='#fff'"
+      onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,.45)'"
+    >SEO / AEO Compare</a>
+    <button
+      type="button"
+      onclick="document.getElementById('proto-perf-modal').style.display='flex'"
+      style="
+        background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
+        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; flex-shrink: 0;
+        transition: background .15s ease;
+      "
+      onmouseover="this.style.background='#fbbf24'"
+      onmouseout="this.style.background='#f59e0b'"
+    >
+      View Performance Report
+    </button>
+  </div>
+</div>
+
+<!-- PERFORMANCE MODAL — Developer: ignore/remove in React build -->
+<div
+  id="proto-perf-modal"
+  style="
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center; padding:20px;
+  "
+  onclick="if(event.target===this)this.style.display='none'"
+>
+  <div style="
+    background:#fff; border-radius:16px; width:100%; max-width:560px;
+    box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden;
+  ">
+    <!-- Modal Header -->
+    <div style="background:#1e293b; padding:24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Performance Analysis</div>
+        <h2 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0;">Site Speed Report</h2>
+        <p style="color:rgba(255,255,255,.6); font-size:.82rem; margin:4px 0 0;">Prototype vs. Projected React Build</p>
+      </div>
+      <button
+        onclick="document.getElementById('proto-perf-modal').style.display='none'"
+        style="background:rgba(255,255,255,.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; flex-shrink:0;"
+      >&#215;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div style="padding:28px;">
+
+      <!-- Current load time -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+        <div style="background:#f8fafc; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; margin-bottom:6px;">This Page Loaded In</div>
+          <div id="proto-load-time" style="font-size:2rem; font-weight:900; color:#334155;">—</div>
+          <div style="font-size:.78rem; color:#64748b;">seconds (HTML prototype)</div>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#166534; margin-bottom:6px;">Projected React Load</div>
+          <div id="proto-react-time" style="font-size:2rem; font-weight:900; color:#15803d;">—</div>
+          <div style="font-size:.78rem; color:#166534;">seconds (estimated)</div>
+        </div>
+      </div>
+
+      <!-- Improvement badge -->
+      <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
+        <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
+      </div>
+
+      <!-- Schema notice -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#1d4ed8; margin-bottom:6px;">JSON-LD Schema</div>
+        <p style="font-size:.88rem; color:#1e3a8a; margin:0;" id="proto-schema-notice">
+          Checking for schema blocks on this page...
+        </p>
+      </div>
+
+      <!-- What changes in React -->
+      <div style="font-size:.82rem; color:#475569;">
+        <strong style="display:block; margin-bottom:8px; color:#334155;">What improves in the React build (all else equal):</strong>
+        <ul style="padding-left:18px; display:grid; gap:5px;">
+          <li>Code splitting — only the current page's JS is loaded</li>
+          <li>Image optimization — WebP conversion + lazy loading via React Image</li>
+          <li>CDN caching of static assets via Vercel/Netlify edge network</li>
+          <li>Tree-shaking removes unused CSS and JS from the bundle</li>
+          <li>Prefetching — next pages load before the user clicks</li>
+        </ul>
+      </div>
+
+      <p style="font-size:.75rem; color:#94a3b8; margin-top:16px; text-align:center;">
+        Developer note: Remove this banner and modal entirely from the React production build.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Push page content below the fixed banner */
+  body { padding-top: 44px !important; }
+  @media (max-width: 600px) { body { padding-top: 70px !important; } }
+</style>
+
+<script>
+(function () {
+  // ── Load time ──
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? nav.loadEventEnd - nav.startTime : performance.now();
+    var loadSec = (loadMs / 1000).toFixed(2);
+    document.getElementById('proto-load-time').textContent = loadSec;
+
+    // React estimated load: 35–55% faster (code splitting + CDN)
+    var improvement = 0.42; // 42% faster — mid estimate
+    var reactSec = (loadMs * (1 - improvement) / 1000).toFixed(2);
+    document.getElementById('proto-react-time').textContent = reactSec;
+    document.getElementById('proto-improvement').textContent =
+      Math.round(improvement * 100) + '% Faster';
+
+    // ── Schema detection ──
+    var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    var notice = document.getElementById('proto-schema-notice');
+    if (schemas.length > 0) {
+      var types = [];
+      schemas.forEach(function (s) {
+        try {
+          var obj = JSON.parse(s.textContent);
+          if (obj['@type']) types.push(obj['@type']);
+        } catch (e) {}
+      });
+      notice.innerHTML =
+        '<strong style="color:#1d4ed8;">' + schemas.length + ' schema block' +
+        (schemas.length > 1 ? 's' : '') + ' detected</strong> on this page.' +
+        (types.length ? ' Types: <em>' + types.join(', ') + '</em>.' : '') +
+        ' These are live and readable by Google and AI answer engines right now.';
+      notice.style.color = '#1e3a8a';
+    } else {
+      notice.textContent =
+        'No JSON-LD schema blocks detected on this page. Schema is embedded on the AEO report page.';
+    }
+  });
+})();
+</script>
+<!-- END PROTOTYPE BANNER -->
+
+  <header class="sh">
+<div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
+<div class="sh__in">
+<a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
+<form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
+<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+</div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">DIY / Tips</p>
+        <h1>Whirlpool Dryer Not Heating: Causes and Troubleshooting Tips</h1>
+        <p class="crumb"><a href="index.html">Home</a> / <span>Whirlpool Dryer Not Heating: Causes and Troubleshooting Tips</span></p>
+        <p class="source-tag">Source: Nancy CONTENT.md · Live: <a href="https://ufixit.com/diy-tips/whirlpool-dryer-not-heating/">https://ufixit.com/diy-tips/whirlpool-dryer-not-heating/</a></p>
+      </div>
+    </section>
+    <section class="band">
+      <div class="wrap prose">
+        
+        <p>BACK DIY Tips Whirlpool Dryer Not Heating: Causes and Troubleshooting Tips Appliance Parts Accessories Air Conditioner Parts Dishwasher Accessories Dishwasher Parts Dryer Parts Furnace Parts Microwave Parts Range &amp; Oven Parts Refrigerator Parts Washer Parts Whirlpool Dryer Not Heating: Common Causes If you have DIY know-how, you may not need to contact a technician if your Whirlpool dryer isn’t heating properly. The following are some possible causes of the problem and the parts you might need to fix it yourself. Blocked Lint Screen – Restricted Air Flow If your dryer is still heating but taking longer than usual to dry your laundry, it could be because of a dirty lint screen. Fortunately, this is an easy fix. All you need to do is clean the lint screen. To prevent the issue from recurring, remove the lint from the lint screen after each use. This step also helps extend the life of your dryer, as lint buildup could limit airflow and put stress on the heating system. Heat is only half the story when it comes to drying clothes. Sufficient airflow is just as important as sufficient heat. Whirlpool advises deep cleaning your dryer’s lint trap at least twice a year. Scrub either side of the lint screen with a wet nylon brunch and detergent. Rinse thoroughly and allow it to dry before you put it back into the dryer. Blocked or Crushed Dryer Vent Duct – Restricted Air Flow If your dryer is heating but not enough to completely dry clothes, a clogged or kinked dryer vent might be the cause. Your dryer dries wet laundry by tumbling wet laundry through heated air. The heat evaporates the water, and your dryer uses a fan to expel it through a metal vent on the back. A hose or duct then vents the moist air out to the exterior of your home. If the dryer duct is blocked or kinked, or if the tube has detached from the dryer, the moist air won’t be able to escape properly. As a result, your laundry ends up not fully dried. Blown Circuit Breaker – Electric Dryers (less common malfunction) Is your Whirlpool dryer turning but not heating? If you have an electric model, one of the first things you should check when it stops heating is the circuit breaker in your home’s main circuit breaker box. Thunderstorms and random electrical surges can cause your circuit breaker to blow. This is not a common problem, but it does happen and it is easy to fix. Many main circuit breaker boxes have two circuit breakers for the dryer. It is possible to blow only one of the two breakers. If one circuit breaker is blown or trips, the dryer may still turn on but not heat. To fix this, reset the blown breaker. This is a quick and easy fix you can do yourself without getting your hands dirty. Ignitor – Gas Dryers – (most common malfunction on gas dryers) Is your gas Whirlpool dryer turning but not heating? The ignitor failing to glow and get hot is the most common malfunction. You can bring your ignitor to the nearest U-FIX-IT Appliance Parts store for free testing. Gas dryers get their gas supply through a safety valve. If it’s closed, the dryer will run but won’t heat. Check to see if the gas supply is turned off. The handle on the valve that controls the gas should line up with the pipe when it is open for gas to flow to the dryer.. If the gas supply is turned on or you’ve adjusted the handle to the correct position, but the dryer still won’t heat, the problem might lie in the ignition system. Parts that could be the culprits include the flame sensor and the gas valve coils. To determine which one could be the cause of the problem, you can bring them to the nearest U-FIX-IT Appliance Parts store for free testing or your can follow these steps: Set the dryer to any setting that requires heat. Observe the gas burner and see if the igniter glows. If it isn’t glowing, it could indicate a problem with the igniter itself and the thermal fuse. Before going further, unplug the dryer. A multimeter will come in handy here to see if the igniter is showing more resistance than 80-400 ohms or if it’s showing no continuity at all. If either is the case, the igniter might need to be replaced. On the other hand, if the thermal fuse doesn’t show continuity, it might also need replacing. If it’s glowing and stays on for at least five minutes, but the flame doesn’t start, this could mean that the flame sensor is bad. On the other hand, if it stays on for less than two minutes, the issue could be the gas valve solenoid coils. Shut the power to the dryer and use your multimeter to check for continuity. If it shows “No Continuity,” it’s likely time to replace them. Faulty Heating Element (Electric Dryers)(common malfunction) If the circuit breaker isn’t blown, the next step is to check the heating element. Fortunately, it’s easy to tell if it’s still working–A visual inspection usually does the trick. You can take the heating element to the nearest U-FIX-IT Appliance Parts store for FREE testing. The heating element is typically located on the back of Whirlpool dryers or under the drum. Make sure to disconnect the power before you remove the back or front dryer to check the heating element. Heating element coils look like door springs that have been stretched out. Look closely and check for breaks in the coils. If there is one, then the heating element is faulty. If there isn’t one, then the heating element is still good. You can also use a multimeter to check the continuity of the heating element. “No continuity” indicates the coil is broken and needs to be replaced. However, even if the device shows a complete circuit, you’ll still need to perform a visual inspection. This is because broken coils may still touch when cool. Blown Thermal Fuse (common malfunction) What If the circuit breaker, heating coils and ignition system are working correctly? The no-heating issue could be down to a blown thermal fuse or thermostat on the dryer. The thermal fuse is an anti-fire measure meant to function only once. If the dryer gets too hot, the thermal fuse will go off. This shuts down the dryer, and you won’t be able to use it again until you’ve replaced the thermal fuse. The thermal fuse and thermostat are located on the heater element and the blower housing. If you need help finding the exact location of these parts in your dryer, contact us with your model number so we can guide you. Unplug your dryer, then use a multimeter to check the fuses and thermostats for continuity after removing the wires. Alternatively, bring them to us, and U-FIX-IT will test them for free. Faulty Control Board (less common malfunction) If your dryer is running but doesn’t heat, then it could be due to an issue with its control board. This part controls all of the functions of the dryer, including heating. The heating element might not work properly if the control board is damaged or defective. In turn, the dryer may not heat. The dryer’s error codes can help you diagnose the problem. If the control board or one of its components malfunctions, your Whirlpool dryer will display the error code F01 or F07. Call us with your error code or your user manual can be a good source for more information on control board error codes. The Importance of Using Quality Parts in Whirlpool Dryer Repair When repairing a Whirlpool dryer, it is crucial to use high-quality parts. Appliance repairs require precision and accuracy; even a minor fault defect could result in a substandard repair job. You might even end up having to redo the repairs if the parts themselves malfunction. What’s more, using low-quality parts could create safety hazards. Additionally, quality replacement parts allow for faster reassembly because they’re explicitly configured for your dryer. You won’t waste time adjusting components because they don’t fit or align correctly. Additionally, you won’t have to worry about replacing the parts again in a few months or a year because they have incompatibility issues. Shop Online for Dryer Replacement Parts for your Whirlpool Dryer U-Fix-It is a trusted source of appliance replacement parts for Whirlpool appliances and other top brands, including Maytag, Samsung, GE, Frigidaire, and LG. We have a wide selection, and in the unlikely event we don’t have the parts you need in stock, we will be happy to special order them for you. We have it, or we’ll get it! Our team of appliance repair experts is looking forward to helping you with your appliance repair project. In addition to appliance parts, we provide FREE diagnosis assistance over the phone and in our stores. FREE testing of parts you bring into the store. We aim to give you the peace of mind of knowing that you’re replacing the right part: No more and no less. View some of our parts online, and place your order today or call for personalized attention! If you have questions or need advice with a repair, please feel free to get in touch. For additional information, see WHIRLPOOL DRYER NOT HEATING. you may also be interested DIY Tips Essential AC Parts Guide: Learn about key air conditioner components and essential AC replacement parts for effective DIY repairs. Keep your home cool and efficient effortlessly. Read More DIY Tips Thermador Appliance Repair Guide Unlock solutions for Thermador error codes and appliance issues with expert tips on repairs and parts. Keep your luxury kitchen appliances running smoothly! Read More Appliances How to Choose the Right Hotpoint Appliance for Your Home Choosing the right Hotpoint appliance enhances every home&#x27;s efficiency and style. Understand your needs to make a well-informed decision for your kitchen. Read More Have Questions About Whirlpool Dryer Heating? Ask Below</p>
+        
+      </div>
+    </section>
+
+  </main>
+  <section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+<form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
+<footer class="sf"><div class="w"><div class="cols">
+<div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
+<div><h4>Shop</h4><a href="product-category-refrigerator-parts.html">Refrigerator Parts</a><br /><a href="product-category-washer-parts.html">Washer Parts</a><br /><a href="product-category-dryer-parts.html">Dryer Parts</a><br /><a href="product-category-range-oven-parts.html">Range &amp; Oven Parts</a><br /><a href="product-category-dishwasher-parts.html">Dishwasher Parts</a><br /><a href="product-category-air-conditioner-parts.html">Air Conditioner Parts</a><br /></div>
+<div><h4>Help</h4><a href="how-to-choose.html">How to choose a part</a><br /><a href="order-lookup.html">Track an order</a><br /><a href="shipping-appliance-parts.html">Shipping</a><br /><a href="about-us-warranty-returns.html">Warranty &amp; returns</a><br /><a href="account.html">My account</a></div>
+<div><h4>Stores</h4>Arlington <a href="tel:8174727740">817.472.7740</a><br />East Dallas <a href="tel:2143217054">214.321.7054</a><br />South Dallas <a href="tel:9727809096">972.780.9096</a><br />Tyler <a href="tel:9035925836">903.592.5836</a><br /></div>
+<div><h4>Company</h4><a href="about-us.html">About</a><br /><a href="appliance-repair-tips.html">DIY tips</a><br /><a href="share-feedback.html">Feedback</a><br /><a href="privacy-policy.html">Privacy</a><br /><a href="brand.html">Brand guide</a><br /><a href="sitemap.html">Sitemap</a></div>
+</div><div class="legal">© U-FIX-IT Appliance Parts · Texas · HTML prototype by The Tribe Maker / Yavin Digital · Mock checkout: no real payments are taken.</div></div></footer>
+<script src="js/store.js" defer></script></body>
+</html>

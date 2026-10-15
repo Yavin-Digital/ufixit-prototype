@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>LG — U-FIX-IT Appliance Parts</title>
+  <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />
+</head>
+<body class="page-brand">
+  <a class="skip" href="#main">Skip to content</a>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PROTOTYPE BANNER — paste into every prototype HTML page     ║
+  ║  Place immediately after <body> tag, before all other HTML   ║
+  ║  Developer note: REMOVE or IGNORE this entire block in the   ║
+  ║  React production build. It is prototype-only.               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<!-- PROTOTYPE BANNER -->
+<div id="proto-banner" class="proto-banner" style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #1e293b; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 8px; padding: 8px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  border-bottom: 2px solid #f59e0b;
+">
+  <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+      Prototype Only
+    </span>
+    <span style="opacity:.8;">
+      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+    </span>
+  </div>
+  <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex-shrink:0;">
+    <a
+      href="UFixIt-SEO-AEO-Compare.html"
+      id="proto-seo-aeo-link"
+      style="
+        background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
+        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; text-decoration: none; line-height: 1.2;
+        transition: background .15s ease, border-color .15s ease;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.borderColor='#fff'"
+      onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,.45)'"
+    >SEO / AEO Compare</a>
+    <button
+      type="button"
+      onclick="document.getElementById('proto-perf-modal').style.display='flex'"
+      style="
+        background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
+        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; flex-shrink: 0;
+        transition: background .15s ease;
+      "
+      onmouseover="this.style.background='#fbbf24'"
+      onmouseout="this.style.background='#f59e0b'"
+    >
+      View Performance Report
+    </button>
+  </div>
+</div>
+
+<!-- PERFORMANCE MODAL — Developer: ignore/remove in React build -->
+<div
+  id="proto-perf-modal"
+  style="
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center; padding:20px;
+  "
+  onclick="if(event.target===this)this.style.display='none'"
+>
+  <div style="
+    background:#fff; border-radius:16px; width:100%; max-width:560px;
+    box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden;
+  ">
+    <!-- Modal Header -->
+    <div style="background:#1e293b; padding:24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Performance Analysis</div>
+        <h2 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0;">Site Speed Report</h2>
+        <p style="color:rgba(255,255,255,.6); font-size:.82rem; margin:4px 0 0;">Prototype vs. Projected React Build</p>
+      </div>
+      <button
+        onclick="document.getElementById('proto-perf-modal').style.display='none'"
+        style="background:rgba(255,255,255,.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; flex-shrink:0;"
+      >&#215;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div style="padding:28px;">
+
+      <!-- Current load time -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+        <div style="background:#f8fafc; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; margin-bottom:6px;">This Page Loaded In</div>
+          <div id="proto-load-time" style="font-size:2rem; font-weight:900; color:#334155;">—</div>
+          <div style="font-size:.78rem; color:#64748b;">seconds (HTML prototype)</div>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#166534; margin-bottom:6px;">Projected React Load</div>
+          <div id="proto-react-time" style="font-size:2rem; font-weight:900; color:#15803d;">—</div>
+          <div style="font-size:.78rem; color:#166534;">seconds (estimated)</div>
+        </div>
+      </div>
+
+      <!-- Improvement badge -->
+      <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
+        <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
+      </div>
+
+      <!-- Schema notice -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#1d4ed8; margin-bottom:6px;">JSON-LD Schema</div>
+        <p style="font-size:.88rem; color:#1e3a8a; margin:0;" id="proto-schema-notice">
+          Checking for schema blocks on this page...
+        </p>
+      </div>
+
+      <!-- What changes in React -->
+      <div style="font-size:.82rem; color:#475569;">
+        <strong style="display:block; margin-bottom:8px; color:#334155;">What improves in the React build (all else equal):</strong>
+        <ul style="padding-left:18px; display:grid; gap:5px;">
+          <li>Code splitting — only the current page's JS is loaded</li>
+          <li>Image optimization — WebP conversion + lazy loading via React Image</li>
+          <li>CDN caching of static assets via Vercel/Netlify edge network</li>
+          <li>Tree-shaking removes unused CSS and JS from the bundle</li>
+          <li>Prefetching — next pages load before the user clicks</li>
+        </ul>
+      </div>
+
+      <p style="font-size:.75rem; color:#94a3b8; margin-top:16px; text-align:center;">
+        Developer note: Remove this banner and modal entirely from the React production build.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Push page content below the fixed banner */
+  body { padding-top: 44px !important; }
+  @media (max-width: 600px) { body { padding-top: 70px !important; } }
+</style>
+
+<script>
+(function () {
+  // ── Load time ──
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? nav.loadEventEnd - nav.startTime : performance.now();
+    var loadSec = (loadMs / 1000).toFixed(2);
+    document.getElementById('proto-load-time').textContent = loadSec;
+
+    // React estimated load: 35–55% faster (code splitting + CDN)
+    var improvement = 0.42; // 42% faster — mid estimate
+    var reactSec = (loadMs * (1 - improvement) / 1000).toFixed(2);
+    document.getElementById('proto-react-time').textContent = reactSec;
+    document.getElementById('proto-improvement').textContent =
+      Math.round(improvement * 100) + '% Faster';
+
+    // ── Schema detection ──
+    var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    var notice = document.getElementById('proto-schema-notice');
+    if (schemas.length > 0) {
+      var types = [];
+      schemas.forEach(function (s) {
+        try {
+          var obj = JSON.parse(s.textContent);
+          if (obj['@type']) types.push(obj['@type']);
+        } catch (e) {}
+      });
+      notice.innerHTML =
+        '<strong style="color:#1d4ed8;">' + schemas.length + ' schema block' +
+        (schemas.length > 1 ? 's' : '') + ' detected</strong> on this page.' +
+        (types.length ? ' Types: <em>' + types.join(', ') + '</em>.' : '') +
+        ' These are live and readable by Google and AI answer engines right now.';
+      notice.style.color = '#1e3a8a';
+    } else {
+      notice.textContent =
+        'No JSON-LD schema blocks detected on this page. Schema is embedded on the AEO report page.';
+    }
+  });
+})();
+</script>
+<!-- END PROTOTYPE BANNER -->
+
+  <header class="sh">
+<div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
+<div class="sh__in">
+<a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
+<form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
+<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+</div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">Brand</p>
+        <h1>LG</h1>
+        <p class="crumb"><a href="index.html">Home</a> / <span>LG</span></p>
+        <p class="source-tag">Source: Nancy CONTENT.md · Live: <a href="https://ufixit.com/find-your-brand/appliance-parts-lg/">https://ufixit.com/find-your-brand/appliance-parts-lg/</a></p>
+      </div>
+    </section>
+    <section class="band">
+      <div class="wrap prose">
+        
+        <p>BACK U-FIX-IT Replacement Parts &amp; Repair Tips for LG Appliances Your Source for Replacement Parts for LG Appliances Your Source for Replacement Parts for LG Appliances, LG stands for “Life Is Good,” and life has been good for the Korean company that started in 1958 after creating Korea’s first radio. Since then, the company has grown into a huge conglomerate that produces an extensive catalog of home appliances and gadgets. Appliance Parts Accessories Air Conditioner Parts Dishwasher Accessories Dishwasher Parts Dryer Parts Furnace Parts Microwave Parts Range &amp; Oven Parts Refrigerator Parts Washer Parts Kitchen Appliance Parts for LG There aren’t as many LG appliances in the U.S. as there are appliances by brands like Whirlpool, GE and Frigidaire. As a result, there isn’t much demand for parts for LG appliances, making it difficult to find replacement parts. At U-FIX-IT Appliance Parts, our promise to our customers says it all: “We have it, or we’ll get it!” This includes all major appliance replacement parts for LG, including refrigerator parts and other LG-compatible accessories. Here at U-FIX-IT, our mission is to give away what we know and go the extra mile to ensure that the appliance part you take home is the part you need to repair your unit. If the solution you need doesn’t include a part, we count that as a win too. We have been in the appliance parts business since 1975 and have witnessed all the major brands’ ups and downs. As LG appears to be committed to being a long-term player in the U.S. market, we assist our customers with troubleshooting and repairing their LG appliances. Avoid the larger costs of buying new appliances and the hassle of replacing your existing appliances when you can get them up and running with new parts from U-FIX-IT. Known for its innovative technology, reliability, and sleek designs, LG offers a wide range of kitchen appliances. The brand often receives high consumer ratings and is well-regarded for its features and performance. We can source various parts, whether larger refrigerator parts or smaller replacement parts for LG kitchen appliances. Refrigerators: We source refrigerator parts for LG refrigerators to keep your appliance running smoothly. We can provide various fridge parts for LG units to ensure optimal performance. Ovens and Ranges: We can help enhance your cooking experience with replacement parts for your LG ovens and ranges, including heating elements, control knobs, and more. Keep your appliances in peak condition. Microwaves: Ensure your LG microwave operates at its best with our replacement parts. Whether you need a new turntable, magnetron, or filter, we have a range of compatible parts. Dishwashers: Revitalize your LG unit with LG-compatible dishwasher parts to replace faulty spray arms, door seals, and other essential features. U-FIX-IT offers the parts you need. Cooktops: Maintain the efficiency of your LG cooktop with our selection of replacement parts. Whether you need burners, knobs, or grates, we provide high-quality components designed for a perfect fit. Range Hoods: Keep your LG range hood functioning at its best with our range of replacement parts. From filters to fan motors, we offer components designed for seamless integration and optimal performance. Wine Cellars and Beverage Centers: Ensure your LG wine or beverage cellar stays in top condition. Whether you need a new thermostat, fan, or filter, we provide the right parts for optimal temperature control. Trash Compactors: Keep your LG trash compactor in excellent working order with our premium replacement parts. From compactors to ram pads, we offer components designed for durability and precise fit. LG appliances are known for their innovation and reliability in the kitchen, helping homeowners create delicious meals with ease. However, even top-quality appliances can wear out over time with regular use. You may experience your appliances malfunctioning or not working as effectively as they used to At U-FIX-IT, we supply replacement parts for LG appliances. Our parts and repair tips can be the smarter, more cost-effective solution to restoring convenient kitchen appliances in your home over purchasing a brand-new unit. With compatible LG parts, you can restore your appliance’s performance and prevent future issues from worsening. We can help you source major LG replacement parts from your LG refrigerator parts, dishwasher accessories, and more. Laundry Appliance Parts for LG LG offers a range of laundry appliances, including washing machines and dryers. Their products are well-regarded for their performance, offering features such as energy efficiency, advanced cleaning and drying technologies, and smart capabilities. At U-FIX-IT, we have thousands of parts available to help our customers repair their broken appliances. Let us help you find washer and dryer parts for LG units to assist with your repairs. Washing Machines: Keep your LG washing machine in top shape with replacement LG washer parts from U-FIX-IT. From drum belts to water pumps, we provide washing machine parts for LG designed to be a perfect fit. Ensure optimal performance and efficient cleaning with our parts so your laundry routine runs smoothly every time. Clothes Dryers: Find compatible dryer parts for LG dryer units. Whether you need a new heating element or drive belt, we offer durable components for your seamless operations. Keep your dryer performing at its best and ensure your clothes come out perfectly dry with every run. Combination Washer and Dryer Sets: Whether you have a matching pair or stackable units, we can help you find compatible replacement washer and dryer parts for LG units. From control boards to door seals, we provide components that fit perfectly and ensure efficient operation. Keep them running smoothly with parts designed for long-lasting use. Pedestal Drawers: LG provides pedestal drawers to ensure compatibility with its washers and dryers. Keep your LG pedestal drawers in good condition to elevate your laundry experience. Whether you need new drawers or storage components, we offer parts designed to fit seamlessly. These provide convenient storage and easy access. LG laundry appliances are best known for their innovation, energy efficiency, and user-friendly features. However, washers and dryers are frequently used in homes, leading to wear and tear over time. You may notice leaking hoses, worn seals and gaskets, and other issues causing leaks, clogs, strange noises, and other problems affecting the quality of your laundry. Instead of replacing your washers and dryers, consider replacing the worn part of your unit. U-FIX-IT carries all essential parts for LG washers and dryers, ensuring your laundry equipment can be restored to full functionality. Contact your nearest U-FIX-IT location for more information pertaining to the part you need. If you need it, we can source it. *The use of the logo is not authorized by, sponsored by, or associated with the trademark owner. Can&#x27;t Find Your LG Part? Submit a Request Form Know the part you are looking for but can&#x27;t find it? Let us find it and let you know when we do. What Our Customers Say Our guiding principle in customer service: Love your neighbor as you love yourself. Everytime I come here I feel smarter. The guys are so helpful they will have saving money instead of throwing parts and throwing money down the drain. It’s easy to order parts online with the guessing game. Having that true customer service and the knowledge is worth the price of admission. Erick Scott Honestly I called to check and see if they had a part in stock, and didn’t even end up using them or buying from them, but was just generally impressed with the customer service that I received on the phone. The gentleman that I spoke to was very kind and helpful and gave me some good advice. Even though it didn’t result in immediate business for them, I will definitely return in the future. As a customer service professional myself, things like that are investments in the long run and not something you see every day now. Thank you for the help, person whose name I don’t remember! You gained a customer for the future. Kirby J Came in to ask about a part for my washing machine and was assisted by this newer gentleman, Josue. He gave me some great tips for installing and now, thanks to this extremely helpful young man, my washing machine is working perfectly again!! So grateful I didn’t have to spend hundreds of dollars on a new one. Thanks U-FIX-IT!!! Lisa Panelli-Valentin The associates were so helpful, friendly, understanding and nice. It was refreshing to get such great customer service and knowledgeable help! I went in to get a heating coil for my dryer that wouldn’t heat up anymore they let me know it could be that or the thermostat. I couldn’t unhook the wires at home so I brought the whole dryer 5 minutes before closing on a Friday. They tested the parts and let me know it was the thermostat which was cheaper than the heating coil. He even gave me tips on how to remove the part and it was so easy! To fix your dryer for less than $40 yourself makes you feel so good and powerful!!!! Thank you guys! Rosamari Williamson Give us your feedback</p>
+        
+        <div class="catalog-note note">
+          <strong>Catalog pattern — not full Woo catalog.</strong>
+          Live WooCommerce lists hundreds of SKUs under LG.
+          This prototype keeps hubs + 2 sample PDPs only (Randy url-index / Nancy sign-off).
+        </div>
+        <div class="product-grid product-grid--placeholder" aria-hidden="true">
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+        </div>
+        <p><a class="btn btn--navy" href="shop.html">Shop hub</a>
+           <a class="btn btn--outline" href="contact-us.html">Ask about a part</a></p>
+
+      </div>
+    </section>
+
+  </main>
+  <section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+<form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
+<footer class="sf"><div class="w"><div class="cols">
+<div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
+<div><h4>Shop</h4><a href="product-category-refrigerator-parts.html">Refrigerator Parts</a><br /><a href="product-category-washer-parts.html">Washer Parts</a><br /><a href="product-category-dryer-parts.html">Dryer Parts</a><br /><a href="product-category-range-oven-parts.html">Range &amp; Oven Parts</a><br /><a href="product-category-dishwasher-parts.html">Dishwasher Parts</a><br /><a href="product-category-air-conditioner-parts.html">Air Conditioner Parts</a><br /></div>
+<div><h4>Help</h4><a href="how-to-choose.html">How to choose a part</a><br /><a href="order-lookup.html">Track an order</a><br /><a href="shipping-appliance-parts.html">Shipping</a><br /><a href="about-us-warranty-returns.html">Warranty &amp; returns</a><br /><a href="account.html">My account</a></div>
+<div><h4>Stores</h4>Arlington <a href="tel:8174727740">817.472.7740</a><br />East Dallas <a href="tel:2143217054">214.321.7054</a><br />South Dallas <a href="tel:9727809096">972.780.9096</a><br />Tyler <a href="tel:9035925836">903.592.5836</a><br /></div>
+<div><h4>Company</h4><a href="about-us.html">About</a><br /><a href="appliance-repair-tips.html">DIY tips</a><br /><a href="share-feedback.html">Feedback</a><br /><a href="privacy-policy.html">Privacy</a><br /><a href="brand.html">Brand guide</a><br /><a href="sitemap.html">Sitemap</a></div>
+</div><div class="legal">© U-FIX-IT Appliance Parts · Texas · HTML prototype by The Tribe Maker / Yavin Digital · Mock checkout: no real payments are taken.</div></div></footer>
+<script src="js/store.js" defer></script></body>
+</html>

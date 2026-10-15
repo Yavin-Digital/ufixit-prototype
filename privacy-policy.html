@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy Policy — U-FIX-IT Appliance Parts</title>
+  <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />
+</head>
+<body class="page-page">
+  <a class="skip" href="#main">Skip to content</a>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PROTOTYPE BANNER — paste into every prototype HTML page     ║
+  ║  Place immediately after <body> tag, before all other HTML   ║
+  ║  Developer note: REMOVE or IGNORE this entire block in the   ║
+  ║  React production build. It is prototype-only.               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<!-- PROTOTYPE BANNER -->
+<div id="proto-banner" class="proto-banner" style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #1e293b; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 8px; padding: 8px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  border-bottom: 2px solid #f59e0b;
+">
+  <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+      Prototype Only
+    </span>
+    <span style="opacity:.8;">
+      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+    </span>
+  </div>
+  <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex-shrink:0;">
+    <a
+      href="UFixIt-SEO-AEO-Compare.html"
+      id="proto-seo-aeo-link"
+      style="
+        background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
+        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; text-decoration: none; line-height: 1.2;
+        transition: background .15s ease, border-color .15s ease;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.borderColor='#fff'"
+      onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,.45)'"
+    >SEO / AEO Compare</a>
+    <button
+      type="button"
+      onclick="document.getElementById('proto-perf-modal').style.display='flex'"
+      style="
+        background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
+        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; flex-shrink: 0;
+        transition: background .15s ease;
+      "
+      onmouseover="this.style.background='#fbbf24'"
+      onmouseout="this.style.background='#f59e0b'"
+    >
+      View Performance Report
+    </button>
+  </div>
+</div>
+
+<!-- PERFORMANCE MODAL — Developer: ignore/remove in React build -->
+<div
+  id="proto-perf-modal"
+  style="
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center; padding:20px;
+  "
+  onclick="if(event.target===this)this.style.display='none'"
+>
+  <div style="
+    background:#fff; border-radius:16px; width:100%; max-width:560px;
+    box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden;
+  ">
+    <!-- Modal Header -->
+    <div style="background:#1e293b; padding:24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Performance Analysis</div>
+        <h2 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0;">Site Speed Report</h2>
+        <p style="color:rgba(255,255,255,.6); font-size:.82rem; margin:4px 0 0;">Prototype vs. Projected React Build</p>
+      </div>
+      <button
+        onclick="document.getElementById('proto-perf-modal').style.display='none'"
+        style="background:rgba(255,255,255,.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; flex-shrink:0;"
+      >&#215;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div style="padding:28px;">
+
+      <!-- Current load time -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+        <div style="background:#f8fafc; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; margin-bottom:6px;">This Page Loaded In</div>
+          <div id="proto-load-time" style="font-size:2rem; font-weight:900; color:#334155;">—</div>
+          <div style="font-size:.78rem; color:#64748b;">seconds (HTML prototype)</div>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#166534; margin-bottom:6px;">Projected React Load</div>
+          <div id="proto-react-time" style="font-size:2rem; font-weight:900; color:#15803d;">—</div>
+          <div style="font-size:.78rem; color:#166534;">seconds (estimated)</div>
+        </div>
+      </div>
+
+      <!-- Improvement badge -->
+      <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
+        <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
+      </div>
+
+      <!-- Schema notice -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#1d4ed8; margin-bottom:6px;">JSON-LD Schema</div>
+        <p style="font-size:.88rem; color:#1e3a8a; margin:0;" id="proto-schema-notice">
+          Checking for schema blocks on this page...
+        </p>
+      </div>
+
+      <!-- What changes in React -->
+      <div style="font-size:.82rem; color:#475569;">
+        <strong style="display:block; margin-bottom:8px; color:#334155;">What improves in the React build (all else equal):</strong>
+        <ul style="padding-left:18px; display:grid; gap:5px;">
+          <li>Code splitting — only the current page's JS is loaded</li>
+          <li>Image optimization — WebP conversion + lazy loading via React Image</li>
+          <li>CDN caching of static assets via Vercel/Netlify edge network</li>
+          <li>Tree-shaking removes unused CSS and JS from the bundle</li>
+          <li>Prefetching — next pages load before the user clicks</li>
+        </ul>
+      </div>
+
+      <p style="font-size:.75rem; color:#94a3b8; margin-top:16px; text-align:center;">
+        Developer note: Remove this banner and modal entirely from the React production build.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Push page content below the fixed banner */
+  body { padding-top: 44px !important; }
+  @media (max-width: 600px) { body { padding-top: 70px !important; } }
+</style>
+
+<script>
+(function () {
+  // ── Load time ──
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? nav.loadEventEnd - nav.startTime : performance.now();
+    var loadSec = (loadMs / 1000).toFixed(2);
+    document.getElementById('proto-load-time').textContent = loadSec;
+
+    // React estimated load: 35–55% faster (code splitting + CDN)
+    var improvement = 0.42; // 42% faster — mid estimate
+    var reactSec = (loadMs * (1 - improvement) / 1000).toFixed(2);
+    document.getElementById('proto-react-time').textContent = reactSec;
+    document.getElementById('proto-improvement').textContent =
+      Math.round(improvement * 100) + '% Faster';
+
+    // ── Schema detection ──
+    var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    var notice = document.getElementById('proto-schema-notice');
+    if (schemas.length > 0) {
+      var types = [];
+      schemas.forEach(function (s) {
+        try {
+          var obj = JSON.parse(s.textContent);
+          if (obj['@type']) types.push(obj['@type']);
+        } catch (e) {}
+      });
+      notice.innerHTML =
+        '<strong style="color:#1d4ed8;">' + schemas.length + ' schema block' +
+        (schemas.length > 1 ? 's' : '') + ' detected</strong> on this page.' +
+        (types.length ? ' Types: <em>' + types.join(', ') + '</em>.' : '') +
+        ' These are live and readable by Google and AI answer engines right now.';
+      notice.style.color = '#1e3a8a';
+    } else {
+      notice.textContent =
+        'No JSON-LD schema blocks detected on this page. Schema is embedded on the AEO report page.';
+    }
+  });
+})();
+</script>
+<!-- END PROTOTYPE BANNER -->
+
+  <header class="sh">
+<div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
+<div class="sh__in">
+<a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
+<form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
+<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+</div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">Page</p>
+        <h1>Privacy Policy</h1>
+        <p class="crumb"><a href="index.html">Home</a> / <span>Privacy Policy</span></p>
+        <p class="source-tag">Source: Nancy CONTENT.md · Live: <a href="https://ufixit.com/privacy-policy/">https://ufixit.com/privacy-policy/</a></p>
+      </div>
+    </section>
+    <section class="band">
+      <div class="wrap prose">
+        
+        <p>U-FIX-IT Appliance Parts Privacy Policy Protecting Your Data U-FIX-IT Appliance Parts is committed to safeguarding your privacy. Contact us at [email protected] if you have any questions or problems regarding the use of your Personal Data and we will gladly assist you. By using this site or/and our services, you consent to the Processing of your Personal Data as described in this Privacy Policy. This Privacy Policy is a part of our Terms and Conditions; by agreeing to Terms and Conditions you also agree to this Policy. In the event of collision of terms used in Terms and Conditions and Privacy Policy, the latter shall prevail. Table of Contents Definitions used in this Policy Data protection principles we follow What rights do you have regarding your Personal Data What Personal Data we gather about you How we use your Personal Data Who else has access to your Personal Data How we secure your data Information about cookies Contact information Definitions Personal Data – any information relating to an identified or identifiable natural person. Processing – any operation or set of operations which is performed on Personal Data or on sets of Personal Data. Data subject – a natural person whose Personal Data is being Processed. Child – a natural person under 16 years of age. We/us (either capitalized or not) – U-FIX-IT Appliance Parts Data Protection Principles We promise to follow the following data protection principles: Processing is lawful, fair, transparent. Our Processing activities have lawful grounds. We always consider your rights before Processing Personal Data. We will provide you information regarding Processing upon request. Processing is limited to the purpose. Our Processing activities fit the purpose for which Personal Data was gathered. Processing is done with minimal data. We only gather and Process the minimal amount of Personal Data required for any purpose. Processing is limited with a time period. We will not store your personal data for longer than needed. We will do our best to ensure the accuracy of data. We will do our best to ensure the integrity and confidentiality of data. Data Subject’s rights The Data Subject has the following rights: Right to information – meaning you have to right to know whether your Personal Data is being processed; what data is gathered, from where it is obtained and why and by whom it is processed. Right to access – meaning you have the right to access the data collected from/about you. This includes your right to request and obtain a copy of your Personal Data gathered. Right to rectification – meaning you have the right to request rectification or erasure of your Personal Data that is inaccurate or incomplete. Right to erasure – meaning in certain circumstances you can request for your Personal Data to be erased from our records. Right to restrict processing – meaning where certain conditions apply, you have the right to restrict the Processing of your Personal Data. Right to object to processing – meaning in certain cases you have the right to object to Processing of your Personal Data, for example in the case of direct marketing. Right to object to automated Processing – meaning you have the right to object to automated Processing, including profiling; and not to be subject to a decision based solely on automated Processing. This right you can exercise whenever there is an outcome of the profiling that produces legal effects concerning or significantly affecting you. Right to data portability – you have the right to obtain your Personal Data in a machine-readable format or if it is feasible, as a direct transfer from one Processor to another. Right to lodge a complaint – in the event that we refuse your request under the Rights of Access, we will provide you with a reason as to why. If you are not satisfied with the way your request has been handled please contact us. Right for the help of supervisory authority – meaning you have the right for the help of a supervisory authority and the right for other legal remedies such as claiming damages. Right to withdraw consent – you have the right withdraw any given consent for Processing of your Personal Data. Data we gather Information you have provided us with This might be your e-mail address, name, billing address, home address etc – mainly information that is necessary for delivering you a product/service or to enhance your customer experience with us. We save the information you provide us with in order for you to comment or perform other activities on the website. This information includes, for example, your name and e-mail address. Information automatically collected about you This includes information that is automatically stored by cookies and other session tools. For example, your shopping cart information, your IP address, your shopping history (if there is any) etc. This information is used to improve your customer experience. When you use our services or look at the contents of our website, your activities may be logged. Information from our partners We gather information from our trusted partners with confirmation that they have legal grounds to share that information with us. This is either information you have provided them directly with or that they have gathered about you on other legal grounds. See the list of our partners here . Publicly available information We might gather information about you that is publicly available. How we use your Personal Data We use your Personal Data in order to: provide our service to you. This includes for example registering your account; providing you with other products and services that you have requested; providing you with promotional items at your request and communicating with you in relation to those products and services; communicating and interacting with you; and notifying you of changes to any services. enhance your customer experience; fulfil an obligation under law or contract; We use your Personal Data on legitimate grounds and/or with your Consent. On the grounds of entering into a contract or fulfilling contractual obligations, we Process your Personal Data for the following purposes: to identify you; to provide you a service or to send/offer you a product; to communicate either for sales or invoicing; On the ground of legitimate interest, we Process your Personal Data for the following purposes: to send you personalized offers* (from us and/or our carefully selected partners); to administer and analyse our client base (purchasing behaviour and history) in order to improve the quality, variety, and availability of products/ services offered/provided; to conduct questionnaires concerning client satisfaction; As long as you have not informed us otherwise, we consider offering you products/services that are similar or same to your purchasing history/browsing behaviour to be our legitimate interest. With your consent we Process your Personal Data for the following purposes: to send you newsletters and campaign offers (from us and/or our carefully selected partners); for other purposes we have asked your consent for; We Process your Personal Data in order to fulfill obligation rising from law and/or use your Personal Data for options provided by law. We reserve the right to anonymous Personal Data gathered and to use any such data. We will use data outside the scope of this Policy only when it is anonymized. We save your billing information and other information gathered about you for as long as needed for accounting purposes or other obligations deriving from law, but not longer than the necessary time allotted. We might process your Personal Data for additional purposes that are not mentioned here, but are compatible with the original purpose for which the data was gathered. To do this, we will ensure that: the link between purposes, context and nature of Personal Data is suitable for further Processing; the further Processing would not harm your interests and there would be appropriate safeguard for Processing. We will inform you of any further Processing and purposes. Who else can access your Personal Data We do not share your Personal Data with strangers. Personal Data about you is in some cases provided to our trusted partners in order to either make providing the service to you possible or to enhance your customer experience. We share your data with: We only work with Processing partners who are able to ensure adequate level of protection to your Personal Data. We disclose your Personal Data to third parties or public officials when we are legally obliged to do so. We might disclose your Personal Data to third parties if you have consented to it or if there are other legal grounds for it. How we secure your data We do our best to keep your Personal Data safe. We use safe protocols for communication and transferring data (such as HTTPS). We use anonymising and pseudonymising where suitable. We monitor our systems for possible vulnerabilities and attacks. Even though we try our best we can not guarantee the security of information. However, we promise to notify suitable authorities of data breaches. We will also notify you if there is a threat to your rights or interests. We will do everything we reasonably can to prevent security breaches and to assist authorities should any breaches occur. If you have an account with us, note that you have to keep your username and password secret. Children We do not intend to collect or knowingly collect information from children. We do not target children with our services. Cookies and other technologies we use We use cookies and/or similar technologies to analyse customer behaviour, administer the website, track users’ movements, and to collect information about users. This is done in order to personalise and enhance your experience with us. A cookie is a tiny text file stored on your computer. Cookies store information that is used to help make sites work. Only we can access the cookies created by our website. You can control your cookies at the browser level. Choosing to disable cookies may hinder your use of certain functions. We use cookies for the following purposes: Necessary cookies – these cookies are required for you to be able to use some important features on our website, such as logging in. These cookies don’t collect any personal information. Functionality cookies – these cookies provide functionality that makes using our service more convenient and makes providing more personalised features possible. For example, they might remember your name and e-mail in comment forms so you don’t have to re-enter this information next time when commenting. Analytics cookies – these cookies are used to track the use and performance of our website and services Advertising cookies – these cookies are used to deliver advertisements that are relevant to you and to your interests. In addition, they are used to limit the number of times you see an advertisement. They are usually placed to the website by advertising networks with the website operator’s permission. These cookies remember that you have visited a website and this information is shared with other organisations such as advertisers. Often targeting or advertising cookies will be linked to site functionality provided by the other organisation. You can remove cookies stored in your computer via your browser settings. Alternatively, you can control some 3rd party cookies by using a privacy enhancement platform such as optout.aboutads.info or youronlinechoices.com . For more information about cookies, visit allaboutcookies.org . We use Google Analytics to measure traffic on our website. Google has their own Privacy Policy which you can review here . If you’d like to opt out of tracking by Google Analytics, visit the Google Analytics opt-out page . Contact Information Representative Contact in the EU Supervisory Authority Email: [email protected] Phone: +353 57 868 4800 Personal Information Rquest If you would like to receive a copy of your information saved on this site, please see our Privacy Tools. Changes to this Privacy Policy We reserve the right to make change to this Privacy Policy. Last modification was made June 1, 2018.</p>
+        
+      </div>
+    </section>
+
+  </main>
+  <section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+<form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
+<footer class="sf"><div class="w"><div class="cols">
+<div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
+<div><h4>Shop</h4><a href="product-category-refrigerator-parts.html">Refrigerator Parts</a><br /><a href="product-category-washer-parts.html">Washer Parts</a><br /><a href="product-category-dryer-parts.html">Dryer Parts</a><br /><a href="product-category-range-oven-parts.html">Range &amp; Oven Parts</a><br /><a href="product-category-dishwasher-parts.html">Dishwasher Parts</a><br /><a href="product-category-air-conditioner-parts.html">Air Conditioner Parts</a><br /></div>
+<div><h4>Help</h4><a href="how-to-choose.html">How to choose a part</a><br /><a href="order-lookup.html">Track an order</a><br /><a href="shipping-appliance-parts.html">Shipping</a><br /><a href="about-us-warranty-returns.html">Warranty &amp; returns</a><br /><a href="account.html">My account</a></div>
+<div><h4>Stores</h4>Arlington <a href="tel:8174727740">817.472.7740</a><br />East Dallas <a href="tel:2143217054">214.321.7054</a><br />South Dallas <a href="tel:9727809096">972.780.9096</a><br />Tyler <a href="tel:9035925836">903.592.5836</a><br /></div>
+<div><h4>Company</h4><a href="about-us.html">About</a><br /><a href="appliance-repair-tips.html">DIY tips</a><br /><a href="share-feedback.html">Feedback</a><br /><a href="privacy-policy.html">Privacy</a><br /><a href="brand.html">Brand guide</a><br /><a href="sitemap.html">Sitemap</a></div>
+</div><div class="legal">© U-FIX-IT Appliance Parts · Texas · HTML prototype by The Tribe Maker / Yavin Digital · Mock checkout: no real payments are taken.</div></div></footer>
+<script src="js/store.js" defer></script></body>
+</html>

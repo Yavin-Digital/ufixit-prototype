@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>U-FIX-IT Appliance Parts — SEO / AEO Comparison · Sep 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+
+:root {
+  --ink: #0B0B2E;
+  --ink-mid: #1C1D76;
+  --navy: #1C1D76;
+  --green: #F50A0A;
+  --green-hover: #D00808;
+  --alert: #df2020;
+  --amber: #c47a12;
+  --amber-soft: #fff6e8;
+  --paper: #ffffff;
+  --paper-soft: #f4f6f7;
+  --muted: #4a5f6a;
+  --border: rgba(15, 32, 39, 0.12);
+  --border-strong: rgba(15, 32, 39, 0.22);
+  --tint: rgba(25, 51, 102, 0.06);
+  --tint-green: rgba(245, 10, 10, 0.10);
+  --tint-alert: rgba(223, 32, 32, 0.08);
+  --shadow-lite: 0 8px 28px rgba(15, 32, 39, 0.08);
+  --shadow: 0 14px 40px rgba(15, 32, 39, 0.12);
+  --font: "Inter", system-ui, -apple-system, sans-serif;
+  --header-h: 72px;
+}
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: var(--font);
+  font-size: 1.25rem;
+  line-height: 1.6;
+  color: var(--ink);
+  background: var(--paper-soft);
+}
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--navy); text-decoration-thickness: 1px; text-underline-offset: 3px; }
+a:hover { color: var(--green); }
+h1, h2, h3 { margin: 0 0 0.45em; line-height: 1.15; letter-spacing: -0.025em; font-weight: 700; color: var(--ink); }
+h1 { font-size: clamp(2rem, 4.5vw, 3rem); font-weight: 800; }
+h2 { font-size: clamp(1.45rem, 2.8vw, 2rem); }
+h3 { font-size: 1.1rem; }
+p { margin: 0 0 1em; }
+button, input { font: inherit; }
+.wrap { width: min(92%, 1180px); margin-inline: auto; }
+
+/* Header */
+.site-header {
+  position: sticky; top: 0; z-index: 40;
+  background: var(--ink); color: #fff;
+  border-bottom: 3px solid var(--green);
+  box-shadow: var(--shadow);
+}
+.site-header .inner {
+  display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between;
+  gap: 0.75rem 1.5rem; min-height: var(--header-h); padding: 0.85rem 0;
+}
+.brand { display: flex; flex-direction: column; gap: 0.15rem; }
+.brand-name { font-weight: 800; font-size: 1.15rem; letter-spacing: -0.02em; }
+.brand-sub { font-size: 0.8rem; color: rgba(255,255,255,0.72); letter-spacing: 0.04em; text-transform: uppercase; font-weight: 600; }
+.header-meta { text-align: right; font-size: 0.85rem; color: rgba(255,255,255,0.78); line-height: 1.45; }
+.header-meta strong { color: #fff; font-weight: 600; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(160deg, var(--ink) 0%, var(--navy) 100%);
+  color: #fff; padding: 3.25rem 0 3.5rem;
+}
+.hero-kicker {
+  display: inline-block; color: var(--green); font-size: 0.78rem; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.75rem;
+}
+.hero h1 { color: #fff; max-width: 18ch; }
+.hero-lede { max-width: 40rem; color: rgba(255,255,255,0.82); font-size: 1.15rem; margin-bottom: 2rem; }
+.score-grid {
+  display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem;
+}
+@media (max-width: 820px) { .score-grid { grid-template-columns: 1fr; } }
+.score-card {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  border-radius: 14px; padding: 1.35rem 1.4rem 1.5rem;
+  backdrop-filter: blur(6px);
+}
+.score-card h2 { color: #fff; font-size: 1.15rem; margin-bottom: 1rem; }
+.score-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+.score-col label {
+  display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: rgba(255,255,255,0.55); margin-bottom: 0.35rem;
+}
+.score-num { font-size: clamp(1.8rem, 3vw, 2.35rem); font-weight: 800; letter-spacing: -0.03em; line-height: 1; }
+.score-num span { font-size: 0.55em; font-weight: 600; opacity: 0.7; }
+.score-bar {
+  margin-top: 0.65rem; height: 10px; border-radius: 999px;
+  background: rgba(255,255,255,0.12); overflow: hidden;
+}
+.score-bar > i {
+  display: block; height: 100%; width: 0; border-radius: 999px;
+  transition: width 1.1s cubic-bezier(.2,.7,.2,1);
+}
+.score-bar.live > i { background: linear-gradient(90deg, #e86a6a, var(--alert)); }
+.score-bar.proto > i { background: linear-gradient(90deg, #ff6b6b, var(--green)); }
+.score-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 0.85rem; }
+.mini-chip {
+  font-size: 0.72rem; font-weight: 600; padding: 0.2rem 0.55rem; border-radius: 999px;
+  background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.85);
+}
+.mini-chip.pass { background: rgba(41,163,92,0.22); color: #b8f0cc; }
+.mini-chip.gap { background: var(--tint-alert); color: #ffc9c9; }
+.mini-chip.warn { background: rgba(196,122,18,0.25); color: #ffd89a; }
+.legend-note { margin-top: 1.25rem; font-size: 0.92rem; color: rgba(255,255,255,0.65); max-width: 48rem; }
+
+/* Controls */
+.controls {
+  position: sticky; top: var(--header-h); z-index: 30;
+  background: var(--paper); border-bottom: 1px solid var(--border);
+  box-shadow: 0 4px 18px rgba(15,32,39,0.04); padding: 0.9rem 0;
+}
+.controls-row { display: flex; flex-wrap: wrap; gap: 0.75rem 1rem; align-items: center; }
+.pills, .chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+.pill, .chip {
+  border: 1px solid var(--border-strong); background: var(--paper); color: var(--ink-mid);
+  border-radius: 999px; padding: 0.4rem 0.9rem; font-size: 0.88rem; font-weight: 600;
+  cursor: pointer; transition: background .15s, color .15s, border-color .15s, box-shadow .15s;
+}
+.pill:hover, .chip:hover { border-color: var(--navy); color: var(--navy); }
+.pill.active { background: var(--navy); color: #fff; border-color: var(--navy); box-shadow: var(--shadow-lite); }
+.chip.active { background: var(--green); color: #fff; border-color: var(--green); }
+.search-wrap { flex: 1 1 220px; min-width: 180px; position: relative; }
+.search-wrap input {
+  width: 100%; border: 1px solid var(--border-strong); border-radius: 10px;
+  padding: 0.55rem 0.9rem 0.55rem 2.4rem; background: var(--paper-soft); color: var(--ink);
+}
+.search-wrap input:focus { outline: 2px solid rgba(245,10,10,0.35); border-color: var(--green); background: #fff; }
+.search-wrap::before {
+  content: "/"; position: absolute; left: 0.85rem; top: 50%; transform: translateY(-50%);
+  font-size: 0.8rem; font-weight: 700; color: var(--muted); opacity: 0.7;
+  border: 1px solid var(--border); border-radius: 4px; padding: 0 0.35rem; line-height: 1.4;
+}
+.hint-keys { font-size: 0.78rem; color: var(--muted); }
+
+/* Benefits strip */
+.benefits {
+  background: var(--paper); margin: 1.75rem auto 0; border-radius: 16px;
+  border: 1px solid var(--border); box-shadow: var(--shadow-lite); padding: 1.5rem 1.6rem 1.35rem;
+}
+.benefits h2 { margin-bottom: 0.85rem; }
+.benefits ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.65rem; }
+@media (min-width: 760px) { .benefits ul { grid-template-columns: 1fr 1fr; } }
+.benefits li {
+  display: grid; grid-template-columns: auto 1fr; gap: 0.65rem; align-items: start;
+  font-size: 1.05rem; color: var(--ink-mid);
+}
+.benefits li::before {
+  content: ""; width: 10px; height: 10px; margin-top: 0.55rem; border-radius: 50%;
+  background: var(--green); box-shadow: 0 0 0 4px var(--tint-green);
+}
+
+/* Table / cards */
+.section-head { margin: 2rem 0 1rem; }
+.section-head p { color: var(--muted); margin: 0; font-size: 1.05rem; }
+.table-head {
+  display: none; grid-template-columns: 1.4fr 1fr 1fr 1.6fr; gap: 1rem;
+  padding: 0.55rem 1.1rem; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.06em;
+  text-transform: uppercase; color: var(--muted);
+}
+@media (min-width: 900px) { .table-head { display: grid; } }
+.rows { display: flex; flex-direction: column; gap: 0.75rem; margin-bottom: 2.5rem; }
+.row {
+  background: var(--paper); border: 1px solid var(--border); border-radius: 14px;
+  box-shadow: var(--shadow-lite); overflow: hidden; transition: box-shadow .15s, border-color .15s;
+}
+.row:hover { border-color: rgba(25,51,102,0.28); box-shadow: var(--shadow); }
+.row.hidden { display: none; }
+.row-main {
+  display: grid; gap: 0.85rem; padding: 1.05rem 1.15rem 0.95rem;
+  cursor: pointer; align-items: start;
+}
+@media (min-width: 900px) {
+  .row-main { grid-template-columns: 1.4fr 1fr 1fr 1.6fr; align-items: center; }
+}
+.topic { font-weight: 700; color: var(--ink); font-size: 1.05rem; }
+.topic .cat {
+  display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.05em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 0.2rem;
+}
+.status-block { display: flex; flex-direction: column; gap: 0.35rem; }
+.status-label { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; color: var(--muted); }
+@media (min-width: 900px) { .status-label { display: none; } }
+.badge {
+  display: inline-flex; align-items: center; gap: 0.35rem; width: fit-content;
+  font-size: 0.82rem; font-weight: 700; padding: 0.28rem 0.65rem; border-radius: 999px;
+}
+.badge.pass { background: rgba(41,163,92,0.12); color: #1a7a42; }
+.badge.gap { background: var(--tint-alert); color: #b01515; }
+.badge.warn, .badge.opportunity { background: var(--amber-soft); color: #8a5508; }
+.badge.unknown { background: var(--paper-soft); color: var(--muted); border: 1px solid var(--border); }
+.badge::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.why-preview { font-size: 0.98rem; color: var(--ink-mid); }
+.why-preview em { font-style: normal; color: var(--navy); font-weight: 600; font-size: 0.85rem; }
+.row details { border-top: 1px solid var(--border); background: var(--paper-soft); }
+.row details summary {
+  list-style: none; cursor: pointer; padding: 0.75rem 1.15rem; font-size: 0.92rem;
+  font-weight: 600; color: var(--navy); user-select: none;
+}
+.row details summary::-webkit-details-marker { display: none; }
+.row details summary::after { content: " ▾"; color: var(--green); }
+.row details[open] summary::after { content: " ▴"; }
+.why-body { padding: 0 1.15rem 1.15rem; font-size: 1.02rem; color: var(--ink-mid); }
+.why-body p:last-child { margin-bottom: 0; }
+.col-live-only .col-proto,
+.col-proto-only .col-live { display: none !important; }
+.mode-live .table-head, .mode-proto .table-head { grid-template-columns: 1.6fr 1.2fr 2fr; }
+.mode-live .row-main, .mode-proto .row-main { }
+@media (min-width: 900px) {
+  .mode-live .row-main, .mode-proto .row-main { grid-template-columns: 1.6fr 1.2fr 2fr; }
+}
+.empty {
+  text-align: center; padding: 2.5rem 1rem; color: var(--muted); background: var(--paper);
+  border-radius: 14px; border: 1px dashed var(--border-strong); margin-bottom: 2rem;
+}
+
+/* Footer */
+.site-footer {
+  background: var(--ink); color: rgba(255,255,255,0.78); padding: 2rem 0 2.5rem; font-size: 0.95rem;
+}
+.site-footer strong { color: #fff; }
+.site-footer .rule { width: 48px; height: 3px; background: var(--green); margin: 0 0 1rem; border-radius: 2px; }
+
+@media print {
+  body { background: #fff; font-size: 11pt; }
+  .site-header, .controls { position: static; box-shadow: none; }
+  .hero { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .score-bar > i { width: var(--print-w, 50%) !important; }
+  .pill, .chip, .search-wrap, .hint-keys { display: none !important; }
+  .row { break-inside: avoid; box-shadow: none; }
+  .row.hidden { display: block !important; }
+  .row details { display: block !important; }
+  .row details summary { display: none; }
+  .why-body { display: block !important; padding-top: 0.5rem; }
+  .col-live-only .col-proto, .col-proto-only .col-live { display: flex !important; }
+}
+
+</style>
+</head>
+<body>
+<header class="site-header">
+  <div class="wrap inner">
+    <div class="brand">
+      <div class="brand-name">U-FIX-IT Appliance Parts</div>
+      <div class="brand-sub">SEO / AEO comparison</div>
+    </div>
+    <div class="header-meta">
+      <div><strong>Sep 2026</strong> · Live audit 2026-09-16 CT</div>
+      <div>Prepared for The Tribe Maker / U-FIX-IT review</div>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-kicker">Sales readiness brief</div>
+    <h1>Live site today vs. prototype redesign</h1>
+    <p class="hero-lede">Checklist of crawl, on-page, multi-location NAP, hub IA, and answer-engine readiness for <strong>U-FIX-IT Appliance Parts</strong> — so the team can see what the KEEP-168 redesign improves and what still needs go-live plumbing. These are <strong>readiness scores</strong>, not ranking or traffic predictions.</p>
+    <div class="score-grid" id="scoreCards">
+      <article class="score-card" data-score-group="seo">
+        <h2>SEO readiness</h2>
+        <div class="score-pair">
+          <div class="score-col">
+            <label>Live site today</label>
+            <div class="score-num" id="seoLiveNum">—<span>/—</span></div>
+            <div class="score-bar live" id="seoLiveBar"><i></i></div>
+            <div class="score-chips" id="seoLiveChips"></div>
+          </div>
+          <div class="score-col">
+            <label>Prototype redesign</label>
+            <div class="score-num" id="seoProtoNum">—<span>/—</span></div>
+            <div class="score-bar proto" id="seoProtoBar"><i></i></div>
+            <div class="score-chips" id="seoProtoChips"></div>
+          </div>
+        </div>
+      </article>
+      <article class="score-card" data-score-group="aeo">
+        <h2>AEO readiness</h2>
+        <div class="score-pair">
+          <div class="score-col">
+            <label>Live site today</label>
+            <div class="score-num" id="aeoLiveNum">—<span>/—</span></div>
+            <div class="score-bar live" id="aeoLiveBar"><i></i></div>
+            <div class="score-chips" id="aeoLiveChips"></div>
+          </div>
+          <div class="score-col">
+            <label>Prototype redesign</label>
+            <div class="score-num" id="aeoProtoNum">—<span>/—</span></div>
+            <div class="score-bar proto" id="aeoProtoBar"><i></i></div>
+            <div class="score-chips" id="aeoProtoChips"></div>
+          </div>
+        </div>
+      </article>
+    </div>
+    <p class="legend-note">Columns: <strong>Live site today</strong> (ufixit.com, audited 2026-09-16 CT) · <strong>Prototype redesign</strong> (local Mac KEEP-168 HTML). Pass = 2 · Warn / Opportunity = 1 · Gap = 0. Proto technical items labeled “Designed for go-live · add at launch” score as Opportunity — not full Pass. East Dallas street locked (9919). South Dallas ZIP Unverified still awaits client lock.</p>
+  </div>
+</section>
+
+<div class="controls" id="controls">
+  <div class="wrap">
+    <div class="controls-row">
+      <div class="pills" role="tablist" aria-label="Column view">
+        <button type="button" class="pill active" data-mode="side">Side-by-side</button>
+        <button type="button" class="pill" data-mode="live">Live only</button>
+        <button type="button" class="pill" data-mode="proto">Prototype only</button>
+      </div>
+      <div class="search-wrap">
+        <input type="search" id="search" placeholder="Filter by keyword…" aria-label="Filter comparison rows" autocomplete="off" />
+      </div>
+      <div class="hint-keys">Press <kbd>/</kbd> to search · <kbd>Esc</kbd> to clear</div>
+    </div>
+    <div class="controls-row" style="margin-top:0.65rem">
+      <div class="chips" role="group" aria-label="Category filter">
+        <button type="button" class="chip active" data-filter="all">All</button>
+        <button type="button" class="chip" data-filter="crawl">Crawl &amp; index</button>
+        <button type="button" class="chip" data-filter="onpage">On-page</button>
+        <button type="button" class="chip" data-filter="content">Content &amp; IA</button>
+        <button type="button" class="chip" data-filter="aeo">Answer engines (AEO)</button>
+        <button type="button" class="chip" data-filter="entity">Entity &amp; trust</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<main class="wrap">
+  <section class="benefits" aria-labelledby="unlocks-title">
+    <h2 id="unlocks-title">What this redesign unlocks</h2>
+    <ul>
+      <li>KEEP-168 hub IA (brands, appliances, tips, four stores) instead of thin 438-SKU marketing noise.</li>
+      <li>Correct dishwasher category titles — no more “Washer Parts” on dishwasher URLs.</li>
+      <li>DROP of WP <code>/sample-page/</code> dummy from the marketing set.</li>
+      <li>East Dallas street locked to <strong>9919</strong> Garland Rd (Mike). South Dallas ZIP remains Unverified until client lock.</li>
+      <li>Honest parts + diagnosis entity language (not field-service confusion) for answer engines.</li>
+      <li>Mission/promise and tips surfaces ready to quote — without inventing star ratings.</li>
+      <li>Go-live checklist for robots, XML sitemap, canonicals, OG/Twitter, and LocalBusiness×4 JSON-LD.</li>
+    </ul>
+  </section>
+
+  <div class="section-head">
+    <h2>Comparison checklist</h2>
+    <p>Click a row to expand “Why it matters.” Badges are Pass / Warn / Gap / Opportunity — never invented rankings or traffic.</p>
+  </div>
+
+  <div class="table-head" id="tableHead">
+    <div>Topic</div>
+    <div class="col-live">Live site today</div>
+    <div class="col-proto">Prototype redesign</div>
+    <div>Why it matters</div>
+  </div>
+  <div class="rows" id="rows"></div>
+  <div class="empty hidden" id="empty">No rows match this filter. Try another category or clear search.</div>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap">
+    <div class="rule"></div>
+    <p><strong>Disclaimer.</strong> Scores are checklist readiness only. This brief does not claim Google rankings, traffic lifts, keyword volumes, or competitor positions. Prototype technical items (JSON-LD, robots.txt, XML sitemap, absolute canonicals, OG tags) are labeled “Designed for go-live · add at launch” and are not claimed as already live advantages. No invented star ratings.</p>
+    <p>Sources: Nancy CRITICAL sign-off · dossier · content-inventory · url-index KEEP 168 · live scrapes (homepage, hubs, Yoast sitemaps, robots.txt) · Mac KEEP HTML under <code>TheTribeMaker/UFixIt</code>. Live: <a href="https://ufixit.com/" style="color:#fff">https://ufixit.com/</a> · Sep 2026 CT.</p>
+  </div>
+</footer>
+
+<script>
+
+const ROWS = [
+  {
+    id: "robots", cat: "crawl", catLabel: "Crawl & index", group: "seo",
+    topic: "robots.txt",
+    live: "pass", liveText: "Pass — present; Yoast sitemap pointer",
+    proto: "opportunity", protoText: "Opportunity — Designed for go-live · add at launch",
+    preview: "Crawlers need an explicit crawl policy.",
+    why: "Live <code>https://ufixit.com/robots.txt</code> allows crawl (WooCommerce disallows for logs/uploads/add-to-cart) and points to <code>sitemap_index.xml</code> via Yoast. Local KEEP-168 HTML proto has no robots.txt yet — ship one at launch."
+  },
+  {
+    id: "sitemap", cat: "crawl", catLabel: "Crawl & index", group: "seo",
+    topic: "Yoast XML sitemaps",
+    live: "pass", liveText: "Pass — sitemap_index + post/page/product/brands/cats",
+    proto: "opportunity", protoText: "Opportunity — Designed for go-live · add at launch",
+    preview: "Sitemaps help discover hubs without SKU noise policy.",
+    why: "Live Yoast index lists post, page, product, testimonials, brands, category, product_cat, and author sitemaps (audited 2026-09-16). Proto is static HTML (~169 pages) without an XML sitemap file — generate from KEEP set at go-live."
+  },
+  {
+    id: "https-host", cat: "crawl", catLabel: "Crawl & index", group: "seo",
+    topic: "HTTPS / WP Engine stack",
+    live: "pass", liveText: "Pass — HTTPS on ufixit.com · WP + Woo + Yoast (WP Engine)",
+    proto: "opportunity", protoText: "Opportunity — static local HTML; host at launch",
+    preview: "Secure hosting and a real CMS stack matter at launch.",
+    why: "Live site is HTTPS WordPress on WP Engine with WooCommerce + Yoast (Nancy sign-off / dossier). Prototype is local Mac HTML for IA/copy review — production hosting/CDN still go-live work."
+  },
+  {
+    id: "titles", cat: "onpage", catLabel: "On-page", group: "seo",
+    topic: "Unique title tags",
+    live: "warn", liveText: "Warn — home OK; dishwasher product-cats titled “Washer Parts”",
+    proto: "pass", protoText: "Pass — unique titles on sampled KEEP pages",
+    preview: "Titles must match the page topic — not a sibling category.",
+    why: "Live home title is solid (<em>Appliance Parts Store in Texas | U-Fix-It</em>). Url-index shows multiple <code>/product-category/dishwasher-parts/*</code> URLs with title <strong>Washer Parts</strong> — a clear SERP bug. Proto samples (home, About, Contact, Appliances, East Dallas) use unique U-FIX-IT titles."
+  },
+  {
+    id: "meta", cat: "onpage", catLabel: "On-page", group: "seo",
+    topic: "Meta descriptions",
+    live: "pass", liveText: "Pass — home meta present (Otto/Yoast)",
+    proto: "opportunity", protoText: "Opportunity — titles strong; meta often missing in static HTML",
+    preview: "Descriptions reinforce local parts + diagnosis intent.",
+    why: "Live homepage ships a benefit-led meta (Dallas / Arlington / Tyler parts + free diagnosis). Sampled proto pages have clear <code>&lt;title&gt;</code>/H1 but typically no meta description yet — add at go-live without inventing claims."
+  },
+  {
+    id: "h1", cat: "onpage", catLabel: "On-page", group: "seo",
+    topic: "H1 / page clarity",
+    live: "pass", liveText: "Pass — clear H1s on hubs / store pages",
+    proto: "pass", protoText: "Pass — matching H1s on KEEP pages",
+    preview: "Each URL should announce its job in one H1.",
+    why: "Live marketing hubs and store landings carry readable H1s. Proto mirrors that pattern (e.g. East Dallas Appliance Parts Store, Appliances, About Us) for the KEEP set."
+  },
+  {
+    id: "canonical", cat: "onpage", catLabel: "On-page", group: "seo",
+    topic: "Canonical URL",
+    live: "pass", liveText: "Pass — absolute https://ufixit.com/ canonical",
+    proto: "opportunity", protoText: "Opportunity — Designed for go-live · add at launch",
+    preview: "Canonicals consolidate signals on preferred URLs.",
+    why: "Live homepage declares <code>rel=canonical</code> to <code>https://ufixit.com/</code>. Static proto uses relative assets without production absolute canonicals — set when the redesign goes live."
+  },
+  {
+    id: "og-twitter", cat: "onpage", catLabel: "On-page", group: "seo",
+    topic: "Open Graph / Twitter tags",
+    live: "pass", liveText: "Pass — og:title / og:url / twitter:* present on home",
+    proto: "opportunity", protoText: "Opportunity — Designed for go-live · add at launch",
+    preview: "Share cards need tags and reachable images.",
+    why: "Live home includes OG and Twitter tags (Otto/Yoast layer). Sampled proto KEEP pages do not yet emit OG/Twitter — add tags + a real share image at launch."
+  },
+  {
+    id: "dishwasher-title", cat: "onpage", catLabel: "On-page", group: "seo",
+    topic: "Dishwasher category titled “Washer Parts”",
+    live: "gap", liveText: "Gap — multiple dishwasher product-cats titled Washer Parts",
+    proto: "pass", protoText: "Pass — appliances-dishwasher-parts uses Dishwasher title",
+    preview: "Wrong category titles poison relevance and CTR.",
+    why: "Signed url-index lists <code>/product-category/dishwasher-parts/</code> and several brand subcats with document title <strong>Washer Parts</strong> (live Gap). Proto appliance hub uses a correct Dishwasher-oriented title — fix live Yoast/Woo titles before launch."
+  },
+  {
+    id: "ia-keep", cat: "content", catLabel: "Content & IA", group: "seo",
+    topic: "IA: KEEP 168 hubs vs 438 SKU bloat",
+    live: "warn", liveText: "Warn — 438 Woo products + ~54 appliance SKU pages indexed",
+    proto: "pass", protoText: "Pass — hub strategy (~169 HTML); SKUs not rebuilt",
+    preview: "Hubs + search/request-part beat thin SKU shells for marketing SEO.",
+    why: "Nancy CRITICAL + url-index: live carries ~438 products and ~54 <code>/appliances/{sku}/</code> shells. Proto follows KEEP ~168 hub/store/tips/brand/category strategy with sample PDPs only — Pass for intentional IA, not a claim about rankings."
+  },
+  {
+    id: "hub-depth", cat: "content", catLabel: "Content & IA", group: "seo",
+    topic: "Brand + appliance hub depth",
+    live: "pass", liveText: "Pass — find-your-brand + appliance category landings",
+    proto: "pass", protoText: "Pass — brand/appliance/tips hubs in KEEP HTML",
+    preview: "Brand and appliance gateways are the right SEO spine.",
+    why: "Live has <code>/find-your-brand/</code> (33+ brands) and appliance category landings. Proto keeps those hub patterns (appliances.html, brand templates, tips) without inventing catalog depth."
+  },
+  {
+    id: "sample-page", cat: "content", catLabel: "Content & IA", group: "seo",
+    topic: "DROP /sample-page/ dummy",
+    live: "gap", liveText: "Gap — WP sample-page still in sitemap (Doohickey Co)",
+    proto: "pass", protoText: "Pass — no sample-page in proto HTML set",
+    preview: "Dummy WP pages should never stay indexable.",
+    why: "Nancy CRITICAL #1 and url-index DROP: live <code>/sample-page/</code> is the default WP bike-messenger / Doohickey Co placeholder and appears in page-sitemap. Proto has zero sample-page files — Pass."
+  },
+  {
+    id: "woo-shells", cat: "content", catLabel: "Content & IA", group: "seo",
+    topic: "Thin WooCommerce system shells",
+    live: "warn", liveText: "Warn — cart / checkout / my-account / shipping-inquiry thin",
+    proto: "pass", protoText: "Pass — treated as system/REWRITE shells, not marketing density",
+    preview: "System routes are not marketing SEO pages.",
+    why: "Nancy flags thin Woo shells (<code>/cart/</code>, <code>/checkout/</code>, <code>/my-account/</code>, <code>/shipping-inquiry/</code>). Proto keeps functional awareness without pretending they are content hubs — correct scope."
+  },
+  {
+    id: "nap-east", cat: "content", catLabel: "Content & IA", group: "seo",
+    topic: "NAP East Dallas (9919 Garland Rd)",
+    live: "warn", liveText: "Warn — visible/schema 9919 vs map 9917 Garland Rd",
+    proto: "pass", protoText: "Pass — Mike locked 9919 Garland Rd; Unverified tag removed",
+    preview: "Local SEO dies when street numbers disagree.",
+    why: "Nancy CRITICAL was 9919 vs map 9917. <strong>Mike locked 9919 Garland Rd</strong> (2026-09-16 CT). Proto ships 9919 on footer/locations/contact/about/home; East Dallas Unverified street tag removed. South Dallas ZIP still open."
+  },
+  {
+    id: "nap-south-zip", cat: "content", catLabel: "Content & IA", group: "seo",
+    topic: "South Dallas ZIP conflict (75116 vs 75237)",
+    live: "warn", liveText: "Warn — store/schema 75116 vs footer/shared 75237",
+    proto: "opportunity", protoText: "Opportunity — Unverified; lock ZIP with client",
+    preview: "One store needs one ZIP everywhere.",
+    why: "Nancy CRITICAL: South Dallas / Duncanville Wheatland Rd uses ZIP <strong>75116</strong> on some store/schema strings and <strong>75237</strong> in footer/shared blocks. Proto Opportunity (Unverified) until Mike/client confirms."
+  },
+  {
+    id: "hours", cat: "content", catLabel: "Content & IA", group: "seo",
+    topic: "Hours consistency (Sat + New Year’s Eve)",
+    live: "warn", liveText: "Warn — Sat exceptions + NYE 9–3 vs 9–6 + Contact omits Sat",
+    proto: "opportunity", protoText: "Opportunity — REWRITE / client confirm matrix",
+    preview: "Hours mismatches confuse locals and local packs.",
+    why: "Dossier: base Mon–Fri 9–6; Tyler & South Dallas Sat 9–4 on banner/footer, but Contact cards omit Sat; About once omitted Tyler Sat; Store Hours NYE <strong>9–3</strong> vs About body once <strong>9–6</strong>. Proto should ship one verified matrix — Opportunity until confirmed."
+  },
+  {
+    id: "lb-schema", cat: "aeo", catLabel: "Answer engines (AEO)", group: "aeo",
+    topic: "LocalBusiness / Organization JSON-LD ×4 stores",
+    live: "warn", liveText: "Warn — Otto Store/FAQ/WebPage; Yoast @graph false; NAP conflicts",
+    proto: "opportunity", protoText: "Opportunity — Designed for go-live · add LocalBusiness ×4",
+    preview: "Four stores need four clean, matching location entities.",
+    why: "Live emits Otto <code>Store</code> / FAQPage / WebPage JSON-LD; Yoast graph on home is <code>@graph:false</code>; no clean verified LocalBusiness set for all four stores with locked NAP. Proto KEEP pages are content-ready; emit Organization + LocalBusiness×4 (Arlington, East Dallas, South Dallas, Tyler) at launch — after NAP lock."
+  },
+  {
+    id: "entity-clarity", cat: "aeo", catLabel: "Answer engines (AEO)", group: "aeo",
+    topic: "Entity clarity: parts + diagnosis (not field service)",
+    live: "warn", liveText: "Warn — primary offer clear; some “repair services” blog titles muddy",
+    proto: "pass", protoText: "Pass — parts retailer + free diagnosis positioning retained",
+    preview: "Answer engines should not call U-FIX-IT a field-service company.",
+    why: "Live positioning is replacement parts + free in-store/phone diagnosis — not on-site repair. Some DIY titles say “repair services” generically. Proto keeps parts + diagnosis entity language from signed copy — clearer AEO entity without inventing service claims."
+  },
+  {
+    id: "faq-howto", cat: "aeo", catLabel: "Answer engines (AEO)", group: "aeo",
+    topic: "FAQ / how-to answer surfaces",
+    live: "warn", liveText: "Warn — DIY tips real; home FAQPage has placeholder junk Q",
+    proto: "pass", protoText: "Pass — tips/mission hubs kept as quotable surfaces",
+    preview: "Real Q&A beats auto-generated FAQ schema.",
+    why: "Live DIY/repair-tips content is useful, but homepage FAQPage JSON-LD includes a junk question (<em>None - No questions provided for evaluation?</em>). Proto retains tips + about/mission pages as honest answer surfaces; fix or replace FAQ schema at launch — do not invent FAQs."
+  },
+  {
+    id: "mission-promise", cat: "aeo", catLabel: "Answer engines (AEO)", group: "aeo",
+    topic: "Mission / promise answer blocks",
+    live: "pass", liveText: "Pass — “We have it, or we’ll get it!” + mission page",
+    proto: "pass", protoText: "Pass — mission/promise copy in About KEEP set",
+    preview: "Short promise lines are ideal citation fodder.",
+    why: "Live mission/promise (“We have it, or we’ll get it!” / listen–confirm–respond mission) are clear answer blocks. Proto About/Mission KEEP pages carry the same sourced language for AEO-ready quotes."
+  },
+  {
+    id: "review-schema", cat: "aeo", catLabel: "Answer engines (AEO)", group: "aeo",
+    topic: "Review schema honesty (no invented stars)",
+    live: "pass", liveText: "Pass — testimonials present; no AggregateRating star invent",
+    proto: "pass", protoText: "Pass — no fabricated star ratings in proto",
+    preview: "Never invent star ratings for rich results.",
+    why: "Live shows named testimonials; homepage scrape does not assert AggregateRating star counts. Proto must not invent stars or review schema ratings — Pass for honesty on both sides."
+  },
+  {
+    id: "faq-schema-quality", cat: "aeo", catLabel: "Answer engines (AEO)", group: "aeo",
+    topic: "FAQPage schema quality",
+    live: "gap", liveText: "Gap — FAQPage includes empty/placeholder Q&A",
+    proto: "opportunity", protoText: "Opportunity — Designed for go-live · only real Q&A",
+    preview: "Bad FAQ schema is worse than no FAQ schema.",
+    why: "Live Otto FAQPage includes a nonsensical first Question and generic answers not tightly tied to U-FIX-IT NAP/offers. Proto should only add FAQPage JSON-LD when real, approved Q&A exists — Opportunity, not claimed Pass."
+  }
+];
+
+
+const POINTS = { pass: 2, warn: 1, opportunity: 1, gap: 0, unknown: null };
+
+function badgeClass(s) {
+  if (s === "opportunity") return "opportunity";
+  return s;
+}
+function badgeLabel(s) {
+  return ({ pass: "Pass", gap: "Gap", warn: "Warn", opportunity: "Opportunity", unknown: "Unknown" })[s] || s;
+}
+
+function renderRows() {
+  const root = document.getElementById("rows");
+  root.innerHTML = ROWS.map(r => `
+    <article class="row" data-id="${r.id}" data-cat="${r.cat}" data-group="${r.group}" tabindex="0">
+      <div class="row-main">
+        <div class="topic"><span class="cat">${r.catLabel}</span>${r.topic}</div>
+        <div class="status-block col-live">
+          <span class="status-label">Live site today</span>
+          <span class="badge ${badgeClass(r.live)}">${badgeLabel(r.live)}</span>
+          <span style="font-size:0.88rem;color:var(--muted)">${r.liveText}</span>
+        </div>
+        <div class="status-block col-proto">
+          <span class="status-label">Prototype redesign</span>
+          <span class="badge ${badgeClass(r.proto)}">${badgeLabel(r.proto)}</span>
+          <span style="font-size:0.88rem;color:var(--muted)">${r.protoText}</span>
+        </div>
+        <div class="why-preview col-why">${r.preview} <em>Why it matters ▾</em></div>
+      </div>
+      <details>
+        <summary>Why it matters</summary>
+        <div class="why-body"><p>${r.why}</p></div>
+      </details>
+    </article>
+  `).join("");
+
+  root.querySelectorAll(".row").forEach(row => {
+    const main = row.querySelector(".row-main");
+    const details = row.querySelector("details");
+    main.addEventListener("click", (e) => {
+      if (e.target.closest("a")) return;
+      details.open = !details.open;
+    });
+    row.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        details.open = !details.open;
+      }
+    });
+  });
+}
+
+function scoreSide(group, side) {
+  const items = ROWS.filter(r => r.group === group && POINTS[r[side]] !== null);
+  let pts = 0, max = 0;
+  const counts = { pass: 0, warn: 0, opportunity: 0, gap: 0 };
+  items.forEach(r => {
+    const s = r[side];
+    pts += POINTS[s];
+    max += 2;
+    if (s === "pass") counts.pass++;
+    else if (s === "gap") counts.gap++;
+    else if (s === "warn" || s === "opportunity") {
+      counts[s]++;
+    }
+  });
+  return { pts, max, counts, warnish: counts.warn + counts.opportunity };
+}
+
+function chipsHtml(counts) {
+  return `
+    <span class="mini-chip pass">${counts.pass} Pass</span>
+    <span class="mini-chip warn">${counts.warn + counts.opportunity} Warn/Opp</span>
+    <span class="mini-chip gap">${counts.gap} Gap</span>
+  `;
+}
+
+function paintScores() {
+  const map = {
+    seoLive: scoreSide("seo", "live"),
+    seoProto: scoreSide("seo", "proto"),
+    aeoLive: scoreSide("aeo", "live"),
+    aeoProto: scoreSide("aeo", "proto")
+  };
+  const apply = (data, numId, barId, chipsId) => {
+    document.getElementById(numId).innerHTML = `${data.pts}<span>/${data.max}</span>`;
+    const bar = document.getElementById(barId);
+    const pct = data.max ? Math.round((data.pts / data.max) * 100) : 0;
+    bar.style.setProperty("--print-w", pct + "%");
+    bar.querySelector("i").dataset.target = pct;
+    document.getElementById(chipsId).innerHTML = chipsHtml(data.counts);
+  };
+  apply(map.seoLive, "seoLiveNum", "seoLiveBar", "seoLiveChips");
+  apply(map.seoProto, "seoProtoNum", "seoProtoBar", "seoProtoChips");
+  apply(map.aeoLive, "aeoLiveNum", "aeoLiveBar", "aeoLiveChips");
+  apply(map.aeoProto, "aeoProtoNum", "aeoProtoBar", "aeoProtoChips");
+  window.__scores = map;
+}
+
+function animateBars() {
+  document.querySelectorAll(".score-bar > i").forEach(el => {
+    el.style.width = (el.dataset.target || 0) + "%";
+  });
+}
+
+function applyFilters() {
+  const mode = document.querySelector(".pill.active")?.dataset.mode || "side";
+  const filter = document.querySelector(".chip.active")?.dataset.filter || "all";
+  const q = (document.getElementById("search").value || "").trim().toLowerCase();
+  const body = document.body;
+  body.classList.remove("mode-side", "mode-live", "mode-proto", "col-live-only", "col-proto-only");
+  if (mode === "live") { body.classList.add("mode-live", "col-live-only"); }
+  else if (mode === "proto") { body.classList.add("mode-proto", "col-proto-only"); }
+  else { body.classList.add("mode-side"); }
+
+  let shown = 0;
+  document.querySelectorAll(".row").forEach(row => {
+    const cat = row.dataset.cat;
+    const text = row.textContent.toLowerCase();
+    const catOk = filter === "all" || cat === filter;
+    const qOk = !q || text.includes(q);
+    const ok = catOk && qOk;
+    row.classList.toggle("hidden", !ok);
+    if (ok) shown++;
+  });
+  document.getElementById("empty").classList.toggle("hidden", shown > 0);
+}
+
+function wireControls() {
+  document.querySelectorAll(".pill").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".pill").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      applyFilters();
+    });
+  });
+  document.querySelectorAll(".chip").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".chip").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      applyFilters();
+    });
+  });
+  document.getElementById("search").addEventListener("input", applyFilters);
+
+  document.addEventListener("keydown", (e) => {
+    const tag = (e.target && e.target.tagName) || "";
+    if (e.key === "/" && tag !== "INPUT" && tag !== "TEXTAREA") {
+      e.preventDefault();
+      document.getElementById("search").focus();
+    }
+    if (e.key === "Escape") {
+      const s = document.getElementById("search");
+      s.value = "";
+      s.blur();
+      applyFilters();
+    }
+  });
+}
+
+function watchScores() {
+  const target = document.getElementById("scoreCards");
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(en => {
+      if (en.isIntersecting) {
+        animateBars();
+        io.disconnect();
+      }
+    });
+  }, { threshold: 0.35 });
+  io.observe(target);
+}
+
+window.addEventListener("beforeprint", () => {
+  document.querySelectorAll(".row details").forEach(d => { d.open = true; });
+  animateBars();
+});
+
+renderRows();
+paintScores();
+wireControls();
+applyFilters();
+watchScores();
+</script>
+</body>
+</html>

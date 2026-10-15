@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kenmore — U-FIX-IT Appliance Parts</title>
+  <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />
+</head>
+<body class="page-brand">
+  <a class="skip" href="#main">Skip to content</a>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PROTOTYPE BANNER — paste into every prototype HTML page     ║
+  ║  Place immediately after <body> tag, before all other HTML   ║
+  ║  Developer note: REMOVE or IGNORE this entire block in the   ║
+  ║  React production build. It is prototype-only.               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<!-- PROTOTYPE BANNER -->
+<div id="proto-banner" class="proto-banner" style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #1e293b; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 8px; padding: 8px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  border-bottom: 2px solid #f59e0b;
+">
+  <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+      Prototype Only
+    </span>
+    <span style="opacity:.8;">
+      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+    </span>
+  </div>
+  <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex-shrink:0;">
+    <a
+      href="UFixIt-SEO-AEO-Compare.html"
+      id="proto-seo-aeo-link"
+      style="
+        background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
+        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; text-decoration: none; line-height: 1.2;
+        transition: background .15s ease, border-color .15s ease;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.borderColor='#fff'"
+      onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,.45)'"
+    >SEO / AEO Compare</a>
+    <button
+      type="button"
+      onclick="document.getElementById('proto-perf-modal').style.display='flex'"
+      style="
+        background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
+        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; flex-shrink: 0;
+        transition: background .15s ease;
+      "
+      onmouseover="this.style.background='#fbbf24'"
+      onmouseout="this.style.background='#f59e0b'"
+    >
+      View Performance Report
+    </button>
+  </div>
+</div>
+
+<!-- PERFORMANCE MODAL — Developer: ignore/remove in React build -->
+<div
+  id="proto-perf-modal"
+  style="
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center; padding:20px;
+  "
+  onclick="if(event.target===this)this.style.display='none'"
+>
+  <div style="
+    background:#fff; border-radius:16px; width:100%; max-width:560px;
+    box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden;
+  ">
+    <!-- Modal Header -->
+    <div style="background:#1e293b; padding:24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Performance Analysis</div>
+        <h2 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0;">Site Speed Report</h2>
+        <p style="color:rgba(255,255,255,.6); font-size:.82rem; margin:4px 0 0;">Prototype vs. Projected React Build</p>
+      </div>
+      <button
+        onclick="document.getElementById('proto-perf-modal').style.display='none'"
+        style="background:rgba(255,255,255,.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; flex-shrink:0;"
+      >&#215;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div style="padding:28px;">
+
+      <!-- Current load time -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+        <div style="background:#f8fafc; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; margin-bottom:6px;">This Page Loaded In</div>
+          <div id="proto-load-time" style="font-size:2rem; font-weight:900; color:#334155;">—</div>
+          <div style="font-size:.78rem; color:#64748b;">seconds (HTML prototype)</div>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#166534; margin-bottom:6px;">Projected React Load</div>
+          <div id="proto-react-time" style="font-size:2rem; font-weight:900; color:#15803d;">—</div>
+          <div style="font-size:.78rem; color:#166534;">seconds (estimated)</div>
+        </div>
+      </div>
+
+      <!-- Improvement badge -->
+      <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
+        <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
+      </div>
+
+      <!-- Schema notice -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#1d4ed8; margin-bottom:6px;">JSON-LD Schema</div>
+        <p style="font-size:.88rem; color:#1e3a8a; margin:0;" id="proto-schema-notice">
+          Checking for schema blocks on this page...
+        </p>
+      </div>
+
+      <!-- What changes in React -->
+      <div style="font-size:.82rem; color:#475569;">
+        <strong style="display:block; margin-bottom:8px; color:#334155;">What improves in the React build (all else equal):</strong>
+        <ul style="padding-left:18px; display:grid; gap:5px;">
+          <li>Code splitting — only the current page's JS is loaded</li>
+          <li>Image optimization — WebP conversion + lazy loading via React Image</li>
+          <li>CDN caching of static assets via Vercel/Netlify edge network</li>
+          <li>Tree-shaking removes unused CSS and JS from the bundle</li>
+          <li>Prefetching — next pages load before the user clicks</li>
+        </ul>
+      </div>
+
+      <p style="font-size:.75rem; color:#94a3b8; margin-top:16px; text-align:center;">
+        Developer note: Remove this banner and modal entirely from the React production build.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Push page content below the fixed banner */
+  body { padding-top: 44px !important; }
+  @media (max-width: 600px) { body { padding-top: 70px !important; } }
+</style>
+
+<script>
+(function () {
+  // ── Load time ──
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? nav.loadEventEnd - nav.startTime : performance.now();
+    var loadSec = (loadMs / 1000).toFixed(2);
+    document.getElementById('proto-load-time').textContent = loadSec;
+
+    // React estimated load: 35–55% faster (code splitting + CDN)
+    var improvement = 0.42; // 42% faster — mid estimate
+    var reactSec = (loadMs * (1 - improvement) / 1000).toFixed(2);
+    document.getElementById('proto-react-time').textContent = reactSec;
+    document.getElementById('proto-improvement').textContent =
+      Math.round(improvement * 100) + '% Faster';
+
+    // ── Schema detection ──
+    var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    var notice = document.getElementById('proto-schema-notice');
+    if (schemas.length > 0) {
+      var types = [];
+      schemas.forEach(function (s) {
+        try {
+          var obj = JSON.parse(s.textContent);
+          if (obj['@type']) types.push(obj['@type']);
+        } catch (e) {}
+      });
+      notice.innerHTML =
+        '<strong style="color:#1d4ed8;">' + schemas.length + ' schema block' +
+        (schemas.length > 1 ? 's' : '') + ' detected</strong> on this page.' +
+        (types.length ? ' Types: <em>' + types.join(', ') + '</em>.' : '') +
+        ' These are live and readable by Google and AI answer engines right now.';
+      notice.style.color = '#1e3a8a';
+    } else {
+      notice.textContent =
+        'No JSON-LD schema blocks detected on this page. Schema is embedded on the AEO report page.';
+    }
+  });
+})();
+</script>
+<!-- END PROTOTYPE BANNER -->
+
+  <header class="sh">
+<div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
+<div class="sh__in">
+<a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
+<form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
+<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+</div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">Brand</p>
+        <h1>Kenmore</h1>
+        <p class="crumb"><a href="index.html">Home</a> / <span>Kenmore</span></p>
+        <p class="source-tag">Source: Nancy CONTENT.md · Live: <a href="https://ufixit.com/find-your-brand/kenmore-appliances/">https://ufixit.com/find-your-brand/kenmore-appliances/</a></p>
+      </div>
+    </section>
+    <section class="band">
+      <div class="wrap prose">
+        
+        <p>BACK U-FIX-IT: Kenmore Appliance Parts &amp; Repairs in Texas U-FIX-IT is your go-to destination for quick access to replacement parts for Kenmore in Texas. As a dedicated supplier, we offer a wide range of Kenmore compatible parts, components, and accessories for maintaining refrigerators, washers, dryers, ovens, and other Kenmore appliances in peak condition. Catering to both residential and commercial clients, we guarantee timely delivery and high-quality products to ensure your appliances are up and running again in no time. Appliance Parts Accessories Air Conditioner Parts Dishwasher Accessories Dishwasher Parts Dryer Parts Furnace Parts Microwave Parts Range &amp; Oven Parts Refrigerator Parts Washer Parts Kenmore Appliance Information The next time you run across a 1913 Kenmore sewing machine at a garage sale, snap it up because it’s the first appliance that was branded with this well-known name. If you’re interested in purchasing the latest model, visit your nearest Sears store. The national retailer satisfied a mass market for home appliances beginning with washing machines in 1927 and carries a full line of Kenmore products today. Over time, Sears applied the Kenmore brand to appliances produced by leading manufacturers including GE, Electrolux and Whirlpool. The Kenmore label ensured high quality at a low price and helped Sears establish its strong role in the national retail market. In 2009 the Kenmore name was applied to appliances built by Samsung and LG Electronics. Kenmore model numbers start with three numbers followed by a period. Those first three numbers are code for the manufacturer. 110 and 106 are Whirlpool for example while 795 and 796 are LG. While the Kenmore brand label remains the same, the manufacturer can be almost anyone. Sears still dominates the retail appliance market, but competition has drastically narrowed the retail giant’s lead. You might be one of many consumers who choose appliance brands that provide more coverage than Kenmore’s 1-year limited warranty. Sears offers customers the opportunity to purchase an extended warranty on all products, but this extra expense is a serious consideration when you’re investing in a new appliance. Keep in mind many repairs can be accomplished by the homeowners who have little or no experience with assistance from U-FIX-IT Appliance Parts. There is no need to schedule an appointment with a repair man when you are doing the repair yourself. Most appliance repairs can be accomplished with parts costing under $50.00. Both limited and extended warranties are applicable to the following Kenmore products: Kitchen Dishwashers Refrigerators Ranges Wall ovens Microwave ovens Range hoods Laundry Washing machines Dryers Water heaters Heating and Cooling Gas furnaces Heat pumps Central air conditioning Window air conditioners Other Appliances Air purifiers Water softeners Water filters Sewing machines Here at U-FIX-IT, we’ve built customer trust based on 40 years of serving you with honest, reliable information about the appliances you depend on every day. We’re committed to providing affordable solutions to mechanical problems, but our goal is to share our knowledge regardless of sales. We have parts for Kenmore appliances and if you need advice, tech tips or just want help figuring out what’s wrong, give us a call, or stop by one of our five U-FIX-IT locations . When you know you can fix it yourself, we know we’ve done our job. Premier Provider of Appliance Parts For Kenmore in Texas With over a century of combined industry experience, we pride ourselves on being a trusted name for appliance repair in Texas. Our seasoned technicians are well-versed with Kenmore appliances and can provide valuable advice on troubleshooting common issues and selecting the right parts for your specific model. We also offer free testing services to help you identify the root cause of any problem and ensure you only purchase the necessary parts. We aim to provide a seamless experience and ensure customer satisfaction with every purchase. Here are some reasons to work with U-FIX-IT for your parts for Kenmore needs: Accessible Locations: Our branches in Arlington, South Dallas, East Dallas, North Houston, and Tyler make it convenient for customers to access our parts and services. Extensive Selection: We have a vast inventory of replacement parts for Kenmore, including hard-to-find components. Find the exact part you need when you need it. Competitive Prices: We provide exceptional value with competitive pricing on all our products, ensuring you receive top quality without breaking the bank. Convenient Ordering: For those unable to visit our physical stores, we provide shipping and delivery options across the U.S. Order in-stock items by 3 pm CST (Monday through Friday) to receive same-day delivery. Quality Assurance: All our products come with a warranty, giving you peace of mind and assurance that you receive top-quality appliance parts for Kenmore. Extensive Inventory of Parts and Appliance Components Finding authentic appliance parts for Kenmore can be challenging, but not at U-FIX-IT stores. Our team is knowledgeable about Kenmore appliances and can identify and recommend the right parts for your needs. Purchasing Kenmore replacement parts from our stores is a guarantee of quality, value, and convenience. Here are some of the common Kenmore components we carry in our inventory: Kitchen Appliance Parts for Kenmore A functional kitchen depends on reliable appliances. U-FIX-IT offers Kenmore compatible parts for refrigerators, dishwashers, stoves, and other kitchen appliances. Each component has been carefully engineered to meet high-performance standards, ensuring your kitchen appliances operate without fail. Trust U-FIX-IT as your premier supplier of appliance parts for Kenmore in Texas. Our commitment to quality, expertise, and customer satisfaction distinguishes us from other providers. Laundry Appliance Parts for Kenmore Smooth laundry cycles begin with replacement parts for Kenmore appliances from U-FIX-IT. Our extensive inventory includes parts for Kenmore washers and parts for Kenmore dryers such as belts, motors, water inlet valves, and more. With our high-quality components, you can trust that your laundry appliances will function flawlessly for years to come. Cooking Appliance Parts for Kenmore Elevate your culinary skills with U-FIX-IT’s premium cooking appliance parts for Kenmore. We specialize in innovative solutions like precision heating elements and advanced control modules, all designed to enhance your cooking performance. Our replacement parts for stoves, microwave ovens, and essential cooking appliances ensure you achieve the best results in your kitchen. Heating and Cooling Appliance Parts for Kenmore A poorly functioning heating or cooling system can lead to discomfort and costly repairs. U-FIX-IT offers a wide selection of heating and cooling appliance parts for Kenmore, including filters, control boards, and motors. Keep your home at the perfect temperature all year round with our reliable components for air conditioners, furnaces and HVAC systems. Parts for other Kenmore Appliances Kitchen, HVAC, and laundry appliances aren’t the only areas where Kenmore excels. At U-FIX-IT, we also carry replacement parts for other Kenmore products, such as air purifiers, water softeners, water filters, and sewing machines. Our commitment to providing genuine Kenmore compatible parts extends across all product categories, ensuring that you can rely on your favorite Kenmore products for years to come. Not sure which Kenmore replacement parts you need? Whether you’re looking for Kenmore stove parts or any other appliance components, our team is here to assist you with expert recommendations and answers to all your questions and concerns. Your Ultimate Source for Heating and Appliance Parts At U-FIX-IT, we’ve earned customer trust for over 40 years by providing honest, reliable information about the appliances you rely on daily. We’re dedicated to offering affordable solutions to mechanical issues, but our primary goal is to share our expertise regardless of sales. We stock parts for Kenmore appliances . Whether you need advice, technical tips, or help diagnosing a problem, give us a call or visit one of our five locations . We know we’ve done our job when you can fix it yourself. Can&#x27;t Find Your Kenmore Part? Request It Here Know the part you are looking for but can&#x27;t find it? Let us find it and let you know when we do. What Our Customers Say Our guiding principle in customer service: Love your neighbor as you love yourself. Everytime I come here I feel smarter. The guys are so helpful they will have saving money instead of throwing parts and throwing money down the drain. It’s easy to order parts online with the guessing game. Having that true customer service and the knowledge is worth the price of admission. Erick Scott Honestly I called to check and see if they had a part in stock, and didn’t even end up using them or buying from them, but was just generally impressed with the customer service that I received on the phone. The gentleman that I spoke to was very kind and helpful and gave me some good advice. Even though it didn’t result in immediate business for them, I will definitely return in the future. As a customer service professional myself, things like that are investments in the long run and not something you see every day now. Thank you for the help, person whose name I don’t remember! You gained a customer for the future. Kirby J Came in to ask about a part for my washing machine and was assisted by this newer gentleman, Josue. He gave me some great tips for installing and now, thanks to this extremely helpful young man, my washing machine is working perfectly again!! So grateful I didn’t have to spend hundreds of dollars on a new one. Thanks U-FIX-IT!!! Lisa Panelli-Valentin The associates were so helpful, friendly, understanding and nice. It was refreshing to get such great customer service and knowledgeable help! I went in to get a heating coil for my dryer that wouldn’t heat up anymore they let me know it could be that or the thermostat. I couldn’t unhook the wires at home so I brought the whole dryer 5 minutes before closing on a Friday. They tested the parts and let me know it was the thermostat which was cheaper than the heating coil. He even gave me tips on how to remove the part and it was so easy! To fix your dryer for less than $40 yourself makes you feel so good and powerful!!!! Thank you guys! Rosamari Williamson Give us your feedback</p>
+        
+        <div class="catalog-note note">
+          <strong>Catalog pattern — not full Woo catalog.</strong>
+          Live WooCommerce lists hundreds of SKUs under Kenmore.
+          This prototype keeps hubs + 2 sample PDPs only (Randy url-index / Nancy sign-off).
+        </div>
+        <div class="product-grid product-grid--placeholder" aria-hidden="true">
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+        </div>
+        <p><a class="btn btn--navy" href="shop.html">Shop hub</a>
+           <a class="btn btn--outline" href="contact-us.html">Ask about a part</a></p>
+
+      </div>
+    </section>
+
+  </main>
+  <section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+<form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
+<footer class="sf"><div class="w"><div class="cols">
+<div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
+<div><h4>Shop</h4><a href="product-category-refrigerator-parts.html">Refrigerator Parts</a><br /><a href="product-category-washer-parts.html">Washer Parts</a><br /><a href="product-category-dryer-parts.html">Dryer Parts</a><br /><a href="product-category-range-oven-parts.html">Range &amp; Oven Parts</a><br /><a href="product-category-dishwasher-parts.html">Dishwasher Parts</a><br /><a href="product-category-air-conditioner-parts.html">Air Conditioner Parts</a><br /></div>
+<div><h4>Help</h4><a href="how-to-choose.html">How to choose a part</a><br /><a href="order-lookup.html">Track an order</a><br /><a href="shipping-appliance-parts.html">Shipping</a><br /><a href="about-us-warranty-returns.html">Warranty &amp; returns</a><br /><a href="account.html">My account</a></div>
+<div><h4>Stores</h4>Arlington <a href="tel:8174727740">817.472.7740</a><br />East Dallas <a href="tel:2143217054">214.321.7054</a><br />South Dallas <a href="tel:9727809096">972.780.9096</a><br />Tyler <a href="tel:9035925836">903.592.5836</a><br /></div>
+<div><h4>Company</h4><a href="about-us.html">About</a><br /><a href="appliance-repair-tips.html">DIY tips</a><br /><a href="share-feedback.html">Feedback</a><br /><a href="privacy-policy.html">Privacy</a><br /><a href="brand.html">Brand guide</a><br /><a href="sitemap.html">Sitemap</a></div>
+</div><div class="legal">© U-FIX-IT Appliance Parts · Texas · HTML prototype by The Tribe Maker / Yavin Digital · Mock checkout: no real payments are taken.</div></div></footer>
+<script src="js/store.js" defer></script></body>
+</html>

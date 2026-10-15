@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Frigidaire Parts – DIY Guide — U-FIX-IT Appliance Parts</title>
+  <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />
+</head>
+<body class="page-blog">
+  <a class="skip" href="#main">Skip to content</a>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PROTOTYPE BANNER — paste into every prototype HTML page     ║
+  ║  Place immediately after <body> tag, before all other HTML   ║
+  ║  Developer note: REMOVE or IGNORE this entire block in the   ║
+  ║  React production build. It is prototype-only.               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<!-- PROTOTYPE BANNER -->
+<div id="proto-banner" class="proto-banner" style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #1e293b; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 8px; padding: 8px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  border-bottom: 2px solid #f59e0b;
+">
+  <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+      Prototype Only
+    </span>
+    <span style="opacity:.8;">
+      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+    </span>
+  </div>
+  <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex-shrink:0;">
+    <a
+      href="UFixIt-SEO-AEO-Compare.html"
+      id="proto-seo-aeo-link"
+      style="
+        background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
+        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; text-decoration: none; line-height: 1.2;
+        transition: background .15s ease, border-color .15s ease;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.borderColor='#fff'"
+      onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,.45)'"
+    >SEO / AEO Compare</a>
+    <button
+      type="button"
+      onclick="document.getElementById('proto-perf-modal').style.display='flex'"
+      style="
+        background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
+        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; flex-shrink: 0;
+        transition: background .15s ease;
+      "
+      onmouseover="this.style.background='#fbbf24'"
+      onmouseout="this.style.background='#f59e0b'"
+    >
+      View Performance Report
+    </button>
+  </div>
+</div>
+
+<!-- PERFORMANCE MODAL — Developer: ignore/remove in React build -->
+<div
+  id="proto-perf-modal"
+  style="
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center; padding:20px;
+  "
+  onclick="if(event.target===this)this.style.display='none'"
+>
+  <div style="
+    background:#fff; border-radius:16px; width:100%; max-width:560px;
+    box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden;
+  ">
+    <!-- Modal Header -->
+    <div style="background:#1e293b; padding:24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Performance Analysis</div>
+        <h2 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0;">Site Speed Report</h2>
+        <p style="color:rgba(255,255,255,.6); font-size:.82rem; margin:4px 0 0;">Prototype vs. Projected React Build</p>
+      </div>
+      <button
+        onclick="document.getElementById('proto-perf-modal').style.display='none'"
+        style="background:rgba(255,255,255,.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; flex-shrink:0;"
+      >&#215;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div style="padding:28px;">
+
+      <!-- Current load time -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+        <div style="background:#f8fafc; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; margin-bottom:6px;">This Page Loaded In</div>
+          <div id="proto-load-time" style="font-size:2rem; font-weight:900; color:#334155;">—</div>
+          <div style="font-size:.78rem; color:#64748b;">seconds (HTML prototype)</div>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#166534; margin-bottom:6px;">Projected React Load</div>
+          <div id="proto-react-time" style="font-size:2rem; font-weight:900; color:#15803d;">—</div>
+          <div style="font-size:.78rem; color:#166534;">seconds (estimated)</div>
+        </div>
+      </div>
+
+      <!-- Improvement badge -->
+      <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
+        <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
+      </div>
+
+      <!-- Schema notice -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#1d4ed8; margin-bottom:6px;">JSON-LD Schema</div>
+        <p style="font-size:.88rem; color:#1e3a8a; margin:0;" id="proto-schema-notice">
+          Checking for schema blocks on this page...
+        </p>
+      </div>
+
+      <!-- What changes in React -->
+      <div style="font-size:.82rem; color:#475569;">
+        <strong style="display:block; margin-bottom:8px; color:#334155;">What improves in the React build (all else equal):</strong>
+        <ul style="padding-left:18px; display:grid; gap:5px;">
+          <li>Code splitting — only the current page's JS is loaded</li>
+          <li>Image optimization — WebP conversion + lazy loading via React Image</li>
+          <li>CDN caching of static assets via Vercel/Netlify edge network</li>
+          <li>Tree-shaking removes unused CSS and JS from the bundle</li>
+          <li>Prefetching — next pages load before the user clicks</li>
+        </ul>
+      </div>
+
+      <p style="font-size:.75rem; color:#94a3b8; margin-top:16px; text-align:center;">
+        Developer note: Remove this banner and modal entirely from the React production build.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Push page content below the fixed banner */
+  body { padding-top: 44px !important; }
+  @media (max-width: 600px) { body { padding-top: 70px !important; } }
+</style>
+
+<script>
+(function () {
+  // ── Load time ──
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? nav.loadEventEnd - nav.startTime : performance.now();
+    var loadSec = (loadMs / 1000).toFixed(2);
+    document.getElementById('proto-load-time').textContent = loadSec;
+
+    // React estimated load: 35–55% faster (code splitting + CDN)
+    var improvement = 0.42; // 42% faster — mid estimate
+    var reactSec = (loadMs * (1 - improvement) / 1000).toFixed(2);
+    document.getElementById('proto-react-time').textContent = reactSec;
+    document.getElementById('proto-improvement').textContent =
+      Math.round(improvement * 100) + '% Faster';
+
+    // ── Schema detection ──
+    var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    var notice = document.getElementById('proto-schema-notice');
+    if (schemas.length > 0) {
+      var types = [];
+      schemas.forEach(function (s) {
+        try {
+          var obj = JSON.parse(s.textContent);
+          if (obj['@type']) types.push(obj['@type']);
+        } catch (e) {}
+      });
+      notice.innerHTML =
+        '<strong style="color:#1d4ed8;">' + schemas.length + ' schema block' +
+        (schemas.length > 1 ? 's' : '') + ' detected</strong> on this page.' +
+        (types.length ? ' Types: <em>' + types.join(', ') + '</em>.' : '') +
+        ' These are live and readable by Google and AI answer engines right now.';
+      notice.style.color = '#1e3a8a';
+    } else {
+      notice.textContent =
+        'No JSON-LD schema blocks detected on this page. Schema is embedded on the AEO report page.';
+    }
+  });
+})();
+</script>
+<!-- END PROTOTYPE BANNER -->
+
+  <header class="sh">
+<div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
+<div class="sh__in">
+<a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
+<form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
+<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+</div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">DIY / Tips</p>
+        <h1>Frigidaire Parts – DIY Guide</h1>
+        <p class="crumb"><a href="index.html">Home</a> / <span>Frigidaire Parts – DIY Guide</span></p>
+        <p class="source-tag">Source: Nancy CONTENT.md · Live: <a href="https://ufixit.com/refrigerator/frigidaire-parts-diy-guide/">https://ufixit.com/refrigerator/frigidaire-parts-diy-guide/</a></p>
+      </div>
+    </section>
+    <section class="band">
+      <div class="wrap prose">
+        
+        <p>BACK DIY Tips Refrigerator Frigidaire Parts – DIY Guide A Complete DIY Frigidaire Appliance Repair Resource for Homeowners Many homeowners struggle to repair Frigidaire appliances—refrigerators, ovens, and dishwashers alike. Identifying and buying genuine Frigidaire replacement parts is essential for successful DIY repairs. This guide explains where to find authentic parts, provides step‑by‑step repair instructions, and offers troubleshooting tips. We cover common faults and practical solutions so you can repair appliances with confidence. You’ll learn how to identify parts, key components, and maintenance best practices. For the best experience and reliable parts, U-FIX-IT Appliance Parts is your trusted online source. They specialize in genuine Frigidaire parts, ensuring quality and compatibility for your DIY projects. Major Appliance Repair: Comprehensive DIY Guide ABSTRACT: This module provides a comprehensive introduction to basic appliance repair and prepares students for entry‑level roles in this growing field. Ensuring a firm grounding in electrical knowledge, the module contains 13 instructional units that cover the following topics: (1) major appliance repair orientation; (2) safety and first aid; (3) fundamentals of electricity; (4) AC induction motors; (5) diagrams and schematics; (6) tools, materials, and test equipment; (7) automatic washers; (8) automatic dryers; (9) automatic dishwashers; (10) garbage disposers; (11) trash compactors; (12) gas ranges and ovens; and (13) electric ranges and ovens. Major Appliance Repair, 1987 How to Find and Buy Genuine Frigidaire Parts Online Follow these steps to find genuine Frigidaire parts online. First, visit U-FIX-IT Appliance Parts , a reputable appliance-parts site dedicated to authentic components. Enter your appliance model number to locate the exact part you need. U-FIX-IT Appliance Parts guarantees authenticity by providing manufacturer markings and certifications, so you can be confident the part will fit and function correctly. What Are the Key Frigidaire Appliance Parts and Their Model Numbers? Knowing key Frigidaire parts and their model numbers helps you order the correct component and avoid delays. Common parts include: Crisper Support : ER 241993101, ER 241993001 Defrost Thermostat : ER 5303918202, ER 242046001 Evaporator Fan Blade : ER 5308000010 These components commonly fail or wear out. Keep the exact model numbers on hand when you shop to ensure compatibility. You can find all these parts and more at U-FIX-IT Appliance Parts , where expert support is available to help you select the right parts. Where Can Homeowners Find Authentic Frigidaire Parts Stores Online? Search specialized retailers to find authentic Frigidaire parts online. U-FIX-IT Appliance Parts carries a wide selection for many Frigidaire models. Their commitment to quality and customer satisfaction makes them a top choice. While larger marketplaces are options, U-FIX-IT Appliance Parts offers verified parts and expert advice, ensuring you get exactly what you need without risk. What Are the Step-by-Step DIY Repair Instructions for Common Frigidaire Appliances? Clear instructions make DIY repairs safer and faster. Use these general steps for common Frigidaire appliances: Safety Precautions : Always disconnect the appliance from the power source before starting any repair. Tools Required : Gather necessary tools such as screwdrivers, pliers, and replacement parts. Step-by-Step Process : Follow the specific repair instructions for your appliance model, which can often be found in the user manual or official repair guides. For parts and tools, U-FIX-IT offers a comprehensive selection and expert guidance to help you complete your repair successfully. Consult official documentation, such as user manuals, when diagnosing and repairing appliances; manuals provide authorized, model‑specific guidance. User Manuals for Appliance Fault Diagnosis &amp; Repair Product repairs support sustainable consumption, and user manuals can help by providing accredited product information for end users. Manuals are often used to diagnose faults and guide subsequent repairs. However, despite growing demand for repairable products, few studies have examined how manuals contribute to fault diagnosis and the repair process. How user manuals support the diagnosis of common faults in household appliances: An analysis of 150 manuals, B Pozo Arcos, 2023 How Do I Replace a Frigidaire Oven Heating Element Safely? To replace an oven heating element safely, follow clear steps. First, turn off power and unplug the oven. Remove the oven racks to reach the element and note the wire positions before disconnecting the wires from the old element. Connect the wires to the new element, secure it in place, replace the racks, restore power, and test the oven. Purchase your replacement heating element from U-FIX-IT to ensure you receive a genuine, high-quality part that fits perfectly and lasts. What Are the Best Practices for Repairing Frigidaire Refrigerators and Dishwashers? Use these best practices when repairing Frigidaire refrigerators and dishwashers: Use Quality Replacement Parts : Always opt for OEM (Original Equipment Manufacturer) parts to ensure compatibility and reliability. U-FIX-IT Appliance Parts specializes in OEM Frigidaire parts. Identify Symptoms : Before starting repairs, accurately diagnose the issue to avoid unnecessary replacements. Regular Maintenance : Implement routine maintenance checks to prevent future problems and extend the lifespan of your appliances. Following these steps improves repair success and appliance performance. Trust U-FIX-IT Appliance Parts for all your parts needs and expert support. How Can I Troubleshoot Common Issues with Frigidaire Appliances Using DIY Tips? You can often fix common Frigidaire issues yourself. Common problems and simple checks include: Poor Cleaning Performance : Check for clogged spray arms or filters in dishwashers. Leaks : Inspect door seals and hoses for wear or damage. Unusual Noises : Identify loose components or foreign objects that may be causing disruptions. Addressing these problems quickly prevents further damage and keeps your appliance running well. For replacement parts and troubleshooting advice, U-FIX-IT is your go-to resource. What Are Frequent Frigidaire Appliance Problems and Their Symptoms? Frigidaire appliances show problems in clear ways. Common issues and symptoms include: Dishwasher Issues : Water not draining properly or dishes not coming out clean. Refrigerator Cooling Problems : Inconsistent temperatures or frost buildup. Washing Machine Leaks : Water pooling around the base of the machine. Spotting these signs early helps you diagnose faults and avoid larger repairs. Find the right parts quickly at U-FIX-IT to get your appliance back in working order. Which Troubleshooting Steps Help Diagnose Frigidaire Parts Failures? Use a systematic approach to diagnose part failures. Start with these steps: Identify Symptoms : Start by noting any unusual behavior or performance issues. Basic Diagnostics : Use a multimeter to test electrical components for continuity. Testing Components : Replace any faulty parts based on your findings to restore functionality. These diagnostics help you find the failing part and plan the repair effectively. For reliable replacement parts and expert advice, turn to U-FIX-IT . What Maintenance and Warranty Information Should Homeowners Know About Frigidaire Parts? Know maintenance and warranty rules for Frigidaire parts. Using OEM parts helps preserve warranty coverage and ensures proper fit and function. Read the replacement‑part warranty terms so you know what defects or failures are covered under normal use. U-FIX-IT provides detailed warranty information with every part to keep you informed and protected. How Does Regular Maintenance Extend the Life of Frigidaire Appliances? Regular maintenance extends the life of Frigidaire appliances. Routine checks and cleaning reduce wear and lower the chance of costly repairs. Key maintenance tasks include: Cleaning Filters : Regularly clean or replace filters in refrigerators and dishwashers. Checking Seals : Inspect door seals for damage to maintain energy efficiency. Scheduling Professional Inspections : Consider annual professional maintenance to catch potential issues early. Do these tasks regularly to improve longevity and maintain performance. For replacement parts and maintenance supplies, U-FIX-IT Appliance Parts is your reliable partner. What Warranty Options Are Available for Frigidaire Replacement Parts? Replacement parts usually come with a standard warranty that covers defects in materials and workmanship for a set period. Extended protection plans may be available to add coverage beyond the standard term. Review the warranty details carefully so you understand what is included and how long you’re covered. U-FIX-IT offers clear warranty information and support to give you peace of mind with every purchase. Shop Now at U-FIX-IT Shop Genuine Frigidaire Parts at U-FIX-IT Get the right parts the first time with U-FIX-IT Appliance Parts. Their extensive inventory of genuine Frigidaire components, expert customer service, and commitment to quality make DIY appliance repair easier and more reliable. Don’t risk using counterfeit or incompatible parts—trust U-FIX-IT for all your Frigidaire appliance needs. Appliance Parts Accessories Air Conditioner Parts Dishwasher Accessories Dishwasher Parts Dryer Parts Furnace Parts Microwave Parts Range &amp; Oven Parts Refrigerator Parts Washer Parts you may also be interested DIY Tips Essential AC Parts Guide: Learn about key air conditioner components and essential AC replacement parts for effective DIY repairs. Keep your home cool and efficient effortlessly. Read More DIY Tips Thermador Appliance Repair Guide Unlock solutions for Thermador error codes and appliance issues with expert tips on repairs and parts. Keep your luxury kitchen appliances running smoothly! Read More Appliances How to Choose the Right Hotpoint Appliance for Your Home Choosing the right Hotpoint appliance enhances every home&#x27;s efficiency and style. Understand your needs to make a well-informed decision for your kitchen. Read More Leave a Reply</p>
+        
+      </div>
+    </section>
+
+  </main>
+  <section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+<form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
+<footer class="sf"><div class="w"><div class="cols">
+<div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
+<div><h4>Shop</h4><a href="product-category-refrigerator-parts.html">Refrigerator Parts</a><br /><a href="product-category-washer-parts.html">Washer Parts</a><br /><a href="product-category-dryer-parts.html">Dryer Parts</a><br /><a href="product-category-range-oven-parts.html">Range &amp; Oven Parts</a><br /><a href="product-category-dishwasher-parts.html">Dishwasher Parts</a><br /><a href="product-category-air-conditioner-parts.html">Air Conditioner Parts</a><br /></div>
+<div><h4>Help</h4><a href="how-to-choose.html">How to choose a part</a><br /><a href="order-lookup.html">Track an order</a><br /><a href="shipping-appliance-parts.html">Shipping</a><br /><a href="about-us-warranty-returns.html">Warranty &amp; returns</a><br /><a href="account.html">My account</a></div>
+<div><h4>Stores</h4>Arlington <a href="tel:8174727740">817.472.7740</a><br />East Dallas <a href="tel:2143217054">214.321.7054</a><br />South Dallas <a href="tel:9727809096">972.780.9096</a><br />Tyler <a href="tel:9035925836">903.592.5836</a><br /></div>
+<div><h4>Company</h4><a href="about-us.html">About</a><br /><a href="appliance-repair-tips.html">DIY tips</a><br /><a href="share-feedback.html">Feedback</a><br /><a href="privacy-policy.html">Privacy</a><br /><a href="brand.html">Brand guide</a><br /><a href="sitemap.html">Sitemap</a></div>
+</div><div class="legal">© U-FIX-IT Appliance Parts · Texas · HTML prototype by The Tribe Maker / Yavin Digital · Mock checkout: no real payments are taken.</div></div></footer>
+<script src="js/store.js" defer></script></body>
+</html>

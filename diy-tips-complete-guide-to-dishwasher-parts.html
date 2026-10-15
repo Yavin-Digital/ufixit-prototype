@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Complete Guide to Dishwasher Parts — U-FIX-IT Appliance Parts</title>
+  <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />
+</head>
+<body class="page-blog">
+  <a class="skip" href="#main">Skip to content</a>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PROTOTYPE BANNER — paste into every prototype HTML page     ║
+  ║  Place immediately after <body> tag, before all other HTML   ║
+  ║  Developer note: REMOVE or IGNORE this entire block in the   ║
+  ║  React production build. It is prototype-only.               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<!-- PROTOTYPE BANNER -->
+<div id="proto-banner" class="proto-banner" style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #1e293b; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 8px; padding: 8px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  border-bottom: 2px solid #f59e0b;
+">
+  <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+      Prototype Only
+    </span>
+    <span style="opacity:.8;">
+      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+    </span>
+  </div>
+  <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex-shrink:0;">
+    <a
+      href="UFixIt-SEO-AEO-Compare.html"
+      id="proto-seo-aeo-link"
+      style="
+        background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
+        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; text-decoration: none; line-height: 1.2;
+        transition: background .15s ease, border-color .15s ease;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.borderColor='#fff'"
+      onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,.45)'"
+    >SEO / AEO Compare</a>
+    <button
+      type="button"
+      onclick="document.getElementById('proto-perf-modal').style.display='flex'"
+      style="
+        background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
+        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; flex-shrink: 0;
+        transition: background .15s ease;
+      "
+      onmouseover="this.style.background='#fbbf24'"
+      onmouseout="this.style.background='#f59e0b'"
+    >
+      View Performance Report
+    </button>
+  </div>
+</div>
+
+<!-- PERFORMANCE MODAL — Developer: ignore/remove in React build -->
+<div
+  id="proto-perf-modal"
+  style="
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center; padding:20px;
+  "
+  onclick="if(event.target===this)this.style.display='none'"
+>
+  <div style="
+    background:#fff; border-radius:16px; width:100%; max-width:560px;
+    box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden;
+  ">
+    <!-- Modal Header -->
+    <div style="background:#1e293b; padding:24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Performance Analysis</div>
+        <h2 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0;">Site Speed Report</h2>
+        <p style="color:rgba(255,255,255,.6); font-size:.82rem; margin:4px 0 0;">Prototype vs. Projected React Build</p>
+      </div>
+      <button
+        onclick="document.getElementById('proto-perf-modal').style.display='none'"
+        style="background:rgba(255,255,255,.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; flex-shrink:0;"
+      >&#215;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div style="padding:28px;">
+
+      <!-- Current load time -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+        <div style="background:#f8fafc; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; margin-bottom:6px;">This Page Loaded In</div>
+          <div id="proto-load-time" style="font-size:2rem; font-weight:900; color:#334155;">—</div>
+          <div style="font-size:.78rem; color:#64748b;">seconds (HTML prototype)</div>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#166534; margin-bottom:6px;">Projected React Load</div>
+          <div id="proto-react-time" style="font-size:2rem; font-weight:900; color:#15803d;">—</div>
+          <div style="font-size:.78rem; color:#166534;">seconds (estimated)</div>
+        </div>
+      </div>
+
+      <!-- Improvement badge -->
+      <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
+        <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
+      </div>
+
+      <!-- Schema notice -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#1d4ed8; margin-bottom:6px;">JSON-LD Schema</div>
+        <p style="font-size:.88rem; color:#1e3a8a; margin:0;" id="proto-schema-notice">
+          Checking for schema blocks on this page...
+        </p>
+      </div>
+
+      <!-- What changes in React -->
+      <div style="font-size:.82rem; color:#475569;">
+        <strong style="display:block; margin-bottom:8px; color:#334155;">What improves in the React build (all else equal):</strong>
+        <ul style="padding-left:18px; display:grid; gap:5px;">
+          <li>Code splitting — only the current page's JS is loaded</li>
+          <li>Image optimization — WebP conversion + lazy loading via React Image</li>
+          <li>CDN caching of static assets via Vercel/Netlify edge network</li>
+          <li>Tree-shaking removes unused CSS and JS from the bundle</li>
+          <li>Prefetching — next pages load before the user clicks</li>
+        </ul>
+      </div>
+
+      <p style="font-size:.75rem; color:#94a3b8; margin-top:16px; text-align:center;">
+        Developer note: Remove this banner and modal entirely from the React production build.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Push page content below the fixed banner */
+  body { padding-top: 44px !important; }
+  @media (max-width: 600px) { body { padding-top: 70px !important; } }
+</style>
+
+<script>
+(function () {
+  // ── Load time ──
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? nav.loadEventEnd - nav.startTime : performance.now();
+    var loadSec = (loadMs / 1000).toFixed(2);
+    document.getElementById('proto-load-time').textContent = loadSec;
+
+    // React estimated load: 35–55% faster (code splitting + CDN)
+    var improvement = 0.42; // 42% faster — mid estimate
+    var reactSec = (loadMs * (1 - improvement) / 1000).toFixed(2);
+    document.getElementById('proto-react-time').textContent = reactSec;
+    document.getElementById('proto-improvement').textContent =
+      Math.round(improvement * 100) + '% Faster';
+
+    // ── Schema detection ──
+    var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    var notice = document.getElementById('proto-schema-notice');
+    if (schemas.length > 0) {
+      var types = [];
+      schemas.forEach(function (s) {
+        try {
+          var obj = JSON.parse(s.textContent);
+          if (obj['@type']) types.push(obj['@type']);
+        } catch (e) {}
+      });
+      notice.innerHTML =
+        '<strong style="color:#1d4ed8;">' + schemas.length + ' schema block' +
+        (schemas.length > 1 ? 's' : '') + ' detected</strong> on this page.' +
+        (types.length ? ' Types: <em>' + types.join(', ') + '</em>.' : '') +
+        ' These are live and readable by Google and AI answer engines right now.';
+      notice.style.color = '#1e3a8a';
+    } else {
+      notice.textContent =
+        'No JSON-LD schema blocks detected on this page. Schema is embedded on the AEO report page.';
+    }
+  });
+})();
+</script>
+<!-- END PROTOTYPE BANNER -->
+
+  <header class="sh">
+<div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
+<div class="sh__in">
+<a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
+<form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
+<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+</div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">DIY / Tips</p>
+        <h1>Complete Guide to Dishwasher Parts</h1>
+        <p class="crumb"><a href="index.html">Home</a> / <span>Complete Guide to Dishwasher Parts</span></p>
+        <p class="source-tag">Source: Nancy CONTENT.md · Live: <a href="https://ufixit.com/diy-tips/complete-guide-to-dishwasher-parts/">https://ufixit.com/diy-tips/complete-guide-to-dishwasher-parts/</a></p>
+      </div>
+    </section>
+    <section class="band">
+      <div class="wrap prose">
+        
+        <p>BACK DIY Tips Complete Guide to Dishwasher Parts Dishwasher Parts &amp; Troubleshooting: U-FIX-IT Replacements Dishwashers make kitchen life easier, but when they act up, finding the right replacement parts quickly is key to saving time and money. Knowing the main parts and how they work makes troubleshooting faster and securing the correct repair part simpler. This guide walks through the key dishwasher components, the problems you’ll likely see, and directs you to the exact parts you need from U-FIX-IT. Learn how to spot worn parts, find common replacements, and keep your machine running longer with quality parts from U-FIX-IT. Shop All Dishwasher Parts Ready to Find Your Part? Explore our extensive catalog of genuine and compatible dishwasher parts. Key Dishwasher Parts and What They Do Your dishwasher is a system of simple parts working together. Understanding these pieces helps you identify problems sooner and find the right replacement parts with confidence at U-FIX-IT. What components make up a dishwasher? Major dishwasher parts available at U-FIX-IT include: Dishwasher drain pump : Pumps wastewater out after each cycle. Door seal (gasket) : Keeps water inside the tub while the cycle runs. Spray arms : Spray water across dishes so everything gets clean. Heating element : warms water for cleaning and helps with drying. Water inlet valve : Opens and closes to let water into the dishwasher. Together, these parts keep your dishwasher cleaning effectively and safely. Find all these essential components and more at U-FIX-IT. How does each part affect performance? Every component plays a specific role. The drain pump clears dirty water so cycles finish properly. A damaged door seal causes leaks and messes. Spray arms deliver water where it’s needed, while the heating element brings water up to cleaning temperature and aids drying. The water inlet valve controls fill level and timing. Recognizing these functions helps you spot the root cause when something goes wrong, so you can quickly order the correct replacement part from U-FIX-IT. How to Troubleshoot Common Dishwasher Problems and Find the Right Parts Many dishwasher problems have straightforward fixes once you identify the faulty component. Below are common symptoms, likely causes, and what to check first to determine which part you need from U-FIX-IT. Why won’t my dishwasher drain, Which parts should I check? Drain failures usually come from a clogged pump, blocked filter, or a kinked/damaged hose. Once identified, U-FIX-IT has the replacement parts you need. How to troubleshoot: Check the drain pump : Look for debris blocking the impeller. If the pump is faulty. Inspect the filter : Clean out food and buildup that can stop drainage. If the filter is damaged. Examine the drain hose : Make sure it isn’t kinked, clogged, or installed incorrectly. If the hose is compromised. Fixing those three areas with quality parts from U-FIX-IT solves most drainage issues. Why is my dishwasher leaking, and how do I find the source? Leaks often come from a worn door seal, loose fittings, or damaged hoses. U-FIX-IT provides all the necessary parts to stop leaks. To locate the leak: Inspect the door seal : Look for cracks, hard spots, or gaps around the door. A worn seal needs replacement. Check hose and connections : Tighten clamps and fittings that might be loose. If a clamp or fitting is broken. Examine inlet and drain hoses : Replace hoses that show splits, brittleness, or improper routing. Browse U-FIX-IT for durable replacement hoses . Replacing a bad seal or a damaged hose with parts from U-FIX-IT usually stops leaks quickly. How do I diagnose poor cleaning performance? If dishes come out dirty, check water delivery, spray coverage, and filtration. U-FIX-IT has the parts to restore optimal cleaning. Check spray arms : Make sure they spin freely and nozzles aren’t blocked. If damaged or clogged beyond repair, U-FIX-IT offers new spray arms . Inspect the filter and drain area : Clear any buildup that restricts flow. If the filter is compromised, find a replacement filter at U-FIX-IT . Verify water temperature : Water should be hot — about 120°F (49°C) — for best results. If not, the heating element or thermostat might be faulty, and U-FIX-IT has those parts. Addressing these items with quality parts from U-FIX-IT will often restore cleaning power. What causes heating or drying to fail? Heating and drying problems usually point to a faulty heating element, thermostat/temperature sensor, or a failed drying fan/vent on models that use one. U-FIX-IT stocks all these critical heating and drying components. To troubleshoot: Test the heating element : Use a multimeter to check for continuity. If it fails. Inspect the thermostat or temperature sensor : Make sure it’s reading and regulating correctly. If faulty. Check the drying components : Confirm any fan or vent is clear and operating (if your model has one). If a fan or vent component is broken. Replacing a failed element or sensor with parts from U-FIX-IT usually brings heat and drying back to normal. What do common dishwasher noises mean? Noises can point to specific issues, indicating which part might need replacement. U-FIX-IT can help you find the right part once you diagnose the sound. Humming or buzzing : Could be the water inlet valve, drain pump, or motor struggling. Gurgling : Often a blocked drain, faulty air gap, or incorrect drain hose routing. Rattling : Check for loose items, a loose spray arm, or debris in the pump. If a spray arm is loose or damaged. Listen closely during the cycle — where the sound comes from helps pinpoint the problem and the part you need from U-FIX-IT. Shop All Dishwasher Parts Found Your Problem? Get the Part! Once you’ve identified the faulty component, U-FIX-IT makes it easy to find and order the exact replacement part for your dishwasher. Step-by-Step Guides for Installing Parts from U-FIX-IT With basic tools and safety checks, many part swaps are doable at home. These steps outline the typical workflow for installing parts purchased from U-FIX-IT. How to replace a dishwasher drain pump safely with a U-FIX-IT part To replace the drain pump: Unplug the dishwasher : Cut the power before you start. Remove the lower rack and spray arm : Clear the workspace to access the pump. Unscrew the pump : Remove fasteners or clips holding it in place. Disconnect wiring and hoses : Note connections, then detach the harness and drain hose. Install your new drain pump from U-FIX-IT : Reconnect wiring and hoses, secure the pump, then reassemble. Follow those steps in reverse to finish — test a short cycle to confirm the repair with your new U-FIX-IT part. How to repair or replace a dishwasher door seal with a U-FIX-IT gasket To replace a door gasket: Inspect the seal : Confirm cracks or compression where water leaks. Remove the old seal : Pull it gently from the channel around the door. Clean the channel : Remove dirt and adhesive so your new U-FIX-IT seal sits flush. Install your new door seal from U-FIX-IT : Press the replacement in evenly, checking for a snug fit. A correctly seated seal from U-FIX-IT stops leaks and keeps the door closing properly. How to clean or replace spray arms with U-FIX-IT components To service spray arms: Remove the spray arms : Unscrew or unclip them according to your model. Clear the nozzles : Use a brush or toothpick to remove mineral deposits and debris. Check for damage : If cracked, warped, or worn. Reinstall or replace : Put cleaned or new arms back and verify they spin freely. Routine cleaning or replacement with U-FIX-IT parts keeps water distribution strong and dishes clean. How to replace a heating element with a U-FIX-IT part To test or replace the heating element: Unplug the dishwasher : Always remove power first. Access the element : Pull out the lower rack and remove any covers. Test with a multimeter : Check the element for continuity. Replace if faulty : Unscrew and swap in your new heating element from U-FIX-IT, then reassemble. Replacing a bad element with a quality part from U-FIX-IT restores proper wash temperatures and drying. How to replace the water inlet valve and filters with U-FIX-IT parts To replace the inlet valve: Turn off the water supply : Shut the water at the shutoff valve. Remove the access panel : Open the lower front panel to reach the valve. Disconnect the old valve : Unscrew it and remove any screens or filters. Install your new water inlet valve from U-FIX-IT : Reattach hoses and screens, then secure the valve and restore water. A new valve or clean filter from U-FIX-IT helps ensure correct fill and prevents leaks. Choosing the Right Parts for Your Model at U-FIX-IT Buying the correct part matters. Fit and specification make the difference between a lasting repair and repeated visits to the toolbox. U-FIX-IT makes it easy to find exactly what you need. Why is part compatibility and model number important? Always check your dishwasher’s model number before ordering parts — it’s usually on a label inside the door or on the door edge. Matching the model ensures the part fits and works as intended, saving time and frustration. Use U-FIX-IT’s intuitive search and compatibility tools to guarantee you get the right part every time. OEM vs. aftermarket parts which should you pick from U-FIX-IT? At U-FIX-IT, we offer both options to suit your needs: OEM parts : Made by the original manufacturer. They fit precisely and often come with a warranty, ensuring peak performance and longevity. Aftermarket parts : Made by trusted third parties. They can be a more budget-friendly option, offering reliable performance at a lower cost. Consider how long you plan to keep the appliance and whether a warranty or perfect fit matters for your repair. U-FIX-IT provides detailed descriptions to help you make an informed choice. Preventative Maintenance to Extend Your Dishwasher’s Life with U-FIX-IT Parts Small maintenance habits prevent big problems. A few minutes each month keeps your dishwasher reliable and efficient, and when a part shows wear, U-FIX-IT is here to help. What regular tasks help avoid common failures? Keep your dishwasher running smoothly with these routines, and know that U-FIX-IT has the replacement parts when needed: Clean the filter : Remove and wash the filter monthly to avoid clogs. If your filter is damaged or worn. Inspect the door seal : Look for wear and replace when it’s no longer snug Run hot water before starting : Run the sink’s hot water so the dishwasher fills with hot water for better cleaning. If your heating element isn’t working. These simple checks reduce breakdowns and keep cleaning results consistent, supported by quality parts from U-FIX-IT. How do you prevent leaks and drainage problems? To reduce leaks and drainage issues, rely on U-FIX-IT for quality replacement parts: Check hoses regularly : Look for cracks, wear, or loose clamps and replace if needed. Confirm correct installation : Make sure hoses are not kinked and have the proper slope for draining. Keep the drain area clear : Remove debris from the drain and air gap to avoid blockages. If drain components are faulty. Regular checks help you catch small problems before they become costly repairs, and U-FIX-IT is your trusted source for all necessary replacement parts. When to Call a Pro (and Still Get Parts from U-FIX-IT) Many fixes are straightforward with the right parts from U-FIX-IT, but some repairs are best left to trained technicians. Even professionals trust U-FIX-IT for their parts needs. What safety tips should DIY repairers follow? Safety first: always unplug the dishwasher and shut off water before working on it. Use the right tools and protective gear gloves and safety glasses — and take care around sharp metal edges and electrical parts. When you’re ready to install your replacement part, ensure you follow all safety guidelines. Which problems need an appliance repair technician? Call a professional for persistent electrical faults, complex mechanical failures, control board issues, or if you’re unsure about a repair. A trained tech can diagnose tricky problems and prevent further damage. Even if you hire a pro, remember that U-FIX-IT is a trusted source for the high-quality parts they’ll need to complete the repair. Dishwasher Parts at a Glance Available at U-FIX-IT Part Function Common Issues Shop at U-FIX-IT Drain Pump Removes dirty water Clogs, failure to drain Shop Now Door Seal Prevents leaks Cracks, wear Shop Now Spray Arms Distributes water Blockages, damage Shop Now Heating Element Heats water Failure to heat Shop Now Water Inlet Valve Controls water flow Malfunction, leaks Shop Now Maintenance Tasks &amp; Parts from U-FIX-IT Maintenance Task Frequency Purpose Find Parts at U-FIX-IT Clean filter Monthly Prevent clogs Shop Filters Inspect door seal Monthly Prevent leaks Shop Door Seals Run hot water Before each cycle Improve cleaning efficiency Shop Heating Elements Knowing your dishwasher’s parts and how to troubleshoot common problems puts control back in your hands. With a few checks and routine tasks, you can identify needed replacements and easily find them at U-FIX-IT, avoiding many service calls and keeping your appliance working well for years. Explore All Dishwasher Parts at U-FIX-IT Your Dishwasher Deserves the Best Parts. At U-FIX-IT, we provide high-quality, compatible parts for all major dishwasher brands. Get your appliance running like new again! Appliance Parts Accessories Air Conditioner Parts Dishwasher Accessories Dishwasher Parts Dryer Parts Furnace Parts Microwave Parts Range &amp; Oven Parts Refrigerator Parts Washer Parts you may also be interested DIY Tips Essential AC Parts Guide: Learn about key air conditioner components and essential AC replacement parts for effective DIY repairs. Keep your home cool and efficient effortlessly. Read More DIY Tips Thermador Appliance Repair Guide Unlock solutions for Thermador error codes and appliance issues with expert tips on repairs and parts. Keep your luxury kitchen appliances running smoothly! Read More Appliances How to Choose the Right Hotpoint Appliance for Your Home Choosing the right Hotpoint appliance enhances every home&#x27;s efficiency and style. Understand your needs to make a well-informed decision for your kitchen. Read More Leave a Reply</p>
+        
+      </div>
+    </section>
+
+  </main>
+  <section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+<form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
+<footer class="sf"><div class="w"><div class="cols">
+<div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
+<div><h4>Shop</h4><a href="product-category-refrigerator-parts.html">Refrigerator Parts</a><br /><a href="product-category-washer-parts.html">Washer Parts</a><br /><a href="product-category-dryer-parts.html">Dryer Parts</a><br /><a href="product-category-range-oven-parts.html">Range &amp; Oven Parts</a><br /><a href="product-category-dishwasher-parts.html">Dishwasher Parts</a><br /><a href="product-category-air-conditioner-parts.html">Air Conditioner Parts</a><br /></div>
+<div><h4>Help</h4><a href="how-to-choose.html">How to choose a part</a><br /><a href="order-lookup.html">Track an order</a><br /><a href="shipping-appliance-parts.html">Shipping</a><br /><a href="about-us-warranty-returns.html">Warranty &amp; returns</a><br /><a href="account.html">My account</a></div>
+<div><h4>Stores</h4>Arlington <a href="tel:8174727740">817.472.7740</a><br />East Dallas <a href="tel:2143217054">214.321.7054</a><br />South Dallas <a href="tel:9727809096">972.780.9096</a><br />Tyler <a href="tel:9035925836">903.592.5836</a><br /></div>
+<div><h4>Company</h4><a href="about-us.html">About</a><br /><a href="appliance-repair-tips.html">DIY tips</a><br /><a href="share-feedback.html">Feedback</a><br /><a href="privacy-policy.html">Privacy</a><br /><a href="brand.html">Brand guide</a><br /><a href="sitemap.html">Sitemap</a></div>
+</div><div class="legal">© U-FIX-IT Appliance Parts · Texas · HTML prototype by The Tribe Maker / Yavin Digital · Mock checkout: no real payments are taken.</div></div></footer>
+<script src="js/store.js" defer></script></body>
+</html>

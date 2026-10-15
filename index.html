@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Appliance Parts Store Texas — Shop Online | U-FIX-IT Appliance Parts</title><meta name="description" content="Shop appliance parts online from U-FIX-IT: refrigerator, washer, dryer, range and dishwasher parts. Free diagnosis help, same-day shipping on in-stock parts, 4 Texas stores." /><meta property="og:title" content="Appliance Parts Store Texas — Shop Online | U-FIX-IT Appliance Parts" /><meta property="og:description" content="Shop appliance parts online from U-FIX-IT: refrigerator, washer, dryer, range and dishwasher parts. Free diagnosis help, same-day shipping on in-stock parts, 4 Texas stores." /><meta property="og:image" content="img/photo/hero-parts.webp" />
+<link rel="icon" href="img/favicon-192.png" sizes="192x192" /><link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" /><link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" /></head>
+<body class=""><a class="skip" href="#main">Skip to content</a><!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PROTOTYPE BANNER — paste into every prototype HTML page     ║
+  ║  Place immediately after <body> tag, before all other HTML   ║
+  ║  Developer note: REMOVE or IGNORE this entire block in the   ║
+  ║  React production build. It is prototype-only.               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<!-- PROTOTYPE BANNER -->
+<div id="proto-banner" class="proto-banner" style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #1e293b; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 8px; padding: 8px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  border-bottom: 2px solid #f59e0b;
+">
+  <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+      Prototype Only
+    </span>
+    <span style="opacity:.8;">
+      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+    </span>
+  </div>
+  <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex-shrink:0;">
+    <a
+      href="UFixIt-SEO-AEO-Compare.html"
+      id="proto-seo-aeo-link"
+      style="
+        background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
+        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; text-decoration: none; line-height: 1.2;
+        transition: background .15s ease, border-color .15s ease;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.borderColor='#fff'"
+      onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,.45)'"
+    >SEO / AEO Compare</a>
+    <button
+      type="button"
+      onclick="document.getElementById('proto-perf-modal').style.display='flex'"
+      style="
+        background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
+        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; flex-shrink: 0;
+        transition: background .15s ease;
+      "
+      onmouseover="this.style.background='#fbbf24'"
+      onmouseout="this.style.background='#f59e0b'"
+    >
+      View Performance Report
+    </button>
+  </div>
+</div>
+
+<!-- PERFORMANCE MODAL — Developer: ignore/remove in React build -->
+<div
+  id="proto-perf-modal"
+  style="
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center; padding:20px;
+  "
+  onclick="if(event.target===this)this.style.display='none'"
+>
+  <div style="
+    background:#fff; border-radius:16px; width:100%; max-width:560px;
+    box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden;
+  ">
+    <!-- Modal Header -->
+    <div style="background:#1e293b; padding:24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Performance Analysis</div>
+        <h2 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0;">Site Speed Report</h2>
+        <p style="color:rgba(255,255,255,.6); font-size:.82rem; margin:4px 0 0;">Prototype vs. Projected React Build</p>
+      </div>
+      <button
+        onclick="document.getElementById('proto-perf-modal').style.display='none'"
+        style="background:rgba(255,255,255,.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; flex-shrink:0;"
+      >&#215;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div style="padding:28px;">
+
+      <!-- Current load time -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+        <div style="background:#f8fafc; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; margin-bottom:6px;">This Page Loaded In</div>
+          <div id="proto-load-time" style="font-size:2rem; font-weight:900; color:#334155;">—</div>
+          <div style="font-size:.78rem; color:#64748b;">seconds (HTML prototype)</div>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#166534; margin-bottom:6px;">Projected React Load</div>
+          <div id="proto-react-time" style="font-size:2rem; font-weight:900; color:#15803d;">—</div>
+          <div style="font-size:.78rem; color:#166534;">seconds (estimated)</div>
+        </div>
+      </div>
+
+      <!-- Improvement badge -->
+      <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
+        <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
+      </div>
+
+      <!-- Schema notice -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#1d4ed8; margin-bottom:6px;">JSON-LD Schema</div>
+        <p style="font-size:.88rem; color:#1e3a8a; margin:0;" id="proto-schema-notice">
+          Checking for schema blocks on this page...
+        </p>
+      </div>
+
+      <!-- What changes in React -->
+      <div style="font-size:.82rem; color:#475569;">
+        <strong style="display:block; margin-bottom:8px; color:#334155;">What improves in the React build (all else equal):</strong>
+        <ul style="padding-left:18px; display:grid; gap:5px;">
+          <li>Code splitting — only the current page's JS is loaded</li>
+          <li>Image optimization — WebP conversion + lazy loading via React Image</li>
+          <li>CDN caching of static assets via Vercel/Netlify edge network</li>
+          <li>Tree-shaking removes unused CSS and JS from the bundle</li>
+          <li>Prefetching — next pages load before the user clicks</li>
+        </ul>
+      </div>
+
+      <p style="font-size:.75rem; color:#94a3b8; margin-top:16px; text-align:center;">
+        Developer note: Remove this banner and modal entirely from the React production build.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Push page content below the fixed banner */
+  body { padding-top: 44px !important; }
+  @media (max-width: 600px) { body { padding-top: 70px !important; } }
+</style>
+
+<script>
+(function () {
+  // ── Load time ──
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? nav.loadEventEnd - nav.startTime : performance.now();
+    var loadSec = (loadMs / 1000).toFixed(2);
+    document.getElementById('proto-load-time').textContent = loadSec;
+
+    // React estimated load: 35–55% faster (code splitting + CDN)
+    var improvement = 0.42; // 42% faster — mid estimate
+    var reactSec = (loadMs * (1 - improvement) / 1000).toFixed(2);
+    document.getElementById('proto-react-time').textContent = reactSec;
+    document.getElementById('proto-improvement').textContent =
+      Math.round(improvement * 100) + '% Faster';
+
+    // ── Schema detection ──
+    var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    var notice = document.getElementById('proto-schema-notice');
+    if (schemas.length > 0) {
+      var types = [];
+      schemas.forEach(function (s) {
+        try {
+          var obj = JSON.parse(s.textContent);
+          if (obj['@type']) types.push(obj['@type']);
+        } catch (e) {}
+      });
+      notice.innerHTML =
+        '<strong style="color:#1d4ed8;">' + schemas.length + ' schema block' +
+        (schemas.length > 1 ? 's' : '') + ' detected</strong> on this page.' +
+        (types.length ? ' Types: <em>' + types.join(', ') + '</em>.' : '') +
+        ' These are live and readable by Google and AI answer engines right now.';
+      notice.style.color = '#1e3a8a';
+    } else {
+      notice.textContent =
+        'No JSON-LD schema blocks detected on this page. Schema is embedded on the AEO report page.';
+    }
+  });
+})();
+</script>
+<!-- END PROTOTYPE BANNER -->
+
+  <header class="sh">
+<div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
+<div class="sh__in">
+<a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
+<form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
+<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+</div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header><main id="main"><section class="hero"><div class="w"><p class="eyebrow" style="color:#FAB143">Appliance parts store · Texas · Ships nationwide</p><h1>We have it, or we’ll get it!</h1>
+<p class="lead">Genuine-fit replacement parts for refrigerators, washers, dryers, ranges and more. 438 parts online, real people who help you pick the right one.</p>
+<div class="ctas"><a class="btn-buy" href="#best-sellers">Shop now</a><a class="btn-ghost" href="how-to-choose.html">Help me find my part</a></div><ul class="trustrow"><li>Free diagnosis assistance</li><li>Same-day shipping by 3 pm CST (in stock)</li><li>1-year replacement warranty</li><li>Pick up at 4 Texas stores</li></ul></div></section>
+<section class="sec" id="best-sellers"><div class="w"><div class="row-head"><div><p class="eyebrow">Popular right now</p><h2>Best sellers</h2><p style="font:.85rem system-ui;color:var(--muted);margin:0">Ranked by the live store’s popularity sort on ufixit.com.</p></div><a class="btn-buy" style="padding:12px 20px" href="shop.html">Shop all 438 parts</a></div><div class="grid"><article class="card" data-cat="range-oven-parts" data-brand="Amana" data-p="799" data-n="er r117 universal receptacle for plug in burners" data-r="0" data-t="er r117 universal receptacle for plug in burners cmp 5303935058cm amana replaces rr110 supco, wb17x5088 general electric, w10116799 whirlpool, 53-003 robertshaw, rr109 supco, y0089336 whirlpool, wb17x5091 general electric, 877796 whirlpool, 865749 whirlpool, 877610 whirlpool, 878407 whirlpool, 877632 whirlpool, 877977 whirlpool, 4338440 whirlpool, 4320363 whirlpool, 877618 whirlpool, 866080 whirlpool, 868464 whirlpool, 866144 whirlpool, 4364178 whirlpool, 866083 whir">
+<a class="im" href="product-er-r117-universal-receptacle-for-plug-in-burners.html"><img src="img/p/2607-0.webp" alt="er r117 universal receptacle for plug in burners" width="200" height="200" loading="eager" decoding="async" /></a>
+<div class="bd"><a class="nm" href="product-er-r117-universal-receptacle-for-plug-in-burners.html">er r117 universal receptacle for plug in burners</a><span class="sku">Part # CMP 5303935058CM</span><span class="stk">In stock</span><span class="pr">$7.99</span><button class="add" data-add data-id="2607" data-n="er r117 universal receptacle for plug in burners" data-p="799" data-i="img/p/2607-0.webp" data-u="product-er-r117-universal-receptacle-for-plug-in-burners.html" data-s="CMP 5303935058CM">Add to cart</button></div></article><article class="card" data-cat="dishwasher-parts" data-brand="Bosch" data-p="586" data-n="ER 611475 Rack Roller for Bosch Dishwasher" data-r="1" data-t="er 611475 rack roller for bosch dishwasher er611475 bosch replaces 611475">
+<a class="im" href="product-er-611475-rack-roller-for-bosch-dishwasher.html"><img src="img/p/3143-0.webp" alt="ER 611475 Rack Roller for Bosch Dishwasher" width="200" height="200" loading="eager" decoding="async" /></a>
+<div class="bd"><a class="nm" href="product-er-611475-rack-roller-for-bosch-dishwasher.html">ER 611475 Rack Roller for Bosch Dishwasher</a><span class="sku">Part # ER611475</span><span class="stk">In stock</span><span class="pr">$5.86</span><button class="add" data-add data-id="3143" data-n="ER 611475 Rack Roller for Bosch Dishwasher" data-p="586" data-i="img/p/3143-0.webp" data-u="product-er-611475-rack-roller-for-bosch-dishwasher.html" data-s="ER611475">Add to cart</button></div></article><article class="card" data-cat="washer-parts" data-brand="LG" data-p="840" data-n="AGM73610701 Magnetic Plunger for LG Washer" data-r="2" data-t="agm73610701 magnetic plunger for lg washer er agm73610701 lg replaces part numbers ap5331994, agm73610702, agm73610703, meg61961401, ps3618292">
+<a class="im" href="product-agm73610701-magnetic-plunger-for-lg-washer.html"><img src="img/p/3199-0.webp" alt="AGM73610701 Magnetic Plunger for LG Washer" width="200" height="200" loading="eager" decoding="async" /></a>
+<div class="bd"><a class="nm" href="product-agm73610701-magnetic-plunger-for-lg-washer.html">AGM73610701 Magnetic Plunger for LG Washer</a><span class="sku">Part # ER AGM73610701</span><span class="stk">In stock</span><span class="pr">$8.40</span><button class="add" data-add data-id="3199" data-n="AGM73610701 Magnetic Plunger for LG Washer" data-p="840" data-i="img/p/3199-0.webp" data-u="product-agm73610701-magnetic-plunger-for-lg-washer.html" data-s="ER AGM73610701">Add to cart</button></div></article><article class="card" data-cat="range-oven-parts" data-brand="Gas" data-p="7895" data-n="ER 5817S0007 Gas Safety Valve Kit for Gas Oven" data-r="3" data-t="er 5817s0007 gas safety valve kit for gas oven 5817s0007 gas replaces 5817s0007">
+<a class="im" href="product-er-5817s0007-gas-safety-valve-kit-for-gas-oven.html"><img src="img/p/3141-0.webp" alt="ER 5817S0007 Gas Safety Valve Kit for Gas Oven" width="200" height="200" loading="eager" decoding="async" /></a>
+<div class="bd"><a class="nm" href="product-er-5817s0007-gas-safety-valve-kit-for-gas-oven.html">ER 5817S0007 Gas Safety Valve Kit for Gas Oven</a><span class="sku">Part # 5817S0007</span><span class="stk low">Only 1 left in stock</span><span class="pr">$78.95</span><button class="add" data-add data-id="3141" data-n="ER 5817S0007 Gas Safety Valve Kit for Gas Oven" data-p="7895" data-i="img/p/3141-0.webp" data-u="product-er-5817s0007-gas-safety-valve-kit-for-gas-oven.html" data-s="5817S0007">Add to cart</button></div></article><article class="card" data-cat="dryer-parts" data-brand="Samsung" data-p="6499" data-n="Dryer element ER DC47-00019A for Samsung" data-r="4" data-t="dryer element er dc47-00019a for samsung erdc47-00019a samsung replaces dc47-00019a, 35001247 whirlpool">
+<a class="im" href="product-dryer-element-er-dc47-00019a-for-samsung.html"><img src="img/p/2577-0.webp" alt="Dryer element ER DC47-00019A for Samsung" width="200" height="200" loading="lazy" decoding="async" /></a>
+<div class="bd"><a class="nm" href="product-dryer-element-er-dc47-00019a-for-samsung.html">Dryer element ER DC47-00019A for Samsung</a><span class="sku">Part # ERDC47-00019A</span><span class="stk">In stock</span><span class="pr">$64.99</span><button class="add" data-add data-id="2577" data-n="Dryer element ER DC47-00019A for Samsung" data-p="6499" data-i="img/p/2577-0.webp" data-u="product-dryer-element-er-dc47-00019a-for-samsung.html" data-s="ERDC47-00019A">Add to cart</button></div></article><article class="card" data-cat="washer-parts" data-brand="Kenmore" data-p="399" data-n="Agitator Dogs SU LP338" data-r="5" data-t="agitator dogs su lp338 cmp 80040cm kenmore replaces:">
+<a class="im" href="product-washer-parts-agitator-dogs-su-lp338.html"><img src="img/p/2535-0.webp" alt="Agitator Dogs SU LP338" width="200" height="200" loading="lazy" decoding="async" /></a>
+<div class="bd"><a class="nm" href="product-washer-parts-agitator-dogs-su-lp338.html">Agitator Dogs SU LP338</a><span class="sku">Part # CMP 80040CM</span><span class="stk">In stock</span><span class="pr">$3.99</span><button class="add" data-add data-id="2535" data-n="Agitator Dogs SU LP338" data-p="399" data-i="img/p/2535-0.webp" data-u="product-washer-parts-agitator-dogs-su-lp338.html" data-s="CMP 80040CM">Add to cart</button></div></article><article class="card" data-cat="washer-parts" data-brand="LG" data-p="7495" data-n="ER AJU75152601 Water Valve for LG Washer" data-r="6" data-t="er aju75152601 water valve for lg washer er aju75152601 lg replaces aju75152601">
+<a class="im" href="product-er-aju75152601-water-valve-for-lg-washer.html"><img src="img/p/2844-0.webp" alt="ER AJU75152601 Water Valve for LG Washer" width="200" height="200" loading="lazy" decoding="async" /></a>
+<div class="bd"><a class="nm" href="product-er-aju75152601-water-valve-for-lg-washer.html">ER AJU75152601 Water Valve for LG Washer</a><span class="sku">Part # ER AJU75152601</span><span class="stk">In stock</span><span class="pr">$74.95</span><button class="add" data-add data-id="2844" data-n="ER AJU75152601 Water Valve for LG Washer" data-p="7495" data-i="img/p/2844-0.webp" data-u="product-er-aju75152601-water-valve-for-lg-washer.html" data-s="ER AJU75152601">Add to cart</button></div></article><article class="card" data-cat="dryer-parts" data-brand="Crosley" data-p="730" data-n="Dryer Door Latch with metal strike ER 279570M" data-r="7" data-t="dryer door latch with metal strike er 279570m er279570m crosley replaces 279570, 279570m, la-1003, we1x10023, 5366021400, we1x1192, 131658800, de902m">
+<a class="im" href="product-dryer-door-latch-with-metal-strike-er-279570m.html"><img src="img/p/2562-0.webp" alt="Dryer Door Latch with metal strike ER 279570M" width="200" height="200" loading="lazy" decoding="async" /></a>
+<div class="bd"><a class="nm" href="product-dryer-door-latch-with-metal-strike-er-279570m.html">Dryer Door Latch with metal strike ER 279570M</a><span class="sku">Part # ER279570M</span><span class="stk">In stock</span><span class="pr">$7.30</span><button class="add" data-add data-id="2562" data-n="Dryer Door Latch with metal strike ER 279570M" data-p="730" data-i="img/p/2562-0.webp" data-u="product-dryer-door-latch-with-metal-strike-er-279570m.html" data-s="ER279570M">Add to cart</button></div></article></div></div></section>
+<section class="sec sec--tint"><div class="w"><div class="row-head"><h2>Shop by appliance</h2><a href="find-your-brand.html">Or shop by brand</a></div><div class="cats"><a class="cat" href="product-category-refrigerator-parts.html"><img src="img/photo/cat-refrigerator.webp" alt="" width="450" height="300" loading="lazy" /><span>Refrigerator Parts<small>141 parts</small></span></a><a class="cat" href="product-category-washer-parts.html"><img src="img/photo/cat-washer.webp" alt="" width="450" height="300" loading="lazy" /><span>Washer Parts<small>133 parts</small></span></a><a class="cat" href="product-category-dryer-parts.html"><img src="img/photo/cat-dryer.webp" alt="" width="450" height="300" loading="lazy" /><span>Dryer Parts<small>56 parts</small></span></a><a class="cat" href="product-category-range-oven-parts.html"><img src="img/photo/cat-range.webp" alt="" width="450" height="300" loading="lazy" /><span>Range &amp; Oven Parts<small>70 parts</small></span></a><a class="cat" href="product-category-dishwasher-parts.html"><img src="img/photo/cat-dishwasher.webp" alt="" width="450" height="300" loading="lazy" /><span>Dishwasher Parts<small>29 parts</small></span></a><a class="cat" href="product-category-air-conditioner-parts.html"><img src="img/photo/cat-ac.webp" alt="" width="450" height="300" loading="lazy" /><span>Air Conditioner Parts<small>2 parts</small></span></a><a class="cat" href="product-category-furnace-parts.html"><img src="img/photo/cat-furnace.webp" alt="" width="450" height="300" loading="lazy" /><span>Furnace Parts<small>2 parts</small></span></a><a class="cat" href="product-category-accessories.html"><img src="img/photo/cat-accessories.webp" alt="" width="450" height="300" loading="lazy" /><span>Accessories<small>3 parts</small></span></a></div></div></section>
+<section class="sec"><div class="w"><p class="eyebrow">Right part, first time</p><h2>How to choose the right part</h2><div class="steps3">
+<div><h3>1. Find your model number</h3><p>It’s on a tag inside the door, on the back or under the lid. <a href="diy-tips-how-to-find-your-appliance-model-number-and-order-the-right-part.html">Where to look</a></p></div>
+<div><h3>2. Match the part number</h3><p>Search the number printed on your old part. Product pages list cross-reference numbers it replaces.</p></div>
+<div><h3>3. Not sure? Ask us free</h3><p>Call or visit any store for free diagnosis help. Bring the part in and we’ll test it.</p></div></div>
+<p style="margin-top:22px"><a class="btn-ghost" href="how-to-choose.html">Compare your options</a></p></div></section>
+<section class="sec sec--tint"><div class="w"><p class="eyebrow">Real reviews from ufixit.com</p><h2>Why Texans come back</h2><div class="quotes"><blockquote class="quote">“Honestly I called to check and see if they had a part in stock, and didn’t even end up using them or buying from them, but was just generally impressed with the customer service that I received on the phone. The gentleman that I spoke to was very kind and…”<cite>Kirby J · customer review on ufixit.com</cite></blockquote><blockquote class="quote">“Came in to ask about a part for my washing machine and was assisted by this newer gentleman, Josue. He gave me some great tips for installing and now, thanks to this extremely helpful young man, my washing machine is working perfectly again!! So grateful I…”<cite>Lisa Panelli-Valentin · customer review on ufixit.com</cite></blockquote><blockquote class="quote">“The associates were so helpful, friendly, understanding and nice. It was refreshing to get such great customer service and knowledgeable help! I went in to get a heating coil for my dryer that wouldn’t heat up anymore they let me know it could be that or the…”<cite>Rosamari Williamson · customer review on ufixit.com</cite></blockquote><blockquote class="quote">“Everytime I come here I feel smarter. The guys are so helpful they will have saving money instead of throwing parts and throwing money down the drain. It’s easy to order parts online with the guessing game. Having that true customer service and the knowledge…”<cite>Erick Scott · customer review on ufixit.com</cite></blockquote></div></div></section>
+<section class="trustbar"><div class="w"><ul class="trustrow"><li>Free diagnosis assistance</li><li>Same-day shipping by 3 pm CST (in stock)</li><li>1-year replacement warranty</li><li>Pick up at 4 Texas stores</li></ul></div></section>
+<section class="band" id="why">
+      <div class="wrap">
+        <p class="kicker">Why choose U-FIX-IT?</p>
+        <h2>Technical expertise. People who care. Parts when you need them.</h2>
+        <div class="pillars">
+          <article class="pillar"><h3>Expert Assistance</h3><p>More than 100 years of combined experience, our team helps diagnose appliance issues.</p></article>
+          <article class="pillar"><h3>Guaranteed Right Parts</h3><p>Each U-FIX-IT store stocks the parts needed to repair the most common symptoms.</p></article>
+          <article class="pillar"><h3>Free Part Testing</h3><p>Bring your appliance part in for free testing. Be confident you are replacing the right part!</p></article>
+          <article class="pillar"><h3>Convenient Locations</h3><p>Visit a store in Arlington, South Dallas, East Dallas, or Tyler.</p></article>
+        </div>
+      </div>
+    </section><section class="band band--paper" id="stores">
+      <div class="wrap">
+        <p class="kicker">Convenient locations</p>
+        <h2>Four Texas stores</h2>
+        <p>Visit a store in Arlington, South Dallas, East Dallas, or Tyler.</p>
+        <div class="store-grid">
+          <article class="store-card">
+            <h3>Arlington</h3>
+            <p><a href="tel:8174727740">817.472.7740</a></p>
+            <p>4621 S Cooper St Suite 127, Arlington, TX 76017</p>
+            <p class="hours-line">9am–6pm Mon–Fri · Closed Sat &amp; Sun</p>
+            <p><a href="contact-us-arlington-appliance-parts-store.html">Details</a></p>
+          </article>
+          <article class="store-card">
+            <h3>East Dallas</h3>
+            <p><a href="tel:2143217054">214.321.7054</a></p>
+            <p>9919 Garland Rd, Dallas, TX 75218</p>
+            <p class="hours-line">9am–6pm Mon–Fri · Closed Sat &amp; Sun</p>
+            <p><a href="contact-us-east-dallas.html">Details</a></p>
+          </article>
+          <article class="store-card">
+            <h3>South Dallas</h3>
+            <p><a href="tel:9727809096">972.780.9096</a></p>
+            <p>442 East Wheatland Rd, Duncanville, TX</p>
+            <p class="tbd">ZIP Unverified (75116 vs 75237) — Mike lock required. Omitted until confirmed.</p>
+            <p class="hours-line">9am–6pm Mon–Fri · <strong>9am–4pm Saturday</strong> · Closed Sunday</p>
+            <p><a href="contact-us-south-dallas.html">Details</a></p>
+          </article>
+          <article class="store-card">
+            <h3>Tyler</h3>
+            <p><a href="tel:9035925836">903.592.5836</a></p>
+            <p>2606 E 5th St, Tyler, TX 75701</p>
+            <p class="hours-line">9am–6pm Mon–Fri · <strong>9am–4pm Saturday</strong> · Closed Sunday</p>
+            <p><a href="contact-us-tyler-tx.html">Details</a></p>
+          </article>
+        </div>
+        <p class="note"><strong>Hours (footer SoT):</strong> 9am–6pm Monday–Friday · Closed Saturdays &amp; Sundays · *Tyler &amp; South Dallas open 9am–4pm Saturday. Holiday exceptions (incl. New Year’s Eve 9–3) on <a href="about-us-store-hours.html">Store Hours</a>.</p>
+      </div>
+    </section><section class="band band--paper" id="diy">
+      <div class="wrap">
+        <p class="kicker">DIY authority</p>
+        <h2>Repair Tips</h2>
+        <p style="max-width:46rem">Our specialty is helping you diagnose the malfunction in your washer, dryer, dishwasher, refrigerator, range, furnace, or air conditioner. These articles provide information to help you with your repairs.</p>
+        <div class="tile-grid" style="margin-top:1.25rem">
+          <a class="tile" href="diy-tips-essential-ac-parts-guide.html"><span>Essential AC Parts Guide</span><small style="display:block;margin-top:0.5rem;font-weight:400;opacity:.85">Learn about key air conditioner components and essential AC replacement parts for effective DIY repairs. Keep your home cool and efficient effortlessly.</small></a>
+          <a class="tile" href="diy-tips-thermador-appliance-repair-guide-luxury-kitchen-troubleshooting-error-codes-genuine-parts.html"><span>Thermador Appliance Repair Guide</span><small style="display:block;margin-top:0.5rem;font-weight:400;opacity:.85">Unlock solutions for Thermador error codes and appliance issues with expert tips on repairs and parts. Keep your luxury kitchen appliances running smoothly!</small></a>
+          <a class="tile" href="appliances-how-to-choose-the-right-hotpoint-appliance-for-your-home.html"><span>How to Choose the Right Hotpoint Appliance</span><small style="display:block;margin-top:0.5rem;font-weight:400;opacity:.85">Choosing the right Hotpoint appliance enhances every home's efficiency and style. Understand your needs to make a well-informed decision for your kitchen.</small></a>
+          <a class="tile" href="appliance-repair-tips.html"><span>View all Repair Tips</span><small style="display:block;margin-top:0.5rem;font-weight:400;opacity:.85">Browse DIY guides across washers, dryers, refrigerators, ranges, furnaces, and air conditioners.</small></a>
+        </div>
+        <p style="margin-top:1.25rem"><a href="diy-tips.html">DIY Tips hub</a> · <a href="find-your-brand.html">Find your brand</a></p>
+      </div>
+    </section></main><section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+<form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
+<footer class="sf"><div class="w"><div class="cols">
+<div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
+<div><h4>Shop</h4><a href="product-category-refrigerator-parts.html">Refrigerator Parts</a><br /><a href="product-category-washer-parts.html">Washer Parts</a><br /><a href="product-category-dryer-parts.html">Dryer Parts</a><br /><a href="product-category-range-oven-parts.html">Range &amp; Oven Parts</a><br /><a href="product-category-dishwasher-parts.html">Dishwasher Parts</a><br /><a href="product-category-air-conditioner-parts.html">Air Conditioner Parts</a><br /></div>
+<div><h4>Help</h4><a href="how-to-choose.html">How to choose a part</a><br /><a href="order-lookup.html">Track an order</a><br /><a href="shipping-appliance-parts.html">Shipping</a><br /><a href="about-us-warranty-returns.html">Warranty &amp; returns</a><br /><a href="account.html">My account</a></div>
+<div><h4>Stores</h4>Arlington <a href="tel:8174727740">817.472.7740</a><br />East Dallas <a href="tel:2143217054">214.321.7054</a><br />South Dallas <a href="tel:9727809096">972.780.9096</a><br />Tyler <a href="tel:9035925836">903.592.5836</a><br /></div>
+<div><h4>Company</h4><a href="about-us.html">About</a><br /><a href="appliance-repair-tips.html">DIY tips</a><br /><a href="share-feedback.html">Feedback</a><br /><a href="privacy-policy.html">Privacy</a><br /><a href="brand.html">Brand guide</a><br /><a href="sitemap.html">Sitemap</a></div>
+</div><div class="legal">© U-FIX-IT Appliance Parts · Texas · HTML prototype by The Tribe Maker / Yavin Digital · Mock checkout: no real payments are taken.</div></div></footer><script src="js/store.js" defer></script></body></html>
