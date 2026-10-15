@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{CLIENT_NAME}} — Digital Marketing Plan</title>
+  <style>
+    :root {
+      --brand-primary: {{BRAND_PRIMARY}};
+      --brand-accent:  {{BRAND_ACCENT}};
+      --brand-dark:    {{BRAND_DARK}};
+      --brand-light:   {{BRAND_LIGHT}};
+      --brand-text:    {{BRAND_TEXT}};
+      --green: #22c55e; --green-bg: #dcfce7; --green-text: #166534;
+      --yellow: #eab308; --yellow-bg: #fef9c3; --yellow-text: #854d0e;
+      --red: #ef4444; --red-bg: #fee2e2; --red-text: #991b1b;
+      --radius: 12px; --shadow: 0 4px 24px rgba(0,0,0,.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--brand-light); color: var(--brand-text); line-height: 1.6; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+    @media (min-width: 1024px) { .container { padding: 0 40px; } }
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid #e2e8f0; }
+    h1 { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; line-height: 1.15; }
+    h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; color: var(--brand-primary); }
+    h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    p  { margin-bottom: 10px; }
+
+    .report-header { background: var(--brand-dark); color: #fff; padding: 48px 0 40px; }
+    .report-header img.logo { max-height: 60px; max-width: 220px; object-fit: contain; margin-bottom: 24px; display: block; }
+    .report-header .meta { font-size: .85rem; opacity: .7; margin-top: 8px; }
+
+    /* ── CHANNEL PRIORITY MATRIX ── */
+    .channel-matrix { display: grid; gap: 12px; }
+    .channel-row { background: #fff; border: 1px solid #e2e8f0; border-left: 5px solid var(--brand-primary); border-radius: var(--radius); padding: 20px 24px; display: grid; grid-template-columns: 1fr auto; gap: 16px; align-items: start; box-shadow: var(--shadow); }
+    .priority-badge { font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; background: var(--brand-primary); color: #fff; padding: 4px 12px; border-radius: 99px; white-space: nowrap; }
+
+    /* ── VALUE LADDER ── */
+    .ladder { display: grid; gap: 0; }
+    .rung { background: #fff; border: 1px solid #e2e8f0; padding: 24px; display: grid; grid-template-columns: 48px 1fr; gap: 16px; align-items: start; position: relative; }
+    .rung:not(:last-child) { border-bottom: none; }
+    .rung:first-child { border-radius: var(--radius) var(--radius) 0 0; }
+    .rung:last-child  { border-radius: 0 0 var(--radius) var(--radius); }
+    .rung-num { background: var(--brand-primary); color: #fff; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1rem; font-weight: 800; flex-shrink: 0; }
+    .rung-price { font-size: .8rem; font-weight: 800; color: var(--brand-accent); margin-top: 4px; }
+    .rung-connector { width: 2px; background: var(--brand-accent); height: 24px; margin: 0 auto; display: block; }
+
+    /* ── FUNNEL TYPE CARD ── */
+    .funnel-card { background: #fff; border: 1px solid #e2e8f0; border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); margin-bottom: 16px; }
+    .funnel-card h3 { color: var(--brand-primary); }
+
+    /* ── EMAIL SEQUENCE ── */
+    .email-step { background: #fff; border: 1px solid #e2e8f0; border-radius: var(--radius); padding: 18px 24px; margin-bottom: 10px; display: grid; grid-template-columns: 40px 1fr; gap: 14px; align-items: start; box-shadow: var(--shadow); }
+    .email-num { background: var(--brand-accent); color: var(--brand-dark); width: 36px; height: 36px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .9rem; font-weight: 800; flex-shrink: 0; }
+    .email-day { font-size: .72rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: #94a3b8; margin-bottom: 4px; }
+
+    /* ── KPI TABLE ── */
+    .kpi-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .kpi-table th { background: var(--brand-primary); color: #fff; padding: 12px 16px; text-align: left; }
+    .kpi-table td { padding: 12px 16px; border-bottom: 1px solid #e2e8f0; }
+    .kpi-table tr:nth-child(even) td { background: #f8fafc; }
+
+    /* ── CALLOUT ── */
+    .callout { background: var(--brand-dark); color: #fff; border-radius: var(--radius); padding: 32px; }
+    .callout h2 { color: var(--brand-accent); }
+
+    /* ── CHART ── */
+    .chart-wrap { max-width: 700px; margin: 0 auto 32px; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── FOOTER ── */
+    .report-footer { background: var(--brand-dark); color: rgba(255,255,255,.6); text-align: center; padding: 32px 24px; font-size: .85rem; }
+    .report-footer strong { color: #fff; }
+
+    @media (max-width: 767px) { .channel-row { grid-template-columns: 1fr; } .rung { grid-template-columns: 1fr; } }
+    @media print {
+      .report-header, .report-footer, .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="report-header">
+  <div class="container">
+    <img class="logo" src="{{LOGO_PATH}}" alt="{{CLIENT_NAME}} logo" />
+    <h1>Digital Marketing Plan<br>{{CLIENT_NAME}}</h1>
+    <p class="meta">Created by Mike Montes &nbsp;·&nbsp; {{REPORT_DATE}} &nbsp;·&nbsp; Confidential</p>
+  </div>
+</header>
+
+<!-- SECTION 1 — SITUATION ANALYSIS -->
+<section id="situation">
+  <div class="container">
+    <h2>Where {{CLIENT_NAME}} Stands Today</h2>
+    <div class="funnel-card reveal">
+      <p>{{SITUATION_SUMMARY}}</p>
+      <div style="margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px;">
+        <div><strong>Primary Goal</strong><br><span style="font-size:.9rem;color:#475569;">{{MARKETING_GOAL}}</span></div>
+        <div><strong>Top Channel</strong><br><span style="font-size:.9rem;color:#475569;">{{TOP_CHANNEL}}</span></div>
+        <div><strong>Biggest Gap</strong><br><span style="font-size:.9rem;color:#475569;">{{BIGGEST_GAP}}</span></div>
+        <div><strong>Client Acquisition Goal?</strong><br><span style="font-size:.9rem;color:#475569;">{{ACQUISITION_GOAL_YN}}</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 — CHANNEL PRIORITY MATRIX -->
+<section id="channels">
+  <div class="container">
+    <h2>Channel Priority Matrix</h2>
+    <p>Channels ordered by ROI potential for {{CLIENT_NAME}} — highest first.</p>
+    <div class="channel-matrix reveal">
+      <div class="channel-row">
+        <div><h3>{{CHANNEL_1_NAME}}</h3><p style="font-size:.88rem;color:#475569;">{{CHANNEL_1_WHY}}</p><p style="font-size:.85rem;"><strong>Action:</strong> {{CHANNEL_1_ACTION}}</p></div>
+        <span class="priority-badge">Priority 1</span>
+      </div>
+      <div class="channel-row">
+        <div><h3>{{CHANNEL_2_NAME}}</h3><p style="font-size:.88rem;color:#475569;">{{CHANNEL_2_WHY}}</p><p style="font-size:.85rem;"><strong>Action:</strong> {{CHANNEL_2_ACTION}}</p></div>
+        <span class="priority-badge">Priority 2</span>
+      </div>
+      <div class="channel-row">
+        <div><h3>{{CHANNEL_3_NAME}}</h3><p style="font-size:.88rem;color:#475569;">{{CHANNEL_3_WHY}}</p><p style="font-size:.85rem;"><strong>Action:</strong> {{CHANNEL_3_ACTION}}</p></div>
+        <span class="priority-badge">Priority 3</span>
+      </div>
+    </div>
+    <div class="chart-wrap reveal" style="margin-top:40px;"><canvas id="channelChart" height="300"></canvas></div>
+  </div>
+</section>
+
+<!-- SECTION 3 — FUNNEL SYSTEM (include when acquisition is a goal) -->
+<section id="funnel">
+  <div class="container">
+    <h2>Funnel System — Value Ladder</h2>
+    <p>Built on Russell Brunson's Value Ladder methodology. Every rung maps to a real offer from {{CLIENT_NAME}}.</p>
+
+    <div class="ladder reveal">
+      <div class="rung">
+        <div class="rung-num">1</div>
+        <div><h3>Lead Magnet — Free</h3><p style="font-size:.88rem;color:#475569;">{{RUNG1_OFFER}}</p><div class="rung-price">Free — captures name + email</div></div>
+      </div>
+      <div class="rung-connector"></div>
+      <div class="rung">
+        <div class="rung-num">2</div>
+        <div><h3>Tripwire — Low Risk</h3><p style="font-size:.88rem;color:#475569;">{{RUNG2_OFFER}}</p><div class="rung-price">{{RUNG2_PRICE}}</div></div>
+      </div>
+      <div class="rung-connector"></div>
+      <div class="rung">
+        <div class="rung-num">3</div>
+        <div><h3>Core Offer</h3><p style="font-size:.88rem;color:#475569;">{{RUNG3_OFFER}}</p><div class="rung-price">{{RUNG3_PRICE}}</div></div>
+      </div>
+      <div class="rung-connector"></div>
+      <div class="rung">
+        <div class="rung-num">4</div>
+        <div><h3>Upsell / Order Bump</h3><p style="font-size:.88rem;color:#475569;">{{RUNG4_OFFER}}</p><div class="rung-price">{{RUNG4_PRICE}}</div></div>
+      </div>
+      <div class="rung-connector"></div>
+      <div class="rung">
+        <div class="rung-num">5</div>
+        <div><h3>High-Ticket / Continuity</h3><p style="font-size:.88rem;color:#475569;">{{RUNG5_OFFER}}</p><div class="rung-price">{{RUNG5_PRICE}}</div></div>
+      </div>
+    </div>
+
+    <h3 style="margin:36px 0 16px;">Recommended Funnel Type</h3>
+    <div class="funnel-card reveal">
+      <h3>{{FUNNEL_TYPE_NAME}}</h3>
+      <p>{{FUNNEL_TYPE_DESCRIPTION}}</p>
+      <p style="margin-top:12px;font-size:.88rem;"><strong>Traffic source:</strong> {{FUNNEL_TRAFFIC_SOURCE}}</p>
+    </div>
+
+    <h3 style="margin:36px 0 16px;">Follow-Up Email Sequence</h3>
+    <div class="reveal">
+      <div class="email-step"><div class="email-num">1</div><div><div class="email-day">Day 1</div><strong>{{EMAIL_1_SUBJECT}}</strong><p style="font-size:.85rem;margin-top:4px;">{{EMAIL_1_GOAL}}</p></div></div>
+      <div class="email-step"><div class="email-num">2</div><div><div class="email-day">Day 2</div><strong>{{EMAIL_2_SUBJECT}}</strong><p style="font-size:.85rem;margin-top:4px;">{{EMAIL_2_GOAL}}</p></div></div>
+      <div class="email-step"><div class="email-num">3</div><div><div class="email-day">Day 3</div><strong>{{EMAIL_3_SUBJECT}}</strong><p style="font-size:.85rem;margin-top:4px;">{{EMAIL_3_GOAL}}</p></div></div>
+      <div class="email-step"><div class="email-num">4</div><div><div class="email-day">Day 6</div><strong>{{EMAIL_4_SUBJECT}}</strong><p style="font-size:.85rem;margin-top:4px;">{{EMAIL_4_GOAL}}</p></div></div>
+      <div class="email-step"><div class="email-num">5</div><div><div class="email-day">Day 10</div><strong>{{EMAIL_5_SUBJECT}}</strong><p style="font-size:.85rem;margin-top:4px;">{{EMAIL_5_GOAL}}</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 — CONVERSION BENCHMARKS -->
+<section id="benchmarks">
+  <div class="container">
+    <h2>Conversion Benchmarks to Track</h2>
+    <table class="kpi-table reveal">
+      <thead><tr><th>Metric</th><th>Industry Benchmark</th><th>Goal for {{CLIENT_NAME}}</th></tr></thead>
+      <tbody>
+        <tr><td>Opt-in rate (Lead Magnet)</td><td>25–50%</td><td>{{OPTIN_GOAL}}</td></tr>
+        <tr><td>Tripwire conversion</td><td>5–15%</td><td>{{TRIPWIRE_GOAL}}</td></tr>
+        <tr><td>Core Offer conversion</td><td>20–40%</td><td>{{CORE_GOAL}}</td></tr>
+        <tr><td>Upsell take rate</td><td>15–30%</td><td>{{UPSELL_GOAL}}</td></tr>
+        <tr><td>{{CUSTOM_KPI_1}}</td><td>{{CUSTOM_KPI_1_BENCHMARK}}</td><td>{{CUSTOM_KPI_1_GOAL}}</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="report-footer">
+  <p>Created by <strong>Mike Montes</strong> &nbsp;·&nbsp; Prepared for {{CLIENT_NAME}} &nbsp;·&nbsp; {{REPORT_DATE}}</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+(function () {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+})();
+
+const brand  = getComputedStyle(document.documentElement).getPropertyValue('--brand-primary').trim() || '#1a3c6e';
+const accent = getComputedStyle(document.documentElement).getPropertyValue('--brand-accent').trim()  || '#f4a500';
+new Chart(document.getElementById('channelChart'), {
+  type: 'bar',
+  data: {
+    labels: ['{{CHANNEL_1_NAME}}', '{{CHANNEL_2_NAME}}', '{{CHANNEL_3_NAME}}' /* add more */],
+    datasets: [{
+      label: 'ROI Priority Score (1–10)',
+      data: [/* {{CHANNEL_1_SCORE}} */ 0, /* {{CHANNEL_2_SCORE}} */ 0, /* {{CHANNEL_3_SCORE}} */ 0],
+      backgroundColor: [brand, accent, '#22c55e'],
+      borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    animation: { duration: 1000, easing: 'easeOutQuart' },
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { beginAtZero: true, max: 10, grid: { color: '#f1f5f9' }, ticks: { font: { size: 11 } } },
+      x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+    }
+  }
+});
+</script>
+</body>
+</html>

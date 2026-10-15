@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{CLIENT_NAME}} — AEO Report</title>
+
+  <!-- ── JSON-LD SCHEMA BLOCKS — one per type, populated before delivery ── -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "{{CLIENT_NAME}}",
+    "url": "{{CLIENT_URL}}",
+    "logo": "{{CLIENT_LOGO_URL}}",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "{{CLIENT_PHONE}}",
+      "contactType": "customer service"
+    },
+    "sameAs": [{{SOCIAL_URLS_COMMA_SEPARATED}}]
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "{{CLIENT_NAME}}",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "{{CLIENT_STREET}}",
+      "addressLocality": "{{CLIENT_CITY}}",
+      "addressRegion": "{{CLIENT_STATE}}",
+      "postalCode": "{{CLIENT_ZIP}}"
+    },
+    "telephone": "{{CLIENT_PHONE}}",
+    "openingHours": "{{CLIENT_HOURS}}",
+    "areaServed": "{{CLIENT_SERVICE_AREA}}",
+    "priceRange": "{{CLIENT_PRICE_RANGE}}"
+  }
+  </script>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "{{FAQ_Q1}}",
+        "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_A1}}" }
+      },
+      {
+        "@type": "Question",
+        "name": "{{FAQ_Q2}}",
+        "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_A2}}" }
+      },
+      {
+        "@type": "Question",
+        "name": "{{FAQ_Q3}}",
+        "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_A3}}" }
+      },
+      {
+        "@type": "Question",
+        "name": "{{FAQ_Q4}}",
+        "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_A4}}" }
+      },
+      {
+        "@type": "Question",
+        "name": "{{FAQ_Q5}}",
+        "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_A5}}" }
+      },
+      {
+        "@type": "Question",
+        "name": "{{FAQ_Q6}}",
+        "acceptedAnswer": { "@type": "Answer", "text": "{{FAQ_A6}}" }
+      }
+    ]
+  }
+  </script>
+
+  <!-- Add HowTo, Service, BreadcrumbList, WebSite blocks here as applicable -->
+
+  <style>
+    /* ── TOKENS — replace with brand.html values ── */
+    :root {
+      --brand-primary: {{BRAND_PRIMARY}};
+      --brand-accent:  {{BRAND_ACCENT}};
+      --brand-dark:    {{BRAND_DARK}};
+      --brand-light:   {{BRAND_LIGHT}};
+      --brand-text:    {{BRAND_TEXT}};
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0,0,0,.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--brand-light);
+      color: var(--brand-text);
+      line-height: 1.6;
+    }
+
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+    @media (min-width: 1024px) { .container { padding: 0 40px; } }
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid #e2e8f0; }
+
+    h1 { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; line-height: 1.15; }
+    h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; color: var(--brand-primary); }
+    h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+    p  { margin-bottom: 12px; }
+
+    /* ── HEADER ── */
+    .report-header {
+      background: var(--brand-dark);
+      color: #fff;
+      padding: 48px 0 40px;
+    }
+    .report-header img.logo {
+      max-height: 60px; max-width: 220px;
+      object-fit: contain; margin-bottom: 24px; display: block;
+    }
+    .report-header .meta { font-size: .85rem; opacity: .7; margin-top: 8px; }
+
+    /* ── VISIBILITY SCORE HERO ── */
+    .visibility-hero {
+      background: var(--brand-primary);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .score-circle {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 6px solid var(--brand-accent);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .score-circle .num   { font-size: 2.4rem; font-weight: 900; line-height: 1; }
+    .score-circle .denom { font-size: .85rem; opacity: .7; }
+    .score-label { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .stage-tag {
+      display: inline-block;
+      background: var(--brand-accent); color: var(--brand-dark);
+      font-size: .75rem; font-weight: 800;
+      padding: 3px 10px; border-radius: 99px; margin-left: 8px; vertical-align: middle;
+    }
+
+    /* ── TEST RESULT ROWS ── */
+    .test-row {
+      display: grid;
+      grid-template-columns: 28px 1fr auto;
+      gap: 12px;
+      align-items: start;
+      padding: 16px 0;
+      border-bottom: 1px solid #e2e8f0;
+      font-size: .9rem;
+    }
+    .test-row .engine { font-weight: 700; }
+    .test-row .detail { color: #64748b; font-size: .85rem; margin-top: 4px; }
+    .result-pill {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 4px 12px; border-radius: 99px;
+      font-size: .8rem; font-weight: 700; white-space: nowrap;
+    }
+    .result-pill.cited    { background: #dcfce7; color: #166534; }
+    .result-pill.missing  { background: #fee2e2; color: #991b1b; }
+    .result-pill.partial  { background: #fef9c3; color: #854d0e; }
+
+    /* ── ENTITY CARD ── */
+    .entity-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .entity-field {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .entity-field .ef-label { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .05em; color: #94a3b8; margin-bottom: 4px; }
+    .entity-field .ef-value { font-size: .95rem; font-weight: 600; color: var(--brand-text); }
+
+    /* ── FAQ ACCORDION ── */
+    .faq-item {
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      margin-bottom: 10px;
+      overflow: hidden;
+      background: #fff;
+    }
+    .faq-q {
+      width: 100%; text-align: left;
+      background: #fff; border: none; cursor: pointer;
+      padding: 18px 20px;
+      font-size: .95rem; font-weight: 600; color: var(--brand-text);
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 12px;
+    }
+    .faq-q:hover { background: var(--brand-light); }
+    .faq-q .chevron { flex-shrink: 0; transition: transform .25s; }
+    .faq-item.open .chevron { transform: rotate(180deg); }
+    .faq-a {
+      display: none;
+      padding: 0 20px 18px;
+      font-size: .9rem; color: #475569; line-height: 1.7;
+    }
+    .faq-item.open .faq-a { display: block; }
+
+    /* ── SERVICE CARDS ── */
+    .service-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid var(--brand-accent);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    /* ── TRUST BADGES ── */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 16px;
+      margin-top: 8px;
+    }
+    .trust-badge {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      padding: 20px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .trust-badge .tb-val  { font-size: 1.6rem; font-weight: 900; color: var(--brand-primary); }
+    .trust-badge .tb-label{ font-size: .8rem; color: #64748b; margin-top: 4px; }
+
+    /* ── SCHEMA INSPECTOR ── */
+    .schema-block {
+      background: #0f172a;
+      color: #7dd3fc;
+      border-radius: 8px;
+      padding: 20px;
+      font-family: 'Courier New', monospace;
+      font-size: .82rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      margin-bottom: 16px;
+    }
+    .schema-block .sk { color: #f472b6; }  /* key   */
+    .schema-block .sv { color: #86efac; }  /* value */
+    .schema-block .st { color: #fbbf24; }  /* type  */
+
+    /* ── VALIDATION BADGE ── */
+    .validation-banner {
+      background: #dcfce7;
+      border: 2px solid #22c55e;
+      border-radius: var(--radius);
+      padding: 24px 32px;
+      display: flex; align-items: center; gap: 20px;
+    }
+    .validation-banner .icon { font-size: 2.4rem; flex-shrink: 0; }
+    .validation-banner h3 { color: #166534; margin-bottom: 4px; }
+    .validation-banner p  { color: #166534; font-size: .9rem; margin: 0; }
+
+    /* ── CALLOUT ── */
+    .callout {
+      background: var(--brand-dark); color: #fff;
+      border-radius: var(--radius); padding: 32px;
+    }
+    .callout h2 { color: var(--brand-accent); }
+
+    /* ── TALKING POINT BOXES ── */
+    .talking-point {
+      background: #fffbeb;
+      border: 1px solid #fde68a;
+      border-left: 4px solid #f59e0b;
+      border-radius: 8px;
+      padding: 14px 18px;
+      margin-bottom: 16px;
+      font-size: .88rem;
+    }
+    .talking-point .tp-label {
+      font-size: .7rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .08em; color: #92400e; margin-bottom: 6px;
+    }
+
+    /* ── FOOTER ── */
+    .report-footer {
+      background: var(--brand-dark); color: rgba(255,255,255,.6);
+      text-align: center; padding: 32px 24px; font-size: .85rem;
+    }
+    .report-footer strong { color: #fff; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 767px) {
+      .visibility-hero { grid-template-columns: 1fr; text-align: center; }
+      .test-row { grid-template-columns: 28px 1fr; }
+      .test-row .result-pill { grid-column: 2; }
+    }
+
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left  { opacity: 0; transform: translateX(-32px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal-left.visible  { opacity: 1; transform: translateX(0); }
+
+    /* ── CHART CONTAINERS ── */
+    .chart-wrap {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    .chart-wrap h3 { margin-bottom: 16px; }
+    .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 767px) { .chart-row { grid-template-columns: 1fr; } }
+
+    /* ── PRINT ── */
+    @media print {
+      .report-header, .report-footer, .callout {
+        -webkit-print-color-adjust: exact; print-color-adjust: exact;
+      }
+      section { page-break-inside: avoid; }
+    }
+  </style>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="container">
+    <img class="logo" src="{{LOGO_PATH}}" alt="{{CLIENT_NAME}} logo" />
+    <h1>Answer Engine Optimization Report<br>{{CLIENT_NAME}}</h1>
+    <p class="meta">Created by Mike Montes &nbsp;·&nbsp; {{REPORT_DATE}} &nbsp;·&nbsp; Confidential</p>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     SECTION 1 — WHAT IS AEO  (sales education)
+══════════════════════════════════════════ -->
+<section id="what-is-aeo">
+  <div class="container">
+    <h2 class="reveal">What Is AEO — and Why It Matters Right Now</h2>
+
+    <div class="talking-point">
+      <div class="tp-label">💬 Sales Talking Point</div>
+      <p>
+        "When your customers ask Google, ChatGPT, or Siri a question, an AI reads hundreds of websites and
+        picks one to quote. Right now, that quote goes to your competitor — not you. This report shows you
+        exactly where you're invisible to AI, and what we've built to fix it."
+      </p>
+    </div>
+
+    <p>
+      Traditional SEO earns a blue-link ranking on page one of Google. <strong>AEO earns the zero-click
+      citation</strong> — the sentence an AI answer engine quotes directly in its response, with the business
+      name attached. As of 2026, Google AI Overviews appear on the majority of informational searches.
+      ChatGPT and Perplexity are now primary research tools for millions of consumers.
+      <strong>Businesses that are not structured for AI engines are invisible to this audience.</strong>
+    </p>
+    <p>
+      AEO and SEO reinforce each other. The writing structure that makes a page easy for an AI to quote
+      also makes it easy for a human to skim and for Google to understand. Every fact, every Q&amp;A, and
+      every schema block in this report works double duty — improving traditional rankings <em>and</em>
+      earning AI citations simultaneously.
+    </p>
+
+    <div class="callout" style="margin-top:32px;">
+      <h2>The Three Things AI Engines Need to Trust a Business</h2>
+      <ol style="padding-left:20px;margin-top:16px;line-height:2;">
+        <li><strong>Entity clarity</strong> — the business must be described in explicit, unambiguous facts (name, location, services, credentials).</li>
+        <li><strong>Answer-ready content</strong> — pages must contain direct answers to the exact questions customers ask, not marketing copy.</li>
+        <li><strong>Structured data (schema)</strong> — JSON-LD markup tells AI engines what the business is, what it does, and who to credit.</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 2 — AI RANKING SNAPSHOT (before baseline)
+══════════════════════════════════════════ -->
+<section id="ai-ranking-snapshot">
+  <div class="container">
+    <h2 class="reveal">Current AI Visibility Snapshot</h2>
+    <p class="reveal" style="margin-bottom:8px;">Tests run on <strong>{{SNAPSHOT_DATE}}</strong> to establish the before-baseline. This is where {{CLIENT_NAME}} stands today — before the AEO work takes effect.</p>
+
+    <div class="talking-point">
+      <div class="tp-label">💬 Sales Talking Point</div>
+      <p>
+        "We actually tested this before we built anything. Here's what happens right now when someone
+        asks an AI about {{CLIENT_SERVICE}} in {{CLIENT_CITY}}. This is your starting point — and this
+        is what we're changing."
+      </p>
+    </div>
+
+    <!-- AI Channel Visibility Radar Chart -->
+    <div class="chart-row reveal" style="margin-bottom:32px;">
+      <div class="chart-wrap">
+        <h3>AI Channel Visibility</h3>
+        <canvas id="aeoRadar" height="240"></canvas>
+      </div>
+      <div class="chart-wrap">
+        <h3>Cited vs. Not Cited</h3>
+        <canvas id="aeoDoughnut" height="240"></canvas>
+      </div>
+    </div>
+
+    <!-- Visibility Score -->
+    <div class="visibility-hero reveal" style="margin-bottom:32px;">
+      <div class="score-circle">
+        <span class="num">{{AI_VISIBILITY_SCORE}}</span>
+        <span class="denom">/6</span>
+      </div>
+      <div>
+        <div class="score-label">
+          AI Visibility Score
+          <span class="stage-tag">{{AI_VISIBILITY_LABEL}}</span>
+        </div>
+        <p style="opacity:.8;font-size:.95rem;margin-top:8px;">{{AI_VISIBILITY_SUMMARY}}</p>
+      </div>
+    </div>
+
+    <!-- Test Results -->
+    <div class="test-row">
+      <span style="font-size:1.2rem;">🔍</span>
+      <div>
+        <div class="engine">Google AI Overview — Service Query</div>
+        <div class="detail">Query: "{{AI_TEST_QUERY_1}}"</div>
+        <div class="detail" style="margin-top:6px;">{{AI_TEST_1_WHAT_AI_SAYS}}</div>
+        <div class="detail">Cited instead: <strong>{{AI_TEST_1_COMPETITOR}}</strong></div>
+      </div>
+      <span class="result-pill {{AI_TEST_1_PILL}}">{{AI_TEST_1_RESULT}}</span>
+    </div>
+
+    <div class="test-row">
+      <span style="font-size:1.2rem;">🔍</span>
+      <div>
+        <div class="engine">Google AI Overview — Brand Query</div>
+        <div class="detail">Query: "{{CLIENT_NAME}}"</div>
+        <div class="detail" style="margin-top:6px;">{{AI_TEST_2_WHAT_AI_SAYS}}</div>
+      </div>
+      <span class="result-pill {{AI_TEST_2_PILL}}">{{AI_TEST_2_RESULT}}</span>
+    </div>
+
+    <div class="test-row">
+      <span style="font-size:1.2rem;">🤖</span>
+      <div>
+        <div class="engine">ChatGPT</div>
+        <div class="detail">Query: "Who is the best {{CLIENT_SERVICE}} in {{CLIENT_CITY}}?"</div>
+        <div class="detail" style="margin-top:6px;">Competitors named: <strong>{{AI_TEST_3_COMPETITORS}}</strong></div>
+      </div>
+      <span class="result-pill {{AI_TEST_3_PILL}}">{{AI_TEST_3_RESULT}}</span>
+    </div>
+
+    <div class="test-row">
+      <span style="font-size:1.2rem;">🔎</span>
+      <div>
+        <div class="engine">Perplexity</div>
+        <div class="detail">Query: "Find a {{CLIENT_SERVICE}} near {{CLIENT_CITY}}"</div>
+        <div class="detail" style="margin-top:6px;">Sources used: <strong>{{AI_TEST_4_SOURCES}}</strong></div>
+      </div>
+      <span class="result-pill {{AI_TEST_4_PILL}}">{{AI_TEST_4_RESULT}}</span>
+    </div>
+
+    <div class="test-row">
+      <span style="font-size:1.2rem;">📋</span>
+      <div>
+        <div class="engine">Google Organic Rank</div>
+        <div class="detail">Query: "{{AI_TEST_QUERY_1}}"</div>
+      </div>
+      <span class="result-pill {{AI_TEST_5_PILL}}">{{AI_TEST_5_RESULT}}</span>
+    </div>
+
+    <div class="test-row" style="border-bottom:none;">
+      <span style="font-size:1.2rem;">📍</span>
+      <div>
+        <div class="engine">Google Local 3-Pack</div>
+        <div class="detail">Query: "{{AI_TEST_QUERY_1}}"</div>
+      </div>
+      <span class="result-pill {{AI_TEST_6_PILL}}">{{AI_TEST_6_RESULT}}</span>
+    </div>
+
+    <!-- Key Finding -->
+    <div style="background:#fff;border:1px solid #e2e8f0;border-left:4px solid var(--brand-accent);border-radius:var(--radius);padding:24px;margin-top:32px;box-shadow:var(--shadow);">
+      <h3>⚠ Key Finding</h3>
+      <p>{{AI_SNAPSHOT_KEY_FINDING}}</p>
+      <p style="margin-top:8px;"><strong>AEO Goal:</strong> {{AI_SNAPSHOT_AEO_GOAL}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 3 — ENTITY OVERVIEW
+══════════════════════════════════════════ -->
+<section id="entity-overview">
+  <div class="container">
+    <h2 class="reveal">Entity Overview</h2>
+    <p style="margin-bottom:24px;">This is every fact about {{CLIENT_NAME}} stated explicitly and unambiguously — the same information that AI engines read from the schema blocks embedded in this page.</p>
+
+    <div class="talking-point">
+      <div class="tp-label">💬 Sales Talking Point</div>
+      <p>
+        "One of the biggest reasons AI skips businesses is because the facts aren't clear — the AI
+        literally can't tell where you are, what you do, or how long you've been doing it. We fix that
+        by stating every fact once, clearly, in a format AI can read."
+      </p>
+    </div>
+
+    <div class="entity-grid">
+      <div class="entity-field">
+        <div class="ef-label">Business Name</div>
+        <div class="ef-value">{{CLIENT_NAME}}</div>
+      </div>
+      <div class="entity-field">
+        <div class="ef-label">Category</div>
+        <div class="ef-value">{{CLIENT_CATEGORY}}</div>
+      </div>
+      <div class="entity-field">
+        <div class="ef-label">Founded</div>
+        <div class="ef-value">{{CLIENT_FOUNDED}}</div>
+      </div>
+      <div class="entity-field">
+        <div class="ef-label">Phone</div>
+        <div class="ef-value">{{CLIENT_PHONE}}</div>
+      </div>
+      <div class="entity-field">
+        <div class="ef-label">Website</div>
+        <div class="ef-value">{{CLIENT_URL}}</div>
+      </div>
+      <div class="entity-field">
+        <div class="ef-label">Address</div>
+        <div class="ef-value">{{CLIENT_STREET}}, {{CLIENT_CITY}}, {{CLIENT_STATE}} {{CLIENT_ZIP}}</div>
+      </div>
+      <div class="entity-field">
+        <div class="ef-label">Service Area</div>
+        <div class="ef-value">{{CLIENT_SERVICE_AREA}}</div>
+      </div>
+      <div class="entity-field">
+        <div class="ef-label">Hours</div>
+        <div class="ef-value">{{CLIENT_HOURS}}</div>
+      </div>
+      <div class="entity-field">
+        <div class="ef-label">Price Range</div>
+        <div class="ef-value">{{CLIENT_PRICE_RANGE}}</div>
+      </div>
+      <div class="entity-field">
+        <div class="ef-label">Credentials / Licenses</div>
+        <div class="ef-value">{{CLIENT_CREDENTIALS}}</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 4 — Q&A BANK
+══════════════════════════════════════════ -->
+<section id="qa-bank">
+  <div class="container">
+    <h2 class="reveal">Q&amp;A Bank — Answer-Ready Content</h2>
+    <p style="margin-bottom:8px;">8–12 real questions customers ask, each answered in direct, declarative language. These answers are embedded as structured data (FAQPage schema) <em>and</em> appear visibly on the page — so both humans and AI engines can read them.</p>
+
+    <div class="talking-point">
+      <div class="tp-label">💬 Sales Talking Point</div>
+      <p>
+        "These are the exact questions your customers type into Google and ChatGPT every day.
+        We wrote the answers the way AI engines need to see them — direct, factual, with your
+        business name in the first sentence. When the AI reads this page, it knows exactly who
+        to credit."
+      </p>
+    </div>
+
+    <!-- FAQ 1 -->
+    <div class="faq-item open">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        {{FAQ_Q1}}
+        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">{{FAQ_A1}}</div>
+    </div>
+
+    <!-- FAQ 2 -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        {{FAQ_Q2}}
+        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">{{FAQ_A2}}</div>
+    </div>
+
+    <!-- FAQ 3 -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        {{FAQ_Q3}}
+        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">{{FAQ_A3}}</div>
+    </div>
+
+    <!-- FAQ 4 -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        {{FAQ_Q4}}
+        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">{{FAQ_A4}}</div>
+    </div>
+
+    <!-- FAQ 5 -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        {{FAQ_Q5}}
+        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">{{FAQ_A5}}</div>
+    </div>
+
+    <!-- FAQ 6 -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        {{FAQ_Q6}}
+        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">{{FAQ_A6}}</div>
+    </div>
+
+    <!-- FAQ 7 -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        {{FAQ_Q7}}
+        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">{{FAQ_A7}}</div>
+    </div>
+
+    <!-- FAQ 8 -->
+    <div class="faq-item">
+      <button class="faq-q" onclick="toggleFaq(this)">
+        {{FAQ_Q8}}
+        <svg class="chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+      </button>
+      <div class="faq-a">{{FAQ_A8}}</div>
+    </div>
+
+    <!-- Add FAQ_Q9 / FAQ_A9 through FAQ_Q12 / FAQ_A12 following the same pattern if needed -->
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 5 — SERVICE DESCRIPTIONS
+══════════════════════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <h2 class="reveal">Service Descriptions</h2>
+    <p style="margin-bottom:24px;">One factual paragraph per core service — written so AI engines can extract, attribute, and cite each one independently.</p>
+
+    <div class="talking-point">
+      <div class="tp-label">💬 Sales Talking Point</div>
+      <p>
+        "AI engines don't read your whole website — they scan for specific, structured information.
+        Each of these descriptions is written to be extracted as a standalone answer. That means
+        when someone asks 'What does {{CLIENT_NAME}} do?', the AI has a ready-made, accurate answer
+        to pull from."
+      </p>
+    </div>
+
+    <div class="service-card">
+      <h3>{{SERVICE_1_NAME}}</h3>
+      <p>{{SERVICE_1_DESCRIPTION}}</p>
+    </div>
+
+    <div class="service-card">
+      <h3>{{SERVICE_2_NAME}}</h3>
+      <p>{{SERVICE_2_DESCRIPTION}}</p>
+    </div>
+
+    <div class="service-card">
+      <h3>{{SERVICE_3_NAME}}</h3>
+      <p>{{SERVICE_3_DESCRIPTION}}</p>
+    </div>
+
+    <!-- Add SERVICE_4 through SERVICE_N following the same pattern -->
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 6 — TRUST & AUTHORITY SIGNALS
+══════════════════════════════════════════ -->
+<section id="trust">
+  <div class="container">
+    <h2 class="reveal">Trust &amp; Authority Signals</h2>
+    <p style="margin-bottom:24px;">AI engines rank businesses they trust. Trust is built from verifiable facts — years in business, credentials, volume of work, and third-party recognition.</p>
+
+    <div class="talking-point">
+      <div class="tp-label">💬 Sales Talking Point</div>
+      <p>
+        "AI doesn't care about your tagline. It cares about proof. These are the facts that make
+        {{CLIENT_NAME}} trustworthy in the eyes of an AI — and they're all stated clearly on your
+        new site so the AI can find them instantly."
+      </p>
+    </div>
+
+    <div class="trust-grid">
+      <div class="trust-badge">
+        <div class="tb-val">{{TRUST_YEARS}}</div>
+        <div class="tb-label">Years in Business</div>
+      </div>
+      <div class="trust-badge">
+        <div class="tb-val">{{TRUST_CLIENTS}}</div>
+        <div class="tb-label">{{TRUST_CLIENTS_LABEL}}</div>
+      </div>
+      <div class="trust-badge">
+        <div class="tb-val">{{TRUST_CERT_COUNT}}</div>
+        <div class="tb-label">Certifications / Licenses</div>
+      </div>
+      <div class="trust-badge">
+        <div class="tb-val">{{TRUST_REVIEWS}}</div>
+        <div class="tb-label">Google Reviews</div>
+      </div>
+      <!-- Add more trust badges as applicable -->
+    </div>
+
+    <div style="margin-top:24px;">
+      <p><strong>Licenses &amp; Certifications:</strong> {{TRUST_CERTS_LIST}}</p>
+      <p style="margin-top:8px;"><strong>Awards &amp; Memberships:</strong> {{TRUST_AWARDS}}</p>
+      <p style="margin-top:8px;"><strong>Press &amp; Media Mentions:</strong> {{TRUST_PRESS}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 7 — SCHEMA INSPECTOR
+══════════════════════════════════════════ -->
+<section id="schema-inspector">
+  <div class="container">
+    <h2 class="reveal">Schema Inspector — What AI Engines Are Reading</h2>
+    <p style="margin-bottom:8px;">This is a human-readable preview of the structured data embedded in this page. AI engines read this automatically — it's invisible to regular visitors but tells every AI exactly who {{CLIENT_NAME}} is.</p>
+
+    <div class="talking-point">
+      <div class="tp-label">💬 Sales Talking Point</div>
+      <p>
+        "Think of schema like a business card that only AI can read. Every time a search engine
+        or AI tool visits your site, it reads this card first. Before we built this, your site
+        had no card. Now it does — and it says everything the AI needs to know to recommend you."
+      </p>
+    </div>
+
+    <!-- Organization Schema Preview -->
+    <h3 style="margin-bottom:8px;margin-top:24px;">Organization</h3>
+    <div class="schema-block">
+<span class="sk">"@type"</span>: <span class="st">"Organization"</span><br>
+<span class="sk">"name"</span>: <span class="sv">"{{CLIENT_NAME}}"</span><br>
+<span class="sk">"url"</span>: <span class="sv">"{{CLIENT_URL}}"</span><br>
+<span class="sk">"logo"</span>: <span class="sv">"{{CLIENT_LOGO_URL}}"</span><br>
+<span class="sk">"telephone"</span>: <span class="sv">"{{CLIENT_PHONE}}"</span><br>
+<span class="sk">"sameAs"</span>: [<span class="sv">{{SOCIAL_URLS_DISPLAY}}</span>]
+    </div>
+
+    <!-- LocalBusiness Schema Preview -->
+    <h3 style="margin-bottom:8px;margin-top:24px;">LocalBusiness</h3>
+    <div class="schema-block">
+<span class="sk">"@type"</span>: <span class="st">"LocalBusiness"</span><br>
+<span class="sk">"name"</span>: <span class="sv">"{{CLIENT_NAME}}"</span><br>
+<span class="sk">"address"</span>: <span class="sv">"{{CLIENT_STREET}}, {{CLIENT_CITY}}, {{CLIENT_STATE}} {{CLIENT_ZIP}}"</span><br>
+<span class="sk">"areaServed"</span>: <span class="sv">"{{CLIENT_SERVICE_AREA}}"</span><br>
+<span class="sk">"openingHours"</span>: <span class="sv">"{{CLIENT_HOURS}}"</span><br>
+<span class="sk">"priceRange"</span>: <span class="sv">"{{CLIENT_PRICE_RANGE}}"</span>
+    </div>
+
+    <!-- FAQPage Schema Preview -->
+    <h3 style="margin-bottom:8px;margin-top:24px;">FAQPage <span style="font-weight:400;font-size:.85rem;color:#64748b;">({{FAQ_COUNT}} Q&amp;A pairs embedded)</span></h3>
+    <div class="schema-block">
+<span class="sk">"@type"</span>: <span class="st">"FAQPage"</span><br>
+<span class="sk">"mainEntity"</span>: [<br>
+&nbsp;&nbsp;{ <span class="sk">"@type"</span>: <span class="st">"Question"</span>, <span class="sk">"name"</span>: <span class="sv">"{{FAQ_Q1}}"</span> },<br>
+&nbsp;&nbsp;{ <span class="sk">"@type"</span>: <span class="st">"Question"</span>, <span class="sk">"name"</span>: <span class="sv">"{{FAQ_Q2}}"</span> },<br>
+&nbsp;&nbsp;<span style="color:#94a3b8;">... {{FAQ_COUNT}} total questions</span><br>
+]
+    </div>
+
+    <!-- Additional schema types present -->
+    <h3 style="margin-bottom:8px;margin-top:24px;">Additional Schema Blocks</h3>
+    <div class="schema-block">
+{{ADDITIONAL_SCHEMA_SUMMARY}}
+<!-- e.g.:
+"HowTo"        — "How {{CLIENT_NAME}} works: step-by-step" ({{HOWTO_STEP_COUNT}} steps)
+"Service"      — {{SERVICE_SCHEMA_COUNT}} service blocks ({{SERVICE_NAMES_LIST}})
+"BreadcrumbList" — applied to all inner pages
+"WebSite"      — homepage only
+-->
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 8 — VALIDATION STATUS
+══════════════════════════════════════════ -->
+<section id="validation">
+  <div class="container">
+    <h2 class="reveal">Schema Validation Status</h2>
+
+    <div class="talking-point">
+      <div class="tp-label">💬 Sales Talking Point</div>
+      <p>
+        "Google has a free tool that checks whether your structured data is valid.
+        We ran it on every schema block we built for {{CLIENT_NAME}} — zero errors.
+        That means Google and every major AI engine can read this data cleanly,
+        with no misinterpretation."
+      </p>
+    </div>
+
+    <div class="validation-banner" style="margin-top:24px;">
+      <div class="icon">✅</div>
+      <div>
+        <h3>Google Rich Results Test — Passed</h3>
+        <p>All {{SCHEMA_BLOCK_COUNT}} schema blocks validated with <strong>zero errors</strong> and <strong>zero warnings</strong> on {{VALIDATION_DATE}}.</p>
+        <p style="margin-top:6px;">Validated types: <strong>{{VALIDATED_TYPES_LIST}}</strong></p>
+      </div>
+    </div>
+
+    <!-- If any schema could not be validated yet, replace the above banner with: -->
+    <!--
+    <div class="validation-banner" style="background:#fef9c3;border-color:#eab308;">
+      <div class="icon">⚠️</div>
+      <div>
+        <h3 style="color:#854d0e;">Validation Pending</h3>
+        <p style="color:#854d0e;">Schema blocks are complete and embedded. Validation via Google Rich Results Test
+        must be run once the file is deployed to a public URL. Zero errors expected based on structure review.</p>
+      </div>
+    </div>
+    -->
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 9 — WHAT CHANGES AFTER AEO
+══════════════════════════════════════════ -->
+<section id="what-changes">
+  <div class="container">
+    <div class="callout reveal">
+      <h2>What Changes After This Work Is Live</h2>
+
+      <div style="margin-top:20px;">
+        <div class="tp-label" style="color:#fde68a;margin-bottom:12px;">💬 CLOSE THE ROOM WITH THIS</div>
+        <p style="opacity:.9;line-height:1.8;">
+          "Once this goes live, {{CLIENT_NAME}} will have a structured, AI-readable website
+          for the first time. Every question your customer asks — on Google, ChatGPT, Siri,
+          or Perplexity — now has a chance to surface your name instead of your competitor's.
+          We tested the before. In 90 days, we can test the after and show you the difference."
+        </p>
+      </div>
+
+      <ul style="padding-left:20px;margin-top:24px;line-height:2.2;opacity:.9;">
+        <li>{{CLIENT_NAME}} becomes citable by Google AI Overviews for <strong>{{PRIMARY_CITATION_TOPIC}}</strong></li>
+        <li>FAQPage schema enables <strong>rich result FAQ dropdowns</strong> on Google search results pages</li>
+        <li>LocalBusiness schema reinforces <strong>local pack eligibility</strong> and GBP data consistency</li>
+        <li>Service schema creates <strong>individual citation opportunities</strong> per service offered</li>
+        <li>Organization schema builds <strong>entity authority</strong> — AI engines learn who {{CLIENT_NAME}} is over time</li>
+        <li>All schema validates clean — <strong>no errors blocking indexing or AI extraction</strong></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <p>
+    Created by <strong>Mike Montes</strong> &nbsp;·&nbsp;
+    Prepared for {{CLIENT_NAME}} &nbsp;·&nbsp;
+    {{REPORT_DATE}}
+  </p>
+</footer>
+
+<script>
+/* ── FAQ accordion ── */
+function toggleFaq(btn) {
+  btn.closest('.faq-item').classList.toggle('open');
+}
+
+/* ══════════════════════════════════════════════
+   1. SCROLL REVEAL
+══════════════════════════════════════════════ */
+(function () {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); }
+    });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal, .reveal-left').forEach(el => obs.observe(el));
+})();
+
+/* ══════════════════════════════════════════════
+   2. COUNT-UP — score circle
+══════════════════════════════════════════════ */
+(function () {
+  function countUp(el, target, duration) {
+    const start = performance.now();
+    function step(now) {
+      const p = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(eased * target);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const raw = parseFloat(el.dataset.count);
+      if (isNaN(raw)) return;
+      countUp(el, raw, 1000);
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.score-circle .num, .trust-badge .tb-val').forEach(el => {
+    const n = parseFloat(el.textContent.replace(/[^0-9.]/g, ''));
+    if (!isNaN(n)) { el.dataset.count = n; el.textContent = '0'; obs.observe(el); }
+  });
+})();
+
+/* ══════════════════════════════════════════════
+   3. AI VISIBILITY CHARTS
+   Fill in 1 (cited) or 0 (not cited) per channel.
+   Order: Google AI Service, Google AI Brand,
+          ChatGPT, Perplexity, Organic, Local Pack
+══════════════════════════════════════════════ */
+const brand  = getComputedStyle(document.documentElement).getPropertyValue('--brand-primary').trim() || '#1a3c6e';
+const accent = getComputedStyle(document.documentElement).getPropertyValue('--brand-accent').trim()  || '#f4a500';
+
+// 1 = Cited / Present, 0 = Not cited — replace with real findings
+const channelScores = [
+  /* Google AI – Service  */ /* {{AI_TEST_1_SCORE}} */ 0,
+  /* Google AI – Brand    */ /* {{AI_TEST_2_SCORE}} */ 0,
+  /* ChatGPT              */ /* {{AI_TEST_3_SCORE}} */ 0,
+  /* Perplexity           */ /* {{AI_TEST_4_SCORE}} */ 0,
+  /* Organic rank         */ /* {{AI_TEST_5_SCORE}} */ 0,
+  /* Local 3-Pack         */ /* {{AI_TEST_6_SCORE}} */ 0,
+];
+const channelLabels = ['Google AI (Service)', 'Google AI (Brand)', 'ChatGPT', 'Perplexity', 'Organic', 'Local Pack'];
+
+// Radar chart — how visible the business is across all 6 channels
+new Chart(document.getElementById('aeoRadar'), {
+  type: 'radar',
+  data: {
+    labels: channelLabels,
+    datasets: [{
+      label: '{{CLIENT_NAME}} Visibility',
+      data: channelScores,
+      backgroundColor: `${brand}33`,
+      borderColor: brand,
+      pointBackgroundColor: accent,
+      pointRadius: 5,
+      borderWidth: 2
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    animation: { duration: 1200, easing: 'easeOutQuart' },
+    scales: {
+      r: {
+        min: 0, max: 1,
+        ticks: { display: false },
+        pointLabels: { font: { size: 11 } },
+        grid: { color: '#e2e8f0' }
+      }
+    },
+    plugins: { legend: { display: false } }
+  }
+});
+
+// Doughnut — cited vs not cited count
+const citedCount   = channelScores.filter(v => v === 1).length;
+const missingCount = channelScores.filter(v => v === 0).length;
+new Chart(document.getElementById('aeoDoughnut'), {
+  type: 'doughnut',
+  data: {
+    labels: ['Cited / Present', 'Not Cited'],
+    datasets: [{
+      data: [citedCount, missingCount],
+      backgroundColor: ['#22c55e', '#ef4444'],
+      borderWidth: 2,
+      borderColor: '#fff'
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    animation: { duration: 1200, easing: 'easeOutQuart' },
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 12 }, padding: 16 } }
+    },
+    cutout: '65%'
+  }
+});
+</script>
+
+</body>
+</html>

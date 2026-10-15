@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{CLIENT_NAME}} — React Functionality Specification</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+  <style>
+    :root {
+      --brand-primary: {{BRAND_PRIMARY}};
+      --brand-accent:  {{BRAND_ACCENT}};
+      --brand-dark:    {{BRAND_DARK}};
+      --brand-light:   {{BRAND_LIGHT}};
+      --brand-text:    {{BRAND_TEXT}};
+      --radius: 12px; --shadow: 0 4px 24px rgba(0,0,0,.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--brand-light); color: var(--brand-text); line-height: 1.6; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+    @media (min-width: 1024px) { .container { padding: 0 40px; } }
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid #e2e8f0; }
+    h1 { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; line-height: 1.15; }
+    h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; color: var(--brand-primary); }
+    h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; color: var(--brand-dark); }
+    p  { margin-bottom: 10px; }
+
+    .report-header { background: var(--brand-dark); color: #fff; padding: 48px 0 40px; }
+    .report-header img.logo { max-height: 60px; max-width: 220px; object-fit: contain; margin-bottom: 24px; display: block; }
+    .report-header .meta { font-size: .85rem; opacity: .7; margin-top: 8px; }
+    .dev-badge { display: inline-block; background: var(--brand-accent); color: var(--brand-dark); font-size: .75rem; font-weight: 800; padding: 4px 14px; border-radius: 99px; margin-top: 12px; }
+
+    /* ── TECH STACK ── */
+    .stack-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px,1fr)); gap: 14px; margin-top: 16px; }
+    .stack-item { background: #fff; border: 1px solid #e2e8f0; border-radius: var(--radius); padding: 16px; text-align: center; box-shadow: var(--shadow); }
+    .stack-item .stack-name { font-weight: 700; font-size: .9rem; margin-bottom: 4px; color: var(--brand-primary); }
+    .stack-item .stack-role { font-size: .78rem; color: #64748b; }
+
+    /* ── PAGE MAP TABLE ── */
+    .data-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    .data-table th { background: var(--brand-primary); color: #fff; padding: 12px 16px; text-align: left; font-weight: 700; }
+    .data-table td { padding: 12px 16px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+    .data-table tr:nth-child(even) td { background: #f8fafc; }
+    .data-table code { font-size: .82rem; background: #f1f5f9; padding: 2px 6px; border-radius: 4px; }
+
+    /* ── COMPONENT CARDS ── */
+    .component-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px,1fr)); gap: 16px; }
+    .component-card { background: #fff; border: 1px solid #e2e8f0; border-radius: var(--radius); padding: 20px 24px; box-shadow: var(--shadow); }
+    .component-card .comp-name { font-family: 'Courier New', monospace; font-size: .95rem; font-weight: 700; color: var(--brand-primary); background: #f1f5f9; display: inline-block; padding: 2px 10px; border-radius: 6px; margin-bottom: 8px; }
+    .comp-used { font-size: .75rem; color: #64748b; margin-bottom: 6px; }
+
+    /* ── FEATURE BLOCKS ── */
+    .feature-block { background: #fff; border: 1px solid #e2e8f0; border-radius: var(--radius); padding: 24px; margin-bottom: 16px; box-shadow: var(--shadow); }
+    .feature-block .feat-label { font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--brand-accent); margin-bottom: 8px; }
+    .feature-block pre { background: #1e293b; color: #e2e8f0; border-radius: 8px; padding: 20px; overflow-x: auto; font-size: .82rem; margin-top: 12px; }
+
+    /* ── ENV TABLE ── */
+    .env-table { width: 100%; border-collapse: collapse; font-size: .88rem; font-family: 'Courier New', monospace; }
+    .env-table th { background: var(--brand-dark); color: #fff; padding: 10px 16px; text-align: left; }
+    .env-table td { padding: 10px 16px; border-bottom: 1px solid #e2e8f0; }
+
+    /* ── CALLOUT ── */
+    .callout { background: var(--brand-dark); color: #fff; border-radius: var(--radius); padding: 32px; }
+    .callout h2 { color: var(--brand-accent); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── FOOTER ── */
+    .report-footer { background: var(--brand-dark); color: rgba(255,255,255,.6); text-align: center; padding: 32px 24px; font-size: .85rem; }
+    .report-footer strong { color: #fff; }
+
+    @media (max-width: 767px) { .stack-grid { grid-template-columns: 1fr 1fr; } .component-grid { grid-template-columns: 1fr; } }
+    @media print {
+      .report-header, .report-footer, .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="report-header">
+  <div class="container">
+    <img class="logo" src="{{LOGO_PATH}}" alt="{{CLIENT_NAME}} logo" />
+    <h1>React Functionality Specification<br>{{CLIENT_NAME}}</h1>
+    <p class="meta">Created by Mike Montes &nbsp;·&nbsp; {{REPORT_DATE}}</p>
+    <span class="dev-badge">Developer Handoff Document</span>
+  </div>
+</header>
+
+<!-- SECTION 1 — PROJECT OVERVIEW -->
+<section id="overview">
+  <div class="container">
+    <h2>1. Project Overview</h2>
+    <div class="feature-block reveal">
+      <div class="feat-label">Client</div>
+      <p><strong>{{CLIENT_NAME}}</strong> — {{CLIENT_INDUSTRY}}</p>
+      <p><strong>Live site:</strong> <a href="{{CLIENT_URL}}" target="_blank" rel="noopener">{{CLIENT_URL}}</a></p>
+      <p><strong>Prototype folder:</strong> {{PROTOTYPE_FOLDER}}</p>
+      <p style="margin-top:12px;">{{PROJECT_OVERVIEW_SUMMARY}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 — TECH STACK -->
+<section id="stack">
+  <div class="container">
+    <h2>2. Tech Stack</h2>
+    <div class="stack-grid reveal">
+      <div class="stack-item"><div class="stack-name">React (Vite)</div><div class="stack-role">UI framework + build tool</div></div>
+      <div class="stack-item"><div class="stack-name">React Router v6</div><div class="stack-role">Client-side routing</div></div>
+      <div class="stack-item"><div class="stack-name">Tailwind CSS</div><div class="stack-role">Utility-first styling</div></div>
+      <div class="stack-item"><div class="stack-name">react-hook-form</div><div class="stack-role">Form state + validation</div></div>
+      <div class="stack-item"><div class="stack-name">react-query</div><div class="stack-role">Data fetching + caching</div></div>
+      <div class="stack-item"><div class="stack-name">framer-motion</div><div class="stack-role">Animations + transitions</div></div>
+      <div class="stack-item"><div class="stack-name">react-helmet-async</div><div class="stack-role">SEO meta + JSON-LD injection</div></div>
+      <div class="stack-item"><div class="stack-name">{{ADDITIONAL_LIB}}</div><div class="stack-role">{{ADDITIONAL_LIB_ROLE}}</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 — PAGE MAP -->
+<section id="page-map">
+  <div class="container">
+    <h2>3. Page Map</h2>
+    <div style="overflow-x:auto;" class="reveal">
+      <table class="data-table">
+        <thead><tr><th>Prototype File</th><th>React Route</th><th>Component File</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td><code>index.html</code></td><td><code>/</code></td><td><code>src/pages/Home.jsx</code></td><td>{{HOME_NOTES}}</td></tr>
+          <tr><td><code>about.html</code></td><td><code>/about</code></td><td><code>src/pages/About.jsx</code></td><td>{{ABOUT_NOTES}}</td></tr>
+          <tr><td><code>services.html</code></td><td><code>/services</code></td><td><code>src/pages/Services.jsx</code></td><td>{{SERVICES_NOTES}}</td></tr>
+          <tr><td><code>contact.html</code></td><td><code>/contact</code></td><td><code>src/pages/Contact.jsx</code></td><td>{{CONTACT_NOTES}}</td></tr>
+          <tr><td><code>login.html</code></td><td><code>/login</code></td><td><code>src/pages/auth/Login.jsx</code></td><td>Protected redirect if authenticated</td></tr>
+          <tr><td><code>forgot-password.html</code></td><td><code>/forgot-password</code></td><td><code>src/pages/auth/ForgotPassword.jsx</code></td><td></td></tr>
+          <tr><td><code>reset-password.html</code></td><td><code>/reset-password</code></td><td><code>src/pages/auth/ResetPassword.jsx</code></td><td>Reads token from URL params</td></tr>
+          <tr><td><code>admin.html</code></td><td><code>/admin</code></td><td><code>src/pages/admin/Dashboard.jsx</code></td><td>Protected — auth required</td></tr>
+          <!-- Add additional prototype pages below -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 — COMPONENT INVENTORY -->
+<section id="components">
+  <div class="container">
+    <h2>4. Component Inventory</h2>
+    <div class="component-grid reveal">
+      <div class="component-card"><div class="comp-name">&lt;Navbar /&gt;</div><div class="comp-used">Used on: All pages</div><p style="font-size:.88rem;">Logo + nav links + hamburger on mobile. Active link state. Closes on nav click.</p></div>
+      <div class="component-card"><div class="comp-name">&lt;Footer /&gt;</div><div class="comp-used">Used on: All pages</div><p style="font-size:.88rem;">Links, contact info, social icons, legal line, Admin link.</p></div>
+      <div class="component-card"><div class="comp-name">&lt;HeroSection /&gt;</div><div class="comp-used">Used on: Home, Services, Contact</div><p style="font-size:.88rem;">60vh min, brand background, headline + subhead + CTA button.</p></div>
+      <div class="component-card"><div class="comp-name">&lt;CTABanner /&gt;</div><div class="comp-used">Used on: Home, About, Services</div><p style="font-size:.88rem;">Dark brand-color strip with headline and primary button.</p></div>
+      <div class="component-card"><div class="comp-name">&lt;ServiceCard /&gt;</div><div class="comp-used">Used on: Services, Home</div><p style="font-size:.88rem;">Icon + title + description in a responsive grid.</p></div>
+      <div class="component-card"><div class="comp-name">&lt;ReviewCard /&gt;</div><div class="comp-used">Used on: Home</div><p style="font-size:.88rem;">Star rating + quote + reviewer name.</p></div>
+      <div class="component-card"><div class="comp-name">&lt;ContactForm /&gt;</div><div class="comp-used">Used on: Contact</div><p style="font-size:.88rem;">Name, email, phone, message — react-hook-form. POST to /api/contact (SendGrid).</p></div>
+      <!-- Add additional components below -->
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 — INTERACTIVE FEATURES -->
+<section id="features">
+  <div class="container">
+    <h2>5. Interactive Features</h2>
+    <div class="feature-block reveal">
+      <div class="feat-label">Feature: Contact Form Submission</div>
+      <p><strong>Prototype:</strong> showPrototypeModal("Thanks! We'll be in touch shortly.")</p>
+      <p><strong>React:</strong> POST to <code>/api/contact</code> via SendGrid. Success → replace form with &lt;SuccessMessage /&gt;. Error → inline banner, fields preserved.</p>
+      <pre><code>// src/components/ContactForm.jsx
+const onSubmit = async (data) => {
+  const res = await fetch('/api/contact', { method:'POST', body: JSON.stringify(data) });
+  if (res.ok) setSubmitted(true);
+  else setError('Something went wrong. Please try again.');
+};</code></pre>
+    </div>
+    <div class="feature-block reveal">
+      <div class="feat-label">Feature: {{FEATURE_2_NAME}}</div>
+      <p><strong>Prototype:</strong> {{FEATURE_2_PROTOTYPE}}</p>
+      <p><strong>React:</strong> {{FEATURE_2_REACT}}</p>
+    </div>
+    <!-- Duplicate feature-block for each showPrototypeModal() in the prototype -->
+  </div>
+</section>
+
+<!-- SECTION 6 — FORMS & VALIDATION -->
+<section id="forms">
+  <div class="container">
+    <h2>6. Forms and Validation</h2>
+    <div class="feature-block reveal">
+      <div class="feat-label">Form: Contact</div>
+      <p><strong>Fields:</strong> name (string, required), email (email, required), phone (tel, optional), message (string, min 20 chars, required)</p>
+      <p><strong>Submit handler:</strong> POST /api/contact → SendGrid template <code>{{SENDGRID_TEMPLATE_ID}}</code></p>
+      <p><strong>Success:</strong> Replace form with confirmation card. <strong>Error:</strong> Inline banner above submit.</p>
+    </div>
+    <!-- Add a block per form in the prototype -->
+  </div>
+</section>
+
+<!-- SECTION 7 — AUTH FLOW -->
+<section id="auth">
+  <div class="container">
+    <h2>7. Auth Flow</h2>
+    <div class="feature-block reveal">
+      <p><strong>Type:</strong> {{AUTH_TYPE}} (JWT / session-based)</p>
+      <p><strong>Provider:</strong> AuthContext wraps the entire app. <code>useAuth()</code> hook exposes user, login(), logout(), isLoading.</p>
+      <p><strong>Protected routes:</strong> &lt;ProtectedRoute /&gt; wrapper — redirects to /login if unauthenticated.</p>
+      <p><strong>Token storage:</strong> httpOnly cookie (preferred) or localStorage — confirm with backend team.</p>
+      <pre><code>// src/context/AuthContext.jsx — pattern
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+  const login = async (email, password) => { /* POST /api/auth/login */ };
+  const logout = () => { /* DELETE /api/auth/session */ setUser(null); };
+  return &lt;AuthContext.Provider value={{ user, login, logout }}&gt;{children}&lt;/AuthContext.Provider&gt;;
+};</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 8 — ADMIN PANEL -->
+<section id="admin">
+  <div class="container">
+    <h2>8. Admin Panel</h2>
+    <div class="feature-block reveal">
+      <p>Admin fields map to the following environment variables stored on the server:</p>
+      <table class="env-table" style="margin-top:12px;">
+        <thead><tr><th>Admin Field</th><th>Env Variable</th><th>Notes</th></tr></thead>
+        <tbody>
+          <tr><td>Google Analytics ID</td><td>VITE_GA_MEASUREMENT_ID</td><td>Injected via react-ga4</td></tr>
+          <tr><td>GSC Verification Tag</td><td>VITE_GSC_META_TAG</td><td>Rendered via react-helmet-async on &lt;head&gt;</td></tr>
+          <tr><td>GTM Container ID</td><td>VITE_GTM_ID</td><td>Script injected in index.html</td></tr>
+          <tr><td>SendGrid API Key</td><td>SENDGRID_API_KEY</td><td>Server-side only — never expose in client bundle</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9 — SEO + AEO INTEGRATION -->
+<section id="seo-aeo">
+  <div class="container">
+    <h2>9. SEO and AEO Integration</h2>
+    <div class="feature-block reveal">
+      <p><strong>JSON-LD schema:</strong> Inject per-page schema via react-helmet-async. One &lt;script type="application/ld+json"&gt; per schema type.</p>
+      <p><strong>GA4:</strong> react-ga4 — initialize in main.jsx with <code>VITE_GA_MEASUREMENT_ID</code>. Track page views on route change.</p>
+      <p><strong>GTM:</strong> Script tag in index.html. Noscript fallback in &lt;body&gt;.</p>
+      <pre><code>// src/main.jsx
+import ReactGA from 'react-ga4';
+ReactGA.initialize(import.meta.env.VITE_GA_MEASUREMENT_ID);
+router.subscribe(() => ReactGA.send('pageview'));</code></pre>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 10 — RESPONSIVE BREAKPOINTS -->
+<section id="breakpoints">
+  <div class="container">
+    <h2>10. Responsive Breakpoints</h2>
+    <div style="overflow-x:auto;" class="reveal">
+      <table class="data-table">
+        <thead><tr><th>Breakpoint</th><th>Tailwind Token</th><th>Prototype Rule</th></tr></thead>
+        <tbody>
+          <tr><td>375px — Mobile</td><td><code>default</code></td><td>Single column, hamburger nav, 20px gutters</td></tr>
+          <tr><td>768px — Tablet</td><td><code>md:</code></td><td>2-column grids, horizontal nav, 32px gutters</td></tr>
+          <tr><td>1024px — Desktop</td><td><code>lg:</code></td><td>3-column grids, 40px gutters</td></tr>
+          <tr><td>1400px — Hard ceiling</td><td><code>max-w-[1400px]</code></td><td>Container max-width — no content wider than this</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 11 — DEPLOYMENT -->
+<section id="deploy">
+  <div class="container">
+    <h2>11. Deployment Notes</h2>
+    <div class="feature-block reveal">
+      <p><strong>Recommended host:</strong> {{DEPLOY_HOST}} (Vercel / Netlify / custom VPS)</p>
+      <p><strong>Build command:</strong> <code>npm run build</code> — output in <code>dist/</code></p>
+      <p><strong>Required env variables:</strong></p>
+      <table class="env-table" style="margin-top:12px;">
+        <thead><tr><th>Variable</th><th>Value Source</th></tr></thead>
+        <tbody>
+          <tr><td>VITE_GA_MEASUREMENT_ID</td><td>Admin panel → Google Analytics</td></tr>
+          <tr><td>VITE_GTM_ID</td><td>Admin panel → Google Tag Manager</td></tr>
+          <tr><td>VITE_GSC_META_TAG</td><td>Admin panel → Search Console</td></tr>
+          <tr><td>SENDGRID_API_KEY</td><td>Admin panel → SendGrid (server env only)</td></tr>
+          <tr><td>{{CUSTOM_ENV_1}}</td><td>{{CUSTOM_ENV_1_SOURCE}}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="report-footer">
+  <p>Created by <strong>Mike Montes</strong> &nbsp;·&nbsp; Prepared for {{CLIENT_NAME}} &nbsp;·&nbsp; {{REPORT_DATE}}</p>
+</footer>
+
+<script>
+(function () {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+})();
+</script>
+</body>
+</html>

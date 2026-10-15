@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Page Not Found — {{CLIENT_NAME}}</title>
+  <link rel="icon" href="img/favicon.ico" />
+  <style>
+    :root {
+      --brand-primary: {{BRAND_PRIMARY}};
+      --brand-accent:  {{BRAND_ACCENT}};
+      --brand-dark:    {{BRAND_DARK}};
+      --brand-light:   {{BRAND_LIGHT}};
+      --brand-text:    {{BRAND_TEXT}};
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--brand-light);
+      color: var(--brand-text);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── NAV ── */
+    nav {
+      width: 100%;
+      background: var(--brand-dark);
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    nav img.logo { max-height: 48px; max-width: 160px; object-fit: contain; }
+    nav a.home-link {
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      font-size: .85rem;
+      font-weight: 600;
+      padding: 8px 16px;
+      border: 1px solid rgba(255,255,255,.3);
+      border-radius: 6px;
+      transition: all .2s;
+    }
+    nav a.home-link:hover { background: rgba(255,255,255,.1); color: #fff; }
+
+    /* ── MAIN ── */
+    main {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 60px 20px;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: 16px;
+      box-shadow: 0 8px 40px rgba(0,0,0,.10);
+      padding: 56px 48px;
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .error-number {
+      font-size: clamp(5rem, 18vw, 9rem);
+      font-weight: 900;
+      line-height: 1;
+      color: var(--brand-primary);
+      opacity: .12;
+      letter-spacing: -.02em;
+      user-select: none;
+    }
+
+    .icon {
+      font-size: 3.5rem;
+      margin: -24px 0 20px;
+      display: block;
+    }
+
+    h1 {
+      font-size: clamp(1.3rem, 3vw, 1.8rem);
+      font-weight: 800;
+      color: var(--brand-dark);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .tagline {
+      font-size: 1rem;
+      color: #64748b;
+      margin-bottom: 8px;
+      line-height: 1.6;
+    }
+
+    .clever-line {
+      font-size: .95rem;
+      color: #94a3b8;
+      font-style: italic;
+      margin-bottom: 36px;
+    }
+
+    /* ── PRIMARY BUTTON ──
+       Dark background → white text (always contrasting).
+       Hover: invert to white bg + brand text + lift.
+       Swap the :hover block for the industry-appropriate
+       animation from the Button Standard in README.md.    */
+    .btn-home {
+      display: inline-block;
+      padding: 12px 28px;
+      border-radius: 6px;
+      border: 2px solid var(--brand-primary);
+      background: var(--brand-primary);
+      color: #ffffff;
+      font-weight: 600;
+      font-size: .95rem;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .22s ease, color .22s ease, transform .18s ease, box-shadow .22s ease;
+      margin-bottom: 16px;
+    }
+    .btn-home:hover {
+      background: #ffffff;
+      color: var(--brand-primary);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0,0,0,.16);
+    }
+
+    /* ── OUTLINE / SECONDARY BUTTONS (quick links) ──
+       Transparent bg → brand text.
+       Hover: fills to brand bg + white text + lift.    */
+    .quick-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 24px;
+    }
+    .quick-links a {
+      display: inline-block;
+      padding: 8px 18px;
+      border-radius: 6px;
+      border: 2px solid var(--brand-primary);
+      background: transparent;
+      color: var(--brand-primary);
+      font-size: .85rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .05em;
+      text-decoration: none;
+      cursor: pointer;
+      transition: background .22s ease, color .22s ease, transform .18s ease, box-shadow .22s ease;
+    }
+    .quick-links a:hover {
+      background: var(--brand-primary);
+      color: #ffffff;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(0,0,0,.13);
+    }
+
+    .divider {
+      width: 48px; height: 3px;
+      background: var(--brand-accent);
+      border-radius: 99px;
+      margin: 28px auto;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 20px;
+      font-size: .78rem;
+      color: #94a3b8;
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 767px) {
+      .card { padding: 40px 24px; }
+    }
+
+    /* ── PRINT ── */
+    @media print { nav, footer { display: none; } }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <img class="logo" src="img/logo.png" alt="{{CLIENT_NAME}}" />
+    <a class="home-link" href="index.html">← Back to Home</a>
+  </nav>
+
+  <main>
+    <div class="card">
+
+      <div class="error-number">404</div>
+
+      <!-- ICON: pick one that fits the industry — see README for industry icon guide -->
+      <span class="icon">{{ICON_EMOJI}}</span>
+
+      <!-- HEADLINE: clever, industry-specific, uses client name or trade -->
+      <h1>{{HEADLINE}}</h1>
+
+      <!-- TAGLINE: one direct sentence explaining what happened -->
+      <p class="tagline">{{TAGLINE}}</p>
+
+      <!-- CLEVER LINE: dry, brand-appropriate humor — one sentence max -->
+      <p class="clever-line">{{CLEVER_LINE}}</p>
+
+      <div class="divider"></div>
+
+      <a class="btn-home" href="index.html">Take Me Home</a>
+
+      <!-- QUICK LINKS: 3–4 of the most useful pages for this client -->
+      <div class="quick-links">
+        <a href="services.html">{{QUICK_LINK_1_LABEL}}</a>
+        <a href="about.html">{{QUICK_LINK_2_LABEL}}</a>
+        <a href="contact.html">{{QUICK_LINK_3_LABEL}}</a>
+        <!-- Add a 4th link if the client has a booking/quote page -->
+        <!-- <a href="contact.html">{{QUICK_LINK_4_LABEL}}</a> -->
+      </div>
+
+    </div>
+  </main>
+
+  <footer>
+    &copy; {{CURRENT_YEAR}} {{CLIENT_NAME}} &nbsp;·&nbsp; All rights reserved
+  </footer>
+
+</body>
+</html>
