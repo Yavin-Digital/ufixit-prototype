@@ -43,7 +43,7 @@ STORES=[('Arlington','817.472.7740','8174727740','4621 S Cooper St Suite 127, Ar
 ('Tyler','903.592.5836','9035925836','2606 E 5th St, Tyler, TX 75701','9am–6pm Mon–Fri · 9am–4pm Sat','contact-us-tyler-tx.html')]
 idx=open('/workspace/ufixit-ecom/site.orig/index.html').read()
 BANNER=idx[idx.index('<!--\n  ╔'):idx.index('<header class="site-header">')].replace('only here to show what is possible.','only here to show what is possible. Checkout is a mock: payment provider, tax and shipping rates are TBD.').replace('font-size: .78rem; line-height: 1.4;','font-size: .9rem; line-height: 1.4;').replace('font-size: .78rem; font-weight: 800;','font-size: .9rem; font-weight: 800; min-height:48px; display:inline-flex; align-items:center;').replace('font-size:.72rem;','font-size:.875rem;')
-FONTS='<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />'
+FONTS='<link rel="preconnect" href="https://fonts.googleapis.com" /><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin /><link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" onload="this.onload=null;this.rel=\'stylesheet\'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" /></noscript>'
 NAVTOPS=['refrigerator-parts','washer-parts','dryer-parts','range-oven-parts','dishwasher-parts','air-conditioner-parts','furnace-parts']
 HEADER='''<header class="sh">
 <div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
@@ -68,7 +68,7 @@ def page(fn,title,desc,body,extra_head='',bodycls=''):
 <html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>{E(title)}</title><meta name="description" content="{E(desc)}" /><meta property="og:title" content="{E(title)}" /><meta property="og:description" content="{E(desc)}" /><meta property="og:image" content="img/photo/hero-parts.webp" />
 <link rel="icon" href="img/favicon-192.png" sizes="192x192" />{FONTS}<link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />{extra_head}</head>
-<body class="{bodycls}"><a class="skip" href="#main">Skip to content</a>{BANNER}{HEADER}<main id="main">{body}</main>{FOOTER}<script src="js/store.js" defer></script></body></html>'''
+<body class="{bodycls}"><a class="skip" href="#main">Skip to content</a>{BANNER}{HEADER}<main id="main">{body}</main>{FOOTER}<script>(function(){{var b=document.getElementById('proto-banner');if(b&&matchMedia('(max-width:820px), (max-height:500px) and (orientation:landscape)').matches)document.body.appendChild(b)}})()</script><script src="js/store.js" defer></script></body></html>'''
     open(S+'/'+fn,'w').write(out)
 def thumb(p):
     return p['imgs'][0][0] if p['imgs'] else 'img/logo.png'
@@ -195,7 +195,7 @@ home=f'''<section class="hero"><div class="w"><p class="eyebrow">Appliance parts
 <div class="picker" id="pick"><p class="pick-h">Step 1 · Pick your store</p><div class="pick-grid">{PICKS}</div>
 <div class="pick-row"><button type="button" class="btn-ghost geo" data-geo>Use my location</button><a class="btn-buy" href="shop.html?store=ship">Shop all parts, shipped to you</a></div><p class="geo-msg" data-geo-msg aria-live="polite"></p></div>
 {trustrow()}</div></section>
-<section class="sec" id="best-sellers"><div class="w"><div class="row-head"><div><p class="eyebrow">Popular right now</p><h2>Best sellers</h2><p style="font:.875rem system-ui;color:var(--muted);margin:0">Ranked by the live store’s popularity sort on ufixit.com.</p></div><a class="btn-buy" style="padding:12px 20px" href="shop.html">Shop all {len(P)} parts</a></div><div class="grid">{"".join(card(p,i<4) for i,p in enumerate(best[:8]))}</div></div></section>
+<section class="sec" id="best-sellers"><div class="w"><div class="row-head"><div><p class="eyebrow">Popular right now</p><h2>Best sellers</h2><p class="best-sub" style="font:1rem system-ui;color:var(--muted);margin:0">Ranked by the live store’s popularity sort on ufixit.com.</p></div><a class="btn-buy" style="padding:12px 20px" href="shop.html">Shop all {len(P)} parts</a></div><div class="grid">{"".join(card(p,i<4) for i,p in enumerate(best[:8]))}</div></div></section>
 <section class="sec sec--tint"><div class="w"><div class="row-head"><h2>Shop by appliance</h2><a href="find-your-brand.html">Or shop by brand</a></div><div class="cats">{tiles}</div></div></section>
 <section class="sec"><div class="w"><p class="eyebrow">Right part, first time</p><h2>How to choose the right part</h2><div class="steps3">
 <div><h3>1. Find your model number</h3><p>It’s on a tag inside the door, on the back or under the lid. <a href="diy-tips-how-to-find-your-appliance-model-number-and-order-the-right-part.html">Where to look</a></p></div>
@@ -205,7 +205,7 @@ home=f'''<section class="hero"><div class="w"><p class="eyebrow">Appliance parts
 <section class="sec sec--tint"><div class="w"><p class="eyebrow">Real reviews from ufixit.com</p><h2>Why Texans come back</h2>{quotes()}</div></section>
 <section class="trustbar"><div class="w">{trustrow()}</div></section>
 {sect('why')}{sect('stores')}{sect('diy')}'''
-page('index.html','Appliance Parts Store Texas — Shop Online | U-FIX-IT Appliance Parts','Shop appliance parts online from U-FIX-IT: refrigerator, washer, dryer, range and dishwasher parts. Free diagnosis help, same-day shipping on in-stock parts, 4 Texas stores.',home)
+page('index.html','Appliance Parts Store Texas — Shop Online | U-FIX-IT Appliance Parts','Shop appliance parts online from U-FIX-IT: refrigerator, washer, dryer, range and dishwasher parts. Free diagnosis help, same-day shipping on in-stock parts, 4 Texas stores.',home,'<link rel="preload" as="image" href="img/photo/hero-parts-m.webp" media="(max-width:820px)" fetchpriority="high" /><link rel="preload" as="image" href="img/photo/hero-parts.webp" media="(min-width:821px)" fetchpriority="high" />')
 # ---------- how to choose
 htc=f'''<div class="w" style="padding:20px 0 60px"><p class="crumbs"><a href="index.html">Home</a> / How to choose</p><h1>How to choose the right appliance part</h1>
 <p style="font:1.05rem/1.6 system-ui;max-width:46rem">The fastest way to the right part is the part number on your old part, or your appliance’s model number. Here’s how to get there, and the three ways to buy.</p>
@@ -281,6 +281,6 @@ for f in glob.glob(S+'/*.html'):
     h=h.replace('<link rel="stylesheet" href="css/site.css" />','<link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />',1)
     h=re.sub(r'<header class="site-header">.*?</header>',lambda m:HEADER,h,count=1,flags=re.S)
     h=re.sub(r'<footer class="site-footer">.*?</footer>',lambda m:FOOTER,h,count=1,flags=re.S)
-    h=h.replace('</body>','<script src="js/store.js" defer></script></body>',1); open(f,'w').write(h); n+=1
+    h=h.replace('</body>','<script>(function(){var b=document.getElementById(\'proto-banner\');if(b&&matchMedia(\'(max-width:820px), (max-height:500px) and (orientation:landscape)\').matches)document.body.appendChild(b)})()</script><script src="js/store.js" defer></script></body>',1); open(f,'w').write(h); n+=1
 print('products',len(P),'retrofit',n, Counter(p['brand'] for p in P).most_common(8))
 json.dump([{k:p[k] for k in ('id','n','sku','c','top','brand','url')} for p in P],open(S+'/references/catalog-snapshot.json','w'))

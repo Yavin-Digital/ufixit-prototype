@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{CLIENT_NAME}} — Social Media Review</title>
+  <style>
+    :root {
+      --brand-primary: {{BRAND_PRIMARY}};
+      --brand-accent:  {{BRAND_ACCENT}};
+      --brand-dark:    {{BRAND_DARK}};
+      --brand-light:   {{BRAND_LIGHT}};
+      --brand-text:    {{BRAND_TEXT}};
+      --green: #22c55e; --green-bg: #dcfce7; --green-text: #166534;
+      --yellow: #eab308; --yellow-bg: #fef9c3; --yellow-text: #854d0e;
+      --red: #ef4444; --red-bg: #fee2e2; --red-text: #991b1b;
+      --radius: 12px; --shadow: 0 4px 24px rgba(0,0,0,.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--brand-light); color: var(--brand-text); line-height: 1.6; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+    @media (min-width: 1024px) { .container { padding: 0 40px; } }
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid #e2e8f0; }
+    h1 { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; line-height: 1.15; }
+    h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; color: var(--brand-primary); }
+    h3 { font-size: 1rem; font-weight: 700; margin-bottom: 6px; }
+    p  { margin-bottom: 10px; }
+
+    .report-header { background: var(--brand-dark); color: #fff; padding: 48px 0 40px; }
+    .report-header img.logo { max-height: 60px; max-width: 220px; object-fit: contain; margin-bottom: 24px; display: block; }
+    .report-header .meta { font-size: .85rem; opacity: .7; margin-top: 8px; }
+
+    /* ── SCORE HERO ── */
+    .score-hero {
+      background: var(--brand-primary); color: #fff; border-radius: var(--radius);
+      padding: 40px; display: grid; grid-template-columns: auto 1fr; gap: 32px; align-items: center;
+    }
+    .score-circle {
+      width: 120px; height: 120px; border-radius: 50%; border: 6px solid var(--brand-accent);
+      display: flex; flex-direction: column; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .score-circle .num { font-size: 2.4rem; font-weight: 900; line-height: 1; }
+    .score-circle .denom { font-size: .85rem; opacity: .7; }
+    .score-label { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .stage-tag { display: inline-block; background: var(--brand-accent); color: var(--brand-dark); font-size: .75rem; font-weight: 800; padding: 3px 10px; border-radius: 99px; margin-left: 8px; vertical-align: middle; }
+    .hero-stats { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px; }
+    .hero-stat .val { font-size: 1.4rem; font-weight: 800; }
+    .hero-stat .lbl { font-size: .75rem; opacity: .7; }
+
+    /* ── PLATFORM TABLE ── */
+    .platform-table { width: 100%; border-collapse: collapse; margin-top: 16px; font-size: .9rem; }
+    .platform-table th { background: var(--brand-primary); color: #fff; padding: 12px 16px; text-align: left; font-weight: 700; }
+    .platform-table td { padding: 12px 16px; border-bottom: 1px solid #e2e8f0; vertical-align: top; }
+    .platform-table tr:last-child td { border-bottom: none; }
+    .platform-table tr:nth-child(even) td { background: #f8fafc; }
+    .pill { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: .75rem; font-weight: 700; }
+    .pill.active  { background: var(--green-bg);  color: var(--green-text); }
+    .pill.partial { background: var(--yellow-bg); color: var(--yellow-text); }
+    .pill.missing { background: var(--red-bg);    color: var(--red-text); }
+
+    /* ── SCORE BREAKDOWN ── */
+    .breakdown-item { margin-bottom: 20px; }
+    .breakdown-header { display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 600; }
+    .bar-track { background: #e2e8f0; border-radius: 99px; height: 12px; overflow: hidden; }
+    .bar-fill { height: 100%; border-radius: 99px; transition: width 1.2s ease; }
+    .bar-fill.green { background: var(--green); }
+    .bar-fill.yellow { background: var(--yellow); }
+    .bar-fill.red { background: var(--red); }
+    .bar-note { font-size: .8rem; color: #64748b; margin-top: 4px; }
+
+    /* ── TALKING POINT ── */
+    .talking-point { background: #fffbeb; border: 1px solid #fde68a; border-left: 4px solid #f59e0b; border-radius: 8px; padding: 14px 18px; margin-bottom: 20px; font-size: .88rem; }
+    .talking-point .tp-label { font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: #92400e; margin-bottom: 6px; }
+
+    /* ── GAP LIST ── */
+    .gap-list { list-style: none; display: grid; gap: 12px; }
+    .gap-list li { background: #fff; border: 1px solid #e2e8f0; border-left: 4px solid var(--brand-accent); border-radius: var(--radius); padding: 16px 20px; box-shadow: var(--shadow); }
+
+    /* ── COMPETITOR TABLE ── */
+    .comp-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    .comp-table th { background: var(--brand-dark); color: #fff; padding: 10px 14px; text-align: left; }
+    .comp-table td { padding: 10px 14px; border-bottom: 1px solid #e2e8f0; }
+
+    /* ── CHART CANVAS ── */
+    .chart-wrap { max-width: 700px; margin: 0 auto 32px; }
+
+    /* ── CALLOUT ── */
+    .callout { background: var(--brand-dark); color: #fff; border-radius: var(--radius); padding: 32px; }
+    .callout h2 { color: var(--brand-accent); }
+
+    /* ── FOOTER ── */
+    .report-footer { background: var(--brand-dark); color: rgba(255,255,255,.6); text-align: center; padding: 32px 24px; font-size: .85rem; }
+    .report-footer strong { color: #fff; }
+
+    /* ── REVEAL ── */
+    .reveal, .reveal-left, .reveal-right { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal-left { transform: translateX(-28px); }
+    .reveal-right { transform: translateX(28px); }
+    .reveal.visible, .reveal-left.visible, .reveal-right.visible { opacity: 1; transform: none; }
+
+    @media (max-width: 767px) {
+      .score-hero { grid-template-columns: 1fr; }
+      .platform-table { font-size: .78rem; }
+      .platform-table th, .platform-table td { padding: 8px 10px; }
+    }
+    @media print {
+      .report-header, .report-footer, .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="report-header">
+  <div class="container">
+    <img class="logo" src="{{LOGO_PATH}}" alt="{{CLIENT_NAME}} logo" />
+    <h1>Social Media Review<br>{{CLIENT_NAME}}</h1>
+    <p class="meta">Created by Mike Montes &nbsp;·&nbsp; {{REPORT_DATE}} &nbsp;·&nbsp; Confidential</p>
+  </div>
+</header>
+
+<!-- SECTION 1 — OVERALL SOCIAL PRESENCE SCORE -->
+<section id="score">
+  <div class="container">
+    <h2>Overall Social Presence Score</h2>
+    <div class="score-hero reveal">
+      <div class="score-circle">
+        <span class="num">{{SOCIAL_SCORE}}</span>
+        <span class="denom">/ 100</span>
+      </div>
+      <div>
+        <div class="score-label">{{SOCIAL_SCORE_LABEL}} <span class="stage-tag">{{SOCIAL_STAGE}}</span></div>
+        <p>{{SOCIAL_SCORE_SUMMARY}}</p>
+        <div class="hero-stats">
+          <div class="hero-stat"><div class="val">{{PLATFORMS_ACTIVE}}</div><div class="lbl">Active Platforms</div></div>
+          <div class="hero-stat"><div class="val">{{TOTAL_FOLLOWERS}}</div><div class="lbl">Total Followers</div></div>
+          <div class="hero-stat"><div class="val">{{LAST_POST_DAYS}}</div><div class="lbl">Days Since Last Post</div></div>
+          <div class="hero-stat"><div class="val">{{AVG_ENGAGEMENT}}</div><div class="lbl">Avg Engagement</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 — PLATFORM AUDIT TABLE -->
+<section id="platforms">
+  <div class="container">
+    <h2>Platform Audit</h2>
+    <div class="talking-point">
+      <div class="tp-label">Sales Talking Point</div>
+      <p>"Here's every platform we checked — what's active, what's stale, and what's completely missing. Every blank row is a place a competitor already owns."</p>
+    </div>
+    <div style="overflow-x:auto;" class="reveal">
+      <table class="platform-table">
+        <thead>
+          <tr>
+            <th>Platform</th><th>Handle</th><th>Followers</th><th>Last Post</th>
+            <th>Avg Engagement</th><th>Profile Complete?</th><th>Status</th><th>Notes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- ── GOING WELL ROW ── -->
+          <tr>
+            <td><strong>Facebook</strong></td>
+            <td>{{FB_HANDLE}}</td><td>{{FB_FOLLOWERS}}</td><td>{{FB_LAST_POST}}</td>
+            <td>{{FB_ENGAGEMENT}}</td>
+            <td><span class="pill active">Complete</span></td>
+            <td><span class="pill active">Active</span></td>
+            <td>{{FB_NOTES}}</td>
+          </tr>
+          <!-- ── FLAT ROW ── -->
+          <tr>
+            <td><strong>Instagram</strong></td>
+            <td>{{IG_HANDLE}}</td><td>{{IG_FOLLOWERS}}</td><td>{{IG_LAST_POST}}</td>
+            <td>{{IG_ENGAGEMENT}}</td>
+            <td><span class="pill partial">Partial</span></td>
+            <td><span class="pill partial">Infrequent</span></td>
+            <td>{{IG_NOTES}}</td>
+          </tr>
+          <!-- ── MISSING ROW ── -->
+          <tr>
+            <td><strong>TikTok</strong></td>
+            <td>Not found</td><td>—</td><td>—</td><td>—</td>
+            <td><span class="pill missing">No profile</span></td>
+            <td><span class="pill missing">Missing</span></td>
+            <td>{{TIKTOK_NOTES}}</td>
+          </tr>
+          <!-- ADD MORE ROWS AS NEEDED -->
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Chart: follower comparison -->
+    <div class="chart-wrap reveal" style="margin-top:40px;">
+      <canvas id="followerChart" height="280"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 3 — SCORE BREAKDOWN -->
+<section id="breakdown">
+  <div class="container">
+    <h2>Score Breakdown</h2>
+    <div class="breakdown-item reveal">
+      <div class="breakdown-header"><span>Platform Coverage</span><span>{{COVERAGE_SCORE}} / 25</span></div>
+      <div class="bar-track"><div class="bar-fill {{COVERAGE_COLOR}}" style="width:{{COVERAGE_PCT}}%"></div></div>
+      <p class="bar-note">{{COVERAGE_NOTE}}</p>
+    </div>
+    <div class="breakdown-item reveal">
+      <div class="breakdown-header"><span>Posting Consistency</span><span>{{POSTING_SCORE}} / 25</span></div>
+      <div class="bar-track"><div class="bar-fill {{POSTING_COLOR}}" style="width:{{POSTING_PCT}}%"></div></div>
+      <p class="bar-note">{{POSTING_NOTE}}</p>
+    </div>
+    <div class="breakdown-item reveal">
+      <div class="breakdown-header"><span>Brand Alignment</span><span>{{BRAND_SCORE}} / 25</span></div>
+      <div class="bar-track"><div class="bar-fill {{BRAND_COLOR}}" style="width:{{BRAND_PCT}}%"></div></div>
+      <p class="bar-note">{{BRAND_NOTE}}</p>
+    </div>
+    <div class="breakdown-item reveal">
+      <div class="breakdown-header"><span>Engagement Quality</span><span>{{ENGAGEMENT_SCORE}} / 25</span></div>
+      <div class="bar-track"><div class="bar-fill {{ENGAGEMENT_COLOR}}" style="width:{{ENGAGEMENT_PCT}}%"></div></div>
+      <p class="bar-note">{{ENGAGEMENT_NOTE}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 4 — BRAND CONSISTENCY REVIEW -->
+<section id="brand-consistency">
+  <div class="container">
+    <h2>Brand Consistency Review</h2>
+    <ul class="gap-list reveal">
+      <li><strong>Logo consistency:</strong> {{LOGO_CONSISTENCY_NOTE}}</li>
+      <li><strong>Bio / About consistency:</strong> {{BIO_CONSISTENCY_NOTE}}</li>
+      <li><strong>Handle consistency:</strong> {{HANDLE_CONSISTENCY_NOTE}}</li>
+      <li><strong>Tone of voice:</strong> {{TONE_CONSISTENCY_NOTE}}</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 5 — CONTENT PILLAR ANALYSIS -->
+<section id="content-pillars">
+  <div class="container">
+    <h2>Content Pillar Analysis</h2>
+    <p>Based on the last 30–60 posts across all active platforms, {{CLIENT_NAME}} posts primarily about:</p>
+    <ul class="gap-list reveal">
+      <li><strong>Pillar 1 — {{PILLAR_1_NAME}}:</strong> {{PILLAR_1_DESCRIPTION}}</li>
+      <li><strong>Pillar 2 — {{PILLAR_2_NAME}}:</strong> {{PILLAR_2_DESCRIPTION}}</li>
+      <li><strong>Pillar 3 — {{PILLAR_3_NAME}}:</strong> {{PILLAR_3_DESCRIPTION}}</li>
+    </ul>
+    <div class="talking-point" style="margin-top:24px;">
+      <div class="tp-label">Sales Talking Point</div>
+      <p>"{{PILLAR_TALKING_POINT}}"</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6 — COMPETITOR SOCIAL COMPARISON -->
+<section id="competitor">
+  <div class="container">
+    <h2>Competitor Social Comparison</h2>
+    <div style="overflow-x:auto;" class="reveal">
+      <table class="comp-table">
+        <thead>
+          <tr><th>Business</th><th>Best Platform</th><th>Followers</th><th>Post Frequency</th><th>Engagement</th><th>Advantage</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>{{CLIENT_NAME}}</strong></td><td>{{CLIENT_BEST_PLATFORM}}</td><td>{{CLIENT_TOTAL_FOLLOWERS}}</td><td>{{CLIENT_POST_FREQ}}</td><td>{{CLIENT_AVG_ENG}}</td><td>—</td></tr>
+          <tr><td>{{COMP_1_NAME}}</td><td>{{COMP_1_PLATFORM}}</td><td>{{COMP_1_FOLLOWERS}}</td><td>{{COMP_1_FREQ}}</td><td>{{COMP_1_ENG}}</td><td>{{COMP_1_ADV}}</td></tr>
+          <tr><td>{{COMP_2_NAME}}</td><td>{{COMP_2_PLATFORM}}</td><td>{{COMP_2_FOLLOWERS}}</td><td>{{COMP_2_FREQ}}</td><td>{{COMP_2_ENG}}</td><td>{{COMP_2_ADV}}</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7 — GAP SUMMARY -->
+<section id="gaps">
+  <div class="container">
+    <h2>Gap Summary</h2>
+    <ul class="gap-list reveal">
+      <li>{{GAP_1}}</li>
+      <li>{{GAP_2}}</li>
+      <li>{{GAP_3}}</li>
+      <!-- Add gaps from research -->
+    </ul>
+    <div class="callout reveal" style="margin-top:32px;">
+      <h2>The Opportunity</h2>
+      <p style="opacity:.85;margin-top:12px;">{{SOCIAL_OPPORTUNITY_STATEMENT}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="report-footer">
+  <p>Created by <strong>Mike Montes</strong> &nbsp;·&nbsp; Prepared for {{CLIENT_NAME}} &nbsp;·&nbsp; {{REPORT_DATE}}</p>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+<script>
+// ── SCROLL REVEAL ──
+(function () {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+})();
+
+// ── COUNT-UP ──
+(function () {
+  function countUp(el, target, dur) {
+    const start = performance.now();
+    function step(now) {
+      const p = Math.min((now - start) / dur, 1);
+      const e = 1 - Math.pow(1 - p, 3);
+      el.textContent = String(target).includes('.') ? (e * target).toFixed(1) : Math.round(e * target);
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target, raw = el.dataset.count;
+      if (raw === undefined) return;
+      countUp(el, parseFloat(raw), 1200); obs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+  document.querySelectorAll('.score-circle .num, .hero-stat .val').forEach(el => {
+    const num = parseFloat(el.textContent.replace(/[^0-9.]/g, ''));
+    if (!isNaN(num)) { el.dataset.count = num; el.textContent = '0'; obs.observe(el); }
+  });
+})();
+
+// ── FOLLOWER CHART ──
+const brand  = getComputedStyle(document.documentElement).getPropertyValue('--brand-primary').trim() || '#1a3c6e';
+const accent = getComputedStyle(document.documentElement).getPropertyValue('--brand-accent').trim()  || '#f4a500';
+new Chart(document.getElementById('followerChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Facebook', 'Instagram', 'TikTok', 'LinkedIn', 'YouTube' /* match platform table */],
+    datasets: [{
+      label: 'Followers',
+      data: [
+        /* {{FB_FOLLOWERS_NUM}} */   0,
+        /* {{IG_FOLLOWERS_NUM}} */   0,
+        /* {{TIKTOK_FOLLOWERS_NUM}}*/0,
+        /* {{LI_FOLLOWERS_NUM}} */   0,
+        /* {{YT_FOLLOWERS_NUM}} */   0
+      ],
+      backgroundColor: [brand, accent, '#22c55e', '#3b82f6', '#ef4444'],
+      borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    animation: { duration: 1000, easing: 'easeOutQuart' },
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { font: { size: 11 } } },
+      x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+    }
+  }
+});
+</script>
+</body>
+</html>

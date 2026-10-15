@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{CLIENT_NAME}} — Project Overview</title>
+  <style>
+    :root {
+      --brand-primary: {{BRAND_PRIMARY}};
+      --brand-accent:  {{BRAND_ACCENT}};
+      --brand-dark:    {{BRAND_DARK}};
+      --brand-light:   {{BRAND_LIGHT}};
+      --brand-text:    {{BRAND_TEXT}};
+      --radius: 14px; --shadow: 0 4px 28px rgba(0,0,0,.12);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--brand-light); color: var(--brand-text); line-height: 1.6; min-height: 100vh; }
+    .container { max-width: 1000px; margin: 0 auto; padding: 0 24px; }
+    @media (min-width: 1024px) { .container { padding: 0 40px; } }
+
+    /* ── PAGE HEADER ── */
+    .page-header { background: var(--brand-dark); color: #fff; padding: 56px 0 48px; text-align: center; }
+    .page-header img.logo { max-height: 72px; max-width: 240px; object-fit: contain; margin: 0 auto 28px; display: block; }
+    .page-header h1 { font-size: clamp(1.6rem,4vw,2.4rem); font-weight: 900; margin-bottom: 8px; }
+    .page-header .subtitle { font-size: 1rem; opacity: .7; margin-bottom: 4px; }
+    .page-header .meta { font-size: .82rem; opacity: .5; margin-top: 8px; }
+
+    /* ── INTRO ── */
+    .intro { padding: 48px 0 24px; }
+    .intro p { font-size: 1.02rem; color: #475569; max-width: 680px; }
+
+    /* ── SECTION LABEL ── */
+    .section-label { font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .12em; color: var(--brand-accent); margin-bottom: 12px; }
+
+    /* ── FEATURE CARD (prototype + presentation) ── */
+    .feature-card {
+      display: grid; grid-template-columns: 1fr auto; gap: 20px; align-items: center;
+      background: #fff; border: 2px solid var(--brand-primary); border-radius: var(--radius);
+      padding: 28px 32px; margin-bottom: 16px; box-shadow: var(--shadow); text-decoration: none; color: inherit;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 36px rgba(0,0,0,.16); }
+    .feature-card .fc-badge { font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--brand-accent); margin-bottom: 6px; }
+    .feature-card h2 { font-size: 1.3rem; font-weight: 800; color: var(--brand-dark); margin-bottom: 6px; }
+    .feature-card p  { font-size: .9rem; color: #64748b; margin: 0; }
+    .feature-card .fc-arrow { font-size: 1.6rem; color: var(--brand-primary); flex-shrink: 0; }
+    .feature-card.prototype { border-color: var(--brand-accent); background: var(--brand-dark); color: #fff; }
+    .feature-card.prototype h2 { color: #fff; }
+    .feature-card.prototype p  { color: rgba(255,255,255,.7); }
+    .feature-card.prototype .fc-badge { color: var(--brand-accent); }
+    .feature-card.prototype .fc-arrow { color: var(--brand-accent); }
+
+    /* ── DIVIDER ── */
+    .divider { border: none; border-top: 1px solid #e2e8f0; margin: 36px 0; }
+
+    /* ── DOCUMENT LIST ── */
+    .doc-list { display: grid; gap: 12px; padding-bottom: 64px; }
+    .doc-card {
+      display: grid; grid-template-columns: 56px 1fr auto; gap: 16px; align-items: center;
+      background: #fff; border: 1px solid #e2e8f0; border-radius: var(--radius);
+      padding: 20px 24px; box-shadow: 0 2px 12px rgba(0,0,0,.06);
+      text-decoration: none; color: inherit;
+      transition: transform .15s ease, box-shadow .15s ease, border-color .15s ease;
+    }
+    .doc-card:hover { transform: translateY(-2px); box-shadow: var(--shadow); border-color: var(--brand-primary); }
+    .doc-num {
+      background: var(--brand-primary); color: #fff;
+      width: 48px; height: 48px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.1rem; font-weight: 800; flex-shrink: 0;
+    }
+    .doc-card .doc-label { font-size: .68rem; font-weight: 800; text-transform: uppercase; letter-spacing: .08em; color: var(--brand-accent); margin-bottom: 4px; }
+    .doc-card h3 { font-size: 1rem; font-weight: 700; color: var(--brand-dark); margin-bottom: 2px; }
+    .doc-card p  { font-size: .85rem; color: #64748b; margin: 0; }
+    .doc-arrow { font-size: 1.2rem; color: #94a3b8; flex-shrink: 0; transition: color .15s ease; }
+    .doc-card:hover .doc-arrow { color: var(--brand-primary); }
+
+    /* ── NEXT BADGE ── */
+    .next-badge {
+      display: inline-block; font-size: .65rem; font-weight: 800; text-transform: uppercase;
+      letter-spacing: .08em; background: var(--brand-accent); color: var(--brand-dark);
+      padding: 2px 8px; border-radius: 99px; margin-left: 8px; vertical-align: middle;
+    }
+
+    /* ── FOOTER ── */
+    .page-footer { background: var(--brand-dark); color: rgba(255,255,255,.5); text-align: center; padding: 28px 24px; font-size: .82rem; }
+    .page-footer strong { color: #fff; }
+
+    @media (max-width: 600px) {
+      .feature-card { grid-template-columns: 1fr; }
+      .feature-card .fc-arrow { display: none; }
+      .doc-card { grid-template-columns: 48px 1fr; }
+      .doc-arrow { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── PAGE HEADER ── -->
+<header class="page-header">
+  <div class="container">
+    <img class="logo" src="{{LOGO_PATH}}" alt="{{CLIENT_NAME}} logo" />
+    <h1>{{CLIENT_NAME}} — Project Overview</h1>
+    <p class="subtitle">Everything prepared for your review, in the order we recommend walking through it.</p>
+    <p class="meta">Created by Mike Montes &nbsp;·&nbsp; {{REPORT_DATE}}</p>
+  </div>
+</header>
+
+<main>
+<div class="container">
+
+  <!-- ── INTRO ── -->
+  <div class="intro">
+    <p>
+      Start with the prototype — it's the vision for what your new site can look like. Then walk through the
+      presentation for the big picture. Each report below links to the next so you can move through them in sequence.
+    </p>
+  </div>
+
+  <!-- ── PROTOTYPE (no link — open separately) ── -->
+  <div class="section-label">Start Here</div>
+  <div class="feature-card prototype" style="cursor:default;">
+    <div>
+      <div class="fc-badge">Live Prototype</div>
+      <h2>{{CLIENT_NAME}} Website Prototype</h2>
+      <p>Open <strong>index.html</strong> in your project folder to view the interactive prototype. All content and images are placeholder — final assets will be used in production.</p>
+    </div>
+    <div class="fc-arrow">&#9654;</div>
+  </div>
+
+  <!-- ── PRESENTATION ── -->
+  <a class="feature-card" href="{{CLIENT_NAME}}-Presentation.html">
+    <div>
+      <div class="fc-badge">Start Here — Document 1</div>
+      <h2>Website Redesign Presentation</h2>
+      <p>A side-by-side before/after overview with brand summary, SEO snapshot, and next steps.</p>
+    </div>
+    <div class="fc-arrow">&#8594;</div>
+  </a>
+
+  <hr class="divider" />
+  <div class="section-label">Supporting Reports — Review in Order</div>
+
+  <!-- ── DOCUMENT LIST ── -->
+  <div class="doc-list">
+
+    <a class="doc-card" href="{{CLIENT_NAME}}-Presence.html">
+      <div class="doc-num">1</div>
+      <div>
+        <div class="doc-label">Presence Report</div>
+        <h3>Digital Presence Overview <span class="next-badge">Read First</span></h3>
+        <p>Every channel — website, Google, social, AI — rated green, yellow, or red. The big picture at a glance.</p>
+      </div>
+      <div class="doc-arrow">&#8594;</div>
+    </a>
+
+    <a class="doc-card" href="seo.html">
+      <div class="doc-num">2</div>
+      <div>
+        <div class="doc-label">SEO Audit</div>
+        <h3>Search Engine Optimization Report</h3>
+        <p>Your current Google ranking, keyword gaps, competitor comparison, and prioritized action plan.</p>
+      </div>
+      <div class="doc-arrow">&#8594;</div>
+    </a>
+
+    <a class="doc-card" href="aeo.html">
+      <div class="doc-num">3</div>
+      <div>
+        <div class="doc-label">AEO Report</div>
+        <h3>Answer Engine Optimization Report</h3>
+        <p>How visible you are to AI tools like ChatGPT and Google AI Overviews — and what schema is now embedded.</p>
+      </div>
+      <div class="doc-arrow">&#8594;</div>
+    </a>
+
+    <a class="doc-card" href="{{CLIENT_NAME}}-Social.html">
+      <div class="doc-num">4</div>
+      <div>
+        <div class="doc-label">Social Media Review</div>
+        <h3>Social Media Platform Audit</h3>
+        <p>Platform-by-platform review of followers, posting cadence, brand consistency, and missed opportunities.</p>
+      </div>
+      <div class="doc-arrow">&#8594;</div>
+    </a>
+
+    <a class="doc-card" href="{{CLIENT_NAME}}-SEOPlan.html">
+      <div class="doc-num">5</div>
+      <div>
+        <div class="doc-label">SEO Marketing Plan</div>
+        <h3>Actionable SEO Roadmap</h3>
+        <p>Keyword strategy, on-page checklist, local citation targets, backlink opportunities, and a 3-month timeline.</p>
+      </div>
+      <div class="doc-arrow">&#8594;</div>
+    </a>
+
+    <a class="doc-card" href="{{CLIENT_NAME}}-Marketing.html">
+      <div class="doc-num">6</div>
+      <div>
+        <div class="doc-label">Digital Marketing Plan</div>
+        <h3>Full Marketing Plan + Funnel System</h3>
+        <p>Channel priority matrix, Value Ladder offer sequence, email follow-up flow, and conversion benchmarks.</p>
+      </div>
+      <div class="doc-arrow">&#8594;</div>
+    </a>
+
+    <a class="doc-card" href="{{CLIENT_NAME}}-Functionality.html">
+      <div class="doc-num">7</div>
+      <div>
+        <div class="doc-label">Developer Handoff</div>
+        <h3>React Functionality Specification</h3>
+        <p>Technical spec for the production React build — page map, component inventory, auth flow, and deployment notes.</p>
+      </div>
+      <div class="doc-arrow">&#8594;</div>
+    </a>
+
+  </div>
+</div>
+</main>
+
+<footer class="page-footer">
+  <p>Created by <strong>Mike Montes</strong> &nbsp;·&nbsp; Prepared for {{CLIENT_NAME}} &nbsp;·&nbsp; {{REPORT_DATE}}</p>
+</footer>
+
+</body>
+</html>

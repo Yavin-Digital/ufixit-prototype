@@ -1,0 +1,1030 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{CLIENT_NAME}} — SEO Audit Report</title>
+  <style>
+    /* ── TOKENS — replace with brand.html values ── */
+    :root {
+      --brand-primary:   {{BRAND_PRIMARY}};    /* e.g. #1a3c6e */
+      --brand-accent:    {{BRAND_ACCENT}};     /* e.g. #f4a500 */
+      --brand-dark:      {{BRAND_DARK}};       /* e.g. #0d1f3c */
+      --brand-light:     {{BRAND_LIGHT}};      /* e.g. #f5f7fa */
+      --brand-text:      {{BRAND_TEXT}};       /* e.g. #1e2d3d */
+      --score-green:  #22c55e;
+      --score-yellow: #eab308;
+      --score-red:    #ef4444;
+      --radius: 12px;
+      --shadow: 0 4px 24px rgba(0,0,0,.10);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, sans-serif;
+      background: var(--brand-light);
+      color: var(--brand-text);
+      line-height: 1.6;
+    }
+
+    /* ── LAYOUT ── */
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+    @media (min-width: 1024px) { .container { padding: 0 40px; } }
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid #e2e8f0; }
+
+    /* ── TYPOGRAPHY ── */
+    h1 { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; line-height: 1.15; }
+    h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; color: var(--brand-primary); }
+    h3 { font-size: 1.1rem; font-weight: 600; margin-bottom: 12px; }
+    p  { margin-bottom: 12px; }
+
+    /* ── HEADER ── */
+    .report-header {
+      background: var(--brand-dark);
+      color: #fff;
+      padding: 48px 0 40px;
+    }
+    .report-header .meta { font-size: .85rem; opacity: .7; margin-top: 8px; }
+    .report-header img.logo {
+      max-height: 60px;
+      max-width: 220px;
+      object-fit: contain;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    /* ── HERO SCORE CARD ── */
+    .score-hero {
+      background: var(--brand-primary);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 40px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 32px;
+      align-items: center;
+    }
+    .score-circle {
+      width: 120px; height: 120px;
+      border-radius: 50%;
+      border: 6px solid var(--brand-accent);
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .score-circle .num  { font-size: 2.4rem; font-weight: 900; line-height: 1; }
+    .score-circle .denom{ font-size: .85rem; opacity: .7; }
+    .score-label  { font-size: 1.3rem; font-weight: 700; margin-bottom: 8px; }
+    .score-label .stage-tag {
+      display: inline-block;
+      background: var(--brand-accent);
+      color: var(--brand-dark);
+      font-size: .75rem; font-weight: 800;
+      padding: 3px 10px; border-radius: 99px;
+      margin-left: 8px; vertical-align: middle;
+    }
+    .hero-stats { display: flex; gap: 24px; flex-wrap: wrap; margin-top: 16px; }
+    .hero-stat  { text-align: center; }
+    .hero-stat .val { font-size: 1.4rem; font-weight: 800; }
+    .hero-stat .lbl { font-size: .75rem; opacity: .7; }
+
+    /* ── SCORE BREAKDOWN ── */
+    .breakdown-grid { display: grid; gap: 20px; }
+    .breakdown-item {}
+    .breakdown-header { display: flex; justify-content: space-between; margin-bottom: 6px; font-weight: 600; }
+    .bar-track { background: #e2e8f0; border-radius: 99px; height: 12px; overflow: hidden; }
+    .bar-fill  { height: 100%; border-radius: 99px; transition: width .4s ease; }
+    .bar-fill.green  { background: var(--score-green); }
+    .bar-fill.yellow { background: var(--score-yellow); }
+    .bar-fill.red    { background: var(--score-red); }
+
+    /* ── TABLES ── */
+    .data-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .data-table th {
+      background: var(--brand-primary);
+      color: #fff;
+      text-align: left;
+      padding: 12px 14px;
+      font-weight: 600;
+    }
+    .data-table td { padding: 11px 14px; border-bottom: 1px solid #e2e8f0; }
+    .data-table tr:nth-child(even) td { background: #f8fafc; }
+
+    /* ── BADGES ── */
+    .badge {
+      display: inline-block;
+      padding: 2px 10px; border-radius: 99px;
+      font-size: .75rem; font-weight: 700;
+    }
+    .badge.green  { background: #dcfce7; color: #166534; }
+    .badge.yellow { background: #fef9c3; color: #854d0e; }
+    .badge.red    { background: #fee2e2; color: #991b1b; }
+    .badge.blue   { background: #dbeafe; color: #1e40af; }
+
+    /* ── CALLOUT CARDS ── */
+    .callout {
+      background: var(--brand-dark);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 32px;
+    }
+    .callout h2 { color: var(--brand-accent); }
+    .callout ul { padding-left: 20px; }
+    .callout ul li { margin-bottom: 8px; }
+
+    .info-card {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-left: 4px solid var(--brand-accent);
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow);
+    }
+
+    /* ── HEATMAP ── */
+    .heatmap-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+    .heatmap-zone {
+      border-radius: 8px;
+      padding: 16px;
+      font-size: .85rem;
+      font-weight: 600;
+      text-align: center;
+    }
+    .heatmap-zone.hot    { background: #fee2e2; color: #991b1b; border: 2px solid #ef4444; }
+    .heatmap-zone.warm   { background: #fef9c3; color: #854d0e; border: 2px solid #eab308; }
+    .heatmap-zone.cold   { background: #dbeafe; color: #1e40af; border: 2px solid #3b82f6; }
+
+    .scroll-bar-wrap { display: flex; gap: 16px; align-items: stretch; margin: 20px 0; }
+    .scroll-depth-bar {
+      width: 32px; border-radius: 8px;
+      background: linear-gradient(to bottom, #ef4444 0%, #eab308 50%, #22c55e 80%, #e2e8f0 80%);
+      min-height: 160px;
+    }
+    .scroll-labels { display: flex; flex-direction: column; justify-content: space-between; font-size: .8rem; color: #64748b; }
+
+    /* ── GBP AUDIT ── */
+    .gbp-field { display: flex; gap: 12px; padding: 10px 0; border-bottom: 1px solid #e2e8f0; font-size: .9rem; }
+    .gbp-field .icon { font-size: 1rem; flex-shrink: 0; }
+    .gbp-field .label { font-weight: 600; min-width: 160px; }
+    .gbp-field .note  { color: #64748b; }
+
+    /* ── ACTION PLAN ── */
+    .action-item {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      padding: 24px;
+      margin-bottom: 16px;
+      display: grid;
+      grid-template-columns: 48px 1fr auto;
+      gap: 16px;
+      align-items: start;
+      box-shadow: var(--shadow);
+    }
+    .action-num {
+      background: var(--brand-primary);
+      color: #fff;
+      width: 48px; height: 48px;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.2rem; font-weight: 800;
+      flex-shrink: 0;
+    }
+    .effort-tag {
+      font-size: .75rem; font-weight: 700;
+      padding: 4px 10px; border-radius: 99px;
+      white-space: nowrap;
+    }
+    .effort-tag.easy   { background: #dcfce7; color: #166534; }
+    .effort-tag.medium { background: #fef9c3; color: #854d0e; }
+    .effort-tag.hard   { background: #fee2e2; color: #991b1b; }
+
+    /* ── FOOTER ── */
+    .report-footer {
+      background: var(--brand-dark);
+      color: rgba(255,255,255,.6);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: .85rem;
+    }
+    .report-footer strong { color: #fff; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 767px) {
+      .score-hero { grid-template-columns: 1fr; text-align: center; }
+      .hero-stats { justify-content: center; }
+      .heatmap-grid { grid-template-columns: 1fr; }
+      .action-item { grid-template-columns: 1fr; }
+      .action-num { margin: 0 auto; }
+    }
+
+    /* ── ANIMATIONS ── */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity .55s ease, transform .55s ease;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal-left  { opacity: 0; transform: translateX(-32px); transition: opacity .55s ease, transform .55s ease; }
+    .reveal-left.visible  { opacity: 1; transform: translateX(0); }
+    .reveal-right { opacity: 0; transform: translateX(32px);  transition: opacity .55s ease, transform .55s ease; }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+
+    /* ── CHART CONTAINERS ── */
+    .chart-wrap {
+      background: #fff;
+      border: 1px solid #e2e8f0;
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      margin-bottom: 24px;
+    }
+    .chart-wrap h3 { margin-bottom: 16px; }
+    .chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; }
+    @media (max-width: 767px) { .chart-row { grid-template-columns: 1fr; } }
+
+    /* ── PRINT ── */
+    @media print {
+      .report-header, .report-footer { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      section { page-break-inside: avoid; }
+    }
+  </style>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════════
+     HEADER
+══════════════════════════════════════════ -->
+<header class="report-header">
+  <div class="container">
+    <img class="logo" src="{{LOGO_PATH}}" alt="{{CLIENT_NAME}} logo" />
+    <h1>SEO Audit Report<br>{{CLIENT_NAME}}</h1>
+    <p class="meta">Created by Mike Montes &nbsp;·&nbsp; {{REPORT_DATE}} &nbsp;·&nbsp; Confidential</p>
+  </div>
+</header>
+
+<!-- ══════════════════════════════════════════
+     SECTION 1 — HERO SCORE CARD
+══════════════════════════════════════════ -->
+<section id="score-card">
+  <div class="container">
+    <h2 class="reveal">Overall Presence Score</h2>
+    <div class="score-hero reveal">
+      <div class="score-circle">
+        <span class="num">{{TOTAL_SCORE}}</span>
+        <span class="denom">/100</span>
+      </div>
+      <div>
+        <div class="score-label">
+          {{SCORE_LABEL}}
+          <span class="stage-tag">{{STAGE_TAG}}</span>
+        </div>
+        <p style="opacity:.8;font-size:.95rem;">{{SCORE_SUMMARY_SENTENCE}}</p>
+        <div class="hero-stats">
+          <div class="hero-stat">
+            <div class="val">{{ORGANIC_RANK_DISPLAY}}</div>
+            <div class="lbl">Organic Rank</div>
+          </div>
+          <div class="hero-stat">
+            <div class="val">{{GOOGLE_REVIEW_COUNT}}</div>
+            <div class="lbl">Google Reviews</div>
+          </div>
+          <div class="hero-stat">
+            <div class="val">{{MONTHLY_SEARCHES}}</div>
+            <div class="lbl">Mo. Searches (primary kw)</div>
+          </div>
+          <div class="hero-stat">
+            <div class="val">{{WEBSITE_GRADE}}</div>
+            <div class="lbl">Website Grade</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 2 — SCORE BREAKDOWN
+══════════════════════════════════════════ -->
+<section id="score-breakdown">
+  <div class="container">
+    <h2 class="reveal">Score Breakdown</h2>
+
+    <!-- Chart.js doughnut — visual at-a-glance of score distribution -->
+    <div class="chart-row reveal">
+      <div class="chart-wrap">
+        <h3>Score Distribution</h3>
+        <canvas id="scoreDonut" height="220"></canvas>
+      </div>
+      <div class="chart-wrap">
+        <h3>Score vs. Maximum</h3>
+        <canvas id="scoreBar" height="220"></canvas>
+      </div>
+    </div>
+
+    <div class="breakdown-grid">
+
+      <div class="breakdown-item">
+        <div class="breakdown-header">
+          <span>Organic Visibility</span>
+          <span>{{ORGANIC_SCORE}}/25</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill {{ORGANIC_COLOR}}" style="width:{{ORGANIC_PCT}}%"></div>
+        </div>
+        <p style="font-size:.85rem;color:#64748b;margin-top:6px;">{{ORGANIC_NOTE}}</p>
+      </div>
+
+      <div class="breakdown-item">
+        <div class="breakdown-header">
+          <span>Google Reviews</span>
+          <span>{{REVIEWS_SCORE}}/25</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill {{REVIEWS_COLOR}}" style="width:{{REVIEWS_PCT}}%"></div>
+        </div>
+        <p style="font-size:.85rem;color:#64748b;margin-top:6px;">{{REVIEWS_NOTE}}</p>
+      </div>
+
+      <div class="breakdown-item">
+        <div class="breakdown-header">
+          <span>Website Quality</span>
+          <span>{{WEBSITE_SCORE}}/30</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill {{WEBSITE_COLOR}}" style="width:{{WEBSITE_PCT}}%"></div>
+        </div>
+        <p style="font-size:.85rem;color:#64748b;margin-top:6px;">{{WEBSITE_NOTE}}</p>
+      </div>
+
+      <div class="breakdown-item">
+        <div class="breakdown-header">
+          <span>Local Citations</span>
+          <span>{{CITATIONS_SCORE}}/20</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill {{CITATIONS_COLOR}}" style="width:{{CITATIONS_PCT}}%"></div>
+        </div>
+        <p style="font-size:.85rem;color:#64748b;margin-top:6px;">{{CITATIONS_NOTE}}</p>
+      </div>
+
+      <div class="breakdown-item">
+        <div class="breakdown-header">
+          <span>GBP Completeness</span>
+          <span>{{GBP_SCORE}}/20</span>
+        </div>
+        <div class="bar-track">
+          <div class="bar-fill {{GBP_COLOR}}" style="width:{{GBP_PCT}}%"></div>
+        </div>
+        <p style="font-size:.85rem;color:#64748b;margin-top:6px;">{{GBP_NOTE}}</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 3 — KEYWORD RANKINGS
+══════════════════════════════════════════ -->
+<section id="keywords">
+  <div class="container">
+    <h2 class="reveal">Keyword Rankings</h2>
+    <p class="reveal" style="margin-bottom:24px;">{{KEYWORD_INTRO_SENTENCE}}</p>
+
+    <!-- Keyword monthly search volume bar chart -->
+    <div class="chart-wrap reveal" style="margin-bottom:32px;">
+      <h3>Monthly Search Volume by Keyword</h3>
+      <canvas id="kwVolumeChart" height="160"></canvas>
+    </div>
+
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Keyword</th>
+            <th>Est. Rank</th>
+            <th>Mo. Searches</th>
+            <th>Trend</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Repeat row pattern for each keyword (6–10 rows) -->
+          <tr>
+            <td>{{KW_1}}</td>
+            <td>{{KW_1_RANK}}</td>
+            <td>{{KW_1_VOL}}</td>
+            <td>{{KW_1_TREND}}</td>
+            <td><span class="badge {{KW_1_BADGE_COLOR}}">{{KW_1_STATUS}}</span></td>
+          </tr>
+          <tr>
+            <td>{{KW_2}}</td>
+            <td>{{KW_2_RANK}}</td>
+            <td>{{KW_2_VOL}}</td>
+            <td>{{KW_2_TREND}}</td>
+            <td><span class="badge {{KW_2_BADGE_COLOR}}">{{KW_2_STATUS}}</span></td>
+          </tr>
+          <tr>
+            <td>{{KW_3}}</td>
+            <td>{{KW_3_RANK}}</td>
+            <td>{{KW_3_VOL}}</td>
+            <td>{{KW_3_TREND}}</td>
+            <td><span class="badge {{KW_3_BADGE_COLOR}}">{{KW_3_STATUS}}</span></td>
+          </tr>
+          <!-- Add rows KW_4 through KW_10 following the same pattern -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 4 — COMPETITOR TABLE
+══════════════════════════════════════════ -->
+<section id="competitors">
+  <div class="container">
+    <h2 class="reveal">Competitor Landscape</h2>
+    <p style="margin-bottom:24px;">{{COMPETITOR_INTRO_SENTENCE}}</p>
+    <div style="overflow-x:auto;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Business</th>
+            <th>Google Reviews</th>
+            <th>Rating</th>
+            <th>Threat</th>
+            <th>Why They're a Threat</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Repeat for 5–7 real competitors -->
+          <tr>
+            <td>{{COMP_1_NAME}}</td>
+            <td>{{COMP_1_REVIEWS}}</td>
+            <td>{{COMP_1_RATING}} ★</td>
+            <td><span class="badge {{COMP_1_THREAT_COLOR}}">{{COMP_1_THREAT}}</span></td>
+            <td>{{COMP_1_NOTE}}</td>
+          </tr>
+          <tr>
+            <td>{{COMP_2_NAME}}</td>
+            <td>{{COMP_2_REVIEWS}}</td>
+            <td>{{COMP_2_RATING}} ★</td>
+            <td><span class="badge {{COMP_2_THREAT_COLOR}}">{{COMP_2_THREAT}}</span></td>
+            <td>{{COMP_2_NOTE}}</td>
+          </tr>
+          <!-- Add COMP_3 through COMP_7 following the same pattern -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 5 — REVIEW BREAKDOWN
+══════════════════════════════════════════ -->
+<section id="reviews">
+  <div class="container">
+    <h2 class="reveal">Review Breakdown</h2>
+    <p class="reveal" style="margin-bottom:24px;">{{REVIEW_INTRO_SENTENCE}}</p>
+
+    <!-- Review count comparison bar chart -->
+    <div class="chart-wrap reveal" style="margin-bottom:32px;">
+      <h3>Review Count by Platform</h3>
+      <canvas id="reviewChart" height="160"></canvas>
+    </div>
+
+    <div class="reveal" style="overflow-x:auto;">
+      <table class="data-table">
+        <thead>
+          <tr>
+            <th>Platform</th>
+            <th>Review Count</th>
+            <th>Avg Rating</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Google</td>
+            <td>{{REVIEW_GOOGLE_COUNT}}</td>
+            <td>{{REVIEW_GOOGLE_RATING}} ★</td>
+            <td><span class="badge {{REVIEW_GOOGLE_BADGE}}">{{REVIEW_GOOGLE_STATUS}}</span></td>
+          </tr>
+          <tr>
+            <td>Yelp</td>
+            <td>{{REVIEW_YELP_COUNT}}</td>
+            <td>{{REVIEW_YELP_RATING}} ★</td>
+            <td><span class="badge {{REVIEW_YELP_BADGE}}">{{REVIEW_YELP_STATUS}}</span></td>
+          </tr>
+          <tr>
+            <td>Facebook</td>
+            <td>{{REVIEW_FB_COUNT}}</td>
+            <td>{{REVIEW_FB_RATING}} ★</td>
+            <td><span class="badge {{REVIEW_FB_BADGE}}">{{REVIEW_FB_STATUS}}</span></td>
+          </tr>
+          <tr>
+            <td>{{REVIEW_OTHER_PLATFORM}}</td>
+            <td>{{REVIEW_OTHER_COUNT}}</td>
+            <td>{{REVIEW_OTHER_RATING}} ★</td>
+            <td><span class="badge {{REVIEW_OTHER_BADGE}}">{{REVIEW_OTHER_STATUS}}</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!-- Callout if Google reviews are the weak point -->
+    <div class="info-card" style="margin-top:24px;">
+      <h3>⚠ Key Finding</h3>
+      <p>{{REVIEW_KEY_FINDING}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 6 — HEATMAP ANALYSIS
+══════════════════════════════════════════ -->
+<section id="heatmap">
+  <div class="container">
+    <h2 class="reveal">Heatmap Analysis — Current Site</h2>
+    <p style="margin-bottom:32px;">Predicted user behavior based on the current site's visual hierarchy, layout, and CTA placement. No tracking software required — these are evidence-based findings from the live site audit.</p>
+
+    <!-- ── PAGE 1: Home ── -->
+    <div class="info-card">
+      <h3>{{HEATMAP_PAGE_1}} &nbsp;<span style="font-weight:400;font-size:.85rem;color:#64748b;">{{HEATMAP_PAGE_1_URL}}</span></h3>
+
+      <h4 style="margin:20px 0 10px;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-primary);">Click Map</h4>
+      <div class="heatmap-grid">
+        <div class="heatmap-zone hot">🔴 HOT<br>{{HEATMAP_P1_CLICK_HOT}}</div>
+        <div class="heatmap-zone warm">🟡 WARM<br>{{HEATMAP_P1_CLICK_WARM}}</div>
+        <div class="heatmap-zone cold">🔵 COLD<br>{{HEATMAP_P1_CLICK_COLD}}</div>
+      </div>
+
+      <h4 style="margin:20px 0 10px;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-primary);">Scroll Map</h4>
+      <div class="scroll-bar-wrap">
+        <div class="scroll-depth-bar"></div>
+        <div class="scroll-labels">
+          <span>0% — {{HEATMAP_P1_SCROLL_TOP}}</span>
+          <span>50% — {{HEATMAP_P1_SCROLL_MID}} ⚠ drop-off risk</span>
+          <span>80% — {{HEATMAP_P1_SCROLL_BOTTOM}}</span>
+          <span>100% — typically unseen</span>
+        </div>
+      </div>
+
+      <h4 style="margin:20px 0 10px;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-primary);">Attention Map</h4>
+      <ol style="padding-left:20px;font-size:.9rem;">
+        <li style="margin-bottom:6px;"><strong>Zone 1 (highest):</strong> {{HEATMAP_P1_ATTN_1}}</li>
+        <li style="margin-bottom:6px;"><strong>Zone 2:</strong> {{HEATMAP_P1_ATTN_2}}</li>
+        <li style="margin-bottom:6px;"><strong>Zone 3:</strong> {{HEATMAP_P1_ATTN_3}}</li>
+      </ol>
+
+      <div style="background:#f8fafc;border-radius:8px;padding:16px;margin-top:20px;">
+        <p><strong>UX Finding:</strong> {{HEATMAP_P1_FINDING}}</p>
+        <p style="margin-top:8px;"><strong>Prototype Fix:</strong> {{HEATMAP_P1_FIX}}</p>
+      </div>
+    </div>
+
+    <!-- ── PAGE 2 ── -->
+    <div class="info-card">
+      <h3>{{HEATMAP_PAGE_2}} &nbsp;<span style="font-weight:400;font-size:.85rem;color:#64748b;">{{HEATMAP_PAGE_2_URL}}</span></h3>
+
+      <h4 style="margin:20px 0 10px;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-primary);">Click Map</h4>
+      <div class="heatmap-grid">
+        <div class="heatmap-zone hot">🔴 HOT<br>{{HEATMAP_P2_CLICK_HOT}}</div>
+        <div class="heatmap-zone warm">🟡 WARM<br>{{HEATMAP_P2_CLICK_WARM}}</div>
+        <div class="heatmap-zone cold">🔵 COLD<br>{{HEATMAP_P2_CLICK_COLD}}</div>
+      </div>
+
+      <h4 style="margin:20px 0 10px;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-primary);">Scroll Map</h4>
+      <div class="scroll-bar-wrap">
+        <div class="scroll-depth-bar"></div>
+        <div class="scroll-labels">
+          <span>0% — {{HEATMAP_P2_SCROLL_TOP}}</span>
+          <span>50% — {{HEATMAP_P2_SCROLL_MID}} ⚠ drop-off risk</span>
+          <span>80% — {{HEATMAP_P2_SCROLL_BOTTOM}}</span>
+          <span>100% — typically unseen</span>
+        </div>
+      </div>
+
+      <h4 style="margin:20px 0 10px;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-primary);">Attention Map</h4>
+      <ol style="padding-left:20px;font-size:.9rem;">
+        <li style="margin-bottom:6px;"><strong>Zone 1 (highest):</strong> {{HEATMAP_P2_ATTN_1}}</li>
+        <li style="margin-bottom:6px;"><strong>Zone 2:</strong> {{HEATMAP_P2_ATTN_2}}</li>
+        <li style="margin-bottom:6px;"><strong>Zone 3:</strong> {{HEATMAP_P2_ATTN_3}}</li>
+      </ol>
+
+      <div style="background:#f8fafc;border-radius:8px;padding:16px;margin-top:20px;">
+        <p><strong>UX Finding:</strong> {{HEATMAP_P2_FINDING}}</p>
+        <p style="margin-top:8px;"><strong>Prototype Fix:</strong> {{HEATMAP_P2_FIX}}</p>
+      </div>
+    </div>
+
+    <!-- ── PAGE 3 ── -->
+    <div class="info-card">
+      <h3>{{HEATMAP_PAGE_3}} &nbsp;<span style="font-weight:400;font-size:.85rem;color:#64748b;">{{HEATMAP_PAGE_3_URL}}</span></h3>
+
+      <h4 style="margin:20px 0 10px;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-primary);">Click Map</h4>
+      <div class="heatmap-grid">
+        <div class="heatmap-zone hot">🔴 HOT<br>{{HEATMAP_P3_CLICK_HOT}}</div>
+        <div class="heatmap-zone warm">🟡 WARM<br>{{HEATMAP_P3_CLICK_WARM}}</div>
+        <div class="heatmap-zone cold">🔵 COLD<br>{{HEATMAP_P3_CLICK_COLD}}</div>
+      </div>
+
+      <h4 style="margin:20px 0 10px;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-primary);">Scroll Map</h4>
+      <div class="scroll-bar-wrap">
+        <div class="scroll-depth-bar"></div>
+        <div class="scroll-labels">
+          <span>0% — {{HEATMAP_P3_SCROLL_TOP}}</span>
+          <span>50% — {{HEATMAP_P3_SCROLL_MID}} ⚠ drop-off risk</span>
+          <span>80% — {{HEATMAP_P3_SCROLL_BOTTOM}}</span>
+          <span>100% — typically unseen</span>
+        </div>
+      </div>
+
+      <h4 style="margin:20px 0 10px;font-size:.9rem;text-transform:uppercase;letter-spacing:.05em;color:var(--brand-primary);">Attention Map</h4>
+      <ol style="padding-left:20px;font-size:.9rem;">
+        <li style="margin-bottom:6px;"><strong>Zone 1 (highest):</strong> {{HEATMAP_P3_ATTN_1}}</li>
+        <li style="margin-bottom:6px;"><strong>Zone 2:</strong> {{HEATMAP_P3_ATTN_2}}</li>
+        <li style="margin-bottom:6px;"><strong>Zone 3:</strong> {{HEATMAP_P3_ATTN_3}}</li>
+      </ol>
+
+      <div style="background:#f8fafc;border-radius:8px;padding:16px;margin-top:20px;">
+        <p><strong>UX Finding:</strong> {{HEATMAP_P3_FINDING}}</p>
+        <p style="margin-top:8px;"><strong>Prototype Fix:</strong> {{HEATMAP_P3_FIX}}</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 7 — GBP AUDIT
+══════════════════════════════════════════ -->
+<section id="gbp">
+  <div class="container">
+    <h2 class="reveal">Google Business Profile Audit</h2>
+
+    <div class="score-hero" style="margin-bottom:32px;padding:24px 32px;">
+      <div class="score-circle" style="width:90px;height:90px;">
+        <span class="num" style="font-size:1.8rem;">{{GBP_SCORE}}</span>
+        <span class="denom">/20</span>
+      </div>
+      <div>
+        <div class="score-label">GBP Status: <span class="stage-tag">{{GBP_STATUS_LABEL}}</span></div>
+        <p style="opacity:.8;font-size:.9rem;margin-top:8px;">{{GBP_SUMMARY_SENTENCE}}</p>
+      </div>
+    </div>
+
+    <div class="gbp-field">
+      <span class="icon">{{GBP_CLAIMED_ICON}}</span>
+      <span class="label">Listing Claimed</span>
+      <span class="note">{{GBP_CLAIMED_NOTE}}</span>
+    </div>
+    <div class="gbp-field">
+      <span class="icon">{{GBP_NAME_ICON}}</span>
+      <span class="label">Business Name</span>
+      <span class="note">{{GBP_NAME_NOTE}}</span>
+    </div>
+    <div class="gbp-field">
+      <span class="icon">{{GBP_CATEGORY_ICON}}</span>
+      <span class="label">Primary Category</span>
+      <span class="note">{{GBP_CATEGORY_NOTE}}</span>
+    </div>
+    <div class="gbp-field">
+      <span class="icon">{{GBP_SECONDARY_ICON}}</span>
+      <span class="label">Secondary Categories</span>
+      <span class="note">{{GBP_SECONDARY_NOTE}}</span>
+    </div>
+    <div class="gbp-field">
+      <span class="icon">{{GBP_ADDRESS_ICON}}</span>
+      <span class="label">Address / Service Area</span>
+      <span class="note">{{GBP_ADDRESS_NOTE}}</span>
+    </div>
+    <div class="gbp-field">
+      <span class="icon">{{GBP_PHONE_ICON}}</span>
+      <span class="label">Phone (NAP Match)</span>
+      <span class="note">{{GBP_PHONE_NOTE}}</span>
+    </div>
+    <div class="gbp-field">
+      <span class="icon">{{GBP_WEBSITE_ICON}}</span>
+      <span class="label">Website Link</span>
+      <span class="note">{{GBP_WEBSITE_NOTE}}</span>
+    </div>
+    <div class="gbp-field">
+      <span class="icon">{{GBP_HOURS_ICON}}</span>
+      <span class="label">Hours</span>
+      <span class="note">{{GBP_HOURS_NOTE}}</span>
+    </div>
+    <div class="gbp-field">
+      <span class="icon">{{GBP_PHOTOS_ICON}}</span>
+      <span class="label">Photos (owner-uploaded)</span>
+      <span class="note">{{GBP_PHOTOS_NOTE}}</span>
+    </div>
+    <div class="gbp-field">
+      <span class="icon">{{GBP_RESPONSES_ICON}}</span>
+      <span class="label">Review Responses</span>
+      <span class="note">{{GBP_RESPONSES_NOTE}}</span>
+    </div>
+    <div class="gbp-field">
+      <span class="icon">{{GBP_POSTS_ICON}}</span>
+      <span class="label">Recent Posts</span>
+      <span class="note">{{GBP_POSTS_NOTE}}</span>
+    </div>
+    <div class="gbp-field">
+      <span class="icon">{{GBP_QA_ICON}}</span>
+      <span class="label">Q&amp;A Section</span>
+      <span class="note">{{GBP_QA_NOTE}}</span>
+    </div>
+    <div class="gbp-field">
+      <span class="icon">{{GBP_SERVICES_ICON}}</span>
+      <span class="label">Services Listed</span>
+      <span class="note">{{GBP_SERVICES_NOTE}}</span>
+    </div>
+    <div class="gbp-field">
+      <span class="icon">{{GBP_ATTRIBUTES_ICON}}</span>
+      <span class="label">Attributes</span>
+      <span class="note">{{GBP_ATTRIBUTES_NOTE}}</span>
+    </div>
+
+    <div class="callout" style="margin-top:32px;">
+      <h2>Top 3 GBP Improvements</h2>
+      <ol style="padding-left:20px;margin-top:16px;">
+        <li style="margin-bottom:12px;"><strong>{{GBP_ACTION_1_TITLE}}</strong> — {{GBP_ACTION_1_WHY}}</li>
+        <li style="margin-bottom:12px;"><strong>{{GBP_ACTION_2_TITLE}}</strong> — {{GBP_ACTION_2_WHY}}</li>
+        <li><strong>{{GBP_ACTION_3_TITLE}}</strong> — {{GBP_ACTION_3_WHY}}</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 8 — ACTION PLAN
+══════════════════════════════════════════ -->
+<section id="action-plan">
+  <div class="container">
+    <h2 class="reveal">Prioritized Action Plan</h2>
+    <p class="reveal" style="margin-bottom:32px;">Ordered by ROI — the highest-impact, lowest-effort improvements come first.</p>
+
+    <div class="action-item reveal">
+      <div class="action-num">1</div>
+      <div>
+        <h3>{{ACTION_1_TITLE}}</h3>
+        <p>{{ACTION_1_DESCRIPTION}}</p>
+      </div>
+      <span class="effort-tag {{ACTION_1_EFFORT_CLASS}}">{{ACTION_1_EFFORT_LABEL}}</span>
+    </div>
+
+    <div class="action-item reveal">
+      <div class="action-num">2</div>
+      <div>
+        <h3>{{ACTION_2_TITLE}}</h3>
+        <p>{{ACTION_2_DESCRIPTION}}</p>
+      </div>
+      <span class="effort-tag {{ACTION_2_EFFORT_CLASS}}">{{ACTION_2_EFFORT_LABEL}}</span>
+    </div>
+
+    <div class="action-item reveal">
+      <div class="action-num">3</div>
+      <div>
+        <h3>{{ACTION_3_TITLE}}</h3>
+        <p>{{ACTION_3_DESCRIPTION}}</p>
+      </div>
+      <span class="effort-tag {{ACTION_3_EFFORT_CLASS}}">{{ACTION_3_EFFORT_LABEL}}</span>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     SECTION 9 — UNFAIR ADVANTAGES
+══════════════════════════════════════════ -->
+<section id="advantages">
+  <div class="container">
+    <div class="callout reveal">
+      <h2>Unfair Advantages</h2>
+      <p style="opacity:.8;margin-bottom:20px;">What {{CLIENT_NAME}} already has that competitors don't — and that should be front and center on the new site.</p>
+      <ul>
+        <li>{{ADVANTAGE_1}}</li>
+        <li>{{ADVANTAGE_2}}</li>
+        <li>{{ADVANTAGE_3}}</li>
+        <li>{{ADVANTAGE_4}}</li>
+        <!-- Add ADVANTAGE_5 if applicable -->
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════════
+     FOOTER
+══════════════════════════════════════════ -->
+<footer class="report-footer">
+  <p>
+    Created by <strong>Mike Montes</strong> &nbsp;·&nbsp;
+    Prepared for {{CLIENT_NAME}} &nbsp;·&nbsp;
+    {{REPORT_DATE}}
+  </p>
+</footer>
+
+<script>
+/* ══════════════════════════════════════════════
+   1. SCROLL REVEAL — IntersectionObserver
+   All elements with .reveal, .reveal-left, .reveal-right
+   animate in as they enter the viewport.
+══════════════════════════════════════════════ */
+(function () {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll('.reveal, .reveal-left, .reveal-right')
+    .forEach(el => obs.observe(el));
+})();
+
+/* ══════════════════════════════════════════════
+   2. COUNT-UP — animates .num elements inside
+   .score-circle and .hero-stat .val on first view
+══════════════════════════════════════════════ */
+(function () {
+  function countUp(el, target, duration) {
+    const start = performance.now();
+    const isDecimal = String(target).includes('.');
+    function step(now) {
+      const progress = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      const current = eased * target;
+      el.textContent = isDecimal ? current.toFixed(1) : Math.round(current);
+      if (progress < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (!e.isIntersecting) return;
+      const el = e.target;
+      const raw = el.dataset.count;
+      if (raw === undefined) return;
+      countUp(el, parseFloat(raw), 1200);
+      obs.unobserve(el);
+    });
+  }, { threshold: 0.5 });
+
+  // Tag every .score-circle .num and .hero-stat .val for count-up
+  document.querySelectorAll('.score-circle .num, .hero-stat .val').forEach(el => {
+    const num = parseFloat(el.textContent.replace(/[^0-9.]/g, ''));
+    if (!isNaN(num)) {
+      el.dataset.count = num;
+      el.textContent = '0';
+      obs.observe(el);
+    }
+  });
+})();
+
+/* ══════════════════════════════════════════════
+   3. CHART.JS — Score Donut + Score Bar
+   Replace the data arrays below with real token values
+   when filling in the template.
+══════════════════════════════════════════════ */
+
+// ── Pull brand primary from CSS custom property ──
+const brand  = getComputedStyle(document.documentElement).getPropertyValue('--brand-primary').trim() || '#1a3c6e';
+const accent = getComputedStyle(document.documentElement).getPropertyValue('--brand-accent').trim()  || '#f4a500';
+
+// ── Score data — REPLACE token values below ──
+const scoreLabels = ['Organic Visibility', 'Google Reviews', 'Website Quality', 'Local Citations', 'GBP Completeness'];
+const scoreActual  = [
+  /* {{ORGANIC_SCORE}} */  0,
+  /* {{REVIEWS_SCORE}} */  0,
+  /* {{WEBSITE_SCORE}} */  0,
+  /* {{CITATIONS_SCORE}}*/ 0,
+  /* {{GBP_SCORE}} */      0
+];
+const scoreMax = [25, 25, 30, 20, 20];
+const scoreColors = ['#22c55e','#3b82f6','#a855f7','#f59e0b','#ef4444'];
+
+// Doughnut — overall score distribution
+new Chart(document.getElementById('scoreDonut'), {
+  type: 'doughnut',
+  data: {
+    labels: scoreLabels,
+    datasets: [{ data: scoreActual, backgroundColor: scoreColors, borderWidth: 2, borderColor: '#fff' }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    animation: { duration: 1200, easing: 'easeOutQuart' },
+    plugins: {
+      legend: { position: 'bottom', labels: { font: { size: 12 }, padding: 16 } }
+    }
+  }
+});
+
+// Horizontal bar — actual vs max per category
+new Chart(document.getElementById('scoreBar'), {
+  type: 'bar',
+  data: {
+    labels: scoreLabels,
+    datasets: [
+      { label: 'Your Score', data: scoreActual, backgroundColor: scoreColors, borderRadius: 6 },
+      { label: 'Maximum', data: scoreMax, backgroundColor: 'rgba(0,0,0,.07)', borderRadius: 6 }
+    ]
+  },
+  options: {
+    indexAxis: 'y',
+    responsive: true, maintainAspectRatio: true,
+    animation: { duration: 1200, easing: 'easeOutQuart' },
+    plugins: { legend: { position: 'bottom', labels: { font: { size: 12 } } } },
+    scales: {
+      x: { beginAtZero: true, max: 30, grid: { color: '#f1f5f9' } },
+      y: { grid: { display: false } }
+    }
+  }
+});
+
+/* ══════════════════════════════════════════════
+   4. KEYWORD VOLUME BAR CHART
+   Replace token values with real data.
+══════════════════════════════════════════════ */
+new Chart(document.getElementById('kwVolumeChart'), {
+  type: 'bar',
+  data: {
+    labels: [
+      /* {{KW_1}} */ 'Keyword 1',
+      /* {{KW_2}} */ 'Keyword 2',
+      /* {{KW_3}} */ 'Keyword 3',
+      // Add remaining keywords
+    ],
+    datasets: [{
+      label: 'Monthly Searches',
+      data: [
+        /* {{KW_1_VOL}} */ 0,
+        /* {{KW_2_VOL}} */ 0,
+        /* {{KW_3_VOL}} */ 0,
+        // Match order above
+      ],
+      backgroundColor: brand,
+      borderRadius: 6,
+      hoverBackgroundColor: accent
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    animation: { duration: 1000, easing: 'easeOutQuart' },
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { font: { size: 11 } } },
+      x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+    }
+  }
+});
+
+/* ══════════════════════════════════════════════
+   5. REVIEW COUNT BAR CHART
+   Replace token values with real data.
+══════════════════════════════════════════════ */
+new Chart(document.getElementById('reviewChart'), {
+  type: 'bar',
+  data: {
+    labels: ['Google', 'Yelp', 'Facebook', '{{REVIEW_OTHER_PLATFORM}}'],
+    datasets: [{
+      label: 'Review Count',
+      data: [
+        /* {{REVIEW_GOOGLE_COUNT}} */ 0,
+        /* {{REVIEW_YELP_COUNT}} */   0,
+        /* {{REVIEW_FB_COUNT}} */     0,
+        /* {{REVIEW_OTHER_COUNT}} */  0
+      ],
+      backgroundColor: [brand, accent, '#22c55e', '#a855f7'],
+      borderRadius: 6
+    }]
+  },
+  options: {
+    responsive: true, maintainAspectRatio: true,
+    animation: { duration: 1000, easing: 'easeOutQuart' },
+    plugins: { legend: { display: false } },
+    scales: {
+      y: { beginAtZero: true, grid: { color: '#f1f5f9' }, ticks: { font: { size: 11 } } },
+      x: { grid: { display: false }, ticks: { font: { size: 11 } } }
+    }
+  }
+});
+</script>
+
+</body>
+</html>

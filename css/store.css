@@ -332,3 +332,12 @@ main p a:not(.btn-buy):not(.btn-ghost),main li a,.helpbox a,.desc a{text-decorat
 /* R3: desktop fold */
 @media(min-width:821px){.hero .w{padding:36px 0}.hero h1{margin-bottom:8px}.picker{margin:16px 0;padding:18px 22px}.pick{min-height:56px;padding:8px 14px}.pick-row{margin-top:10px}}
 @media(min-width:1000px){.picker{max-width:920px}.pick-grid{grid-template-columns:repeat(4,1fr)}.hero h1{font-size:2.8rem}}
+/* ---- Mobile QA r2 ---- */
+@media(max-width:820px){.hero{background-image:url(../img/photo/hero-parts-m.webp)}}
+@media(max-width:380px){.mystore.set::after{content:"";display:inline-block;width:12px;height:12px;margin-left:6px;vertical-align:middle;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%23D90000' stroke-width='2'/%3E%3C/svg%3E") no-repeat center/12px}}
+.pdp .meta span,.instock,.fbt .btn-buy,.ship-meter,.wrap p.note,.best-sub{font-size:1rem!important}
+a.tile span{font-size:1rem!important}a.tile small{font-size:.875rem!important}
+.store-card a{color:#D90000}
+.crumbs a{min-width:48px;justify-content:center;padding:0 4px}
+.assure a,main p>a:not(.btn-buy):not(.btn-ghost){display:inline-flex;align-items:center;min-height:48px;vertical-align:middle}
+.gal-main img{-webkit-user-drag:none;user-select:none}

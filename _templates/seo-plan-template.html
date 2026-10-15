@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{CLIENT_NAME}} — SEO Marketing Plan</title>
+  <style>
+    :root {
+      --brand-primary: {{BRAND_PRIMARY}};
+      --brand-accent:  {{BRAND_ACCENT}};
+      --brand-dark:    {{BRAND_DARK}};
+      --brand-light:   {{BRAND_LIGHT}};
+      --brand-text:    {{BRAND_TEXT}};
+      --green: #22c55e; --green-bg: #dcfce7; --green-text: #166534;
+      --yellow: #eab308; --yellow-bg: #fef9c3; --yellow-text: #854d0e;
+      --red: #ef4444; --red-bg: #fee2e2; --red-text: #991b1b;
+      --radius: 12px; --shadow: 0 4px 24px rgba(0,0,0,.10);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', system-ui, sans-serif; background: var(--brand-light); color: var(--brand-text); line-height: 1.6; }
+    .container { max-width: 1400px; margin: 0 auto; padding: 0 20px; }
+    @media (min-width: 1024px) { .container { padding: 0 40px; } }
+    section { padding: 64px 0; }
+    section + section { border-top: 1px solid #e2e8f0; }
+    h1 { font-size: clamp(1.8rem,4vw,2.8rem); font-weight: 800; line-height: 1.15; }
+    h2 { font-size: 1.5rem; font-weight: 700; margin-bottom: 24px; color: var(--brand-primary); }
+    h3 { font-size: 1rem; font-weight: 700; margin-bottom: 8px; }
+    p  { margin-bottom: 10px; }
+
+    .report-header { background: var(--brand-dark); color: #fff; padding: 48px 0 40px; }
+    .report-header img.logo { max-height: 60px; max-width: 220px; object-fit: contain; margin-bottom: 24px; display: block; }
+    .report-header .meta { font-size: .85rem; opacity: .7; margin-top: 8px; }
+
+    /* ── EXECUTIVE SUMMARY ── */
+    .exec-summary { background: #fff; border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow); border-left: 6px solid var(--brand-primary); margin-bottom: 32px; }
+
+    /* ── KEYWORD CARDS ── */
+    .kw-card { background: #fff; border: 1px solid #e2e8f0; border-radius: var(--radius); padding: 24px; margin-bottom: 16px; box-shadow: var(--shadow); }
+    .kw-card .kw-phrase { font-size: 1.05rem; font-weight: 700; color: var(--brand-primary); margin-bottom: 12px; }
+    .kw-meta { display: flex; gap: 20px; flex-wrap: wrap; font-size: .85rem; }
+    .kw-meta-item label { display: block; font-size: .7rem; font-weight: 800; text-transform: uppercase; letter-spacing: .06em; color: #94a3b8; margin-bottom: 2px; }
+    .kw-meta-item span { font-weight: 600; color: var(--brand-text); }
+    .intent-pill { display: inline-block; padding: 3px 10px; border-radius: 99px; font-size: .72rem; font-weight: 700; background: var(--brand-light); border: 1px solid #e2e8f0; }
+
+    /* ── CHECKLIST ── */
+    .checklist { list-style: none; display: grid; gap: 10px; }
+    .checklist li { display: flex; align-items: flex-start; gap: 10px; background: #fff; border: 1px solid #e2e8f0; border-radius: 8px; padding: 14px 18px; font-size: .9rem; box-shadow: 0 1px 4px rgba(0,0,0,.05); }
+    .checklist li::before { content: ''; display: block; width: 18px; height: 18px; min-width: 18px; border: 2px solid var(--brand-primary); border-radius: 4px; margin-top: 2px; }
+
+    /* ── TIMELINE ── */
+    .timeline { display: grid; grid-template-columns: repeat(3,1fr); gap: 20px; }
+    .timeline-month { background: #fff; border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow); border-top: 4px solid var(--brand-primary); }
+    .timeline-month h3 { color: var(--brand-primary); margin-bottom: 12px; }
+    .timeline-month ul { padding-left: 18px; font-size: .88rem; display: grid; gap: 6px; }
+
+    /* ── KPI TABLE ── */
+    .kpi-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+    .kpi-table th { background: var(--brand-primary); color: #fff; padding: 12px 16px; text-align: left; }
+    .kpi-table td { padding: 12px 16px; border-bottom: 1px solid #e2e8f0; }
+    .kpi-table tr:nth-child(even) td { background: #f8fafc; }
+
+    /* ── CITATION / BACKLINK LIST ── */
+    .link-list { display: grid; gap: 10px; }
+    .link-item { background: #fff; border: 1px solid #e2e8f0; border-left: 4px solid var(--brand-accent); border-radius: var(--radius); padding: 16px 20px; box-shadow: var(--shadow); font-size: .9rem; }
+    .link-item strong { display: block; margin-bottom: 4px; }
+
+    /* ── CALLOUT ── */
+    .callout { background: var(--brand-dark); color: #fff; border-radius: var(--radius); padding: 32px; }
+    .callout h2 { color: var(--brand-accent); }
+
+    /* ── REVEAL ── */
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity .6s ease, transform .6s ease; }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ── FOOTER ── */
+    .report-footer { background: var(--brand-dark); color: rgba(255,255,255,.6); text-align: center; padding: 32px 24px; font-size: .85rem; }
+    .report-footer strong { color: #fff; }
+
+    @media (max-width: 767px) { .timeline { grid-template-columns: 1fr; } }
+    @media print {
+      .report-header, .report-footer, .callout { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      section { page-break-inside: avoid; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="report-header">
+  <div class="container">
+    <img class="logo" src="{{LOGO_PATH}}" alt="{{CLIENT_NAME}} logo" />
+    <h1>SEO Marketing Plan<br>{{CLIENT_NAME}}</h1>
+    <p class="meta">Created by Mike Montes &nbsp;·&nbsp; {{REPORT_DATE}} &nbsp;·&nbsp; Built from <em>seo.html</em> findings</p>
+  </div>
+</header>
+
+<!-- SECTION 1 — EXECUTIVE SUMMARY -->
+<section id="summary">
+  <div class="container">
+    <h2>Executive Summary</h2>
+    <div class="exec-summary reveal">
+      <p>{{EXEC_SUMMARY_P1}}</p>
+      <p>{{EXEC_SUMMARY_P2}}</p>
+      <p><strong>Top priority:</strong> {{EXEC_TOP_PRIORITY}}</p>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 2 — KEYWORD STRATEGY -->
+<section id="keywords">
+  <div class="container">
+    <h2>Keyword Strategy</h2>
+    <!-- PRIMARY -->
+    <div class="kw-card reveal">
+      <div class="kw-phrase">PRIMARY: "{{KW_PRIMARY}}"</div>
+      <div class="kw-meta">
+        <div class="kw-meta-item"><label>Monthly Volume</label><span>{{KW_PRIMARY_VOL}}</span></div>
+        <div class="kw-meta-item"><label>Current Rank</label><span>{{KW_PRIMARY_RANK}}</span></div>
+        <div class="kw-meta-item"><label>Target Rank</label><span>{{KW_PRIMARY_TARGET}}</span></div>
+        <div class="kw-meta-item"><label>Intent</label><span class="intent-pill">{{KW_PRIMARY_INTENT}}</span></div>
+        <div class="kw-meta-item"><label>Target Page</label><span>{{KW_PRIMARY_PAGE}}</span></div>
+      </div>
+      <p style="margin-top:14px;font-size:.88rem;color:#475569;"><strong>On-page action:</strong> {{KW_PRIMARY_ACTION}}</p>
+    </div>
+    <!-- SECONDARY — duplicate block as needed -->
+    <div class="kw-card reveal">
+      <div class="kw-phrase">SECONDARY: "{{KW_SECONDARY_1}}"</div>
+      <div class="kw-meta">
+        <div class="kw-meta-item"><label>Monthly Volume</label><span>{{KW_SEC1_VOL}}</span></div>
+        <div class="kw-meta-item"><label>Current Rank</label><span>{{KW_SEC1_RANK}}</span></div>
+        <div class="kw-meta-item"><label>Target Rank</label><span>{{KW_SEC1_TARGET}}</span></div>
+        <div class="kw-meta-item"><label>Intent</label><span class="intent-pill">{{KW_SEC1_INTENT}}</span></div>
+        <div class="kw-meta-item"><label>Target Page</label><span>{{KW_SEC1_PAGE}}</span></div>
+      </div>
+      <p style="margin-top:14px;font-size:.88rem;color:#475569;"><strong>On-page action:</strong> {{KW_SEC1_ACTION}}</p>
+    </div>
+    <!-- LONG-TAIL — add rows as needed -->
+    <h3 style="margin-top:32px;margin-bottom:12px;">Long-Tail Opportunities</h3>
+    <ul class="checklist reveal">
+      <li>"{{KW_LT_1}}" — {{KW_LT_1_VOL}} searches/mo — currently {{KW_LT_1_RANK}} — target page: {{KW_LT_1_PAGE}}</li>
+      <li>"{{KW_LT_2}}" — {{KW_LT_2_VOL}} searches/mo — currently {{KW_LT_2_RANK}} — target page: {{KW_LT_2_PAGE}}</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 3 — ON-PAGE SEO CHECKLIST -->
+<section id="on-page">
+  <div class="container">
+    <h2>On-Page SEO Checklist</h2>
+    <p>Page-by-page actions required before this site can rank for target keywords.</p>
+    <ul class="checklist reveal">
+      <li><strong>index.html</strong> — {{INDEX_ON_PAGE_ACTION}}</li>
+      <li><strong>services.html</strong> — {{SERVICES_ON_PAGE_ACTION}}</li>
+      <li><strong>about.html</strong> — {{ABOUT_ON_PAGE_ACTION}}</li>
+      <li><strong>contact.html</strong> — {{CONTACT_ON_PAGE_ACTION}}</li>
+      <!-- Add a line per prototype page -->
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 4 — LOCAL SEO ACTIONS -->
+<section id="local-seo">
+  <div class="container">
+    <h2>Local SEO Actions</h2>
+    <h3 style="margin-bottom:12px;">GBP Optimizations</h3>
+    <ul class="checklist reveal">
+      <li>{{GBP_ACTION_1}}</li>
+      <li>{{GBP_ACTION_2}}</li>
+      <li>{{GBP_ACTION_3}}</li>
+    </ul>
+    <h3 style="margin:28px 0 12px;">Local Citation Targets</h3>
+    <div class="link-list reveal">
+      <div class="link-item"><strong>{{CITATION_1_NAME}}</strong> {{CITATION_1_WHY}}</div>
+      <div class="link-item"><strong>{{CITATION_2_NAME}}</strong> {{CITATION_2_WHY}}</div>
+      <div class="link-item"><strong>{{CITATION_3_NAME}}</strong> {{CITATION_3_WHY}}</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 5 — CONTENT GAP PLAN -->
+<section id="content-gaps">
+  <div class="container">
+    <h2>Content Gap Plan</h2>
+    <div class="link-list reveal">
+      <div class="link-item"><strong>"{{CONTENT_1_TITLE}}"</strong> Target keyword: {{CONTENT_1_KW}} · Est. volume: {{CONTENT_1_VOL}}/mo</div>
+      <div class="link-item"><strong>"{{CONTENT_2_TITLE}}"</strong> Target keyword: {{CONTENT_2_KW}} · Est. volume: {{CONTENT_2_VOL}}/mo</div>
+      <div class="link-item"><strong>"{{CONTENT_3_TITLE}}"</strong> Target keyword: {{CONTENT_3_KW}} · Est. volume: {{CONTENT_3_VOL}}/mo</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 6 — BACKLINK OPPORTUNITIES -->
+<section id="backlinks">
+  <div class="container">
+    <h2>Backlink Opportunities</h2>
+    <div class="link-list reveal">
+      <div class="link-item"><strong>{{BACKLINK_1_SOURCE}}</strong> {{BACKLINK_1_HOW}}</div>
+      <div class="link-item"><strong>{{BACKLINK_2_SOURCE}}</strong> {{BACKLINK_2_HOW}}</div>
+      <div class="link-item"><strong>{{BACKLINK_3_SOURCE}}</strong> {{BACKLINK_3_HOW}}</div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 7 — REVIEW GENERATION STRATEGY -->
+<section id="reviews">
+  <div class="container">
+    <h2>Review Generation Strategy</h2>
+    <ul class="checklist reveal">
+      <li><strong>Timing:</strong> {{REVIEW_TIMING}}</li>
+      <li><strong>Ask method:</strong> {{REVIEW_ASK_METHOD}}</li>
+      <li><strong>Target platform:</strong> {{REVIEW_TARGET_PLATFORM}}</li>
+      <li><strong>Response protocol:</strong> {{REVIEW_RESPONSE_PROTOCOL}}</li>
+    </ul>
+  </div>
+</section>
+
+<!-- SECTION 8 — 3-MONTH MILESTONES -->
+<section id="timeline">
+  <div class="container">
+    <h2>3-Month Action Timeline</h2>
+    <div class="timeline reveal">
+      <div class="timeline-month">
+        <h3>Month 1 — Quick Wins</h3>
+        <ul>
+          <li>{{MONTH1_ACTION_1}}</li>
+          <li>{{MONTH1_ACTION_2}}</li>
+          <li>{{MONTH1_ACTION_3}}</li>
+        </ul>
+      </div>
+      <div class="timeline-month">
+        <h3>Month 2 — Content + Citations</h3>
+        <ul>
+          <li>{{MONTH2_ACTION_1}}</li>
+          <li>{{MONTH2_ACTION_2}}</li>
+          <li>{{MONTH2_ACTION_3}}</li>
+        </ul>
+      </div>
+      <div class="timeline-month">
+        <h3>Month 3 — Backlinks + Reviews</h3>
+        <ul>
+          <li>{{MONTH3_ACTION_1}}</li>
+          <li>{{MONTH3_ACTION_2}}</li>
+          <li>{{MONTH3_ACTION_3}}</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 9 — KPIs -->
+<section id="kpis">
+  <div class="container">
+    <h2>KPIs to Track</h2>
+    <table class="kpi-table reveal">
+      <thead><tr><th>KPI</th><th>Current</th><th>Target (Month 3)</th><th>How to Measure</th></tr></thead>
+      <tbody>
+        <tr><td>{{KPI_1_NAME}}</td><td>{{KPI_1_CURRENT}}</td><td>{{KPI_1_TARGET}}</td><td>{{KPI_1_HOW}}</td></tr>
+        <tr><td>{{KPI_2_NAME}}</td><td>{{KPI_2_CURRENT}}</td><td>{{KPI_2_TARGET}}</td><td>{{KPI_2_HOW}}</td></tr>
+        <tr><td>{{KPI_3_NAME}}</td><td>{{KPI_3_CURRENT}}</td><td>{{KPI_3_TARGET}}</td><td>{{KPI_3_HOW}}</td></tr>
+        <tr><td>{{KPI_4_NAME}}</td><td>{{KPI_4_CURRENT}}</td><td>{{KPI_4_TARGET}}</td><td>{{KPI_4_HOW}}</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="report-footer">
+  <p>Created by <strong>Mike Montes</strong> &nbsp;·&nbsp; Prepared for {{CLIENT_NAME}} &nbsp;·&nbsp; {{REPORT_DATE}}</p>
+</footer>
+
+<script>
+(function () {
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) { e.target.classList.add('visible'); obs.unobserve(e.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+})();
+</script>
+</body>
+</html>
