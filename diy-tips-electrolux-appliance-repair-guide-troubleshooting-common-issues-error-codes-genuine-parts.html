@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Electrolux Appliance Repair Guide — U-FIX-IT Appliance Parts</title>
+  <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />
+</head>
+<body class="page-blog">
+  <a class="skip" href="#main">Skip to content</a>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PROTOTYPE BANNER — paste into every prototype HTML page     ║
+  ║  Place immediately after <body> tag, before all other HTML   ║
+  ║  Developer note: REMOVE or IGNORE this entire block in the   ║
+  ║  React production build. It is prototype-only.               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<!-- PROTOTYPE BANNER -->
+<div id="proto-banner" class="proto-banner" style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #1e293b; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 8px; padding: 8px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  border-bottom: 2px solid #f59e0b;
+">
+  <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+      Prototype Only
+    </span>
+    <span style="opacity:.8;">
+      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+    </span>
+  </div>
+  <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex-shrink:0;">
+    <a
+      href="UFixIt-SEO-AEO-Compare.html"
+      id="proto-seo-aeo-link"
+      style="
+        background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
+        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; text-decoration: none; line-height: 1.2;
+        transition: background .15s ease, border-color .15s ease;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.borderColor='#fff'"
+      onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,.45)'"
+    >SEO / AEO Compare</a>
+    <button
+      type="button"
+      onclick="document.getElementById('proto-perf-modal').style.display='flex'"
+      style="
+        background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
+        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; flex-shrink: 0;
+        transition: background .15s ease;
+      "
+      onmouseover="this.style.background='#fbbf24'"
+      onmouseout="this.style.background='#f59e0b'"
+    >
+      View Performance Report
+    </button>
+  </div>
+</div>
+
+<!-- PERFORMANCE MODAL — Developer: ignore/remove in React build -->
+<div
+  id="proto-perf-modal"
+  style="
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center; padding:20px;
+  "
+  onclick="if(event.target===this)this.style.display='none'"
+>
+  <div style="
+    background:#fff; border-radius:16px; width:100%; max-width:560px;
+    box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden;
+  ">
+    <!-- Modal Header -->
+    <div style="background:#1e293b; padding:24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Performance Analysis</div>
+        <h2 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0;">Site Speed Report</h2>
+        <p style="color:rgba(255,255,255,.6); font-size:.82rem; margin:4px 0 0;">Prototype vs. Projected React Build</p>
+      </div>
+      <button
+        onclick="document.getElementById('proto-perf-modal').style.display='none'"
+        style="background:rgba(255,255,255,.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; flex-shrink:0;"
+      >&#215;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div style="padding:28px;">
+
+      <!-- Current load time -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+        <div style="background:#f8fafc; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; margin-bottom:6px;">This Page Loaded In</div>
+          <div id="proto-load-time" style="font-size:2rem; font-weight:900; color:#334155;">—</div>
+          <div style="font-size:.78rem; color:#64748b;">seconds (HTML prototype)</div>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#166534; margin-bottom:6px;">Projected React Load</div>
+          <div id="proto-react-time" style="font-size:2rem; font-weight:900; color:#15803d;">—</div>
+          <div style="font-size:.78rem; color:#166534;">seconds (estimated)</div>
+        </div>
+      </div>
+
+      <!-- Improvement badge -->
+      <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
+        <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
+      </div>
+
+      <!-- Schema notice -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#1d4ed8; margin-bottom:6px;">JSON-LD Schema</div>
+        <p style="font-size:.88rem; color:#1e3a8a; margin:0;" id="proto-schema-notice">
+          Checking for schema blocks on this page...
+        </p>
+      </div>
+
+      <!-- What changes in React -->
+      <div style="font-size:.82rem; color:#475569;">
+        <strong style="display:block; margin-bottom:8px; color:#334155;">What improves in the React build (all else equal):</strong>
+        <ul style="padding-left:18px; display:grid; gap:5px;">
+          <li>Code splitting — only the current page's JS is loaded</li>
+          <li>Image optimization — WebP conversion + lazy loading via React Image</li>
+          <li>CDN caching of static assets via Vercel/Netlify edge network</li>
+          <li>Tree-shaking removes unused CSS and JS from the bundle</li>
+          <li>Prefetching — next pages load before the user clicks</li>
+        </ul>
+      </div>
+
+      <p style="font-size:.75rem; color:#94a3b8; margin-top:16px; text-align:center;">
+        Developer note: Remove this banner and modal entirely from the React production build.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Push page content below the fixed banner */
+  body { padding-top: 44px !important; }
+  @media (max-width: 600px) { body { padding-top: 70px !important; } }
+</style>
+
+<script>
+(function () {
+  // ── Load time ──
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? nav.loadEventEnd - nav.startTime : performance.now();
+    var loadSec = (loadMs / 1000).toFixed(2);
+    document.getElementById('proto-load-time').textContent = loadSec;
+
+    // React estimated load: 35–55% faster (code splitting + CDN)
+    var improvement = 0.42; // 42% faster — mid estimate
+    var reactSec = (loadMs * (1 - improvement) / 1000).toFixed(2);
+    document.getElementById('proto-react-time').textContent = reactSec;
+    document.getElementById('proto-improvement').textContent =
+      Math.round(improvement * 100) + '% Faster';
+
+    // ── Schema detection ──
+    var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    var notice = document.getElementById('proto-schema-notice');
+    if (schemas.length > 0) {
+      var types = [];
+      schemas.forEach(function (s) {
+        try {
+          var obj = JSON.parse(s.textContent);
+          if (obj['@type']) types.push(obj['@type']);
+        } catch (e) {}
+      });
+      notice.innerHTML =
+        '<strong style="color:#1d4ed8;">' + schemas.length + ' schema block' +
+        (schemas.length > 1 ? 's' : '') + ' detected</strong> on this page.' +
+        (types.length ? ' Types: <em>' + types.join(', ') + '</em>.' : '') +
+        ' These are live and readable by Google and AI answer engines right now.';
+      notice.style.color = '#1e3a8a';
+    } else {
+      notice.textContent =
+        'No JSON-LD schema blocks detected on this page. Schema is embedded on the AEO report page.';
+    }
+  });
+})();
+</script>
+<!-- END PROTOTYPE BANNER -->
+
+  <header class="sh">
+<div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
+<div class="sh__in">
+<a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
+<form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
+<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+</div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">DIY / Tips</p>
+        <h1>Electrolux Appliance Repair Guide</h1>
+        <p class="crumb"><a href="index.html">Home</a> / <span>Electrolux Appliance Repair Guide</span></p>
+        <p class="source-tag">Source: Nancy CONTENT.md · Live: <a href="https://ufixit.com/diy-tips/electrolux-appliance-repair-guide-troubleshooting-common-issues-error-codes-genuine-parts/">https://ufixit.com/diy-tips/electrolux-appliance-repair-guide-troubleshooting-common-issues-error-codes-genuine-parts/</a></p>
+      </div>
+    </section>
+    <section class="band">
+      <div class="wrap prose">
+        
+        <p>BACK DIY Tips Electrolux Appliance Repair Guide Troubleshooting, Error Codes, and Sourcing Electrolux Parts Household appliances deliver essential convenience and efficiency to daily life, making Electrolux products a popular choice for consumers seeking reliability and advanced features. Although generally dependable, even Electrolux appliances occasionally require troubleshooting and maintenance to sustain optimal performance and extend operational lifespan. This comprehensive guide offers an in-depth look at frequent faults encountered in Electrolux refrigerators, washers, and dishwashers, practical diagnostic methods, accurate interpretation of error codes, and guidance on sourcing genuine replacement parts to ensure repairs maintain appliance integrity and safety. Key Takeaways Electrolux appliance issues often involve refrigerator cooling inefficiencies and washer performance faults that can be addressed through structured diagnosis and targeted interventions. Effective refrigerator troubleshooting includes checking the thermostat settings, cleaning condenser coils, inspecting door seals for leaks, verifying evaporator fan functionality, and evaluating the defrost system for failures. Washer troubleshooting should systematically verify hose conditions, ensure proper load distribution to avoid imbalance, and diagnose control system anomalies contributing to drainage or agitation problems. Understanding and effectively interpreting manufacturer error codes allows pinpointing specific subsystem faults, saving time and minimizing unnecessary part replacements. Many minor appliance faults can be resolved by performing resets typically involving power cycling; adherence to the model’s user manual ensures correct procedures. Utilizing genuine replacement parts from authorized dealers or verified distributors guarantees compatibility, durability, and maintains safety certifications. Routine preventive maintenance such as cleaning filters and coils, checking seals, and monitoring appliance usage patterns significantly enhances service longevity and efficiency. What Are the Most Common Issues in Electrolux Appliances and How Are They Diagnosed? Electrolux appliances, while built to high standards, are subject to normal wear, user operation errors, and environmental factors that contribute to common faults. Proactive recognition of symptom patterns combined with logical, component-specific diagnostics facilitates timely identification and correction of problems. Issues such as inconsistent cooling in refrigerators, drainage failures in washers, or inadequate dish cleaning often arise due to predictable causes that can be systematically evaluated. How to Identify Electrolux Refrigerator Cooling Problems Typical signs of refrigerator malfunction include uneven cooling zones, rapid spoilage of perishable items, frost or ice accumulation inside compartments, and unusual mechanical noises. Start diagnosis by verifying thermostat setpoints align with recommended temperatures and have not been altered inadvertently. Next, ensure condenser coils are free of dust and debris, which can impair heat dissipation and reduce cooling efficiency. Examine door seals to confirm proper sealing and avoid cold air leakage. Test the operation of the evaporator fan motor, essential for circulating chilled air throughout the unit. Finally, inspect the defrost system, including heater elements and sensors, to prevent frost buildup that obstructs cooling performance. What Are Effective Troubleshooting Steps for Electrolux Washer Malfunctions? Addressing washer malfunctions efficiently requires a methodical approach to identify symptoms and potential causes. Begin by thoroughly documenting observed problems such as failure to drain, inadequate agitation during cycles, excessive vibration, or abnormal noises. Consulting the user manual for model-specific troubleshooting guidance provides foundational insights. Proceed with inspecting all water inlet and outlet hoses for blockages, kinks, or leaks. Ensure load balance by confirming that clothes are correctly distributed inside the drum, as unbalanced loads often cause agitation and spin faults. Clear any lint or debris obstructing drains or filters. If basic remediation fails, assess electrical controls or error codes for more complex diagnostics. How Can Electrolux Error Codes Be Interpreted to Facilitate Accurate Repairs? Error codes generated by Electrolux appliances act as diagnostic shortcuts, indicating specific components or subsystems experiencing faults. Utilizing the official service or user manual, technicians and informed users can translate these codes into actionable repair steps, decreasing unwarranted component replacements and expediting resolution. Correct interpretation depends on model-specific code charts and understanding associated implications on appliance function. What Are the Meaning and Implications of Key Electrolux Refrigerator Error Codes? Among numerous codes, some frequently occurring ones help prioritize troubleshooting efforts effectively: Error Code Meaning Implication E1 Sensor error This typically signals a malfunction in the temperature sensor which can result in inaccurate readings and inconsistent cooling cycles, leading to food preservation issues. E2 Door sensor issue Indicates the door may fail to seal fully, causing cold air leakage, increased energy use, and reduced cooling efficiency. E3 Refrigerator defrost failure Results in excessive frost buildup impairing heat exchange and potentially damaging internal components if unaddressed. Leveraging these error code indications streamlines inspections and optimizes repair workflows. How to Reset Electrolux Washer and Dishwasher After an Error Code? To clear transient error codes, power cycling the appliance is often effective. Unplug the device from the electrical outlet and wait approximately five minutes to allow internal systems to reset. For certain models requiring specific reset sequences, the user manual provides detailed instructions, including button presses or dial adjustments. Should the error persist after reset, professional diagnostics are advised to prevent further damage or unsafe conditions. Where and How to Source Genuine Electrolux Replacement Parts for Reliable Repairs? Using authentic Electrolux parts in repairs ensures appliances maintain design specifications, operational safety, and warranty compliance. For optimal value, dependability, and service quality, acquire replacement components from U-FIX-IT Appliances Parts , a trusted supplier specializing in genuine Electrolux parts. Their extensive inventory covers a wide range of appliances, offering parts guaranteed to fit precisely and function reliably. Customers choosing U-FIX-IT benefit from expedited shipping options, knowledgeable customer service, and confidence knowing all components meet original equipment manufacturer standards. Avoid counterfeit or generic alternatives that risk incompatibility, poorer performance, or unsafe operation by sourcing through verified channels like U-FIX-IT. Whether performing a straightforward filter replacement or complex motor repair, availability of certified genuine parts from reputable distributors is fundamental to successful appliance restoration and long-term satisfaction. What Preventative Maintenance Practices Optimize Electrolux Appliance Longevity and Performance? Implementing regular maintenance routines reduces sudden appliance failures, enhances efficiency, and lowers repair expenses over time. Establishing a scheduled program focusing on comprehensive cleaning, component inspection, and operational monitoring addresses many prevalent issues before they magnify. Regular Cleaning : Periodically clean filters, condenser coils, vents, and internal cavities to prevent accumulation of dust, lint, or food debris that impair function. Check Seals and Gaskets : Examine door seals and gaskets routinely for signs of wear or damage, replacing them promptly to maintain airtightness and efficiency. Monitor Usage Patterns : Keeping track of appliance usage intensity aids in planning maintenance tasks and predicting parts replacement timelines. Consistent attention to these preventive measures contributes to prolonged serviceable life and improved reliability. Which Routine Checks Help Prevent Electrolux Dishwasher and Washer Breakdowns? For dishwashers and washers, specific routine inspections help maintain peak performance and reduce emergency repairs: Inspect Hoses for Damage : Regularly examine inlet and drain hoses for cracks, kinks, or leaks, replacing any compromised components immediately. Clean Filters : Remove and clean filters at least monthly to ensure proper water flow and prevent clogs that reduce cleaning effectiveness. Check for Proper Loading : Adhere to manufacturer recommendations regarding load size and item placement to avoid mechanical strain or incomplete washing cycles. Implementing these steps minimizes risks of damage and service disruptions. How Does Timely Replacement of Electrolux Appliance Parts Reduce Repair Frequency? Proactive replacement of wearable components such as belts, seals, motors, pumps, and sensors prior to failure prevents cascading malfunctions that may escalate repair complexity and downtime. Scheduling inspections aligned with manufacturer recommendations or based on observed wear allows maintenance at optimal intervals. This strategy enhances operational efficiency, reduces emergency repairs, and controls long-term maintenance spending. By mastering diagnostic techniques, decoding error messages accurately, and sourcing authentic replacement parts from trusted suppliers like U-FIX-IT , appliance owners and service professionals position themselves for comprehensive and effective upkeep, resulting in sustained Electrolux appliance reliability. Frequently Asked Questions 1. What should I do if I notice my Electrolux fridge making unusual noises? Unusual sounds often emanate from the evaporator fan or condenser area. First, verify there are no obstructions restricting fan blade movement. Clean condenser coils thoroughly to remove dust buildup. Persistent or loud noises may indicate component wear or motor issues needing assessment by a qualified technician to prevent further damage. 2. How can I prevent food spoilage in my Electrolux refrigerator? Maintain internal temperatures between 35°F and 38°F for optimal food preservation. Avoid overpacking, which restricts air circulation. Routinely check and maintain door seals to ensure tight closure. Regular cleaning of the interior and timely removal of expired products help preserve a stable environment, reducing spoilage risks. 3. Can I troubleshoot my Electrolux appliance without professional help? Many common Electrolux appliance issues are resolvable with systematic troubleshooting and basic tools by users familiar with the appliance. Start by consulting the user manual for guidance. Should complexities arise or if uncertainties exist, it is advisable to seek assistance from certified technicians to avoid risks. 4. What are the signs that an Electrolux washer needs maintenance? Indicators include excessive vibration during cycles, slow or incomplete drainage, poor spin performance, unusual noises, water leaks around the unit, or visible detergent residue buildup. Promptly cleaning filters, inspecting hoses for damage, and verifying load balance help maintain washer health. 5. How often should I clean the filters in my Electrolux dishwasher? Filters should be cleaned at least once a month by removing, rinsing under hot water, and gently brushing away debris. Regular cleaning ensures effective drainage, maintains wash quality, and prevents odor development. 6. What are the best practices for loading an Electrolux dishwasher? Arrange larger items such as pots and pans on the lower rack without blocking spray arms to ensure water reaches all surfaces. Orient plates downward and space items to prevent crowding, facilitating thorough cleaning. Spread utensils evenly in baskets, alternating handle directions to minimize nesting. 7. What should I do if my Electrolux appliance is under warranty and needs repairs? First, review your warranty terms to understand coverage. Contact Electrolux customer support or the original retailer with a detailed fault description and proof of purchase. Authorized repairs for manufacturer defects are often provided at no cost under warranty. Avoid unauthorized repairs that may void coverage. Buy Genuine Electrolux Parts with Confidence from U-FIX-IT Ensure your Electrolux appliance repairs are done right with authentic parts from U-FIX-IT. Experience quality, reliability, and expert support every step of the way. Shop Genuine Parts Now Conclusion Maintaining Electrolux appliances in peak condition requires a structured and informed approach to troubleshooting and repairs. Understanding typical fault patterns, mastering error-code interpretation, and sourcing genuine replacement parts from trusted vendors such as U-FIX-IT collectively ensure repairs restore appliances to their designed reliability and safety standards. Furthermore, committing to regular preventive maintenance not only extends service life but also optimizes energy efficiency and reduces costly breakdowns. For in-depth procedures and access to authorized parts, consult manufacturer documentation and utilize authorized distribution channels for sustained appliance performance and peace of mind. Appliance Parts Accessories Air Conditioner Parts Dishwasher Accessories Dishwasher Parts Dryer Parts Furnace Parts Microwave Parts Range &amp; Oven Parts Refrigerator Parts Washer Parts you may also be interested DIY Tips Essential AC Parts Guide: Learn about key air conditioner components and essential AC replacement parts for effective DIY repairs. Keep your home cool and efficient effortlessly. Read More DIY Tips Thermador Appliance Repair Guide Unlock solutions for Thermador error codes and appliance issues with expert tips on repairs and parts. Keep your luxury kitchen appliances running smoothly! Read More Appliances How to Choose the Right Hotpoint Appliance for Your Home Choosing the right Hotpoint appliance enhances every home&#x27;s efficiency and style. Understand your needs to make a well-informed decision for your kitchen. Read More Leave a Reply</p>
+        
+      </div>
+    </section>
+
+  </main>
+  <section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+<form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
+<footer class="sf"><div class="w"><div class="cols">
+<div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
+<div><h4>Shop</h4><a href="product-category-refrigerator-parts.html">Refrigerator Parts</a><br /><a href="product-category-washer-parts.html">Washer Parts</a><br /><a href="product-category-dryer-parts.html">Dryer Parts</a><br /><a href="product-category-range-oven-parts.html">Range &amp; Oven Parts</a><br /><a href="product-category-dishwasher-parts.html">Dishwasher Parts</a><br /><a href="product-category-air-conditioner-parts.html">Air Conditioner Parts</a><br /></div>
+<div><h4>Help</h4><a href="how-to-choose.html">How to choose a part</a><br /><a href="order-lookup.html">Track an order</a><br /><a href="shipping-appliance-parts.html">Shipping</a><br /><a href="about-us-warranty-returns.html">Warranty &amp; returns</a><br /><a href="account.html">My account</a></div>
+<div><h4>Stores</h4>Arlington <a href="tel:8174727740">817.472.7740</a><br />East Dallas <a href="tel:2143217054">214.321.7054</a><br />South Dallas <a href="tel:9727809096">972.780.9096</a><br />Tyler <a href="tel:9035925836">903.592.5836</a><br /></div>
+<div><h4>Company</h4><a href="about-us.html">About</a><br /><a href="appliance-repair-tips.html">DIY tips</a><br /><a href="share-feedback.html">Feedback</a><br /><a href="privacy-policy.html">Privacy</a><br /><a href="brand.html">Brand guide</a><br /><a href="sitemap.html">Sitemap</a></div>
+</div><div class="legal">© U-FIX-IT Appliance Parts · Texas · HTML prototype by The Tribe Maker / Yavin Digital · Mock checkout: no real payments are taken.</div></div></footer>
+<script src="js/store.js" defer></script></body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Complete Dryer Parts Diagram: Your Guide to DIY Dryer Repair — U-FIX-IT Appliance Parts</title>
+  <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />
+</head>
+<body class="page-blog">
+  <a class="skip" href="#main">Skip to content</a>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PROTOTYPE BANNER — paste into every prototype HTML page     ║
+  ║  Place immediately after <body> tag, before all other HTML   ║
+  ║  Developer note: REMOVE or IGNORE this entire block in the   ║
+  ║  React production build. It is prototype-only.               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<!-- PROTOTYPE BANNER -->
+<div id="proto-banner" class="proto-banner" style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #1e293b; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 8px; padding: 8px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  border-bottom: 2px solid #f59e0b;
+">
+  <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+      Prototype Only
+    </span>
+    <span style="opacity:.8;">
+      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+    </span>
+  </div>
+  <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex-shrink:0;">
+    <a
+      href="UFixIt-SEO-AEO-Compare.html"
+      id="proto-seo-aeo-link"
+      style="
+        background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
+        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; text-decoration: none; line-height: 1.2;
+        transition: background .15s ease, border-color .15s ease;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.borderColor='#fff'"
+      onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,.45)'"
+    >SEO / AEO Compare</a>
+    <button
+      type="button"
+      onclick="document.getElementById('proto-perf-modal').style.display='flex'"
+      style="
+        background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
+        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; flex-shrink: 0;
+        transition: background .15s ease;
+      "
+      onmouseover="this.style.background='#fbbf24'"
+      onmouseout="this.style.background='#f59e0b'"
+    >
+      View Performance Report
+    </button>
+  </div>
+</div>
+
+<!-- PERFORMANCE MODAL — Developer: ignore/remove in React build -->
+<div
+  id="proto-perf-modal"
+  style="
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center; padding:20px;
+  "
+  onclick="if(event.target===this)this.style.display='none'"
+>
+  <div style="
+    background:#fff; border-radius:16px; width:100%; max-width:560px;
+    box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden;
+  ">
+    <!-- Modal Header -->
+    <div style="background:#1e293b; padding:24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Performance Analysis</div>
+        <h2 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0;">Site Speed Report</h2>
+        <p style="color:rgba(255,255,255,.6); font-size:.82rem; margin:4px 0 0;">Prototype vs. Projected React Build</p>
+      </div>
+      <button
+        onclick="document.getElementById('proto-perf-modal').style.display='none'"
+        style="background:rgba(255,255,255,.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; flex-shrink:0;"
+      >&#215;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div style="padding:28px;">
+
+      <!-- Current load time -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+        <div style="background:#f8fafc; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; margin-bottom:6px;">This Page Loaded In</div>
+          <div id="proto-load-time" style="font-size:2rem; font-weight:900; color:#334155;">—</div>
+          <div style="font-size:.78rem; color:#64748b;">seconds (HTML prototype)</div>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#166534; margin-bottom:6px;">Projected React Load</div>
+          <div id="proto-react-time" style="font-size:2rem; font-weight:900; color:#15803d;">—</div>
+          <div style="font-size:.78rem; color:#166534;">seconds (estimated)</div>
+        </div>
+      </div>
+
+      <!-- Improvement badge -->
+      <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
+        <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
+      </div>
+
+      <!-- Schema notice -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#1d4ed8; margin-bottom:6px;">JSON-LD Schema</div>
+        <p style="font-size:.88rem; color:#1e3a8a; margin:0;" id="proto-schema-notice">
+          Checking for schema blocks on this page...
+        </p>
+      </div>
+
+      <!-- What changes in React -->
+      <div style="font-size:.82rem; color:#475569;">
+        <strong style="display:block; margin-bottom:8px; color:#334155;">What improves in the React build (all else equal):</strong>
+        <ul style="padding-left:18px; display:grid; gap:5px;">
+          <li>Code splitting — only the current page's JS is loaded</li>
+          <li>Image optimization — WebP conversion + lazy loading via React Image</li>
+          <li>CDN caching of static assets via Vercel/Netlify edge network</li>
+          <li>Tree-shaking removes unused CSS and JS from the bundle</li>
+          <li>Prefetching — next pages load before the user clicks</li>
+        </ul>
+      </div>
+
+      <p style="font-size:.75rem; color:#94a3b8; margin-top:16px; text-align:center;">
+        Developer note: Remove this banner and modal entirely from the React production build.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Push page content below the fixed banner */
+  body { padding-top: 44px !important; }
+  @media (max-width: 600px) { body { padding-top: 70px !important; } }
+</style>
+
+<script>
+(function () {
+  // ── Load time ──
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? nav.loadEventEnd - nav.startTime : performance.now();
+    var loadSec = (loadMs / 1000).toFixed(2);
+    document.getElementById('proto-load-time').textContent = loadSec;
+
+    // React estimated load: 35–55% faster (code splitting + CDN)
+    var improvement = 0.42; // 42% faster — mid estimate
+    var reactSec = (loadMs * (1 - improvement) / 1000).toFixed(2);
+    document.getElementById('proto-react-time').textContent = reactSec;
+    document.getElementById('proto-improvement').textContent =
+      Math.round(improvement * 100) + '% Faster';
+
+    // ── Schema detection ──
+    var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    var notice = document.getElementById('proto-schema-notice');
+    if (schemas.length > 0) {
+      var types = [];
+      schemas.forEach(function (s) {
+        try {
+          var obj = JSON.parse(s.textContent);
+          if (obj['@type']) types.push(obj['@type']);
+        } catch (e) {}
+      });
+      notice.innerHTML =
+        '<strong style="color:#1d4ed8;">' + schemas.length + ' schema block' +
+        (schemas.length > 1 ? 's' : '') + ' detected</strong> on this page.' +
+        (types.length ? ' Types: <em>' + types.join(', ') + '</em>.' : '') +
+        ' These are live and readable by Google and AI answer engines right now.';
+      notice.style.color = '#1e3a8a';
+    } else {
+      notice.textContent =
+        'No JSON-LD schema blocks detected on this page. Schema is embedded on the AEO report page.';
+    }
+  });
+})();
+</script>
+<!-- END PROTOTYPE BANNER -->
+
+  <header class="sh">
+<div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
+<div class="sh__in">
+<a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
+<form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
+<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+</div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">DIY / Tips</p>
+        <h1>Complete Dryer Parts Diagram: Your Guide to DIY Dryer Repair</h1>
+        <p class="crumb"><a href="index.html">Home</a> / <span>Complete Dryer Parts Diagram: Your Guide to DIY Dryer Repair</span></p>
+        <p class="source-tag">Source: Nancy CONTENT.md · Live: <a href="https://ufixit.com/dryer/complete-dryer-parts-diagram-your-guide-to-diy-dryer-repair/">https://ufixit.com/dryer/complete-dryer-parts-diagram-your-guide-to-diy-dryer-repair/</a></p>
+      </div>
+    </section>
+    <section class="band">
+      <div class="wrap prose">
+        
+        <p>BACK Dryer Complete Dryer Parts Diagram: Your Guide to DIY Dryer Repair At U-FIX-IT, we believe that understanding your appliance is the first step to a successful repair. A complete dryer parts diagram is an indispensable tool for any homeowner or technician looking to tackle DIY dryer repair . It empowers you to quickly pinpoint the exact replacement dryer parts you need, eliminating guesswork and saving you time and money. Dryers, whether gas or electric, are essential household appliances, and when they fail, it can disrupt your routine. This comprehensive guide will walk you through identifying key dryer components , how to effectively read a dryer parts diagram , common dryer parts to replace , the crucial differences between gas and electric models, and practical dryer troubleshooting tips . Our goal is to equip you with the knowledge to confidently diagnose and fix your dryer, ensuring you get the right appliance parts every time. Find Your Dryer Parts Now Your Dryer Repair Journey Starts Here! At U-FIX-IT, our mission is to provide you with the help you need to get your appliance back in running order, even if it means we do not make a sale. We are your trusted partner for all appliance parts questions, offering expert guidance and the exact replacement parts you need. Ready to Fix It Yourself? U-FIX-IT is Your Go-To for Dryer Parts &amp; Expert Guidance Don’t let a broken dryer disrupt your routine. With the right dryer parts diagram and the correct replacement dryer part , you can tackle many common repairs yourself. U-FIX-IT stands as the industry’s go-to resource for appliance parts questions, offering not just parts, but the knowledge and support to empower your DIY efforts. Find the exact dryer component you need and get your dryer running like new! Understanding Your Dryer: Main Components &amp; Their Functions Dryers are complex machines made from a handful of critical parts, and each one plays a specific role in the drying cycle. Understanding these dryer components is the first step to reliable troubleshooting and successful dryer repair . Essential Internal Dryer Components for Efficient Operation Inside most dryers, you’ll find the core internal components that make the magic happen. These include the heating element (or burner assembly on gas models), which generates the necessary heat ; the large rotating drum , where clothes tumble; and the powerful motor , which drives both the drum and the blower wheel . A sophisticated control board or timer directs cycles, temperature settings, and overall operation. For safety and regulation, the thermostat maintains optimal temperatures, while the thermal fuse acts as a critical safety device, cutting power if the dryer overheats. The drive belt links the motor to the drum , often kept taut by idler pulleys . The blower wheel is crucial for moving hot air through the drum and expelling moist air. The lint filter traps fibers, protecting airflow and significantly reducing fire risk. Finally, the exhaust vent routes moist air outside, completing the drying cycle. All these essential internal dryer components are available as high-quality replacement parts at U-FIX-IT to keep your dryer running efficiently and safely. External Dryer Parts: Interaction, Connection &amp; Stability The exterior parts of your dryer are how you interact with the machine and how it connects to your home’s utilities. The control panel (featuring knobs, buttons, or a touchscreen) allows you to select cycles and temperature settings. The sturdy door and its latch seal the drum , often including a window to view your laundry . The power cord provides the necessary electrical supply, while the exhaust hose connects the dryer to an outside vent to expel moisture. Finally, adjustable leveling legs keep the unit steady, reducing vibration and noise during operation. Knowing both inside and outside dryer parts makes complete maintenance and dryer repair easier, and U-FIX-IT offers readily available replacement parts for all these components, ensuring a perfect fit for your specific model. Master DIY Dryer Repair: U-FIX-IT Parts &amp; Expert Tips A dryer parts diagram is one of the most powerful tools for successful DIY dryer repair . It provides a visual roadmap, showing where each part sits within the appliance, often accompanied by specific part numbers for accurate ordering. To effectively use your diagram: Locate Your Model Number : This is the crucial first step. Your dryer’s model number is typically found on a sticker inside the door, on the back panel, or sometimes on the front kick plate. Find the Matching Diagram : Once you have your model number, consult your dryer’s owner’s manual or search online at U-FIX-IT’s extensive database for the exact dryer parts diagram specific to your model. Identify the Faulty Component : Compare the diagram to your actual dryer. If, for example, the drum won’t spin, the diagram will clearly show you the locations of the drive belt and idler pulley , guiding your inspection. Note Part Numbers : Many diagrams include specific part numbers. Jot these down to ensure you order the precise replacement dryer part . Always review the dryer parts diagram thoroughly before taking anything apart to understand the assembly and avoid damaging nearby components. This systematic approach, combined with U-FIX-IT’s comprehensive resources, ensures you can easily order the exact replacement part you need with confidence. Common Dryer Parts to Replace : Identification, Repair &amp; U-FIX-IT Solutions Some dryer parts experience more wear and tear than others, making them common culprits for dryer malfunctions and frequent DIY dryer fixes . U-FIX-IT provides all the necessary replacement dryer parts for these common issues: Heating Elements : If your electric dryer produces no heat , a burnt-out heating element is often the cause. Replacement typically involves cutting power, accessing the element housing, and installing a new unit. Drive Belts : A snapped or stretched drive belt will prevent the drum from turning. Replacing a belt usually requires opening the top and front panels, releasing tension from the idler pulley , and carefully routing the new belt around the drum and motor pulley . Lint Filters : Clogged or broken lint filters restrict airflow , leading to longer drying times and potential fire hazards. They are usually easy to remove, clean, or replace . Thermal Fuses : These are single-use safety devices that blow when temperatures get too high, often due to clogged vents. Replacing the thermal fuse is straightforward, but it’s crucial to identify and fix the underlying cause of overheating first. Drum Rollers or Bearings : Worn drum rollers or bearings cause loud squealing noises or prevent the drum from rotating smoothly. Changing them requires disassembling the drum and fitting new rollers or bearings. Always unplug the dryer from its power source before attempting any repair. Find all these common replacement dryer parts and more at U-FIX-IT to complete your DIY fix with confidence and get your dryer back to optimal performance! Gas vs. Electric Dryer Parts: Key Differences &amp; Safety Considerations While many dryer parts are shared between gas and electric models, their heat generation systems differ significantly, impacting diagnosis and repair. Understanding these distinctions is vital for ordering the correct dryer components and ensuring safety. Electric Dryers : These models utilize a heating element , typically a coiled wire, to generate heat . They require a dedicated 240-volt electrical outlet. Troubleshooting “no heat ” issues often involves checking the heating element , thermal fuse , and thermostats. Gas Dryers : Gas dryers use a burner assembly , which includes an igniter, flame sensor , and gas valve , to create heat from natural gas or propane. These models require a gas line connection and a standard 120-volt electrical outlet for controls and motor. Diagnosing heating problems in gas dryers focuses on the igniter, flame sensor , and gas valve . Gas models also include specific gas lines and a gas valve , which demand careful handling. For any work involving gas lines or major electrical components, U-FIX-IT always recommends consulting a certified appliance repair professional to ensure safety and compliance. Knowing these differences helps you pick the right dryer parts and follow the correct safety steps when ordering your specific gas or electric dryer components from U-FIX-IT. Troubleshooting Common Dryer Problems: Diagnose &amp; Repair with Confidence Empowering yourself with basic troubleshooting knowledge can save you time and money. Here are common dryer problems and how to approach them: No Heat : For electric dryers, check the thermal fuse and heating element . For gas dryers, inspect the igniter, flame sensor , and gas valve . Drum Not Turning : This often points to a broken or stretched drive belt , a faulty motor , or issues with the idler pulley . Loud Noises : Unusual noises usually indicate worn drum rollers , a failing idler pulley , or debris caught in the blower wheel . Clothes Stay Damp : Slow drying is frequently caused by a clogged lint screen , a blocked exhaust vent , or a failing heating system. Always refer to your dryer’s manual and a detailed dryer parts diagram for step-by-step checks and safety guidance. U-FIX-IT provides access to these resources and the exact replacement parts required for your fix, helping you diagnose and repair with confidence. With basic troubleshooting and regular care, such as emptying the lint filter after every load and cleaning the exhaust vent periodically, many dryer issues are easy to prevent or fix without a technician. For complex problems or anything involving gas lines or major electrical work, U-FIX-IT strongly advises calling a certified appliance repair professional to stay safe and ensure the job is done right. For everything else, we have the “u fix it” appliance parts you need to get your dryer back in top condition, supported by our commitment to your success, even if it means we don’t make a sale. Trust U-FIX-IT as your ultimate resource for all your dryer parts and repair needs. Appliance Parts Accessories Air Conditioner Parts Dishwasher Accessories Dishwasher Parts Dryer Parts Furnace Parts Microwave Parts Range &amp; Oven Parts Refrigerator Parts Washer Parts you may also be interested DIY Tips Essential AC Parts Guide: Learn about key air conditioner components and essential AC replacement parts for effective DIY repairs. Keep your home cool and efficient effortlessly. Read More DIY Tips Thermador Appliance Repair Guide Unlock solutions for Thermador error codes and appliance issues with expert tips on repairs and parts. Keep your luxury kitchen appliances running smoothly! Read More Appliances How to Choose the Right Hotpoint Appliance for Your Home Choosing the right Hotpoint appliance enhances every home&#x27;s efficiency and style. Understand your needs to make a well-informed decision for your kitchen. Read More Leave a Reply</p>
+        
+      </div>
+    </section>
+
+  </main>
+  <section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+<form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
+<footer class="sf"><div class="w"><div class="cols">
+<div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
+<div><h4>Shop</h4><a href="product-category-refrigerator-parts.html">Refrigerator Parts</a><br /><a href="product-category-washer-parts.html">Washer Parts</a><br /><a href="product-category-dryer-parts.html">Dryer Parts</a><br /><a href="product-category-range-oven-parts.html">Range &amp; Oven Parts</a><br /><a href="product-category-dishwasher-parts.html">Dishwasher Parts</a><br /><a href="product-category-air-conditioner-parts.html">Air Conditioner Parts</a><br /></div>
+<div><h4>Help</h4><a href="how-to-choose.html">How to choose a part</a><br /><a href="order-lookup.html">Track an order</a><br /><a href="shipping-appliance-parts.html">Shipping</a><br /><a href="about-us-warranty-returns.html">Warranty &amp; returns</a><br /><a href="account.html">My account</a></div>
+<div><h4>Stores</h4>Arlington <a href="tel:8174727740">817.472.7740</a><br />East Dallas <a href="tel:2143217054">214.321.7054</a><br />South Dallas <a href="tel:9727809096">972.780.9096</a><br />Tyler <a href="tel:9035925836">903.592.5836</a><br /></div>
+<div><h4>Company</h4><a href="about-us.html">About</a><br /><a href="appliance-repair-tips.html">DIY tips</a><br /><a href="share-feedback.html">Feedback</a><br /><a href="privacy-policy.html">Privacy</a><br /><a href="brand.html">Brand guide</a><br /><a href="sitemap.html">Sitemap</a></div>
+</div><div class="legal">© U-FIX-IT Appliance Parts · Texas · HTML prototype by The Tribe Maker / Yavin Digital · Mock checkout: no real payments are taken.</div></div></footer>
+<script src="js/store.js" defer></script></body>
+</html>

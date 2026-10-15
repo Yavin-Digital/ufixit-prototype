@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Caloric — U-FIX-IT Appliance Parts</title>
+  <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />
+</head>
+<body class="page-brand">
+  <a class="skip" href="#main">Skip to content</a>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PROTOTYPE BANNER — paste into every prototype HTML page     ║
+  ║  Place immediately after <body> tag, before all other HTML   ║
+  ║  Developer note: REMOVE or IGNORE this entire block in the   ║
+  ║  React production build. It is prototype-only.               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<!-- PROTOTYPE BANNER -->
+<div id="proto-banner" class="proto-banner" style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #1e293b; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 8px; padding: 8px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  border-bottom: 2px solid #f59e0b;
+">
+  <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+      Prototype Only
+    </span>
+    <span style="opacity:.8;">
+      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+    </span>
+  </div>
+  <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex-shrink:0;">
+    <a
+      href="UFixIt-SEO-AEO-Compare.html"
+      id="proto-seo-aeo-link"
+      style="
+        background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
+        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; text-decoration: none; line-height: 1.2;
+        transition: background .15s ease, border-color .15s ease;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.borderColor='#fff'"
+      onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,.45)'"
+    >SEO / AEO Compare</a>
+    <button
+      type="button"
+      onclick="document.getElementById('proto-perf-modal').style.display='flex'"
+      style="
+        background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
+        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; flex-shrink: 0;
+        transition: background .15s ease;
+      "
+      onmouseover="this.style.background='#fbbf24'"
+      onmouseout="this.style.background='#f59e0b'"
+    >
+      View Performance Report
+    </button>
+  </div>
+</div>
+
+<!-- PERFORMANCE MODAL — Developer: ignore/remove in React build -->
+<div
+  id="proto-perf-modal"
+  style="
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center; padding:20px;
+  "
+  onclick="if(event.target===this)this.style.display='none'"
+>
+  <div style="
+    background:#fff; border-radius:16px; width:100%; max-width:560px;
+    box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden;
+  ">
+    <!-- Modal Header -->
+    <div style="background:#1e293b; padding:24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Performance Analysis</div>
+        <h2 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0;">Site Speed Report</h2>
+        <p style="color:rgba(255,255,255,.6); font-size:.82rem; margin:4px 0 0;">Prototype vs. Projected React Build</p>
+      </div>
+      <button
+        onclick="document.getElementById('proto-perf-modal').style.display='none'"
+        style="background:rgba(255,255,255,.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; flex-shrink:0;"
+      >&#215;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div style="padding:28px;">
+
+      <!-- Current load time -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+        <div style="background:#f8fafc; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; margin-bottom:6px;">This Page Loaded In</div>
+          <div id="proto-load-time" style="font-size:2rem; font-weight:900; color:#334155;">—</div>
+          <div style="font-size:.78rem; color:#64748b;">seconds (HTML prototype)</div>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#166534; margin-bottom:6px;">Projected React Load</div>
+          <div id="proto-react-time" style="font-size:2rem; font-weight:900; color:#15803d;">—</div>
+          <div style="font-size:.78rem; color:#166534;">seconds (estimated)</div>
+        </div>
+      </div>
+
+      <!-- Improvement badge -->
+      <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
+        <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
+      </div>
+
+      <!-- Schema notice -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#1d4ed8; margin-bottom:6px;">JSON-LD Schema</div>
+        <p style="font-size:.88rem; color:#1e3a8a; margin:0;" id="proto-schema-notice">
+          Checking for schema blocks on this page...
+        </p>
+      </div>
+
+      <!-- What changes in React -->
+      <div style="font-size:.82rem; color:#475569;">
+        <strong style="display:block; margin-bottom:8px; color:#334155;">What improves in the React build (all else equal):</strong>
+        <ul style="padding-left:18px; display:grid; gap:5px;">
+          <li>Code splitting — only the current page's JS is loaded</li>
+          <li>Image optimization — WebP conversion + lazy loading via React Image</li>
+          <li>CDN caching of static assets via Vercel/Netlify edge network</li>
+          <li>Tree-shaking removes unused CSS and JS from the bundle</li>
+          <li>Prefetching — next pages load before the user clicks</li>
+        </ul>
+      </div>
+
+      <p style="font-size:.75rem; color:#94a3b8; margin-top:16px; text-align:center;">
+        Developer note: Remove this banner and modal entirely from the React production build.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Push page content below the fixed banner */
+  body { padding-top: 44px !important; }
+  @media (max-width: 600px) { body { padding-top: 70px !important; } }
+</style>
+
+<script>
+(function () {
+  // ── Load time ──
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? nav.loadEventEnd - nav.startTime : performance.now();
+    var loadSec = (loadMs / 1000).toFixed(2);
+    document.getElementById('proto-load-time').textContent = loadSec;
+
+    // React estimated load: 35–55% faster (code splitting + CDN)
+    var improvement = 0.42; // 42% faster — mid estimate
+    var reactSec = (loadMs * (1 - improvement) / 1000).toFixed(2);
+    document.getElementById('proto-react-time').textContent = reactSec;
+    document.getElementById('proto-improvement').textContent =
+      Math.round(improvement * 100) + '% Faster';
+
+    // ── Schema detection ──
+    var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    var notice = document.getElementById('proto-schema-notice');
+    if (schemas.length > 0) {
+      var types = [];
+      schemas.forEach(function (s) {
+        try {
+          var obj = JSON.parse(s.textContent);
+          if (obj['@type']) types.push(obj['@type']);
+        } catch (e) {}
+      });
+      notice.innerHTML =
+        '<strong style="color:#1d4ed8;">' + schemas.length + ' schema block' +
+        (schemas.length > 1 ? 's' : '') + ' detected</strong> on this page.' +
+        (types.length ? ' Types: <em>' + types.join(', ') + '</em>.' : '') +
+        ' These are live and readable by Google and AI answer engines right now.';
+      notice.style.color = '#1e3a8a';
+    } else {
+      notice.textContent =
+        'No JSON-LD schema blocks detected on this page. Schema is embedded on the AEO report page.';
+    }
+  });
+})();
+</script>
+<!-- END PROTOTYPE BANNER -->
+
+  <header class="sh">
+<div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
+<div class="sh__in">
+<a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
+<form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
+<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+</div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">Brand</p>
+        <h1>Caloric</h1>
+        <p class="crumb"><a href="index.html">Home</a> / <span>Caloric</span></p>
+        <p class="source-tag">Source: Nancy CONTENT.md · Live: <a href="https://ufixit.com/find-your-brand/caloric/">https://ufixit.com/find-your-brand/caloric/</a></p>
+      </div>
+    </section>
+    <section class="band">
+      <div class="wrap prose">
+        
+        <p>BACK Caloric Appliance Parts &amp; Repair Services | U-FIX-IT Though the Caloric Corporation first began in 1890 as the Klein Stove Company, it would be another 13 years before Caloric appliances were sold. In the early decades of the 20th Century, Caloric introduced what was essentially an early version of the Crock Pot with its Caloric Cooker. Appliance Parts Accessories Air Conditioner Parts Dishwasher Accessories Dishwasher Parts Dryer Parts Furnace Parts Microwave Parts Range &amp; Oven Parts Refrigerator Parts Washer Parts Caloric Refrigerators Consumers continued to buy the company’s products, with the name becoming famous for serving as a one-stop shopping spot for appliances in the kitchen. That was primarily due to built-in wall ovens and gas stoves with an infrared burner. Caloric was purchased by the Raytheon Corporation in 1967. Over the next quarter-century, Raytheon decided to merge Caloric with another subsidiary, Amana. Eventually, the company was sold multiple times before a new owner, Canadian-based JMM Lee Properties, decided to make a major effort to re-enter the appliance market in 2012. That re-entry currently has three products currently available to consumers at five specific outlets: Lowes, Home Depot, Costco, Goemans and Tasco. The designs of the appliances are deliberately targeted at consumers who either recall the brand with nostalgia or who like the retro look that it evokes. The appliances are: Each of the refrigerators is designed with energy-saving considerations, such as LED lights, while unique technological advancements are also part of the package. Each shelf within the refrigerator can be adapted to the lifespan of the product its keeping cold, an accomplishment possible through the MultiFlow 360 Degrees ventilation system. This system takes ions that have been negatively-charged and sends them through a number of different refrigerator slots. That allows for extended freshness of foods, thanks to attentive maintenance of the humidity inside as well as the temperature. Another innovation is the use of AdaptTech, which actually works with the appliance’s owner to understand their habits. Doing so helps maintain proper temperatures and can even lower it in anticipation of the door being opened. Other drawers focus on different aspects of concern. CrispZone zeroes in on humidity, SuperCool handles food that arrives home from a shopping trip, SimpleSlide can adjust for different sizes of jars and bottles and the XtremeFreeze focuses on getting things frozen quickly. The XXL SpaceBox offers plenty of room for freezer considerations, while the Inverter Compressor helps the refrigerator run more quietly and with much better energy efficiency. Finally, the ZeroZone drawer keeps items iced in freezing temperatures. Caloric Gas Ranges Two models accommodate both the standard 30-inch option, with four burners, and those who prefer or need larger stoves, with the 36-inch variety that has six burners. However, there are some similarities: Both burners can either cook quickly or drop to extra low for simmering purposes Both ovens use either conventional or convection modes Both models are ideal for either grilling or broiling Both are designed to be energy-efficient Caloric Induction Cooktops Two models, also 30 and 36 inches, with the 30-inch model offering five heating elements and the latter offering six. Some of their similarities include: A 3,700-watt burner Nine power levels Touch control A two-hour safety shut-off Additional appliances are expected to be introduced in the years ahead. Caloric Compatible Parts for Stoves, Ovens, and Other Appliances Ensuring your Caloric appliances operate smoothly requires access to the correct replacement parts. U-FIX-IT provides a wide range of appliance parts for stoves, ovens, refrigerators, gas ranges, and induction cooktops. Our inventory also includes dishwasher parts for Caloric and other compatible appliances. Explore our extensive parts list below, categorized by appliance type. Oven and Stove Parts for Caloric Appliances Oven Igniters: Reliable ignition is key for Caloric ovens to heat evenly and consistently, making igniters one of the indispensable stove parts for Caloric units. Replacing a faulty igniter can prevent delays in preheating and ensure efficient cooking, allowing meals to cook thoroughly without interruptions. Grates: Burner grates are range parts for Caloric that support cookware directly above the flame or heat source. Replacing corroded or warped grates ensures even heat distribution and safe cooking, creating a stable base for pots and pans. Bake/Broil Elements: Bake and broil elements are oven parts for Caloric units that distribute heat evenly across the oven cavity. Damaged elements can lead to uneven cooking, so replacing them restores optimal heating. Door Gaskets: Gaskets seal the oven door, keeping heat inside for efficient cooking. Faulty gaskets lead to heat loss, longer preheating times, and uneven cooking, so replacing them helps maintain energy efficiency and cooking consistency. Burner Knobs: Knobs are essential cooktop parts for Caloric units, responsible for controlling heat settings accurately. Worn or broken knobs make it difficult to adjust temperatures precisely, impacting cooking results, and new knobs allow for smooth and accurate control. Thermostat Sensors: These are responsible for regulating oven temperature. Sensors are essential cooktop parts for Caloric ovens and stoves. A malfunctioning sensor can cause temperature fluctuations, affecting baking accuracy and preventing the oven from reaching the set temperature. Parts for Induction Cooktops Induction Coils: Induction coils generate the magnetic field that heats compatible cookware directly. Control Boards: Control boards regulate cooking temperatures and settings. Using Caloric compatible parts, you can restore full control over your cooktop’s performance. Temperature Sensors: These sensors monitor the cooktop’s heat levels to prevent overheating. Cooling Fans: Cooling fans keep induction components at safe operating temperatures. A failing fan can cause overheating, reducing the lifespan of your cooktop’s parts and ensuring smooth and reliable performance. Touch Control Panels: Touch panels allow you to adjust settings and temperatures effortlessly. Surface Glass: The glass surface provides a smooth cooking area and supports induction functions. Caloric Compatible Refrigerator Parts Compressor: The compressor is the core of your refrigerator’s cooling system, circulating refrigerant throughout the unit. A faulty compressor results in poor cooling performance, leading to food spoilage and disrupting the refrigerator’s ability to maintain consistent temperatures. Condenser Coils: These coils dissipate heat inside the refrigerator to maintain a cool environment. Dirty or damaged coils reduce efficiency, so replacing them helps restore optimal cooling and prevents your refrigerator from overworking. Evaporator Fan Motor: This motor circulates cold air throughout the refrigerator and freezer compartments. Replacing a faulty fan motor helps maintain consistent temperatures, ensuring food stays fresh and free from spoilage. Thermostat: The thermostat regulates internal temperatures to keep food fresh. A faulty thermostat can cause fluctuations, leading to improper cooling and ensuring your food storage conditions remain stable. Water Filters: Filters remove impurities from water and ice dispensers. Regular replacement of filters ensures clean, fresh-tasting water and ice, reducing contaminants for healthier consumption. Defrost Heater: This component is an essential appliance part for Caloric refrigerators. It prevents ice buildup on the evaporator coils. When this part fails, frost accumulation can impact cooling efficiency and airflow, leading to uneven temperatures inside the refrigerator. Range Parts for Caloric Units Gas Valves: These components regulate gas flow to the burners, ensuring safe and efficient operation. Replacing faulty gas valves prevents leaks and maintains consistent burner performance, giving you control over flame intensity. Surface Burners: These burners provide the direct flame for cooking. Damaged burners can lead to uneven flame distribution, making it harder to cook evenly and requiring replacement for reliable heat output. Oven Thermocouple: This is one of the essential oven parts for Caloric units. It’s a safety device that detects the presence of a flame and shuts off gas flow if no flame is detected. It is essential for preventing dangerous gas leaks. Dishwasher Parts for Caloric Appliances Water Inlet Valve: The valve controls water flow into the dishwasher during wash cycles. Dish Rack Wheels: Equipped with smooth-glide wheels, the dish racks effortlessly slide in and out of the dishwasher, ensuring easy access and a seamless loading and unloading experience. Heating Element: The heating element heats water during washing cycles and helps dry dishes afterward. Caloric Warranty Information All Caloric appliances have a two-year warranty, which includes labor and parts. When setting up a service call, the warranty number will be required and the original sales receipt should be available. Can&#x27;t Find Your Caloric Appliance Part? Request It Now Know the part you are looking for but can&#x27;t find it? Let us find it and let you know when we do. What Our Customers Say Our guiding principle in customer service: Love your neighbor as you love yourself. Everytime I come here I feel smarter. The guys are so helpful they will have saving money instead of throwing parts and throwing money down the drain. It’s easy to order parts online with the guessing game. Having that true customer service and the knowledge is worth the price of admission. Erick Scott Honestly I called to check and see if they had a part in stock, and didn’t even end up using them or buying from them, but was just generally impressed with the customer service that I received on the phone. The gentleman that I spoke to was very kind and helpful and gave me some good advice. Even though it didn’t result in immediate business for them, I will definitely return in the future. As a customer service professional myself, things like that are investments in the long run and not something you see every day now. Thank you for the help, person whose name I don’t remember! You gained a customer for the future. Kirby J Came in to ask about a part for my washing machine and was assisted by this newer gentleman, Josue. He gave me some great tips for installing and now, thanks to this extremely helpful young man, my washing machine is working perfectly again!! So grateful I didn’t have to spend hundreds of dollars on a new one. Thanks U-FIX-IT!!! Lisa Panelli-Valentin The associates were so helpful, friendly, understanding and nice. It was refreshing to get such great customer service and knowledgeable help! I went in to get a heating coil for my dryer that wouldn’t heat up anymore they let me know it could be that or the thermostat. I couldn’t unhook the wires at home so I brought the whole dryer 5 minutes before closing on a Friday. They tested the parts and let me know it was the thermostat which was cheaper than the heating coil. He even gave me tips on how to remove the part and it was so easy! To fix your dryer for less than $40 yourself makes you feel so good and powerful!!!! Thank you guys! Rosamari Williamson Give us your feedback</p>
+        
+        <div class="catalog-note note">
+          <strong>Catalog pattern — not full Woo catalog.</strong>
+          Live WooCommerce lists hundreds of SKUs under Caloric.
+          This prototype keeps hubs + 2 sample PDPs only (Randy url-index / Nancy sign-off).
+        </div>
+        <div class="product-grid product-grid--placeholder" aria-hidden="true">
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+        </div>
+        <p><a class="btn btn--navy" href="shop.html">Shop hub</a>
+           <a class="btn btn--outline" href="contact-us.html">Ask about a part</a></p>
+
+      </div>
+    </section>
+
+  </main>
+  <section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+<form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
+<footer class="sf"><div class="w"><div class="cols">
+<div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
+<div><h4>Shop</h4><a href="product-category-refrigerator-parts.html">Refrigerator Parts</a><br /><a href="product-category-washer-parts.html">Washer Parts</a><br /><a href="product-category-dryer-parts.html">Dryer Parts</a><br /><a href="product-category-range-oven-parts.html">Range &amp; Oven Parts</a><br /><a href="product-category-dishwasher-parts.html">Dishwasher Parts</a><br /><a href="product-category-air-conditioner-parts.html">Air Conditioner Parts</a><br /></div>
+<div><h4>Help</h4><a href="how-to-choose.html">How to choose a part</a><br /><a href="order-lookup.html">Track an order</a><br /><a href="shipping-appliance-parts.html">Shipping</a><br /><a href="about-us-warranty-returns.html">Warranty &amp; returns</a><br /><a href="account.html">My account</a></div>
+<div><h4>Stores</h4>Arlington <a href="tel:8174727740">817.472.7740</a><br />East Dallas <a href="tel:2143217054">214.321.7054</a><br />South Dallas <a href="tel:9727809096">972.780.9096</a><br />Tyler <a href="tel:9035925836">903.592.5836</a><br /></div>
+<div><h4>Company</h4><a href="about-us.html">About</a><br /><a href="appliance-repair-tips.html">DIY tips</a><br /><a href="share-feedback.html">Feedback</a><br /><a href="privacy-policy.html">Privacy</a><br /><a href="brand.html">Brand guide</a><br /><a href="sitemap.html">Sitemap</a></div>
+</div><div class="legal">© U-FIX-IT Appliance Parts · Texas · HTML prototype by The Tribe Maker / Yavin Digital · Mock checkout: no real payments are taken.</div></div></footer>
+<script src="js/store.js" defer></script></body>
+</html>

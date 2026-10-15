@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Viking Appliance Repair Guide — U-FIX-IT Appliance Parts</title>
+  <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />
+</head>
+<body class="page-blog">
+  <a class="skip" href="#main">Skip to content</a>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PROTOTYPE BANNER — paste into every prototype HTML page     ║
+  ║  Place immediately after <body> tag, before all other HTML   ║
+  ║  Developer note: REMOVE or IGNORE this entire block in the   ║
+  ║  React production build. It is prototype-only.               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<!-- PROTOTYPE BANNER -->
+<div id="proto-banner" class="proto-banner" style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #1e293b; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 8px; padding: 8px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  border-bottom: 2px solid #f59e0b;
+">
+  <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+      Prototype Only
+    </span>
+    <span style="opacity:.8;">
+      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+    </span>
+  </div>
+  <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex-shrink:0;">
+    <a
+      href="UFixIt-SEO-AEO-Compare.html"
+      id="proto-seo-aeo-link"
+      style="
+        background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
+        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; text-decoration: none; line-height: 1.2;
+        transition: background .15s ease, border-color .15s ease;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.borderColor='#fff'"
+      onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,.45)'"
+    >SEO / AEO Compare</a>
+    <button
+      type="button"
+      onclick="document.getElementById('proto-perf-modal').style.display='flex'"
+      style="
+        background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
+        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; flex-shrink: 0;
+        transition: background .15s ease;
+      "
+      onmouseover="this.style.background='#fbbf24'"
+      onmouseout="this.style.background='#f59e0b'"
+    >
+      View Performance Report
+    </button>
+  </div>
+</div>
+
+<!-- PERFORMANCE MODAL — Developer: ignore/remove in React build -->
+<div
+  id="proto-perf-modal"
+  style="
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center; padding:20px;
+  "
+  onclick="if(event.target===this)this.style.display='none'"
+>
+  <div style="
+    background:#fff; border-radius:16px; width:100%; max-width:560px;
+    box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden;
+  ">
+    <!-- Modal Header -->
+    <div style="background:#1e293b; padding:24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Performance Analysis</div>
+        <h2 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0;">Site Speed Report</h2>
+        <p style="color:rgba(255,255,255,.6); font-size:.82rem; margin:4px 0 0;">Prototype vs. Projected React Build</p>
+      </div>
+      <button
+        onclick="document.getElementById('proto-perf-modal').style.display='none'"
+        style="background:rgba(255,255,255,.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; flex-shrink:0;"
+      >&#215;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div style="padding:28px;">
+
+      <!-- Current load time -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+        <div style="background:#f8fafc; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; margin-bottom:6px;">This Page Loaded In</div>
+          <div id="proto-load-time" style="font-size:2rem; font-weight:900; color:#334155;">—</div>
+          <div style="font-size:.78rem; color:#64748b;">seconds (HTML prototype)</div>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#166534; margin-bottom:6px;">Projected React Load</div>
+          <div id="proto-react-time" style="font-size:2rem; font-weight:900; color:#15803d;">—</div>
+          <div style="font-size:.78rem; color:#166534;">seconds (estimated)</div>
+        </div>
+      </div>
+
+      <!-- Improvement badge -->
+      <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
+        <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
+      </div>
+
+      <!-- Schema notice -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#1d4ed8; margin-bottom:6px;">JSON-LD Schema</div>
+        <p style="font-size:.88rem; color:#1e3a8a; margin:0;" id="proto-schema-notice">
+          Checking for schema blocks on this page...
+        </p>
+      </div>
+
+      <!-- What changes in React -->
+      <div style="font-size:.82rem; color:#475569;">
+        <strong style="display:block; margin-bottom:8px; color:#334155;">What improves in the React build (all else equal):</strong>
+        <ul style="padding-left:18px; display:grid; gap:5px;">
+          <li>Code splitting — only the current page's JS is loaded</li>
+          <li>Image optimization — WebP conversion + lazy loading via React Image</li>
+          <li>CDN caching of static assets via Vercel/Netlify edge network</li>
+          <li>Tree-shaking removes unused CSS and JS from the bundle</li>
+          <li>Prefetching — next pages load before the user clicks</li>
+        </ul>
+      </div>
+
+      <p style="font-size:.75rem; color:#94a3b8; margin-top:16px; text-align:center;">
+        Developer note: Remove this banner and modal entirely from the React production build.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Push page content below the fixed banner */
+  body { padding-top: 44px !important; }
+  @media (max-width: 600px) { body { padding-top: 70px !important; } }
+</style>
+
+<script>
+(function () {
+  // ── Load time ──
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? nav.loadEventEnd - nav.startTime : performance.now();
+    var loadSec = (loadMs / 1000).toFixed(2);
+    document.getElementById('proto-load-time').textContent = loadSec;
+
+    // React estimated load: 35–55% faster (code splitting + CDN)
+    var improvement = 0.42; // 42% faster — mid estimate
+    var reactSec = (loadMs * (1 - improvement) / 1000).toFixed(2);
+    document.getElementById('proto-react-time').textContent = reactSec;
+    document.getElementById('proto-improvement').textContent =
+      Math.round(improvement * 100) + '% Faster';
+
+    // ── Schema detection ──
+    var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    var notice = document.getElementById('proto-schema-notice');
+    if (schemas.length > 0) {
+      var types = [];
+      schemas.forEach(function (s) {
+        try {
+          var obj = JSON.parse(s.textContent);
+          if (obj['@type']) types.push(obj['@type']);
+        } catch (e) {}
+      });
+      notice.innerHTML =
+        '<strong style="color:#1d4ed8;">' + schemas.length + ' schema block' +
+        (schemas.length > 1 ? 's' : '') + ' detected</strong> on this page.' +
+        (types.length ? ' Types: <em>' + types.join(', ') + '</em>.' : '') +
+        ' These are live and readable by Google and AI answer engines right now.';
+      notice.style.color = '#1e3a8a';
+    } else {
+      notice.textContent =
+        'No JSON-LD schema blocks detected on this page. Schema is embedded on the AEO report page.';
+    }
+  });
+})();
+</script>
+<!-- END PROTOTYPE BANNER -->
+
+  <header class="sh">
+<div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
+<div class="sh__in">
+<a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
+<form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
+<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+</div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">DIY / Tips</p>
+        <h1>Viking Appliance Repair Guide</h1>
+        <p class="crumb"><a href="index.html">Home</a> / <span>Viking Appliance Repair Guide</span></p>
+        <p class="source-tag">Source: Nancy CONTENT.md · Live: <a href="https://ufixit.com/diy-tips/viking-appliance-repair-guide-luxury-kitchen-troubleshooting-error-codes-genuine-parts/">https://ufixit.com/diy-tips/viking-appliance-repair-guide-luxury-kitchen-troubleshooting-error-codes-genuine-parts/</a></p>
+      </div>
+    </section>
+    <section class="band">
+      <div class="wrap prose">
+        
+        <p>BACK DIY Tips Viking Appliance Repair Guide Comprehensive Troubleshooting, Error Codes, and Genuine Parts for Luxury Kitchen Appliances Viking appliances are synonymous with luxury and professional-grade performance in the kitchen. However, like any highly engineered machinery, they can sometimes encounter issues that require troubleshooting. This comprehensive guide will provide you with essential information regarding the most common error codes associated with Viking ovens and ranges, how to interpret these codes, effective troubleshooting steps, and best practices for maintenance. Additionally, we will support your repair efforts by discussing genuine Viking parts, emphasizing trusted sources like U-FIX-IT Appliance Parts— a leading provider of authentic components—to ensure your appliances continue performing at their best. Whether you’re facing a minor annoyance or a significant malfunction, this guide aims to equip you with the knowledge and resources needed to resolve these issues effectively. What Are the Most Common Viking Oven and Range Error Codes? Understanding error codes in Viking appliances is crucial for effective troubleshooting. The most common error codes provide valuable insights into what might be wrong, allowing you to pinpoint issues quickly. F1 : This code typically indicates a faulty temperature sensor, which can lead to improper heating. F2 : Often signifies that the oven has reached an excessively high temperature, which can be caused by insulation failures or a defective thermostat. F3 : This code generally points to problems with the oven’s temperature sensor, suggesting either a short circuit or connection failure. Recognizing these codes not only helps diagnose problems but also informs repair methods, potentially saving time and costs associated with misdiagnosis. How to Interpret and Diagnose Viking Appliance Error Codes Interpreting Viking appliance error codes involves understanding both the code itself and what it suggests about the appliance’s performance. To diagnose these error codes effectively, follow these steps: Check the Display : Start by identifying the exact error code being displayed on the appliance’s control panel. Refer to the Manual : Consult the Viking appliance manual, which typically contains a comprehensive list of error codes and their meanings. Use Diagnostic Tools : Tools like multimeters can be invaluable for assessing electrical components related to the error code, allowing you to confirm the source of the issue. Understanding these steps enables you to approach repairs methodically, ensuring that you’re addressing the root cause rather than just symptoms. Troubleshooting and Repairing Viking Kitchen Appliances Several diagnostic tools can assist in identifying faults in Viking appliances. These include: Digital Multimeter : Essential for testing electrical circuits and determining whether components are functioning correctly. Flashlight : Helpful for inspecting dark interior areas of the appliance for signs of wear or damage. Repair Manuals/Videos : These resources provide detailed guides on common models, assisting with specific troubleshooting methods. Error Codes : Utilize the digital panel to view any displayed error codes that can guide the diagnostic process. Component Testing : Use a multimeter to test components such as heating elements or thermostats for continuity. Understanding how to leverage these tools can address Viking appliance faults accurately, leading to effective repairs. How to Troubleshoot Luxury Viking Kitchen Appliances Effectively? Troubleshooting Viking kitchen appliances involves a systematic approach to identifying and resolving issues. Here’s a step-by-step guide: Identify the Problem : Start by observing any unusual symptoms, including error codes displayed on the digital panel. Consult the Manual : Reference the owner’s manual for guidance on error codes and troubleshooting steps specific to your model. Check Power Sources : Ensure that the appliance is correctly plugged in and the circuit breaker is not tripped. Inspect Components : Look for any visible damage or wear on components that could be related to the malfunction, such as burners, switches, or sensors. Perform Tests : Using diagnostic tools, check any faulty parts to diagnose specific issues. Contact a Professional : If troubleshooting steps do not resolve the issue, consider reaching out for professional appliance repair services or obtaining authentic parts from U-FIX-IT Appliance Parts to ensure quality repairs. Adopting this organized troubleshooting strategy can lead to quicker resolutions and reduce the need for extensive repairs. What Are the Safety Precautions and Best Practices for Maintaining Viking Appliances? Maintaining safety while working on Viking appliances is essential. Here are key precautions and maintenance practices: Disconnect Power : Always unplug the appliance before performing any repairs to avoid electrical shock. Shut Off Gas Supply : For gas appliances, ensure that the gas supply is turned off to prevent leaks during repairs. Use Personal Protective Equipment (PPE) : Equip yourself with gloves and goggles to protect against injuries. Ensure Proper Ventilation : Especially for gas models, proper airflow is crucial while conducting repairs. Inspect Tools : Use insulated tools in good condition to minimize risks during repairs. Work in a Dry Area : Avoid working on wet surfaces to prevent electrical hazards. By following these practices, you can ensure a safer working environment while extending the life of your appliances. Where to Find and How to Verify Genuine Viking Appliance Parts? Genuine Viking appliance parts are crucial for ensuring that repairs maintain the quality and functionality of your appliance. For the most reliable sourcing, consider U-FIX-IT Appliance Parts , a trusted supplier specializing in authentic Viking parts. Here’s how to identify and verify these parts: Identify Authentic Suppliers : Purchase from authorized dealers like U-FIX-IT Appliance Parts to ensure you are getting genuine parts. Recognize Signs of Counterfeit Parts : Check for proper branding on the packaging, as genuine parts typically have consistent and identifiable branding. Methods for Verifying Authenticity : Match part numbers from the old part with those listed on the new parts, ensuring compatibility. Knowing where to source and how to verify Viking parts helps ensure your repairs are effective and long-lasting. U-FIX-IT Appliance Parts also offers expert customer support to assist in selecting the right components for your model. How to Identify Authentic Viking Parts and Confirm Compatibility with Specific Models Identifying authentic Viking parts involves several steps: Check Packaging : Genuine parts should come in secure, properly labeled packaging that matches Viking’s branding criteria. Use Reliable Sources : Verify the vendor’s status as an authorized dealer or distributor of Viking appliances, such as U-FIX-IT Appliance Parts. Confirm Part Specifications : Ensure that part numbers match those specified in your appliance’s manual or on the old part for compatibility. By carefully evaluating potential replacements and leveraging trusted suppliers like U-FIX-IT Appliance Parts, you can avoid the pitfalls of counterfeit parts. What Are the Advantages of Using Certified Genuine Parts over Aftermarket Alternatives? Using certified genuine parts offers multiple advantages, such as: Quality Assurance : Genuine parts are manufactured to meet the stringent standards set by Viking, ensuring they will perform as intended. Compatibility : These parts are specifically designed for Viking appliances, reducing the risk of misfits or operational issues. Warranty Protection : Using genuine parts typically preserves warranties and guarantees that come with your appliances. Trusted Supplier Support : Sources like U-FIX-IT Appliance Parts provide knowledgeable support and reliable shipping, accelerating your repair process. Opting for certified parts and trusted suppliers ensures that your repairs maintain the integrity and performance of your Viking appliances. How to Order Viking Replacement Parts and Schedule Professional Repair Services? Ordering Viking replacement parts and scheduling services involves a clear process to simplify repairs. Trusted suppliers like U-FIX-IT Appliance Parts specialize in providing authentic parts quickly and confidently. Identify the Issue : Understand the specific problem to determine the exact part needed. Find the Right Part : Use the model number of your appliance to locate accurate parts via U-FIX-IT Appliance Parts’s website or customer service. Contact Authorized Dealers : Provide the necessary details for inquiries about part availability and pickup procedures. This process streamlines the steps necessary to ensure repairs are conducted efficiently and with genuine components. What Are the Procedures for Ordering Authentic Viking Parts In-Store or for Pickup? When acquiring parts, follow these procedures: Use Model Numbers : Verify you have the correct model and serial number before searching for parts. Select an Authorized Dealer : Choose an authorized dealer known for providing authentic parts, such as U-FIX-IT Appliance Parts. Confirm Pickup Options : Check for in-store pickup availability to ensure timely receipt of parts. This structured process aids in acquiring necessary components without complications. How to Access Expert Repair Services for Luxury Viking Kitchen Appliances Locally? Accessing local repair services for Viking appliances can be straightforward: Research Local Providers : Start with a search for certified appliance repair specialists in your area who specialize in luxury brands. Evaluate Experience : Look for reviews and recommendations to identify service providers with a track record of excellence in Viking appliance repairs. Contact Professionals : Reach out to selected providers to discuss your appliance issues and schedule a service appointment. Order Parts as Needed : For parts replacement, rely on trusted suppliers like U-FIX-IT Appliance Parts to ensure authentic components arrive swiftly. By following these steps, you can ensure expert service for your Viking appliances, ensuring they remain in peak working condition. What Are the Latest Maintenance Tips and Warranty Guidelines for Viking Appliances? Regular maintenance is vital to keeping your Viking appliances running smoothly. Here are some effective maintenance tips: Perform Regular Cleaning : Keep surfaces and components clean to maximize performance and prevent deterioration. Inspect Components Regularly : Regularly check for signs of wear or damage in electrical components and heating elements. Follow Manufacturer Guidelines : Adhere to any specific maintenance requirements outlined in your appliance’s manual. Practicing these tips enhances the longevity of your appliances and maintains their high-level performance. How to Perform Routine Maintenance to Maximize Viking Appliance Lifespan Routine maintenance can significantly extend the lifespan of your Viking appliances. Consider these practices: Cleaning : Wipe down surfaces and clean filters to ensure optimal airflow and prevent build-up. Component Checks : Regularly inspect seals and gaskets for damage to maintain energy efficiency. Scheduled Servicing : Schedule professional assessments periodically to catch potential issues before they become serious. Incorporating these habits can lead to longer-lasting appliances and fewer repair needs. What Are the Key Warranty Terms and How Do They Affect Repair Choices? Understanding warranty terms is crucial when it comes to repair choices: Coverage Period : Warranties typically cover appliances for a specific period, often one to three years. Inclusions and Exclusions : Be aware of what is included under the warranty and any exclusions for certain types of damage or misuse. Impact on Repairs : Using authorized service providers and genuine parts from trusted suppliers like U-FIX-IT Appliance Parts is usually required for warranty claims. Maintaining awareness of warranty terms can guide effective repair decisions and preserve your appliance investments. Shop Now at U-FIX-IT Get Genuine Viking Appliance Parts and Expert Repair Services with U-FIX-IT Appliance Parts Ensure your Viking kitchen appliances continue to deliver luxury performance by sourcing authentic parts and professional repair services through U-FIX-IT Appliance Parts . With a wide selection of certified parts, knowledgeable support, and convenient pickup options, U-FIX-IT Appliance Parts is your trusted partner for all Viking appliance repair needs. Visit the U-FIX-IT Appliance Parts website today to browse genuine parts and schedule expert repairs that keep your luxury kitchen running flawlessly. Appliance Parts Accessories Air Conditioner Parts Dishwasher Accessories Dishwasher Parts Dryer Parts Furnace Parts Microwave Parts Range &amp; Oven Parts Refrigerator Parts Washer Parts you may also be interested DIY Tips Essential AC Parts Guide: Learn about key air conditioner components and essential AC replacement parts for effective DIY repairs. Keep your home cool and efficient effortlessly. Read More DIY Tips Thermador Appliance Repair Guide Unlock solutions for Thermador error codes and appliance issues with expert tips on repairs and parts. Keep your luxury kitchen appliances running smoothly! Read More Appliances How to Choose the Right Hotpoint Appliance for Your Home Choosing the right Hotpoint appliance enhances every home&#x27;s efficiency and style. Understand your needs to make a well-informed decision for your kitchen. Read More Leave a Reply</p>
+        
+      </div>
+    </section>
+
+  </main>
+  <section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+<form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
+<footer class="sf"><div class="w"><div class="cols">
+<div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
+<div><h4>Shop</h4><a href="product-category-refrigerator-parts.html">Refrigerator Parts</a><br /><a href="product-category-washer-parts.html">Washer Parts</a><br /><a href="product-category-dryer-parts.html">Dryer Parts</a><br /><a href="product-category-range-oven-parts.html">Range &amp; Oven Parts</a><br /><a href="product-category-dishwasher-parts.html">Dishwasher Parts</a><br /><a href="product-category-air-conditioner-parts.html">Air Conditioner Parts</a><br /></div>
+<div><h4>Help</h4><a href="how-to-choose.html">How to choose a part</a><br /><a href="order-lookup.html">Track an order</a><br /><a href="shipping-appliance-parts.html">Shipping</a><br /><a href="about-us-warranty-returns.html">Warranty &amp; returns</a><br /><a href="account.html">My account</a></div>
+<div><h4>Stores</h4>Arlington <a href="tel:8174727740">817.472.7740</a><br />East Dallas <a href="tel:2143217054">214.321.7054</a><br />South Dallas <a href="tel:9727809096">972.780.9096</a><br />Tyler <a href="tel:9035925836">903.592.5836</a><br /></div>
+<div><h4>Company</h4><a href="about-us.html">About</a><br /><a href="appliance-repair-tips.html">DIY tips</a><br /><a href="share-feedback.html">Feedback</a><br /><a href="privacy-policy.html">Privacy</a><br /><a href="brand.html">Brand guide</a><br /><a href="sitemap.html">Sitemap</a></div>
+</div><div class="legal">© U-FIX-IT Appliance Parts · Texas · HTML prototype by The Tribe Maker / Yavin Digital · Mock checkout: no real payments are taken.</div></div></footer>
+<script src="js/store.js" defer></script></body>
+</html>

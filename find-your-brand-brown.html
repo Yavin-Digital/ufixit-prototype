@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Brown — U-FIX-IT Appliance Parts</title>
+  <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />
+</head>
+<body class="page-brand">
+  <a class="skip" href="#main">Skip to content</a>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PROTOTYPE BANNER — paste into every prototype HTML page     ║
+  ║  Place immediately after <body> tag, before all other HTML   ║
+  ║  Developer note: REMOVE or IGNORE this entire block in the   ║
+  ║  React production build. It is prototype-only.               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<!-- PROTOTYPE BANNER -->
+<div id="proto-banner" class="proto-banner" style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #1e293b; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 8px; padding: 8px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  border-bottom: 2px solid #f59e0b;
+">
+  <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+      Prototype Only
+    </span>
+    <span style="opacity:.8;">
+      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+    </span>
+  </div>
+  <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex-shrink:0;">
+    <a
+      href="UFixIt-SEO-AEO-Compare.html"
+      id="proto-seo-aeo-link"
+      style="
+        background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
+        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; text-decoration: none; line-height: 1.2;
+        transition: background .15s ease, border-color .15s ease;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.borderColor='#fff'"
+      onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,.45)'"
+    >SEO / AEO Compare</a>
+    <button
+      type="button"
+      onclick="document.getElementById('proto-perf-modal').style.display='flex'"
+      style="
+        background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
+        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; flex-shrink: 0;
+        transition: background .15s ease;
+      "
+      onmouseover="this.style.background='#fbbf24'"
+      onmouseout="this.style.background='#f59e0b'"
+    >
+      View Performance Report
+    </button>
+  </div>
+</div>
+
+<!-- PERFORMANCE MODAL — Developer: ignore/remove in React build -->
+<div
+  id="proto-perf-modal"
+  style="
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center; padding:20px;
+  "
+  onclick="if(event.target===this)this.style.display='none'"
+>
+  <div style="
+    background:#fff; border-radius:16px; width:100%; max-width:560px;
+    box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden;
+  ">
+    <!-- Modal Header -->
+    <div style="background:#1e293b; padding:24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Performance Analysis</div>
+        <h2 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0;">Site Speed Report</h2>
+        <p style="color:rgba(255,255,255,.6); font-size:.82rem; margin:4px 0 0;">Prototype vs. Projected React Build</p>
+      </div>
+      <button
+        onclick="document.getElementById('proto-perf-modal').style.display='none'"
+        style="background:rgba(255,255,255,.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; flex-shrink:0;"
+      >&#215;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div style="padding:28px;">
+
+      <!-- Current load time -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+        <div style="background:#f8fafc; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; margin-bottom:6px;">This Page Loaded In</div>
+          <div id="proto-load-time" style="font-size:2rem; font-weight:900; color:#334155;">—</div>
+          <div style="font-size:.78rem; color:#64748b;">seconds (HTML prototype)</div>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#166534; margin-bottom:6px;">Projected React Load</div>
+          <div id="proto-react-time" style="font-size:2rem; font-weight:900; color:#15803d;">—</div>
+          <div style="font-size:.78rem; color:#166534;">seconds (estimated)</div>
+        </div>
+      </div>
+
+      <!-- Improvement badge -->
+      <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
+        <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
+      </div>
+
+      <!-- Schema notice -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#1d4ed8; margin-bottom:6px;">JSON-LD Schema</div>
+        <p style="font-size:.88rem; color:#1e3a8a; margin:0;" id="proto-schema-notice">
+          Checking for schema blocks on this page...
+        </p>
+      </div>
+
+      <!-- What changes in React -->
+      <div style="font-size:.82rem; color:#475569;">
+        <strong style="display:block; margin-bottom:8px; color:#334155;">What improves in the React build (all else equal):</strong>
+        <ul style="padding-left:18px; display:grid; gap:5px;">
+          <li>Code splitting — only the current page's JS is loaded</li>
+          <li>Image optimization — WebP conversion + lazy loading via React Image</li>
+          <li>CDN caching of static assets via Vercel/Netlify edge network</li>
+          <li>Tree-shaking removes unused CSS and JS from the bundle</li>
+          <li>Prefetching — next pages load before the user clicks</li>
+        </ul>
+      </div>
+
+      <p style="font-size:.75rem; color:#94a3b8; margin-top:16px; text-align:center;">
+        Developer note: Remove this banner and modal entirely from the React production build.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Push page content below the fixed banner */
+  body { padding-top: 44px !important; }
+  @media (max-width: 600px) { body { padding-top: 70px !important; } }
+</style>
+
+<script>
+(function () {
+  // ── Load time ──
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? nav.loadEventEnd - nav.startTime : performance.now();
+    var loadSec = (loadMs / 1000).toFixed(2);
+    document.getElementById('proto-load-time').textContent = loadSec;
+
+    // React estimated load: 35–55% faster (code splitting + CDN)
+    var improvement = 0.42; // 42% faster — mid estimate
+    var reactSec = (loadMs * (1 - improvement) / 1000).toFixed(2);
+    document.getElementById('proto-react-time').textContent = reactSec;
+    document.getElementById('proto-improvement').textContent =
+      Math.round(improvement * 100) + '% Faster';
+
+    // ── Schema detection ──
+    var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    var notice = document.getElementById('proto-schema-notice');
+    if (schemas.length > 0) {
+      var types = [];
+      schemas.forEach(function (s) {
+        try {
+          var obj = JSON.parse(s.textContent);
+          if (obj['@type']) types.push(obj['@type']);
+        } catch (e) {}
+      });
+      notice.innerHTML =
+        '<strong style="color:#1d4ed8;">' + schemas.length + ' schema block' +
+        (schemas.length > 1 ? 's' : '') + ' detected</strong> on this page.' +
+        (types.length ? ' Types: <em>' + types.join(', ') + '</em>.' : '') +
+        ' These are live and readable by Google and AI answer engines right now.';
+      notice.style.color = '#1e3a8a';
+    } else {
+      notice.textContent =
+        'No JSON-LD schema blocks detected on this page. Schema is embedded on the AEO report page.';
+    }
+  });
+})();
+</script>
+<!-- END PROTOTYPE BANNER -->
+
+  <header class="sh">
+<div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
+<div class="sh__in">
+<a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
+<form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
+<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+</div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">Brand</p>
+        <h1>Brown</h1>
+        <p class="crumb"><a href="index.html">Home</a> / <span>Brown</span></p>
+        <p class="source-tag">Source: Nancy CONTENT.md · Live: <a href="https://ufixit.com/find-your-brand/brown/">https://ufixit.com/find-your-brand/brown/</a></p>
+      </div>
+    </section>
+    <section class="band">
+      <div class="wrap prose">
+        
+        <p>BACK Brown Appliance Parts &amp; Repair Solutions | U-FIX-IT Appliance Parts Accessories Air Conditioner Parts Dishwasher Accessories Dishwasher Parts Dryer Parts Furnace Parts Microwave Parts Range &amp; Oven Parts Refrigerator Parts Washer Parts Brown Appliances More than 80 years ago, Grover Cleveland Brown opened up Brown Stove Works Inc., with the goal of not only making the very best stoves available but also providing quality customer service. That 1935 beginning in Cleveland, Tennessee, made them one of 60 American companies to be in the business of manufacturing stoves, and the only one in the country that’s still constructs ranges and is privately held. Commitment to Product Excellence Brown Appliances has established a long-standing reputation for producing reliable and functional kitchen appliances, with a particular focus on their popular stove and range lines. Known for their simplicity, durability, and efficient performance, the company’s stoves and similar appliances have become a trusted choice for home and commercial kitchens. Brown’s commitment to straightforward design and quality craftsmanship has made it a preferred option for homeowners seeking dependable appliances without unnecessary complexity. Their kitchen appliances are especially appreciated for their user-friendly features, including easy-to-use controls and consistent heating. While Brown appliances are engineered to last many years, occasional wear and tear may necessitate replacement parts to keep them in top working condition. At U-FIX-IT Appliance Parts, we understand the importance of maintaining the performance of your Brown appliances, which is why we offer a wide selection of stove parts for Brown. See our extensive inventory, which includes a range of appliance parts for Brown products. This includes stove knobs to burner elements. Check out our inventory-compatible parts to help you restore your appliance’s functionality quickly and easily. Always Innovating The fact that Brown hasn’t attempted to stray from what made it such a successful company means that they’ve been able to focus on making sure that every detail is covered along the way. That laser-like focus has helped inspire concepts like cordless ignition, which eases the trouble of gas range lighting through the use of batteries. That isn’t the only recent innovation to make it into Brown equipment, with Coil Logic serving as an easy way to keep an eye on range temperatures on electric models. This asset can play a key role in drastically reducing the number of cooking fires that can quickly engulf a kitchen. That puts the health of a home’s occupants and their life in potential danger. In that same vein, the Brown HeatSense also addresses the danger of fires taking place during the process of cooking. The stove helps get a sense of impending danger by assessing the heat from utensils on it, which results in the burner being turned on and off depending on that temperature. From a more aesthetic perspective, the ranges can blend right in with a countertop through the use of slide-in trim for either electric or gas ranges. Companies that attempt to cover appliances with a wide brush might overlook a small nuance like that, something that sets Brown apart. The different available models include: Freestanding-Gas and Electric: Both of these come in four different sizes–20 inches, 24 inches, 30 inches, and 36 inches. With most of the models coming in one of three colors: white, black, and bisque. The gas ranges can ignite through either electric or a pilot light, with the electric version having an option of a sealed surface burner. For those electric models, customers can be guaranteed to have front controls along with one eight-inch surface element and a trio of six-inch elements. Each have one-piece drip pans that can be cleaned with ease. Built-In Wall Ovens: Three different models, two of which are gas, with all of them 24 inches. Each has a clock/timer with a window/light, with the gas stoves offering a lower broiler and the electric a broil element. Cooktops: The gas cooktops come from either 9-volt or electronic ignition and open burners, with chrome options also available. Both electronic options here offer the coil elements. Elderly Models: All nine models come in white and in sizes of either 20, 24 or 30 inches. All use either Coil Logic or coil elements, with each size offering two models with storage and one without. Replacement Stove Parts for Brown Products and Appliances Keeping your stove and other kitchen appliances in top condition extends their lifespan and ensures consistent optimal performance. U-FIX-IT Appliance Parts offers a comprehensive selection of appliance parts for Brown kitchen products. We make it easy to find the parts you need to address any repair or replacement requirements. Here is a partial list of appliance parts for Brown stoves and other appliances: Oven Igniters: These stove works parts for Brown ranges and ovens are essential for starting the heating process. A functioning igniter provides reliable ignition, allowing the oven to reach and maintain the desired temperature quickly. Faulty igniters can lead to delayed or no heating, so replacing them ensures efficient and consistent oven performance. Control Knobs: Control knobs are the interface between you and your stove’s heat settings. Over time, they may become worn, cracked, or loose, making it challenging to set accurate temperatures. Replacing broken or worn control knobs helps you regain precise control over your cooking, ensuring each dish is cooked to perfection. Drip Pans: Positioned beneath the burners, drip pans are stove works parts for Brown that catch spills and splatters, protecting various surfaces. In addition, they make cleaning more accessible and help maintain the appearance of your stove by preventing stains and corrosion. Damaged or heavily soiled drip pans should be replaced to keep your stove looking and functioning like new. Bake/Broil Elements: These heating elements evenly distribute heat throughout the oven, whether baking or broiling. If your oven struggles to maintain consistent temperatures or has cold spots, a replacement bake or broil element may be needed to ensure even cooking. Burner Grates: Burner grates provide a stable platform for your cookware, supporting pans, and pots directly over the flame or heating element. Over time, grates can become warped or corroded from constant heat exposure. Replacing damaged grates helps maintain a stable cooking surface and ensures heat is distributed evenly to your cookware. Thermostats: Thermostats are essential appliance parts for Brown stoves that monitor and regulate oven temperature, allowing it to reach and hold the temperature you set. A malfunctioning thermostat can lead to temperature fluctuations, which may result in undercooked or overcooked food. Replacing it helps ensure that your oven stays at the precise temperature needed for perfect results. Pilot Assemblies: The pilot assembly is responsible for igniting the burners for older Brown stove models. A faulty pilot assembly may lead to difficulty lighting burners or issues with flame consistency. Replacing this part restores proper ignition and flame stability, making your stove safer and more reliable. Temperature Sensors: These components detect the internal temperature within your oven, relaying that information to the thermostat to maintain accurate heat levels. If your oven temperature seems inconsistent or takes too long to reach the desired level, replacing the temperature sensor can help achieve more consistent cooking performance. Door Gaskets: The door gasket seals the oven door, preventing heat from escaping. A worn or damaged gasket can lead to heat loss, making it harder for your oven to reach the desired temperature. Replacing the gasket ensures energy efficiency, faster preheating times, and even cooking. Switches and Relays: These components control various functions within your stove, such as powering heating elements and regulating current flow. If switches or relays malfunction, parts of your stove may not work as expected. Replacing faulty switches and relays helps ensure that each part of your stove operates as it should. The Brown service department is accessible by phone, fax and e-mail. The company website offers troubleshooting information for problems that might be taking place, encompassing a wide range of possible issues. Some of those areas that may be seen as being a concern are actually just normal operation. Can&#x27;t Find Your Brown Appliance Part? Request It Now Know the part you are looking for but can&#x27;t find it? Let us find it and let you know when we do. What Our Customers Say Our guiding principle in customer service: Love your neighbor as you love yourself. Everytime I come here I feel smarter. The guys are so helpful they will have saving money instead of throwing parts and throwing money down the drain. It’s easy to order parts online with the guessing game. Having that true customer service and the knowledge is worth the price of admission. Erick Scott Honestly I called to check and see if they had a part in stock, and didn’t even end up using them or buying from them, but was just generally impressed with the customer service that I received on the phone. The gentleman that I spoke to was very kind and helpful and gave me some good advice. Even though it didn’t result in immediate business for them, I will definitely return in the future. As a customer service professional myself, things like that are investments in the long run and not something you see every day now. Thank you for the help, person whose name I don’t remember! You gained a customer for the future. Kirby J Came in to ask about a part for my washing machine and was assisted by this newer gentleman, Josue. He gave me some great tips for installing and now, thanks to this extremely helpful young man, my washing machine is working perfectly again!! So grateful I didn’t have to spend hundreds of dollars on a new one. Thanks U-FIX-IT!!! Lisa Panelli-Valentin The associates were so helpful, friendly, understanding and nice. It was refreshing to get such great customer service and knowledgeable help! I went in to get a heating coil for my dryer that wouldn’t heat up anymore they let me know it could be that or the thermostat. I couldn’t unhook the wires at home so I brought the whole dryer 5 minutes before closing on a Friday. They tested the parts and let me know it was the thermostat which was cheaper than the heating coil. He even gave me tips on how to remove the part and it was so easy! To fix your dryer for less than $40 yourself makes you feel so good and powerful!!!! Thank you guys! Rosamari Williamson Give us your feedback</p>
+        
+        <div class="catalog-note note">
+          <strong>Catalog pattern — not full Woo catalog.</strong>
+          Live WooCommerce lists hundreds of SKUs under Brown.
+          This prototype keeps hubs + 2 sample PDPs only (Randy url-index / Nancy sign-off).
+        </div>
+        <div class="product-grid product-grid--placeholder" aria-hidden="true">
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+        </div>
+        <p><a class="btn btn--navy" href="shop.html">Shop hub</a>
+           <a class="btn btn--outline" href="contact-us.html">Ask about a part</a></p>
+
+      </div>
+    </section>
+
+  </main>
+  <section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+<form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
+<footer class="sf"><div class="w"><div class="cols">
+<div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
+<div><h4>Shop</h4><a href="product-category-refrigerator-parts.html">Refrigerator Parts</a><br /><a href="product-category-washer-parts.html">Washer Parts</a><br /><a href="product-category-dryer-parts.html">Dryer Parts</a><br /><a href="product-category-range-oven-parts.html">Range &amp; Oven Parts</a><br /><a href="product-category-dishwasher-parts.html">Dishwasher Parts</a><br /><a href="product-category-air-conditioner-parts.html">Air Conditioner Parts</a><br /></div>
+<div><h4>Help</h4><a href="how-to-choose.html">How to choose a part</a><br /><a href="order-lookup.html">Track an order</a><br /><a href="shipping-appliance-parts.html">Shipping</a><br /><a href="about-us-warranty-returns.html">Warranty &amp; returns</a><br /><a href="account.html">My account</a></div>
+<div><h4>Stores</h4>Arlington <a href="tel:8174727740">817.472.7740</a><br />East Dallas <a href="tel:2143217054">214.321.7054</a><br />South Dallas <a href="tel:9727809096">972.780.9096</a><br />Tyler <a href="tel:9035925836">903.592.5836</a><br /></div>
+<div><h4>Company</h4><a href="about-us.html">About</a><br /><a href="appliance-repair-tips.html">DIY tips</a><br /><a href="share-feedback.html">Feedback</a><br /><a href="privacy-policy.html">Privacy</a><br /><a href="brand.html">Brand guide</a><br /><a href="sitemap.html">Sitemap</a></div>
+</div><div class="legal">© U-FIX-IT Appliance Parts · Texas · HTML prototype by The Tribe Maker / Yavin Digital · Mock checkout: no real payments are taken.</div></div></footer>
+<script src="js/store.js" defer></script></body>
+</html>

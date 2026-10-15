@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Samsung — U-FIX-IT Appliance Parts</title>
+  <link rel="icon" href="img/favicon-192.png" sizes="192x192" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/site.css" /><link rel="stylesheet" href="css/store.css" />
+</head>
+<body class="page-brand">
+  <a class="skip" href="#main">Skip to content</a>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  PROTOTYPE BANNER — paste into every prototype HTML page     ║
+  ║  Place immediately after <body> tag, before all other HTML   ║
+  ║  Developer note: REMOVE or IGNORE this entire block in the   ║
+  ║  React production build. It is prototype-only.               ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+
+<!-- PROTOTYPE BANNER -->
+<div id="proto-banner" class="proto-banner" style="
+  position: fixed; top: 0; left: 0; right: 0; z-index: 9999;
+  background: #1e293b; color: #fff;
+  display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
+  gap: 8px; padding: 8px 20px;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  border-bottom: 2px solid #f59e0b;
+">
+  <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+      Prototype Only
+    </span>
+    <span style="opacity:.8;">
+      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+    </span>
+  </div>
+  <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
+  <div style="display:flex; align-items:center; gap:8px; flex-wrap:wrap; flex-shrink:0;">
+    <a
+      href="UFixIt-SEO-AEO-Compare.html"
+      id="proto-seo-aeo-link"
+      style="
+        background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
+        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; text-decoration: none; line-height: 1.2;
+        transition: background .15s ease, border-color .15s ease;
+      "
+      onmouseover="this.style.background='rgba(255,255,255,.12)'; this.style.borderColor='#fff'"
+      onmouseout="this.style.background='transparent'; this.style.borderColor='rgba(255,255,255,.45)'"
+    >SEO / AEO Compare</a>
+    <button
+      type="button"
+      onclick="document.getElementById('proto-perf-modal').style.display='flex'"
+      style="
+        background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
+        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        white-space: nowrap; flex-shrink: 0;
+        transition: background .15s ease;
+      "
+      onmouseover="this.style.background='#fbbf24'"
+      onmouseout="this.style.background='#f59e0b'"
+    >
+      View Performance Report
+    </button>
+  </div>
+</div>
+
+<!-- PERFORMANCE MODAL — Developer: ignore/remove in React build -->
+<div
+  id="proto-perf-modal"
+  style="
+    display:none; position:fixed; inset:0; z-index:10000;
+    background:rgba(0,0,0,.65); backdrop-filter:blur(4px);
+    align-items:center; justify-content:center; padding:20px;
+  "
+  onclick="if(event.target===this)this.style.display='none'"
+>
+  <div style="
+    background:#fff; border-radius:16px; width:100%; max-width:560px;
+    box-shadow:0 24px 80px rgba(0,0,0,.3); overflow:hidden;
+  ">
+    <!-- Modal Header -->
+    <div style="background:#1e293b; padding:24px 28px; display:flex; justify-content:space-between; align-items:flex-start;">
+      <div>
+        <div style="font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Performance Analysis</div>
+        <h2 style="color:#fff; font-size:1.2rem; font-weight:800; margin:0;">Site Speed Report</h2>
+        <p style="color:rgba(255,255,255,.6); font-size:.82rem; margin:4px 0 0;">Prototype vs. Projected React Build</p>
+      </div>
+      <button
+        onclick="document.getElementById('proto-perf-modal').style.display='none'"
+        style="background:rgba(255,255,255,.1); border:none; color:#fff; width:32px; height:32px; border-radius:50%; font-size:1rem; cursor:pointer; flex-shrink:0;"
+      >&#215;</button>
+    </div>
+
+    <!-- Modal Body -->
+    <div style="padding:28px;">
+
+      <!-- Current load time -->
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:24px;">
+        <div style="background:#f8fafc; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#94a3b8; margin-bottom:6px;">This Page Loaded In</div>
+          <div id="proto-load-time" style="font-size:2rem; font-weight:900; color:#334155;">—</div>
+          <div style="font-size:.78rem; color:#64748b;">seconds (HTML prototype)</div>
+        </div>
+        <div style="background:#f0fdf4; border:2px solid #22c55e; border-radius:10px; padding:16px; text-align:center;">
+          <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#166534; margin-bottom:6px;">Projected React Load</div>
+          <div id="proto-react-time" style="font-size:2rem; font-weight:900; color:#15803d;">—</div>
+          <div style="font-size:.78rem; color:#166534;">seconds (estimated)</div>
+        </div>
+      </div>
+
+      <!-- Improvement badge -->
+      <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
+        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
+        <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
+      </div>
+
+      <!-- Schema notice -->
+      <div style="background:#eff6ff; border:1px solid #bfdbfe; border-radius:10px; padding:16px 20px; margin-bottom:20px;">
+        <div style="font-size:.68rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#1d4ed8; margin-bottom:6px;">JSON-LD Schema</div>
+        <p style="font-size:.88rem; color:#1e3a8a; margin:0;" id="proto-schema-notice">
+          Checking for schema blocks on this page...
+        </p>
+      </div>
+
+      <!-- What changes in React -->
+      <div style="font-size:.82rem; color:#475569;">
+        <strong style="display:block; margin-bottom:8px; color:#334155;">What improves in the React build (all else equal):</strong>
+        <ul style="padding-left:18px; display:grid; gap:5px;">
+          <li>Code splitting — only the current page's JS is loaded</li>
+          <li>Image optimization — WebP conversion + lazy loading via React Image</li>
+          <li>CDN caching of static assets via Vercel/Netlify edge network</li>
+          <li>Tree-shaking removes unused CSS and JS from the bundle</li>
+          <li>Prefetching — next pages load before the user clicks</li>
+        </ul>
+      </div>
+
+      <p style="font-size:.75rem; color:#94a3b8; margin-top:16px; text-align:center;">
+        Developer note: Remove this banner and modal entirely from the React production build.
+      </p>
+    </div>
+  </div>
+</div>
+
+<style>
+  /* Push page content below the fixed banner */
+  body { padding-top: 44px !important; }
+  @media (max-width: 600px) { body { padding-top: 70px !important; } }
+</style>
+
+<script>
+(function () {
+  // ── Load time ──
+  window.addEventListener('load', function () {
+    var nav = performance.getEntriesByType('navigation')[0];
+    var loadMs = nav ? nav.loadEventEnd - nav.startTime : performance.now();
+    var loadSec = (loadMs / 1000).toFixed(2);
+    document.getElementById('proto-load-time').textContent = loadSec;
+
+    // React estimated load: 35–55% faster (code splitting + CDN)
+    var improvement = 0.42; // 42% faster — mid estimate
+    var reactSec = (loadMs * (1 - improvement) / 1000).toFixed(2);
+    document.getElementById('proto-react-time').textContent = reactSec;
+    document.getElementById('proto-improvement').textContent =
+      Math.round(improvement * 100) + '% Faster';
+
+    // ── Schema detection ──
+    var schemas = document.querySelectorAll('script[type="application/ld+json"]');
+    var notice = document.getElementById('proto-schema-notice');
+    if (schemas.length > 0) {
+      var types = [];
+      schemas.forEach(function (s) {
+        try {
+          var obj = JSON.parse(s.textContent);
+          if (obj['@type']) types.push(obj['@type']);
+        } catch (e) {}
+      });
+      notice.innerHTML =
+        '<strong style="color:#1d4ed8;">' + schemas.length + ' schema block' +
+        (schemas.length > 1 ? 's' : '') + ' detected</strong> on this page.' +
+        (types.length ? ' Types: <em>' + types.join(', ') + '</em>.' : '') +
+        ' These are live and readable by Google and AI answer engines right now.';
+      notice.style.color = '#1e3a8a';
+    } else {
+      notice.textContent =
+        'No JSON-LD schema blocks detected on this page. Schema is embedded on the AEO report page.';
+    }
+  });
+})();
+</script>
+<!-- END PROTOTYPE BANNER -->
+
+  <header class="sh">
+<div class="sh__top">Same-day shipping on in-stock parts ordered by 3 pm CST Mon–Fri · Free diagnosis help: <a href="tel:8174727740">817.472.7740</a></div>
+<div class="sh__in">
+<a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
+<form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
+<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+</div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header>
+  <main id="main">
+
+    <section class="page-hero">
+      <div class="wrap">
+        <p class="kicker">Brand</p>
+        <h1>Samsung</h1>
+        <p class="crumb"><a href="index.html">Home</a> / <span>Samsung</span></p>
+        <p class="source-tag">Source: Nancy CONTENT.md · Live: <a href="https://ufixit.com/find-your-brand/samsung/">https://ufixit.com/find-your-brand/samsung/</a></p>
+      </div>
+    </section>
+    <section class="band">
+      <div class="wrap prose">
+        
+        <p>BACK Samsung Appliance Parts &amp; DIY Repair Solutions from U-FIX-IT Samsung appliances are renowned for their cutting-edge technology, stylish design, and dependable performance, making them a staple in today’s modern homes. But like all appliances, even Samsung products may require occasional repairs and maintenance. At U-FIX-IT, we offer premium, compatible Samsung appliance parts to help you easily restore your appliance’s functionality and keep it running smoothly for years to come. Appliance Parts Accessories Air Conditioner Parts Dishwasher Accessories Dishwasher Parts Dryer Parts Furnace Parts Microwave Parts Range &amp; Oven Parts Refrigerator Parts Washer Parts About Samsung Appliances While Samsung may not be the first name that comes to mind for home appliances, it has firmly established itself as a major player in the industry. The company’s journey, however, began far from the world of appliances. Founded in 1938 as a small South Korean trucking company by Lee Byung-chul, Samsung quickly expanded its reach. Within just a decade, Lee diversified the business into textiles, food processing, retail, insurance, and securities, paving the way for Samsung’s growth into the global powerhouse we know today. Samsung entered the electronics field in the mid-1970s when it recognized the enormous television market in the United States. That introduction into American households was followed by a full line of home appliances in the late 1980s. Its two main divisions, Samsung Electronics and Samsung Semiconductors and Telecommunications, merged capabilities in 1988; the rest are in the history of digital and electronic gadgets. Appliance Parts for Samsung Samsung is known for smartphones, 3-D gear, and nano-crystal TV screens, but it also offers home appliances for kitchens, laundry rooms, and carpet care. Its prices reflect high-end products, and the company can boast about several innovations. It produced the first four-door refrigerators and models that dispense sparkling water. All Samsung appliances come with standard manufacturer warranties, and extended warranties are available. U-FIX-IT offers a wide range of Samsung-compatible appliance parts to keep your appliances running smoothly and efficiently. We provide reliable parts and expert support to help you maintain and repair your appliances, extending their usable life. Kitchen Appliances Samsung refrigerators consistently receive high ratings from Consumer Reports, though common issues such as malfunctioning water dispensers and subpar defrosting are often noted. When these problems arise, reliable Samsung-compatible refrigerator parts from U-FIX-IT can help restore your appliance’s performance. Samsung’s innovative duo ranges, featuring two separate ovens for cooking at different temperatures, are just one example of their versatile kitchen appliance lineup, which includes a full range of products designed to make everyday cooking more convenient. Refrigerators Ranges Microwaves Dishwashers Samsung Compatible Refrigerator Parts Like the 4-Door French Door Refrigerator with FlexZone™ Drawer, Samsung refrigerators combine sleek design with advanced cooling technology, keeping food fresh with style and efficiency. At U-FIX-IT, we provide hard-to-find, high-quality refrigerator parts for Samsung to help you maintain your refrigerator’s peak performance. Essential replacement parts like compressors and door gaskets are readily available to ensure your appliance continues operating smoothly and energy-efficiently. Stove Parts for Samsung Samsung stoves combine high-performance cooking with innovative features and sleek designs, making them a popular choice for home chefs. U-FIX-IT offers a selection of stove parts for Samsung appliances to ensure your stove stays in top condition. We carry commonly replaced parts like heating elements and temperature sensors essential for precise and consistent cooking. At U-FIX-IT, we also supply hard-to-find stove parts for Samsung to keep your stove functioning reliably over time. Washer Parts for Samsung If you want a bright, modern style in the laundry room, Samsung delivers a wide range of models and colors. Known for their advanced features, Samsung washers offer powerful performance and energy efficiency, with options like steam cleaning and smart connectivity. Whether handling delicate fabrics or heavy-duty loads, Samsung washers provide reliable and thorough cleaning for any laundry need. We provide some of the most commonly replaced washer parts for Samsung, including the drain pump, heating element, door latch, drum belt, and water inlet valve. Consumers have reported discharge pump problems with Samsung washing machines, but the DV457 clothes dryers earned a 2013 Star Emerging Technology Award. The laundry room lineup features: Front Load Washers: These washers load from the front, using a tumbling action that’s gentle on clothes and super efficient with water. They spin fast, so clothes come out less damp, but you’ll want to watch the door seals to prevent musty smells. Top-Load Washers: Traditional and easy to load, top-loaders are usually faster per cycle and are easier on your back. They might use more water but still handle larger loads, with some models skipping the agitator for a more fabric-friendly wash. Dryers: Dryers are all about getting clothes fluffy and dry. They use heat and air circulation to remove moisture, with lint traps to keep airflow steady and prevent overheating. They’re electric or gas-powered but aim for efficient, gentle drying. Samsung provides a versatile lineup of washers and dryers that consumers have relied on for many years. These appliances are often praised for their efficiency, advanced features, and unique modern designs. These appliances consistently receive high marks for their performance and durability, making them a favorite in many homes. However, even the most dependable appliances can require maintenance over time, especially with regular use. U-FIX-IT offers a range of washer parts for Samsung units to help keep these hardworking washers and dryers running smoothly for years. If you need help locating or identifying the part you need, contact our specialists, and we’ll be delighted to help you find the exact components. Range Parts for Samsung Samsung ranges are known for their versatility and cutting-edge features. They provide a complete cooking solution with stovetop and oven functions. These appliances include features like fingerprint-resistant stainless steel and self-cleaning. We carry various ranges of parts for Samsung to help maintain this essential kitchen appliance. Our inventory includes everything from burners and control knobs to bake elements and igniters. We provide the necessary replacements to keep your range performing efficiently for all your cooking needs. Samsung Microwaves Samsung microwaves are celebrated for their advanced technology and user-friendly designs, with features like sensor cooking, convection heating, and eco-mode settings for energy efficiency. However, like all appliances, they can encounter issues as they age. Some customers complain about uneven heating, turntable malfunctions, and power failures, which are common issues with older Samsung models. At U-FIX-IT, we supply replacement parts for Samsung microwave units to tackle these issues and extend the appliance’s life. Commonly replaced parts include magnetrons for heating, turntable motors for rotation, and door switches to ensure safe operation and efficiency. Samsung Home Care Appliances Samsung only manufactures vacuum cleaners in this category, but each of the three basic models offers a range of features, from built-in accessories to power brushes. Consumer complaints include hard-to-clean canisters with low capacity. Samsung’s vacuum cleaner models include: Upright canisters Bagless canisters Robotic vacuums Samsung is known for producing a premium line of home appliances, but one common frustration for many customers is their limited warranty support. Given the high cost of replacing these appliances, opting for DIY repairs is often a smart choice. At U-FIX-IT, we’re here to make that process easier. We offer a wide selection of Samsung-compatible parts and usually have exactly what you need in stock. If not, we can quickly source it for you. With five convenient locations, we’re your trusted partner for DIY home appliance repairs. We believe in your ability to handle repairs yourself, and we’re always ready to assist. Contact us today to find the replacement parts you need to keep your Samsung appliances running optimally. Can’t Find Your Samsung Appliance Part? Request It Now Know the part you are looking for but can&#x27;t find it? Let us find it and let you know when we do. What Our Customers Say Our guiding principle in customer service: Love your neighbor as you love yourself. Everytime I come here I feel smarter. The guys are so helpful they will have saving money instead of throwing parts and throwing money down the drain. It’s easy to order parts online with the guessing game. Having that true customer service and the knowledge is worth the price of admission. Erick Scott Honestly I called to check and see if they had a part in stock, and didn’t even end up using them or buying from them, but was just generally impressed with the customer service that I received on the phone. The gentleman that I spoke to was very kind and helpful and gave me some good advice. Even though it didn’t result in immediate business for them, I will definitely return in the future. As a customer service professional myself, things like that are investments in the long run and not something you see every day now. Thank you for the help, person whose name I don’t remember! You gained a customer for the future. Kirby J Came in to ask about a part for my washing machine and was assisted by this newer gentleman, Josue. He gave me some great tips for installing and now, thanks to this extremely helpful young man, my washing machine is working perfectly again!! So grateful I didn’t have to spend hundreds of dollars on a new one. Thanks U-FIX-IT!!! Lisa Panelli-Valentin The associates were so helpful, friendly, understanding and nice. It was refreshing to get such great customer service and knowledgeable help! I went in to get a heating coil for my dryer that wouldn’t heat up anymore they let me know it could be that or the thermostat. I couldn’t unhook the wires at home so I brought the whole dryer 5 minutes before closing on a Friday. They tested the parts and let me know it was the thermostat which was cheaper than the heating coil. He even gave me tips on how to remove the part and it was so easy! To fix your dryer for less than $40 yourself makes you feel so good and powerful!!!! Thank you guys! Rosamari Williamson Give us your feedback</p>
+        
+        <div class="catalog-note note">
+          <strong>Catalog pattern — not full Woo catalog.</strong>
+          Live WooCommerce lists hundreds of SKUs under Samsung.
+          This prototype keeps hubs + 2 sample PDPs only (Randy url-index / Nancy sign-off).
+        </div>
+        <div class="product-grid product-grid--placeholder" aria-hidden="true">
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+          <div class="product-card product-card--ph"><span>Sample slot</span></div>
+        </div>
+        <p><a class="btn btn--navy" href="shop.html">Shop hub</a>
+           <a class="btn btn--outline" href="contact-us.html">Ask about a part</a></p>
+
+      </div>
+    </section>
+
+  </main>
+  <section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+<form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
+<footer class="sf"><div class="w"><div class="cols">
+<div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
+<div><h4>Shop</h4><a href="product-category-refrigerator-parts.html">Refrigerator Parts</a><br /><a href="product-category-washer-parts.html">Washer Parts</a><br /><a href="product-category-dryer-parts.html">Dryer Parts</a><br /><a href="product-category-range-oven-parts.html">Range &amp; Oven Parts</a><br /><a href="product-category-dishwasher-parts.html">Dishwasher Parts</a><br /><a href="product-category-air-conditioner-parts.html">Air Conditioner Parts</a><br /></div>
+<div><h4>Help</h4><a href="how-to-choose.html">How to choose a part</a><br /><a href="order-lookup.html">Track an order</a><br /><a href="shipping-appliance-parts.html">Shipping</a><br /><a href="about-us-warranty-returns.html">Warranty &amp; returns</a><br /><a href="account.html">My account</a></div>
+<div><h4>Stores</h4>Arlington <a href="tel:8174727740">817.472.7740</a><br />East Dallas <a href="tel:2143217054">214.321.7054</a><br />South Dallas <a href="tel:9727809096">972.780.9096</a><br />Tyler <a href="tel:9035925836">903.592.5836</a><br /></div>
+<div><h4>Company</h4><a href="about-us.html">About</a><br /><a href="appliance-repair-tips.html">DIY tips</a><br /><a href="share-feedback.html">Feedback</a><br /><a href="privacy-policy.html">Privacy</a><br /><a href="brand.html">Brand guide</a><br /><a href="sitemap.html">Sitemap</a></div>
+</div><div class="legal">© U-FIX-IT Appliance Parts · Texas · HTML prototype by The Tribe Maker / Yavin Digital · Mock checkout: no real payments are taken.</div></div></footer>
+<script src="js/store.js" defer></script></body>
+</html>

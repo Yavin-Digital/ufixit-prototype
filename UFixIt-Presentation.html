@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex,nofollow" />
+<title>U-FIX-IT Appliance Parts — Website Redesign Preview</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --navy: #1C1D76;
+  --red: #F50A0A;
+  --ink: #000;
+  --paper: #fff;
+  --muted: #5e5e5e;
+  --line: #e6e6e6;
+  --display: "Oswald", system-ui, sans-serif;
+  --serif: "Source Serif 4", Georgia, serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { font-family: var(--serif); font-size: 1.25rem; line-height: 1.6; color: var(--ink); background: #f2f2f2; }
+img { max-width: 100%; height: auto; display: block; }
+a { color: var(--navy); }
+a:hover { color: var(--red); }
+.wrap { width: min(92%, 1100px); margin-inline: auto; }
+.slide { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding: 4.5rem 0 3.5rem; border-bottom: 2px solid var(--line); background: var(--paper); }
+.slide-cover { background: var(--navy); color: #fff; }
+.slide-cover h1, .slide-cover h2 { color: #fff; }
+.slide-cover p { color: rgba(255,255,255,.78); }
+.slide-label { font-family: var(--display); font-size: .72rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--red); margin-bottom: 1rem; }
+.slide-cover .slide-label { color: #FAB143; }
+h1 { font-family: var(--display); font-size: clamp(2rem, 5vw, 3.2rem); font-weight: 700; line-height: 1.1; margin-bottom: 1rem; color: var(--navy); }
+h2 { font-family: var(--display); font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 700; color: var(--navy); margin-bottom: 1rem; }
+h3 { font-family: var(--display); font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: .4rem; }
+p { margin-bottom: .85rem; color: var(--muted); }
+.cover-accent { display: block; width: 64px; height: 6px; background: var(--red); margin-bottom: 1.25rem; }
+.logo { max-height: 72px; width: auto; margin-bottom: 2rem; background: #fff; padding: .5rem .85rem; }
+.meta { font-size: .9rem; color: rgba(255,255,255,.55); margin-top: 2rem; }
+.bullets { list-style: none; display: grid; gap: .85rem; margin: 1.25rem 0; }
+.bullets li { display: flex; gap: .85rem; align-items: flex-start; color: #333; }
+.dot { width: 10px; height: 10px; min-width: 10px; border-radius: 50%; background: var(--red); margin-top: .55rem; }
+.grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-top: 1.25rem; }
+.grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.25rem; }
+.card { background: #f8f8fb; border: 1px solid var(--line); padding: 1.25rem 1.35rem; }
+.card strong { display: block; font-family: var(--display); color: var(--navy); margin-bottom: .35rem; }
+.swatch-row { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
+.swatch { width: 88px; text-align: center; font-size: .78rem; color: var(--muted); }
+.swatch i { display: block; width: 88px; height: 72px; border: 1px solid #ddd; margin-bottom: .35rem; }
+.btn {
+  display: inline-block; background: var(--red); color: #fff !important; text-decoration: none;
+  font-family: var(--display); font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+  padding: .85rem 1.35rem; margin: .35rem .5rem .35rem 0;
+}
+.btn--outline { background: transparent; color: var(--navy) !important; border: 2px solid var(--navy); }
+.slide-cover .btn--outline { color: #fff !important; border-color: rgba(255,255,255,.55); }
+.slide-footer { background: var(--navy); color: rgba(255,255,255,.55); font-size: .78rem; padding: .85rem 0; }
+.slide-footer .wrap { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.slide-footer img { height: 28px; width: auto; opacity: .85; background: #fff; padding: 2px 6px; }
+.shot {
+  aspect-ratio: 16/10; background: #eef0f6; border: 2px dashed #c5cad6;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 1rem; gap: .35rem; font-size: .9rem; color: #64748b;
+}
+.shot b { color: var(--navy); font-family: var(--display); }
+.compare-callout {
+  margin-top: 1.5rem; padding: 1.35rem 1.5rem; background: var(--navy); color: #fff;
+}
+.compare-callout h3 { color: #FAB143; }
+.compare-callout p { color: rgba(255,255,255,.82); }
+.compare-callout a { color: #fff; font-weight: 700; }
+@media (max-width: 800px) {
+  .grid-2, .grid-3 { grid-template-columns: 1fr; }
+}
+@media print {
+  .slide { page-break-after: always; min-height: auto; }
+  .slide-cover, .compare-callout, .btn { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+}
+</style>
+</head>
+<body>
+
+<section class="slide slide-cover">
+  <div class="wrap">
+    <img class="logo" src="img/logo.png" alt="U-FIX-IT Appliance Parts logo" />
+    <span class="cover-accent"></span>
+    <div class="slide-label">Website Redesign Preview</div>
+    <h1>U-FIX-IT Appliance Parts</h1>
+    <p>Four Texas stores. Free diagnosis. Parts when you need them — “We have it, or we’ll get it!”</p>
+    <p>HTML prototype of the KEEP marketing IA (168 pages) with live brand tokens, NAP Unverified tags where conflicts remain (South Dallas ZIP only; East Dallas street locked), and a readiness Compare vs live.</p>
+    <p style="margin-top:1.5rem">
+      <a class="btn" href="index.html">Open Home prototype</a>
+      <a class="btn btn--outline" href="UFixIt-SEO-AEO-Compare.html">SEO / AEO Compare</a>
+    </p>
+    <p class="meta">Prepared by Mike Montes · The Tribe Maker / Yavin Digital · Sep 16, 2026 CT · Prototype only — not a live storefront</p>
+  </div>
+</section>
+<footer class="slide-footer"><div class="wrap"><img src="img/logo.png" alt="" /><span>Created by Mike Montes · U-FIX-IT Prototype</span></div></footer>
+
+<section class="slide">
+  <div class="wrap">
+    <div class="slide-label">Slide 2 of 8 — Challenge</div>
+    <h2>What we found on the live site</h2>
+    <ul class="bullets">
+      <li><span class="dot"></span><div><strong>Catalog noise vs marketing IA</strong> — 438 SKUs + sample-page / system shells dilute the store + DIY story buyers need.</div></li>
+      <li><span class="dot"></span><div><strong>NAP / hours</strong> — East Dallas street # locked to <strong>9919</strong> Garland Rd. South Dallas ZIP still Unverified (75116 vs 75237). Hours aligned to Store Hours SoT.</div></li>
+      <li><span class="dot"></span><div><strong>SEO hygiene gaps</strong> — dishwasher product-cats titled “Washer Parts”; AEO / schema readiness uneven. Deep dive in Compare (no invented ranks).</div></li>
+    </ul>
+  </div>
+</section>
+<footer class="slide-footer"><div class="wrap"><img src="img/logo.png" alt="" /><span>Created by Mike Montes · U-FIX-IT Prototype</span></div></footer>
+
+<section class="slide">
+  <div class="wrap">
+    <div class="slide-label">Slide 3 of 8 — Before / After</div>
+    <h2>Live site vs prototype intent</h2>
+    <div class="grid-2">
+      <div class="shot"><span>Screenshot placeholder</span><b>Live Home</b><span>https://ufixit.com/</span></div>
+      <div class="shot"><span>Open locally</span><b>Prototype Home</b><span><a href="index.html">index.html</a></span></div>
+      <div class="shot"><span>Screenshot placeholder</span><b>Live Contact / Stores</b><span>https://ufixit.com/contact-us/</span></div>
+      <div class="shot"><span>Open locally</span><b>Prototype Stores</b><span><a href="contact-us.html">contact-us.html</a></span></div>
+    </div>
+  </div>
+</section>
+<footer class="slide-footer"><div class="wrap"><img src="img/logo.png" alt="" /><span>Created by Mike Montes · U-FIX-IT Prototype</span></div></footer>
+
+<section class="slide">
+  <div class="wrap">
+    <div class="slide-label">Slide 4 of 8 — Brand</div>
+    <h2>Brand locked from live</h2>
+    <p>No invented palette. Tokens extracted into <a href="brand.html">brand.html</a> + <code>css/site.css</code>.</p>
+    <div class="swatch-row">
+      <div class="swatch"><i style="background:#1C1D76"></i>Navy #1C1D76</div>
+      <div class="swatch"><i style="background:#F50A0A"></i>Red #F50A0A</div>
+      <div class="swatch"><i style="background:#000"></i>Ink #000</div>
+      <div class="swatch"><i style="background:#fff;border:1px solid #ddd"></i>White</div>
+      <div class="swatch"><i style="background:#FAB143"></i>Amber #FAB143</div>
+    </div>
+    <p>Display: Oswald · Body: Source Serif 4 · Body size 1.25rem / 1.6</p>
+  </div>
+</section>
+<footer class="slide-footer"><div class="wrap"><img src="img/logo.png" alt="" /><span>Created by Mike Montes · U-FIX-IT Prototype</span></div></footer>
+
+<section class="slide">
+  <div class="wrap">
+    <div class="slide-label">Slide 5 of 8 — What’s in the prototype</div>
+    <h2>KEEP 168 flat HTML + density demo</h2>
+    <div class="grid-3">
+      <div class="card"><strong>Home &amp; stores</strong>Promise, free diagnosis, 4 doors with Sat exceptions, East Dallas NAP locked to 9919; South Dallas ZIP still Unverified (no invented ZIP).</div>
+      <div class="card"><strong>Hubs + 2 PDPs</strong>Appliances, brands, DIY/tips, shop/product_cat hubs — catalog pattern, not 438 SKUs.</div>
+      <div class="card"><strong>About &amp; hours</strong>Mission, team, warranty, Store Hours matrix aligned to footer SoT (Tyler &amp; South Dallas Sat 9–4; NYE 9–3).</div>
+    </div>
+    <p style="margin-top:1.25rem"><a class="btn" href="index.html">Browse Home</a> <a class="btn btn--outline" href="sitemap.html">Sitemap</a> <a class="btn btn--outline" href="brand.html">Brand guide</a></p>
+  </div>
+</section>
+<footer class="slide-footer"><div class="wrap"><img src="img/logo.png" alt="" /><span>Created by Mike Montes · U-FIX-IT Prototype</span></div></footer>
+
+<section class="slide">
+  <div class="wrap">
+    <div class="slide-label">Slide 6 of 8 — SEO / AEO</div>
+    <h2>Readiness Compare (primary deep-dive)</h2>
+    <p>Randy’s SEO / AEO Compare scores Live vs Proto on crawl, on-page, IA, and answer-engine readiness. Checklist scoring only — <strong>no invented ranks, traffic, or star ratings</strong>.</p>
+    <div class="compare-callout">
+      <h3>Open the Compare report</h3>
+      <p>Full row ledger + facts: <a href="UFixIt-SEO-AEO-Compare.html">UFixIt-SEO-AEO-Compare.html</a></p>
+      <p>Facts source: <code>references/seo-aeo-compare-facts.md</code></p>
+      <p style="margin-top:1rem"><a class="btn" href="UFixIt-SEO-AEO-Compare.html">Go to SEO / AEO Compare</a></p>
+    </div>
+    <ul class="bullets" style="margin-top:1.5rem">
+      <li><span class="dot"></span><div>Proto banner on every KEEP page links Compare next to Performance.</div></li>
+      <li><span class="dot"></span><div>Highlights: sample-page DROP’d; dishwasher title fixed on appliance hub; schema / NAP Unverified called out as Opportunity — not invented fixes.</div></li>
+    </ul>
+  </div>
+</section>
+<footer class="slide-footer"><div class="wrap"><img src="img/logo.png" alt="" /><span>Created by Mike Montes · U-FIX-IT Prototype</span></div></footer>
+
+<section class="slide">
+  <div class="wrap">
+    <div class="slide-label">Slide 7 of 8 — Still open with client</div>
+    <h2>Locks before Locations copy is final</h2>
+    <ul class="bullets">
+      <li><span class="dot"></span><div><strong>East Dallas street #</strong> — <strong>LOCKED 9919</strong> Garland Rd (Mike 2026-09-16 CT). Shipped on footer / locations / contact / about / home.</div></li>
+      <li><span class="dot"></span><div><strong>South Dallas ZIP</strong> — 75116 vs 75237 · tagged Unverified; ZIP omitted until Mike locks.</div></li>
+      <li><span class="dot"></span><div><strong>Holiday matrix</strong> — confirm annually; proto uses Store Hours NYE 9–3 + footer Sat exceptions.</div></li>
+    </ul>
+    <p>Phase 2 GitHub Pages / clientreview.co stays deferred until Mike unlocks.</p>
+  </div>
+</section>
+<footer class="slide-footer"><div class="wrap"><img src="img/logo.png" alt="" /><span>Created by Mike Montes · U-FIX-IT Prototype</span></div></footer>
+
+<section class="slide">
+  <div class="wrap">
+    <div class="slide-label">Slide 8 of 8 — Next steps</div>
+    <h2>How to review</h2>
+    <div class="grid-3">
+      <div class="card"><strong>1. Walk Home</strong>Promise, diagnosis, stores, DIY density from Nancy USE copy.</div>
+      <div class="card"><strong>2. Open Compare</strong>Primary SEO/AEO deep-dive vs live — readiness only.</div>
+      <div class="card"><strong>3. Lock remaining NAP</strong>East Dallas street # locked (9919). South Dallas ZIP still Unverified — then Locations copy lock.</div>
+    </div>
+    <p style="margin-top:1.5rem">
+      <a class="btn" href="index.html">Home</a>
+      <a class="btn" href="UFixIt-SEO-AEO-Compare.html">SEO / AEO Compare</a>
+      <a class="btn btn--outline" href="contact-us.html">Stores / Contact</a>
+      <a class="btn btn--outline" href="brand.html">Brand</a>
+    </p>
+    <p style="margin-top:1.5rem;font-size:.95rem">Prototype only. Not Phase 2 publish. © 2026 U-FIX-IT Appliance Parts · Presentation by Mike Montes / The Tribe Maker.</p>
+  </div>
+</section>
+<footer class="slide-footer"><div class="wrap"><img src="img/logo.png" alt="" /><span>Created by Mike Montes · U-FIX-IT Prototype</span></div></footer>
+
+</body>
+</html>
