@@ -17,15 +17,15 @@
   background: #1e293b; color: #fff;
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
   gap: 8px; padding: 8px 20px;
-  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .9rem; line-height: 1.4;
   border-bottom: 2px solid #f59e0b;
 ">
   <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
-    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.875rem;">
       Prototype Only
     </span>
     <span style="opacity:.8;">
-      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+      For prototype purposes only. All content and images are not final and are only here to show what is possible. Checkout is a mock: payment provider, tax and shipping rates are TBD.
     </span>
   </div>
   <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
@@ -35,7 +35,7 @@
       id="proto-seo-aeo-link"
       style="
         background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
-        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        padding: 6px 14px; font-size: .9rem; font-weight: 800; min-height:48px; display:inline-flex; align-items:center; cursor: pointer;
         white-space: nowrap; text-decoration: none; line-height: 1.2;
         transition: background .15s ease, border-color .15s ease;
       "
@@ -47,7 +47,7 @@
       onclick="document.getElementById('proto-perf-modal').style.display='flex'"
       style="
         background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
-        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        padding: 6px 16px; font-size: .9rem; font-weight: 800; min-height:48px; display:inline-flex; align-items:center; cursor: pointer;
         white-space: nowrap; flex-shrink: 0;
         transition: background .15s ease;
       "
@@ -105,7 +105,7 @@
 
       <!-- Improvement badge -->
       <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
-        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div style="font-size:.875rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
         <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
         <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
       </div>
@@ -190,12 +190,12 @@
 <div class="sh__in">
 <a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
 <form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
-<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+<div class="sh__icons"><button type="button" class="search-btn" aria-label="Search" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
 </div>
-<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><button type="button" class="mystore" data-pick-store>My store: <strong data-mystore>Pick a store</strong> <u>(change)</u></button><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
 </header><main id="main"><div class="w"><p class="crumbs"><a href="index.html">Home</a> / <a href="shop.html">Shop</a> / Bosch Washer Parts</p>
 <h1 style="margin:10px 0 6px">Bosch Washer Parts</h1><p style="font:1rem/1.5 system-ui;max-width:48rem;margin:0 0 16px">2 bosch washer parts in the U-FIX-IT catalog. Free diagnosis help if you’re not sure which part failed.</p><ul class="trustrow"><li>Free diagnosis assistance</li><li>Same-day shipping by 3 pm CST (in stock)</li><li>1-year replacement warranty</li><li>Pick up at 4 Texas stores</li></ul>
-<div class="shop" data-shop><aside class="filters" aria-label="Filters"><h3>Appliance</h3><label><input type="checkbox" name="cat" value="washer-parts" checked /> Washer Parts <em>133</em></label><h3>Brand</h3><label><input type="checkbox" name="brand" value="Bosch" checked /> Bosch <em>2</em></label><label><input type="checkbox" name="brand" value="Electrolux" /> Electrolux <em>23</em></label><label><input type="checkbox" name="brand" value="Fisher and Paykel" /> Fisher and Paykel <em>2</em></label><label><input type="checkbox" name="brand" value="GE" /> GE <em>14</em></label><label><input type="checkbox" name="brand" value="Kenmore" /> Kenmore <em>2</em></label><label><input type="checkbox" name="brand" value="LG" /> LG <em>23</em></label><label><input type="checkbox" name="brand" value="Samsung" /> Samsung <em>10</em></label><label><input type="checkbox" name="brand" value="Speed Queen" /> Speed Queen <em>7</em></label><label><input type="checkbox" name="brand" value="Whirlpool" /> Whirlpool <em>50</em></label><h3>Price</h3><label>Min $ <input type="number" name="min" min="0" /></label><label>Max $ <input type="number" name="max" min="0" /></label>
+<div class="shop" data-shop><aside class="filters" aria-label="Filters"><h3>Location</h3><div data-loc-filter></div><label class="toggle"><input type="checkbox" name="mystock" /> In stock at my store</label><p class="locnote"><span class="ph">Per-store stock not in the live feed yet: showing online stock</span></p><h3>Appliance</h3><label><input type="checkbox" name="cat" value="washer-parts" checked /> Washer Parts <em>133</em></label><h3>Brand</h3><label><input type="checkbox" name="brand" value="Bosch" checked /> Bosch <em>2</em></label><label><input type="checkbox" name="brand" value="Electrolux" /> Electrolux <em>23</em></label><label><input type="checkbox" name="brand" value="Fisher and Paykel" /> Fisher and Paykel <em>2</em></label><label><input type="checkbox" name="brand" value="GE" /> GE <em>14</em></label><label><input type="checkbox" name="brand" value="Kenmore" /> Kenmore <em>2</em></label><label><input type="checkbox" name="brand" value="LG" /> LG <em>23</em></label><label><input type="checkbox" name="brand" value="Samsung" /> Samsung <em>10</em></label><label><input type="checkbox" name="brand" value="Speed Queen" /> Speed Queen <em>7</em></label><label><input type="checkbox" name="brand" value="Whirlpool" /> Whirlpool <em>50</em></label><h3>Price</h3><label>Min $ <input type="number" name="min" min="0" /></label><label>Max $ <input type="number" name="max" min="0" /></label>
 <h3>Need help?</h3><p style="margin:0">Free diagnosis help by phone at any store. <a href="how-to-choose.html">How to choose</a></p></aside>
 <div><div class="shopbar"><button class="btn-ghost filter-toggle" type="button" style="padding:8px 14px">Filters</button><span><strong data-count>133</strong> parts</span><input data-q type="search" placeholder="Filter by part # or name" aria-label="Filter results" />
 <label>Sort <select data-sort><option value="pop">Popular</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option><option value="az">Name A–Z</option></select></label></div>

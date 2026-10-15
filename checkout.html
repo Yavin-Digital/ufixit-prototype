@@ -17,15 +17,15 @@
   background: #1e293b; color: #fff;
   display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap;
   gap: 8px; padding: 8px 20px;
-  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .78rem; line-height: 1.4;
+  font-family: 'Segoe UI', system-ui, sans-serif; font-size: .9rem; line-height: 1.4;
   border-bottom: 2px solid #f59e0b;
 ">
   <div style="display:flex; align-items:center; gap: 12px; flex-wrap: wrap;">
-    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.72rem;">
+    <span style="font-weight:800; color:#f59e0b; text-transform:uppercase; letter-spacing:.06em; font-size:.875rem;">
       Prototype Only
     </span>
     <span style="opacity:.8;">
-      For prototype purposes only. All content and images are not final and are only here to show what is possible.
+      For prototype purposes only. All content and images are not final and are only here to show what is possible. Checkout is a mock: payment provider, tax and shipping rates are TBD.
     </span>
   </div>
   <!-- Proto tools (right). Live site → SEO/AEO Compare + Performance -->
@@ -35,7 +35,7 @@
       id="proto-seo-aeo-link"
       style="
         background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,.45); border-radius: 6px;
-        padding: 6px 14px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        padding: 6px 14px; font-size: .9rem; font-weight: 800; min-height:48px; display:inline-flex; align-items:center; cursor: pointer;
         white-space: nowrap; text-decoration: none; line-height: 1.2;
         transition: background .15s ease, border-color .15s ease;
       "
@@ -47,7 +47,7 @@
       onclick="document.getElementById('proto-perf-modal').style.display='flex'"
       style="
         background: #f59e0b; color: #1e293b; border: none; border-radius: 6px;
-        padding: 6px 16px; font-size: .78rem; font-weight: 800; cursor: pointer;
+        padding: 6px 16px; font-size: .9rem; font-weight: 800; min-height:48px; display:inline-flex; align-items:center; cursor: pointer;
         white-space: nowrap; flex-shrink: 0;
         transition: background .15s ease;
       "
@@ -105,7 +105,7 @@
 
       <!-- Improvement badge -->
       <div style="background:#1e293b; border-radius:10px; padding:18px 24px; text-align:center; margin-bottom:20px;">
-        <div style="font-size:.72rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
+        <div style="font-size:.875rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; color:#f59e0b; margin-bottom:6px;">Estimated Improvement</div>
         <div id="proto-improvement" style="font-size:2.2rem; font-weight:900; color:#fff;">Calculating...</div>
         <div style="font-size:.82rem; color:rgba(255,255,255,.6); margin-top:4px;">faster load with React + code splitting + image optimization</div>
       </div>
@@ -190,20 +190,29 @@
 <div class="sh__in">
 <a class="sh__logo" href="index.html" aria-label="U-FIX-IT Appliance Parts home"><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a>
 <form class="sh__search" action="shop.html" role="search"><label class="skip" for="hq">Search parts</label><input id="hq" name="q" type="search" placeholder="Search by part number, model or part name" autocomplete="off" /><button>Search</button></form>
-<div class="sh__icons"><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
+<div class="sh__icons"><button type="button" class="search-btn" aria-label="Search" aria-expanded="false"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-4-4"/></svg></button><a href="order-lookup.html"><span class="lbl">Track order</span></a><a href="account.html"><span class="lbl">Account</span></a><a class="cartlink" href="cart.html" aria-label="Cart">Cart <span class="cartcount">0</span></a></div>
 </div>
-<nav class="sh__nav" aria-label="Shop"><div class="in"><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
-</header><main id="main"><div class="w"><h1 style="margin:24px 0 0">Checkout</h1><p style="font:.9rem system-ui;margin:4px 0 0">Guest checkout · <a href="account.html">Sign in</a> (optional) · <span class="ph">Mock checkout: no payment is taken</span></p>
-<form id="co" class="cartwrap"><div class="form"><div class="step-h">1. Contact</div><label>Email<input name="email" type="email" required autocomplete="email" /></label><div class="two"><label>First name<input name="fname" required autocomplete="given-name" /></label><label>Phone<input name="phone" type="tel" autocomplete="tel" /></label></div>
+<nav class="sh__nav" aria-label="Shop"><div class="in"><button type="button" class="mystore" data-pick-store>My store: <strong data-mystore>Pick a store</strong> <u>(change)</u></button><a class="hot" href="shop.html">Shop all parts</a><a href="product-category-refrigerator-parts.html">Refrigerator</a><a href="product-category-washer-parts.html">Washer</a><a href="product-category-dryer-parts.html">Dryer</a><a href="product-category-range-oven-parts.html">Range &amp; Oven</a><a href="product-category-dishwasher-parts.html">Dishwasher</a><a href="product-category-air-conditioner-parts.html">Air Conditioner</a><a href="product-category-furnace-parts.html">Furnace</a><a href="find-your-brand.html">Brands</a><a href="how-to-choose.html">How to choose</a><a href="appliance-repair-tips.html">DIY tips</a><a href="contact-us.html">Stores</a></div></nav>
+</header><main id="main"><div class="w"><h1 style="margin:24px 0 0">Checkout</h1><p style="font-size:1.125rem;margin:4px 0 0;font-family:system-ui">Guest checkout, no account needed · <a class="tap" href="account.html">Sign in</a> (optional)</p>
+<form id="co" class="cartwrap" novalidate><div class="form"><div class="step-h">1. Contact</div><label>Email<input name="email" type="email" required autocomplete="email" /></label><div class="two"><label>First name<input name="fname" required autocomplete="given-name" /></label><label>Last name<input name="lname" required autocomplete="family-name" /></label></div><label>Phone (optional)<input name="phone" type="tel" autocomplete="tel" inputmode="tel" /></label>
 <div class="step-h">2. Delivery</div><label class="opt"><input type="radio" name="ful" value="ship" checked /> <span><strong>Ship to me</strong><br />Continental US. In-stock parts ship same day if ordered by 3 pm CST Mon–Fri.</span></label><label class="opt"><input type="radio" name="ful" value="pickup" /> <span><strong>Free store pickup</strong><br />Arlington, East Dallas, South Dallas or Tyler</span></label>
-<div id="shipf" class="form"><label>Street address<input name="addr" autocomplete="street-address" /></label><div class="two"><label>City<input name="city" autocomplete="address-level2" /></label><label>ZIP<input name="zip" inputmode="numeric" autocomplete="postal-code" /></label></div></div>
+<div id="shipf" class="form"><label>Street address<input name="addr" autocomplete="address-line1" /></label><div class="two"><label>City<input name="city" autocomplete="address-level2" /></label><label>State<select name="state" autocomplete="address-level1"><option value="">Choose</option><option>AL</option><option>AK</option><option>AZ</option><option>AR</option><option>CA</option><option>CO</option><option>CT</option><option>DE</option><option>DC</option><option>FL</option><option>GA</option><option>ID</option><option>IL</option><option>IN</option><option>IA</option><option>KS</option><option>KY</option><option>LA</option><option>ME</option><option>MD</option><option>MA</option><option>MI</option><option>MN</option><option>MS</option><option>MO</option><option>MT</option><option>NE</option><option>NV</option><option>NH</option><option>NJ</option><option>NM</option><option>NY</option><option>NC</option><option>ND</option><option>OH</option><option>OK</option><option>OR</option><option>PA</option><option>RI</option><option>SC</option><option>SD</option><option>TN</option><option selected>TX</option><option>UT</option><option>VT</option><option>VA</option><option>WA</option><option>WV</option><option>WI</option><option>WY</option></select></label></div><label>ZIP<input name="zip" inputmode="numeric" pattern="\d{5}" maxlength="5" autocomplete="postal-code" /></label></div>
 <div id="pickf" hidden><label>Pickup store<select name="store"><option>Arlington — 4621 S Cooper St Suite 127, Arlington, TX 76017</option><option>East Dallas — 9919 Garland Rd, Dallas, TX 75218 street # to confirm (9919 vs 9917)</option><option>South Dallas — 442 East Wheatland Rd, Duncanville, TX ZIP to confirm</option><option>Tyler — 2606 E 5th St, Tyler, TX 75701</option></select></label></div>
-<div class="step-h">3. Payment</div><p style="margin:0;font-size:.85rem"><span class="ph">Payment provider TBD (WooCommerce gateway on live site not confirmed). Do not enter real card data.</span></p><label>Card number<input placeholder="4242 4242 4242 4242" inputmode="numeric" /></label><div class="two"><label>Expiry<input placeholder="MM / YY" /></label><label>CVC<input placeholder="123" /></label></div>
+<div class="step-h">3. Payment</div><label>Card number<input name="ccnum" inputmode="numeric" autocomplete="cc-number" pattern="[\d ]{19}" maxlength="19" placeholder="1234 5678 9012 3456" required /></label><div class="two"><label>Expiry<input name="ccexp" inputmode="numeric" autocomplete="cc-exp" pattern="(0[1-9]|1[0-2]) / \d{2}" maxlength="7" placeholder="MM / YY" required /></label><label>Security code<input name="cccsc" inputmode="numeric" autocomplete="cc-csc" pattern="\d{3,4}" maxlength="4" placeholder="CVC" required /></label></div>
 <button class="btn-buy">Place order</button></div>
-<aside class="summary"><div id="items"></div><div class="r"><span>Subtotal</span><span id="st"></span></div><div class="r"><span>Shipping</span><span id="shipcost"></span></div><div class="r"><span>Tax</span><span class="ph">TBD</span></div><ul class="trustrow"><li>Free diagnosis assistance</li><li>Same-day shipping by 3 pm CST (in stock)</li><li>1-year replacement warranty</li><li>Pick up at 4 Texas stores</li></ul><p style="font-size:.82rem;margin:12px 0 0">1-year replacement warranty unless stated on your receipt.</p></aside></form></div><script>document.addEventListener('DOMContentLoaded',function(){var U=UFX,c=U.cart(),st=c.reduce(function(a,l){return a+l.p*l.q},0);if(!c.length){location.href='cart.html';return}
+<aside class="summary"><div id="items"></div><div class="r"><span>Subtotal</span><span id="st"></span></div><div class="r"><span>Shipping</span><span id="shipcost"></span></div><div class="r"><span>Tax</span><span>Calculated after order</span></div><ul class="trustrow"><li>Free diagnosis assistance</li><li>Same-day shipping by 3 pm CST (in stock)</li><li>1-year replacement warranty</li><li>Pick up at 4 Texas stores</li></ul><p style="font-size:1rem;margin:12px 0 0">1-year replacement warranty unless stated on your receipt.</p></aside></form></div><script>document.addEventListener('DOMContentLoaded',function(){var U=UFX,c=U.cart(),st=c.reduce(function(a,l){return a+l.p*l.q},0);if(!c.length){location.href='cart.html';return}
 document.getElementById('items').innerHTML=c.map(function(l){return '<div class="r"><span>'+l.q+' × '+l.n+'</span><span>'+U.money(l.p*l.q)+'</span></div>'}).join('');document.getElementById('st').textContent=U.money(st);
-var f=document.getElementById('co');function sh(){var p=f.ful.value=='pickup';document.getElementById('shipf').hidden=p;document.getElementById('pickf').hidden=!p;document.getElementById('shipcost').innerHTML=p?'Free':(st>=U.CFG.freeShip*100?'Free <span class="ph">placeholder threshold</span>':'<span class="ph">rate TBD</span>')}f.addEventListener('change',sh);sh();
-f.addEventListener('submit',function(e){e.preventDefault();var o={no:'UFX-'+Math.floor(100000+Math.random()*900000),email:f.email.value.trim().toLowerCase(),name:f.fname.value,items:c,total:st,ful:f.ful.value,store:f.store.value,date:new Date().toISOString(),status:'Received (prototype)'};U.saveOrder(o);U.clear();location.href='order-confirmation.html?o='+o.no})});</script></main><section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
+var f=document.getElementById('co'),shipF=['addr','city','state','zip'];
+function sh(){var p=f.ful.value=='pickup';document.getElementById('shipf').hidden=p;document.getElementById('pickf').hidden=!p;shipF.forEach(function(n){f[n].required=!p});document.getElementById('shipcost').innerHTML=p?'Free':(st>=U.CFG.freeShip*100?'Free':'Calculated after order')}
+f.addEventListener('change',sh);sh();
+f.querySelector('[name=ccnum]').addEventListener('input',function(e){var v=e.target.value.replace(/\D/g,'').slice(0,16);e.target.value=v.replace(/(.{4})/g,'$1 ').trim()});
+f.querySelector('[name=ccexp]').addEventListener('input',function(e){var v=e.target.value.replace(/\D/g,'').slice(0,4);e.target.value=v.length>2?v.slice(0,2)+' / '+v.slice(2):v});
+var MSG={email:'Enter a valid email address',fname:'Enter your first name',lname:'Enter your last name',addr:'Enter your street address',city:'Enter your city',state:'Choose your state',zip:'Enter a 5-digit ZIP code',ccnum:'Enter a 16-digit card number',ccexp:'Enter expiry as MM / YY',cccsc:'Enter the 3 or 4 digit code'};
+function err(i,show){var e=i.parentNode.querySelector('.err');if(!e){e=document.createElement('span');e.className='err';e.id=i.name+'-err';i.parentNode.appendChild(e);i.setAttribute('aria-describedby',e.id)}e.textContent=show?MSG[i.name]||'Required':'';i.setAttribute('aria-invalid',show)}
+function check(i){var ok=i.checkValidity();err(i,!ok);return ok}
+f.querySelectorAll('input[name],select[name]').forEach(function(i){if(MSG[i.name])i.addEventListener('blur',function(){check(i)})});
+f.addEventListener('submit',function(e){e.preventDefault();var bad=null;f.querySelectorAll('input[name],select[name]').forEach(function(i){if(!MSG[i.name]||i.closest('[hidden]'))return;if(!check(i)&&!bad)bad=i});if(bad){bad.focus();return}
+var o={no:'UFX-'+Math.floor(100000+Math.random()*900000),email:f.email.value.trim().toLowerCase(),name:f.fname.value+' '+f.lname.value,items:c,total:st,ful:f.ful.value,store:f.store.value,date:new Date().toISOString(),status:'Received (prototype)'};U.saveOrder(o);U.clear();location.href='order-confirmation.html?o='+o.no})});</script></main><section class="capture"><div class="w in"><div><p class="eyebrow" style="color:#FAB143">DIY repair tips by email</p><h2>Fix it yourself, with the right part the first time</h2><p style="margin:0;font:1rem/1.5 system-ui;opacity:.9">Get U-FIX-IT repair tips and new-part alerts. <span class="ph">Signup offer: placeholder, U-FIX-IT to confirm (none on live site)</span></p></div>
 <form class="js-capture"><label class="skip" for="em">Email</label><input id="em" type="email" required placeholder="Your email address" /><button class="btn-buy" style="padding:15px 22px">Sign up</button></form></div></section>
 <footer class="sf"><div class="w"><div class="cols">
 <div><img src="img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" style="background:#fff;padding:6px;margin-bottom:12px" /><p>We have it, or we’ll get it! Free diagnosis assistance and tech tips in person or over the phone.</p></div>
