@@ -325,3 +325,7 @@ main p a:not(.btn-buy):not(.btn-ghost),main li a,.helpbox a,.desc a{text-decorat
  .mystore .lbl-my{display:none}
 }
 .geo-msg:empty{display:none}
+/* ---- Mobile QA r2 partial ---- */
+.pick-row>*{font-size:1rem!important;min-height:48px}
+@media(max-width:820px){.pick-grid{flex-wrap:wrap;overflow:visible}.mystore{font-size:1rem!important}}
+@media(max-width:380px){.mystore.set u{display:none}.mystore{padding-right:8px;margin-right:2px}.sh__nav a{padding:0 8px}}
