@@ -128,3 +128,29 @@ dialog .panel{margin:0;border:0}
   table.t.cards.orders .c-it{display:none}
   table.t.cards.orders .lnk{min-height:48px}
 }
+/* Parts + POS */
+.alert{background:#fff3f3;border:1px solid #f3b4b4;border-left:6px solid var(--red);padding:10px 14px;margin-bottom:14px;font-size:1rem}
+.alert a{display:inline-flex;align-items:center;min-height:44px}
+.splitbar{height:16px;background:var(--red);margin:4px 0 0}.splitbar i{display:block;height:100%;background:var(--navy)}
+.sw.red{background:var(--red)}
+.hbars .lnk,.dl .lnk,td .lnk{font:inherit;background:none;border:0;color:var(--navy);text-decoration:underline;cursor:pointer;padding:0;min-height:44px;text-align:left}
+.t.parts small{color:var(--muted)}
+.set-row .btn,.set-row .btn-ghost{flex:0 0 auto}
+@media (max-width:759px){
+  table.t.cards.parts tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px}
+  table.t.cards.parts td.c-no{grid-column:1/3;font-family:var(--display);color:var(--navy);justify-content:flex-start}
+  table.t.cards.parts td.c-no::before{display:inline}
+  table.t.cards.parts td.full{grid-column:1/3}
+  table.t.cards.parts td:not(.c-no):not(.full){grid-column:1/3}
+}
+.t .c-ty,.t .c-sto{white-space:nowrap}
+@media (max-width:759px){
+  table.t.cards.poslog .c-ty{grid-column:1;grid-row:1;font-weight:600}
+  table.t.cards.poslog .c-st{grid-column:2;grid-row:1}
+  table.t.cards.poslog .c-cu{grid-column:1;grid-row:2;font-weight:400}
+  table.t.cards.poslog .c-tot{grid-column:2;grid-row:2}
+  table.t.cards.poslog .c-sto{grid-column:1/3;grid-row:3;color:var(--muted)}
+  table.t.cards.poslog .c-dt{grid-column:1/3;grid-row:4}
+  table.t.cards.poslog td{display:block;padding:0;text-align:left}
+  table.t.cards.poslog td.c-st,table.t.cards.poslog td.c-tot{text-align:right}
+}

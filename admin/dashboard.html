@@ -4,11 +4,11 @@
 <link rel="icon" href="../img/favicon-192.png" sizes="192x192" /><link rel="stylesheet" href="../css/fonts.css" /><link rel="stylesheet" href="../css/site.css" /><link rel="stylesheet" href="admin.css" /></head>
 <body class="adm" data-page="dashboard"><a class="skip" href="#main">Skip to content</a><div class="demo-bar">Demo admin · Sample data only · Not connected to any store system</div>
 <header class="ah"><a class="ah__logo" href="../index.html" aria-label="View the U-FIX-IT store"><img src="../img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a><div class="ah__t">Store admin<small>Demo</small></div><button class="btn-ghost" id="signout" type="button">Sign out</button></header>
-<div class="alay"><nav class="anav" aria-label="Admin"><ul><li><a href="dashboard.html" aria-current="page">Dashboard</a></li><li><a href="reports.html" class="rep">Reports</a></li><li><a href="orders.html">Orders</a></li><li><a href="products.html">Products & inventory</a></li><li><a href="customers.html">Customers</a></li><li><a href="settings.html">Settings</a></li></ul></nav>
+<div class="alay"><nav class="anav" aria-label="Admin"><ul><li><a href="dashboard.html" aria-current="page">Dashboard</a></li><li><a href="reports.html" class="rep">Reports</a></li><li><a href="orders.html">Orders</a></li><li><a href="parts.html">Parts &amp; inventory</a></li><li><a href="customers.html">Customers</a></li><li><a href="pos.html">POS provider</a></li><li><a href="settings.html">Settings</a></li></ul></nav>
 <main class="amain" id="main"><div class="pg-h"><div><h1>Dashboard <span class="tag-demo">Demo data</span></h1><p>Last 30 days, through Oct 20, 2026</p></div></div>
-<div class="kpis" id="kpis"></div>
+<div id="alert"></div><p id="posst" style="margin:0 0 12px"></p><div class="kpis" id="kpis"></div>
 <div class="grid2"><section class="panel"><h2>Net sales, last 30 days <a href="reports.html">Full reports</a></h2><div id="ch"></div></section>
 <section class="panel"><h2>Top sellers, 30 days <a href="reports.html">See all</a></h2><div id="top5"></div></section></div>
 <div class="grid2"><section class="panel"><h2>Recent orders <a href="orders.html">All orders</a></h2><p style="margin:0 0 8px"><b id="open"></b> orders open (processing or ready for pickup)</p><div id="recent"></div></section>
-<section class="panel"><h2>Low stock <a href="products.html">Inventory</a></h2><div id="low"></div></section></div></main></div>
+<section class="panel"><h2>Low stock <a href="parts.html?stock=low">Reorder list</a></h2><div id="low"></div></section></div></main></div>
 <script src="catalog.js"></script><script src="data.js"></script><script src="admin.js"></script></body></html>

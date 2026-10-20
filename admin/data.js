@@ -57,8 +57,19 @@ for(var d=START;d<=END;d+=DAY){
   }
 }
 orders.reverse(); // newest first
+/* Parts extras (cost, supplier, reorder level, compatibility). Separate seed so order history stays identical. */
+var s2=7741;function r2(){s2|=0;s2=s2+0x6D2B79F5|0;var t=Math.imul(s2^s2>>>15,1|s2);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}
+var SUP=['Lone Star Parts Supply (demo)','Gulf Coast Appliance Distributors (demo)','Red River OEM Parts (demo)','Trinity Wholesale Parts (demo)'];
+var DEV={'Refrigerator':'refrigerators','Washer':'washers','Dryer':'dryers','Range & Oven':'ranges & ovens','Dishwasher':'dishwashers','Air Conditioner':'air conditioners','Furnace':'furnaces','Microwave':'microwaves','Accessories':'appliances'};
+var srcById={};cat.forEach(function(c){srcById[c.id]=c});
+products.forEach(function(p){var c=srcById[p.id];p.cost=Math.round(p.price*(.46+r2()*.16));p.supplier=SUP[Math.floor(r2()*SUP.length)];p.reorder=2+Math.floor(r2()*4);
+  p.fits=(p.brand&&!/^(Universal|Other)$/i.test(p.brand)?p.brand+' ':'Universal fit ')+(DEV[p.cat]||'appliances');p.replaces=(c&&c.x)||[];p.leadDays=2+Math.floor(r2()*6);var q=r2();p.stock=q<.025?0:q<.1?1+Math.floor(r2()*p.reorder):p.reorder+1+Math.floor(r2()*20)});
+/* POS sync log: in-store sales arrive from the POS provider; inventory counts sync back. */
+var posLog=[];orders.forEach(function(o){if(o.ch!='Online'&&o.t>END-3*DAY)posLog.push({t:o.t+60000*(2+Math.floor(r2()*4)),kind:'Sale',ref:o.no,store:o.ch,amt:o.total,ok:true})});
+for(var k=0;k<3;k++)for(var h=9;h<=18;h+=3){var tt=END-k*DAY+h*36e5;if(tt>END+18.6*36e5)continue;posLog.push({t:tt,kind:'Inventory',ref:(20+Math.floor(r2()*60))+' part counts',store:STORES[Math.floor(r2()*4)].n,ok:r2()>.06})}
+posLog.sort(function(a,b){return b.t-a.t});
 var byId={};products.forEach(function(p){byId[p.id]=p});
 var custById={};customers.forEach(function(c){custById[c.id]=c});
-window.UFX_DEMO={DEMO:true,START:START,END:END,DAY:DAY,products:products,productById:byId,customers:customers,customerById:custById,orders:orders,stores:STORES,channels:CHANNELS,
+window.UFX_DEMO={DEMO:true,START:START,END:END,DAY:DAY,products:products,productById:byId,customers:customers,customerById:custById,orders:orders,posLog:posLog,suppliers:SUP,stores:STORES,channels:CHANNELS,
   counted:function(o){return o.status!='Cancelled'&&o.status!='Refunded'}};
 })();
