@@ -3,7 +3,7 @@
    Product names, part numbers and prices come from the prototype catalog (catalog.js).
    Nothing here is connected to a real store system. */
 (function(){
-var seed=20261020;
+var seed=20261013; // fixed demo seed
 function rnd(){seed|=0;seed=seed+0x6D2B79F5|0;var t=Math.imul(seed^seed>>>15,1|seed);t=t+Math.imul(t^t>>>7,61|t)^t;return((t^t>>>14)>>>0)/4294967296}
 function pick(a){return a[Math.floor(rnd()*a.length)]}
 var DAY=864e5;
@@ -34,9 +34,10 @@ function pickChannel(){var x=rnd(),a=0;for(var i=0;i<5;i++){a+=CHW[i];if(x<a)ret
 var orders=[],n=104200;
 for(var d=START;d<=END;d+=DAY){
   var dt=new Date(d),dow=dt.getUTCDay(),mo=dt.getUTCMonth(),age=(d-START)/(END-START);
-  var summer=(mo>=4&&mo<=8)?1.25:(mo==11||mo==0)?1.1:1;
+  var summer=(mo>=4&&mo<=7)?1.2:(mo==11||mo==0)?1.1:1;
   var base=11*(1+.22*age)*summer*(dow==0?.35:dow==6?.8:1);
-  var cnt=Math.max(0,Math.round(base*(.65+rnd()*.7)));
+  var ramp=1+.22*Math.max(0,((d-START)/DAY-660)/69); // recent demo momentum
+  var cnt=Math.max(0,Math.round(base*ramp*(.65+rnd()*.7)));
   for(var j=0;j<cnt;j++){
     var ch=dow==0?'Online':pickChannel(), cu=pickCustomer(), lines=[], nl=rnd()<.72?1:rnd()<.75?2:3, seen={};
     for(var q=0;q<nl;q++){var p=pickProduct();

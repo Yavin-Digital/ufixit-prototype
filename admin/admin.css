@@ -69,7 +69,7 @@ table.t{width:100%;border-collapse:collapse;font-size:1rem}
 /* charts */
 .chart{width:100%;min-width:0}
 .chart svg{display:block;width:100%;height:auto}
-.chart text{font-family:var(--serif);font-size:14px;fill:#333}
+.chart text{font-family:var(--serif);font-size:13px;fill:#333}
 .legend{font-size:.9375rem;color:var(--muted);margin:6px 0 0}
 .rank{list-style:none;margin:0;padding:0;counter-reset:r}
 .rank li{display:grid;grid-template-columns:2rem 1fr auto;gap:4px 10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);counter-increment:r}
@@ -106,4 +106,25 @@ dialog .panel{margin:0;border:0}
   .grid2{grid-template-columns:minmax(0,3fr) minmax(0,2fr)}
   .grid2.even{grid-template-columns:repeat(2,minmax(0,1fr))}
   .adm h1{font-size:2.25rem}
+}
+/* R1: order columns, label floors, legend swatches, phone range select */
+.t .c-no,.t .c-dt,.t .c-tot,.t .c-st,.t .c-ch,.t .c-it{white-space:nowrap}
+.t td.c-cu{width:100%;overflow-wrap:anywhere}
+.adm small{font-size:.9375rem}
+.sw{display:inline-block;width:14px;height:14px;background:#1C1D76;vertical-align:-2px}
+.sw.ln{width:18px;height:3px;background:#F50A0A;vertical-align:4px}
+.sw.hat{background:repeating-linear-gradient(45deg,#1C1D76 0 2px,#c9c9e3 2px 5px);outline:1.5px solid #1C1D76}
+.rsel{display:none;margin-bottom:12px}.rsel label{display:block;font-size:.9375rem;color:var(--muted);margin-bottom:2px}
+@media (max-width:759px){
+  .rsel{display:block}.rchips{display:none}
+  table.t.cards.orders tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:center}
+  table.t.cards.orders td{display:block;padding:0;text-align:left}
+  table.t.cards.orders td::before{display:none}
+  table.t.cards.orders .c-no{grid-column:1}table.t.cards.orders .c-st{grid-column:2;grid-row:1;text-align:right}
+  table.t.cards.orders .c-cu{grid-column:1;width:auto;font-weight:600}
+  table.t.cards.orders .c-tot{grid-column:2;text-align:right;font-family:var(--display);color:var(--navy);font-size:1.0625rem}
+  table.t.cards.orders .c-ch,table.t.cards.orders .c-dt{grid-column:1/3;display:inline;color:var(--muted)}
+  table.t.cards.orders .c-ch{grid-row:3}table.t.cards.orders .c-dt{grid-row:4}
+  table.t.cards.orders .c-it{display:none}
+  table.t.cards.orders .lnk{min-height:48px}
 }
