@@ -69,7 +69,7 @@ table.t{width:100%;border-collapse:collapse;font-size:1rem}
 /* charts */
 .chart{width:100%;min-width:0}
 .chart svg{display:block;width:100%;height:auto}
-.chart text{font-family:var(--serif);font-size:13px;fill:#333}
+.chart text{font-family:var(--serif);font-size:13px;fill:#333} /* axis ticks 13px: charts have data tables (N6) */
 .legend{font-size:.9375rem;color:var(--muted);margin:6px 0 0}
 .rank{list-style:none;margin:0;padding:0;counter-reset:r}
 .rank li{display:grid;grid-template-columns:2rem 1fr auto;gap:4px 10px;align-items:center;padding:8px 0;border-bottom:1px solid var(--line);counter-increment:r}
@@ -110,30 +110,27 @@ dialog .panel{margin:0;border:0}
 /* R1: order columns, label floors, legend swatches, phone range select */
 .t .c-no,.t .c-dt,.t .c-tot,.t .c-st,.t .c-ch,.t .c-it{white-space:nowrap}
 .t td.c-cu{width:100%;overflow-wrap:anywhere}
-.adm small{font-size:.9375rem}
 .sw{display:inline-block;width:14px;height:14px;background:#1C1D76;vertical-align:-2px}
 .sw.ln{width:18px;height:3px;background:#F50A0A;vertical-align:4px}
 .sw.hat{background:repeating-linear-gradient(45deg,#1C1D76 0 2px,#c9c9e3 2px 5px);outline:1.5px solid #1C1D76}
-.rsel{display:none;margin-bottom:12px}.rsel label{display:block;font-size:.9375rem;color:var(--muted);margin-bottom:2px}
+.rsel{display:none;margin-bottom:12px}.rsel label{display:block;font-size:1rem;color:var(--muted);margin-bottom:2px}
 @media (max-width:759px){
   .rsel{display:block}.rchips{display:none}
   table.t.cards.orders tr{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:2px 12px;align-items:center}
   table.t.cards.orders td{display:block;padding:0;text-align:left}
-  table.t.cards.orders td::before{display:none}
   table.t.cards.orders .c-no{grid-column:1}table.t.cards.orders .c-st{grid-column:2;grid-row:1;text-align:right}
   table.t.cards.orders .c-cu{grid-column:1;width:auto;font-weight:600}
   table.t.cards.orders .c-tot{grid-column:2;text-align:right;font-family:var(--display);color:var(--navy);font-size:1.0625rem}
   table.t.cards.orders .c-ch,table.t.cards.orders .c-dt{grid-column:1/3;display:inline;color:var(--muted)}
   table.t.cards.orders .c-ch{grid-row:3}table.t.cards.orders .c-dt{grid-row:4}
-  table.t.cards.orders .c-it{display:none}
   table.t.cards.orders .lnk{min-height:48px}
 }
 /* Parts + POS */
 .alert{background:#fff3f3;border:1px solid #f3b4b4;border-left:6px solid var(--red);padding:10px 14px;margin-bottom:14px;font-size:1rem}
-.alert a{display:inline-flex;align-items:center;min-height:44px}
+.alert a{display:inline-flex;align-items:center;min-height:48px}
 .splitbar{height:16px;background:var(--red);margin:4px 0 0}.splitbar i{display:block;height:100%;background:var(--navy)}
 .sw.red{background:var(--red)}
-.hbars .lnk,.dl .lnk,td .lnk{font:inherit;background:none;border:0;color:var(--navy);text-decoration:underline;cursor:pointer;padding:0;min-height:44px;text-align:left}
+.hbars .lnk,.dl .lnk,td .lnk{font:inherit;background:none;border:0;color:var(--navy);text-decoration:underline;cursor:pointer;padding:0;min-height:48px;text-align:left}
 .t.parts small{color:var(--muted)}
 .set-row .btn,.set-row .btn-ghost{flex:0 0 auto}
 @media (max-width:759px){
@@ -167,7 +164,6 @@ html:has(dialog[open]){overflow:hidden}
 @media (max-width:1023px){.demo-bar,.ah,.amain{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}.anav ul{padding-left:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right))}}
 .toast{bottom:max(12px,env(safe-area-inset-bottom))}
 .demo-bar,.fbar label,.fld label,.rsel label,.kpi span,.legend,.adm small,.rank small,.tag-demo,.st,.t th,.pager span,.ah__t small{font-size:1rem}
-.chart text{font-size:13px} /* axis ticks: 13px allowed */
 @media (max-width:759px){
   table.t.cards td::before{font-size:1rem}
   table.t.cards.orders td::before{display:inline;position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
@@ -177,8 +173,7 @@ html:has(dialog[open]){overflow:hidden}
 }
 
 /* r1 follow-ups: 48px link targets, 16px floor on Parts/POS, phone nav select (L9) */
-.hbars .lnk,.dl .lnk,td .lnk,.alert a{min-height:48px}
-.alert,.note{font-size:1rem}
+.note{font-size:1rem}
 .navsel{display:none;padding:8px}
 .navsel label{display:block;font-size:1rem;color:var(--muted);margin-bottom:2px}
 @media (max-width:599px){.navsel{display:block}.anav ul{display:none}}
@@ -187,3 +182,10 @@ html:has(dialog[open]){overflow:hidden}
 table.t.poslog td{vertical-align:top}
 .clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 @media (min-width:760px){.t .c-sup{min-width:13.5rem}}
+/* Mobile Bandit PR12 r2 */
+#pk:empty{min-height:272px}#alert:empty{min-height:118px;margin-bottom:14px}
+@media (min-width:600px){#pk:empty{min-height:154px}#alert:empty{min-height:94px}}
+@media (min-width:1280px){#pk:empty{min-height:130px}#alert:empty{min-height:70px}}
+.rank .nm a,.signin p a{display:inline-flex;align-items:center;min-height:48px}
+@media (max-width:759px){.clamp2{display:block;-webkit-line-clamp:none;overflow:visible}}
+@media (min-width:760px) and (max-width:1279px){.t.parts th{white-space:normal}.t.parts .c-sup{min-width:0}.t.parts .c-st,.t.parts .c-no{white-space:normal}.t.parts td.c-no{overflow-wrap:anywhere}}
