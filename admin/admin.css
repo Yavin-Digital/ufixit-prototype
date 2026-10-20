@@ -154,3 +154,36 @@ dialog .panel{margin:0;border:0}
   table.t.cards.poslog td{display:block;padding:0;text-align:left}
   table.t.cards.poslog td.c-st,table.t.cards.poslog td.c-tot{text-align:right}
 }
+/* Mobile Bandit PR12 r1 */
+.adm a.skip{color:#fff;min-height:48px;display:inline-flex;align-items:center}
+.demo-bar,.btn.red{background:#D40000;border-color:#D40000}
+.panel>h2 a{min-width:48px}
+.cbx{display:inline-flex;align-items:center;justify-content:center;min-width:48px;min-height:48px;cursor:pointer}
+html:has(dialog[open]){overflow:hidden}
+#kpis:empty{min-height:263px}
+@media (min-width:600px){#kpis:empty{min-height:126px}}
+#ch:empty{min-height:320px}#top5:empty{min-height:400px}#rank:empty{min-height:790px}#cats:empty{min-height:390px}
+.grid2:has(#recent){grid-template-columns:minmax(0,1fr)}
+@media (max-width:1023px){.demo-bar,.ah,.amain{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}.anav ul{padding-left:max(8px,env(safe-area-inset-left));padding-right:max(8px,env(safe-area-inset-right))}}
+.toast{bottom:max(12px,env(safe-area-inset-bottom))}
+.demo-bar,.fbar label,.fld label,.rsel label,.kpi span,.legend,.adm small,.rank small,.tag-demo,.st,.t th,.pager span,.ah__t small{font-size:1rem}
+.chart text{font-size:13px} /* axis ticks: 13px allowed */
+@media (max-width:759px){
+  table.t.cards td::before{font-size:1rem}
+  table.t.cards.orders td::before{display:inline;position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+  table.t.cards.orders td{position:relative}
+  table.t.cards.orders .c-it{display:block;grid-column:2;grid-row:3;text-align:right;color:var(--muted)}
+  table.t.cards.orders .c-it::before{position:static;width:auto;height:auto;clip:auto;content:"Items: "}
+}
+
+/* r1 follow-ups: 48px link targets, 16px floor on Parts/POS, phone nav select (L9) */
+.hbars .lnk,.dl .lnk,td .lnk,.alert a{min-height:48px}
+.alert,.note{font-size:1rem}
+.navsel{display:none;padding:8px}
+.navsel label{display:block;font-size:1rem;color:var(--muted);margin-bottom:2px}
+@media (max-width:599px){.navsel{display:block}.anav ul{display:none}}
+
+/* Marco notes on c9487d7 */
+table.t.poslog td{vertical-align:top}
+.clamp2{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+@media (min-width:760px){.t .c-sup{min-width:13.5rem}}
