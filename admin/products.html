@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" /><title>Products & inventory · Demo admin · U-FIX-IT Appliance Parts</title>
+<link rel="icon" href="../img/favicon-192.png" sizes="192x192" /><link rel="stylesheet" href="../css/fonts.css" /><link rel="stylesheet" href="../css/site.css" /><link rel="stylesheet" href="admin.css" /></head>
+<body class="adm" data-page="products"><a class="skip" href="#main">Skip to content</a><div class="demo-bar">Demo admin · Sample data only · Not connected to any store system</div>
+<header class="ah"><a class="ah__logo" href="../index.html" aria-label="View the U-FIX-IT store"><img src="../img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a><div class="ah__t">Store admin<small>Demo</small></div><button class="btn-ghost" id="signout" type="button">Sign out</button></header>
+<div class="alay"><nav class="anav" aria-label="Admin"><ul><li><a href="dashboard.html">Dashboard</a></li><li><a href="reports.html" class="rep">Reports</a></li><li><a href="orders.html">Orders</a></li><li><a href="products.html" aria-current="page">Products & inventory</a></li><li><a href="customers.html">Customers</a></li><li><a href="settings.html">Settings</a></li></ul></nav>
+<main class="amain" id="main"><div class="pg-h"><div><h1>Products &amp; inventory <span class="tag-demo">Demo data</span></h1><p>Catalog from the U-FIX-IT shop · <span id="inv"></span></p></div></div>
+<section class="panel"><div class="fbar"><div><label for="q">Search name, part # or brand</label><input id="q" type="search" /></div>
+<div><label for="fcat">Category</label><select id="fcat"><option value="">All categories</option></select></div>
+<div><label for="fst">Stock</label><select id="fst"><option value="">All stock levels</option><option value="low">Low stock</option><option value="out">Out of stock</option></select></div></div><div id="list"></div></section></main></div>
+<script src="catalog.js"></script><script src="data.js"></script><script src="admin.js"></script></body></html>

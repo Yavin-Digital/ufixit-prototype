@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<meta name="robots" content="noindex, nofollow" /><title>Settings · Demo admin · U-FIX-IT Appliance Parts</title>
+<link rel="icon" href="../img/favicon-192.png" sizes="192x192" /><link rel="stylesheet" href="../css/fonts.css" /><link rel="stylesheet" href="../css/site.css" /><link rel="stylesheet" href="admin.css" /></head>
+<body class="adm" data-page="settings"><a class="skip" href="#main">Skip to content</a><div class="demo-bar">Demo admin · Sample data only · Not connected to any store system</div>
+<header class="ah"><a class="ah__logo" href="../index.html" aria-label="View the U-FIX-IT store"><img src="../img/logo.png" alt="U-FIX-IT Appliance Parts" width="112" height="56" /></a><div class="ah__t">Store admin<small>Demo</small></div><button class="btn-ghost" id="signout" type="button">Sign out</button></header>
+<div class="alay"><nav class="anav" aria-label="Admin"><ul><li><a href="dashboard.html">Dashboard</a></li><li><a href="reports.html" class="rep">Reports</a></li><li><a href="orders.html">Orders</a></li><li><a href="products.html">Products & inventory</a></li><li><a href="customers.html">Customers</a></li><li><a href="settings.html" aria-current="page">Settings</a></li></ul></nav>
+<main class="amain" id="main"><div class="pg-h"><div><h1>Settings <span class="tag-demo">Demo data</span></h1><p>Store profile, locations and checkout options</p></div></div>
+<form id="setf"><section class="panel"><h2>Store profile</h2><div class="fbar"><div><label for="sn">Store name</label><input id="sn" value="U-FIX-IT Appliance Parts" /></div><div><label for="se">Order email</label><input id="se" type="email" value="orders@example.com" /></div></div></section>
+<section class="panel"><h2>Locations</h2><div class="tw"><table class="t cards"><thead><tr><th>Store</th><th>Phone</th><th>Pickup orders</th></tr></thead><tbody>
+<tr><td data-l="Store">Arlington</td><td data-l="Phone">817.472.7740</td><td data-l="Pickup orders"><input type="checkbox" checked aria-label="Arlington pickup orders" /></td></tr>
+<tr><td data-l="Store">East Dallas</td><td data-l="Phone">214.321.7054</td><td data-l="Pickup orders"><input type="checkbox" checked aria-label="East Dallas pickup orders" /></td></tr>
+<tr><td data-l="Store">South Dallas</td><td data-l="Phone">972.780.9096</td><td data-l="Pickup orders"><input type="checkbox" checked aria-label="South Dallas pickup orders" /></td></tr>
+<tr><td data-l="Store">Tyler</td><td data-l="Phone">903.592.5836</td><td data-l="Pickup orders"><input type="checkbox" checked aria-label="Tyler pickup orders" /></td></tr></tbody></table></div></section>
+<section class="panel"><h2>Checkout</h2><div class="fbar"><div><label for="tx">Sales tax rate (%)</label><input id="tx" inputmode="decimal" value="8.25" /></div><div><label for="fsh">Free shipping over ($)</label><input id="fsh" inputmode="decimal" value="75" /></div><div><label for="fr">Flat shipping rate ($)</label><input id="fr" inputmode="decimal" value="9.95" /></div></div></section>
+<section class="panel"><h2>Notifications</h2>
+<div class="set-row"><input type="checkbox" id="n1" checked /><label for="n1">Email me for each new online order</label></div>
+<div class="set-row"><input type="checkbox" id="n2" checked /><label for="n2">Daily low-stock summary</label></div>
+<div class="set-row"><input type="checkbox" id="n3" /><label for="n3">Weekly sales report</label></div></section>
+<section class="panel"><h2>Staff accounts</h2><div class="tw"><table class="t cards"><thead><tr><th>Name</th><th>Role</th><th>Store</th></tr></thead><tbody>
+<tr><td data-l="Name">Store Manager (demo)</td><td data-l="Role">Owner</td><td data-l="Store">All stores</td></tr>
+<tr><td data-l="Name">Counter Staff (demo)</td><td data-l="Role">Orders only</td><td data-l="Store">Arlington</td></tr></tbody></table></div></section>
+<button class="btn red" type="submit">Save settings</button></form></main></div>
+<script src="catalog.js"></script><script src="data.js"></script><script src="admin.js"></script></body></html>
