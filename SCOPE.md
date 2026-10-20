@@ -83,3 +83,30 @@ NYE / Christmas Eve: 9 to 3 (Store Hours page)
 
 ## Ecommerce prototype extension (Oct 15, 2026)
 Mike asked for an ecommerce prototype. Added on top of the 168-page KEEP set: storefront home, `shop.html`, 66 `product-category-*.html` pages with filters, 438 `product-*.html` detail pages (real names, part numbers, prices, stock, descriptions and images from the ufixit.com WooCommerce Store API, Oct 15, 2026), `cart.html`, `checkout.html` (mock), `order-confirmation.html`, `order-lookup.html`, `account.html`, `how-to-choose.html`. See `CONVERSION.md`. Platform for the build is undecided (live is WordPress + WooCommerce).
+
+## Demo admin + reporting (Oct 20, 2026, PR #12)
+
+Requested by Mike on Oct 20, 2026. This is a **demo-only** store admin under `/admin/`, reached from a discreet footer "Admin" link (`rel=nofollow`). There is no backend or real integration, and every number is labeled as demo data.
+
+- **Pages:** `admin/index.html` (demo sign-in stub: any email or password works, sessionStorage only), `dashboard.html`, `reports.html`, `orders.html`, `parts.html` (`products.html` redirects to it), `customers.html`, `pos.html` and `settings.html`. All admin pages are `noindex, nofollow`.
+- **Data:**
+  - `admin/catalog.js` holds the real part names, part numbers, prices and "replaces" cross-references extracted from `shop.html`.
+  - `admin/data.js` generates deterministic demo data from fixed seeds: about 8.5k orders from Oct 21, 2024 to Oct 20, 2026, plus customers, part cost, stock, reorder levels, suppliers (fictional, tagged "(demo)") and a POS sync log.
+- **Reports:**
+  - Date-range presets and custom dates, plus a channel filter.
+  - KPIs vs the prior period.
+  - A revenue-over-time SVG chart (net sales on the left axis, order count on the right, partial periods hatched) with a data table.
+  - Top products by units and by revenue, sales by category and by channel.
+  - Online + in-store (POS) combined, with a split.
+  - Top parts used, a paginated order history and a CSV export.
+- **Parts & inventory:** each part shows part #, name, compatibility ("Fits" plus the part numbers it replaces), cost and price, on hand, reorder level and supplier. Low-stock alerts appear on Parts and the Dashboard. Each part links to the orders that used it, and each order links to its parts.
+- **POS provider:** a generic placeholder (**vendor TBD, Mike to confirm**). It has a demo connect/disconnect toggle (localStorage), sync status, last sync time, and a sync log of sales in and inventory counts.
+- **Rules:**
+  - Brand tokens from `css/site.css`.
+  - Text at least 16px (chart axis ticks 13px), inputs 16px, 48px targets.
+  - No page-level sideways scroll at 320, 390, 844x390 or 1440.
+  - Tables become stacked cards below 760px, and the phone nav is a select below 600px.
+  - Order #, date, total and status cells don't wrap.
+  - Gains show a green ▲ and drops a red ▼.
+  - Plain SVG charts, with no chart library.
+- **Out of scope:** real authentication, persistence, payments, POS or supplier integrations, and any production admin. A real build would replace `data.js` with live sources.
