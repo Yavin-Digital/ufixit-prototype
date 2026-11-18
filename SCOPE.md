@@ -5,13 +5,13 @@ client: "U-FIX-IT Appliance Parts (contact: Lisa Harlan)"
 
 agency: "Yavin"
 agency_github_org: "Yavin-Digital"
-agency_local_folder: "TBD"     # not needed for the automated loop; Mike/Rath to set if wanted
+agency_local_folder: ""        # not needed for the automated loop
 
-# project_type and scaffold_* intentionally unset: stack for the rebuild is undecided
-# (live site is WordPress + WooCommerce). Rath/setup to set. See Open Questions.
-project_type: ""
-scaffold_repo: ""
-scaffold_version: ""
+# Mike decided 2026-11-18 3:53 PM CT: the rebuild moves to Node (live site is WordPress + WooCommerce).
+# "ecomm" = Node ecommerce per SCOPE.md.template. Rath to confirm ecomm vs headless-ecomm (which keeps WooCommerce as the backend).
+project_type: "ecomm"
+scaffold_repo: "app-shell-scaffold"   # PIPELINE.md / template default for new Node first-builds
+scaffold_version: ""                  # Project Setup writes the tag/SHA at clone time
 
 # WordPress fields — only used if the rebuild lands on WordPress. Unset until the stack is chosen.
 wp_parent_theme: ""
@@ -20,7 +20,7 @@ wp_plugins: []
 shop_mode: ""
 external_shop_url: ""
 payment_gateway: ""
-wpengine_install_name: ""      # live site is on WP Engine per research dossier; install name unverified
+wpengine_install_name: ""      # not used on the Node path
 webinar_archive_slug: ""
 wp_cli_pages: []
 wp_cli_menus: []
@@ -29,13 +29,13 @@ integrations:
   database: true               # parts catalog, orders, per-store stock, admin reporting
   auth: true                   # customer account + admin sign-in shown in prototype
   storage: false               # no uploads in the prototype
-  email_sendgrid: false        # TBD: order confirmation email not specified (see Open Questions)
+  email_sendgrid: false        # order confirmation email undecided (Rath to research, see Open Questions)
   payment_gateway: ""          # undecided (see Open Questions)
   woocommerce_api: false
   age_gate: false
   spot_prices_ticker: false
   webinar_categories: false
-  google_analytics: false      # TBD: no GA4 ID provided (see Open Questions)
+  google_analytics: false      # GA4 ID not provided (Rath to research, see Open Questions)
   ga4_ids: []
   chat_widget: false
   sms_ottertext: false
@@ -45,10 +45,10 @@ features:
   forms: "contact"             # contact, shipping inquiry, share-feedback pages
   auth: "credentials"          # account.html (customers); admin demo sign-in is a stub
   ecommerce: "checkout"        # cart, mock checkout, order confirmation, order lookup
-  payments: ""                 # undecided: no gateway named (see Open Questions)
+  payments: ""                 # open: gateway not chosen (Rath, see Open Questions)
   affiliates: "none"
   qbo: "none"
-  woo_sync: ""                 # TBD: depends on whether live WooCommerce stays the system of record
+  woo_sync: ""                 # open: Rath to decide (see Open Questions)
   campaign: "none"
   media: "none"
 
@@ -82,8 +82,8 @@ site:
   tagline_em: ""
   sub_tagline: ""
   phone: "Arlington 817.472.7740; East Dallas 214.321.7054; South Dallas 972.780.9096; Tyler 903.592.5836"
-  email: "TBD"
-  address: "Arlington: 4621 S Cooper St Suite 127, Arlington, TX 76017; East Dallas: 9919 Garland Rd, Dallas, TX 75218; South Dallas: 438 East Wheatland Road, Duncanville, TX (ZIP unverified); Tyler: 2606 E 5th St, Tyler, TX 75701"
+  email: ""                    # Rath to research (see Open Questions)
+  address: "Arlington: 4621 S Cooper St Suite 127, Arlington, TX 76017; East Dallas: 9919 Garland Rd, Dallas, TX 75218 (locked by Mike); South Dallas: 442 East Wheatland Road, Duncanville, TX 75116; Tyler: 2606 E 5th St, Tyler, TX 75701"
   hours: "Arlington 9am-6pm Mon-Sat, closed Sunday (confirmed by Mike, Nov 2026). East Dallas 9am-6pm Mon-Fri, closed Sat and Sun. South Dallas and Tyler 9am-6pm Mon-Fri, 9am-4pm Sat, closed Sun. Holiday exceptions on /about-us-store-hours.html."
   website: "https://ufixit.com/"
 
@@ -345,18 +345,18 @@ pages:
     name: "Admin products (redirects to parts)"
 
 deployment:
-  platform: ""                   # TBD with stack choice (see Open Questions)
-  region: ""
+  platform: "digital-ocean-app-platform"
+  region: "sfo3"                 # Team Yavin DB cluster datacenter per template (App Platform slug "sfo"); Rath/DevOps to confirm against the business-apps cluster
   plan: "basic"
   spaces_bucket: "yavin-media"
   spaces_folder: "ufixit"
   domain: "ufixit.com"           # live domain; cutover is a later phase
-  do_team: "Team Yavin"          # only if Node/DO is chosen; confirm
+  do_team: "Team Yavin"          # agency Yavin -> Team Yavin; ecomm uses the business-apps Postgres cluster (PIPELINE.md §6)
 
 repo:
   github_org: "Yavin-Digital"
   prototype_repo: "ufixit-prototype"
-  app_repo: ""                   # set when stack is chosen ({slug}-app or {slug}-child/-theme)
+  app_repo: "ufixit-app"
   default_branch: "main"
 
 prototype:
@@ -370,7 +370,7 @@ prototype:
 
 ## Overview
 
-U-FIX-IT is a Texas appliance parts retailer with four stores (Arlington, East Dallas, South Dallas/Duncanville, Tyler), free diagnosis help in person or by phone, and an online parts shop. The live site is WordPress + WooCommerce at https://ufixit.com/. This scope covers an HTML prototype of a rebuilt, store-first ecommerce site, reviewed at https://ufixit.clientreview.co. The prototype also includes a demo admin area with sales reporting.
+U-FIX-IT is a Texas appliance parts retailer with four stores (Arlington, East Dallas, South Dallas/Duncanville, Tyler), free diagnosis help in person or by phone, and an online parts shop. The live site is WordPress + WooCommerce at https://ufixit.com/. This scope covers an HTML prototype of a rebuilt, store-first ecommerce site, reviewed at https://ufixit.clientreview.co. The rebuild will be a Node ecommerce app (`project_type: ecomm`). Client approval: Lisa Harlan approved the prototype and the demo admin (confirmed by Mike, 2026-11-18). The written approval itself is not in the repo. The prototype also includes a demo admin area with sales reporting.
 
 Prototype links:
 - Prototype: https://ufixit.clientreview.co/
@@ -394,9 +394,9 @@ Prototype links:
 
 ## Feature modes
 
-`features.blog_mode` is `cms`: the prototype includes DIY Tips and News articles. Do not ship a hard-coded post array. Implementation installs `@yavin/feature-blog` at the newest exact tag; Project Setup writes the tag here.
+`features.blog_mode` is `cms`: the prototype includes DIY Tips and News articles. Do not ship a hard-coded post array. Implementation installs `@yavin/feature-blog` at the newest exact tag (`v0.1.0` as of 2026-11-18, from `gh api repos/Yavin-Digital/feature-blog/tags`); Project Setup rewrites the tag here at Phase 3.
 
-`features.forms` is `contact`. `features.auth` is `credentials` (customer accounts; the admin sign-in in the prototype is a stub and must become real). `features.ecommerce` is `checkout`. `features.payments` and `features.woo_sync` are blank until the questions below are answered. `project_type` and `scaffold_*` are unset on purpose for Rath/setup.
+`features.forms` is `contact`. `features.auth` is `credentials` (customer accounts; the admin sign-in in the prototype is a stub and must become real). `features.ecommerce` is `checkout`. `features.payments` and `features.woo_sync` are blank until Rath answers the questions below. `project_type` is `ecomm` on `app-shell-scaffold` (Mike's decision, 2026-11-18).
 
 Blog is not a content type and is not duplicated under `content_types`.
 
@@ -417,16 +417,19 @@ Blog is not a content type and is not duplicated under `content_types`.
 
 ## Open Questions
 
-- Stack and `project_type` for the rebuild (stay on WordPress + WooCommerce, or Node ecommerce)? Left unset, along with `scaffold_*`, `deployment.platform/region`, `do_team`, `app_repo`.
-- Payment gateway (`features.payments`, `integrations.payment_gateway`)? Not named anywhere.
-- Does WooCommerce stay the system of record (`features.woo_sync`)?
-- POS vendor for in-store sales (the admin POS page is a generic demo)?
-- South Dallas ZIP: 75116 vs 75237 (unverified; omitted on store pages).
-- East Dallas street number: 9919 locked by Mike (Sep 16); the live map shows 9917.
-- Contact email for the site/stores, GA4 measurement IDs, and whether order confirmation email is needed.
-- Client sign-off: no written approval from Lisa Harlan on the prototype or demo admin has been found.
-- Holiday matrix (New Year's Eve 9-3, etc.): confirm annually; check whether Arlington's Saturday change affects holiday copy.
-- `agency_local_folder` and `wpengine_install_name` not verified.
+All items below are for Rath. Blocking means it would change a mode, integration or content type before Phase 3 can finish; non-blocking means it can be answered during the build.
+
+- **Blocking:** Payment gateway (`features.payments`, `integrations.payment_gateway`): authnet, stripe or both? Not chosen. Rath to decide.
+- **Blocking:** Does WooCommerce stay the system of record (`features.woo_sync`), or is the catalog migrated once? Rath to decide.
+- **Blocking:** POS vendor for in-store sales (the admin POS page is a generic demo). Rath to decide.
+- **Non-blocking:** Confirm `project_type: ecomm` vs `headless-ecomm`, and `deployment.region: sfo3` (Rath/DevOps).
+- **Non-blocking:** Contact email for the site and stores. Rath to research.
+- **Non-blocking:** GA4 measurement ID(s) (`integrations.ga4_ids`). Rath to research.
+- **Non-blocking:** Whether an order confirmation email is needed (`integrations.email_sendgrid`). Rath to research.
+- **Non-blocking:** South Dallas street number: the live store page heading, schema and Google/Waze listing say 442 East Wheatland Rd; the live page body also shows 438. The prototype uses 442.
+- **Non-blocking:** Holiday matrix (New Year's Eve 9-3, etc.): confirm annually, and check whether Arlington's Saturday change affects holiday copy.
+
+Resolved on 2026-11-18: Node stack (Mike); South Dallas ZIP 75116 (live store page, schema, Google/Waze listing; the live footer's 75237 is wrong); East Dallas is 9919 Garland Rd (Mike); Lisa's approval of the prototype and demo admin (Mike).
 
 ## Out of Scope
 
